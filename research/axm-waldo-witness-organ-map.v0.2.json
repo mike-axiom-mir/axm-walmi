@@ -1,0 +1,158 @@
+{
+  "schema": "axm.waldo-witness.organ-map/v0.2",
+  "status": "EXPERIMENTAL",
+  "clone_role": "WALDO-native provenance and evaluation witness, not a general Mirror copy",
+  "authority_default": "closed",
+  "supersedes_map": "research/axm-waldo-witness-organ-map.v0.1.json",
+  "design_adrs": [
+    "docs/adr/9002-axm-waldo-witness-organ-architecture.md",
+    "docs/adr/9005-axm-waldo-gated-clone-foundation.md",
+    "docs/adr/9005-witness-training-profile-contracts.md"
+  ],
+  "knowledge_sources": [
+    {
+      "kind": "passive-contract-pattern-library",
+      "repository": "mike-axiom-mir/axm-collaboration-platform",
+      "branch": "mirror",
+      "commit": "4a3727505576c4c95198a8287dd8ce1e82619f32",
+      "export_id": "03f3d0cf0802a95bb5eccc8d42fc6c4422b85a1e5d3dc0373b4f3a3c6c13ab2a",
+      "current_objects": 115,
+      "reuse": "knowledge and contract patterns only; no archived source imported or executed"
+    },
+    {
+      "kind": "upstream-durable-contract-delta",
+      "receipt": "research/openwaldo-upstream-delta-2026-08-15.json",
+      "head": "4944072bc3f2fcd5d98d40915d25c7e1535d4877"
+    },
+    {
+      "kind": "upstream-durable-contract-delta",
+      "receipt": "research/openwaldo-upstream-delta-2026-08-22.json",
+      "head": "b3784d3210de2ebd8df69b1f902b16eeed48b0a4"
+    }
+  ],
+  "organs": [
+    {
+      "id": "origin-anchor",
+      "wave": 1,
+      "status": "IMPLEMENTED_TESTED_GO_1_26_6",
+      "purpose": "Bind behavior to exact WALDO model/release lineage and expose missing links without allowing model prose to author lineage."
+    },
+    {
+      "id": "corpus-evidence-lens",
+      "wave": 1,
+      "status": "IMPLEMENTED_TESTED_GO_1_26_6",
+      "purpose": "Project stable corpus BOM facts into a bounded machine surface while preserving verification limits."
+    },
+    {
+      "id": "training-run-witness",
+      "wave": 1,
+      "status": "IMPLEMENTED_TESTED_GO_1_26_6",
+      "purpose": "Bind behavior to exact run plan, corpus, origin, backend, environment, checkpoint state, and output identity."
+    },
+    {
+      "id": "release-identity-lock",
+      "wave": 1,
+      "status": "IMPLEMENTED_TESTED_GO_1_26_6",
+      "purpose": "Resolve which verified model/release/tokenizer identity produced an observation and refuse silent identity drift."
+    },
+    {
+      "id": "behavior-evidence-seal",
+      "wave": 1,
+      "status": "IMPLEMENTED_TESTED_GO_1_26_6",
+      "purpose": "Seal lineage-bound context/request/output digests, verification, dissent, outcome, permission, and closed authority."
+    },
+    {
+      "id": "evaluation-independence-contamination-guard",
+      "wave": 1,
+      "status": "IMPLEMENTED_TESTED_GO_1_26_6",
+      "purpose": "Check exact declared training/evaluation overlap and authorship claims; incomplete evidence stays HOLD or UNKNOWN."
+    },
+    {
+      "id": "training-profile-contract-lens",
+      "wave": 1.1,
+      "status": "IMPLEMENTED_TESTED_GO_1_26_6",
+      "purpose": "Expose behavior-named and legacy WALDO profile contracts without turning corpus selection or weight into a causal-output claim."
+    },
+    {
+      "id": "provenance-context-surface",
+      "wave": 2,
+      "status": "IMPLEMENTED_TESTED_GO_1_26_6",
+      "purpose": "Provide an allow-listed, byte-bounded, source-labelled provenance packet to the learned clone without allowing provenance mutation."
+    },
+    {
+      "id": "source-claim-gate",
+      "wave": 2,
+      "status": "IMPLEMENTED_TESTED_GO_1_26_6",
+      "purpose": "Assess typed source/origin claims against the exact packet while preserving causal, legal, and reproducibility ceilings."
+    },
+    {
+      "id": "evaluation-protocol-seal",
+      "wave": 2,
+      "status": "IMPLEMENTED_TESTED_GO_1_26_6",
+      "purpose": "Precommit pack, target, context, metrics, comparison dimensions, answer-key boundary, limits, permission, and closed authority before outputs."
+    },
+    {
+      "id": "gated-behavior-seal",
+      "wave": 2,
+      "status": "IMPLEMENTED_TESTED_GO_1_26_6",
+      "purpose": "Bind profile, context, claim assessment, and precommitted protocol into the final run-backed behavior receipt."
+    },
+    {
+      "id": "behavior-delta-comparator",
+      "wave": 2,
+      "status": "PROPOSED_AFTER_PROTOCOL_SEAL",
+      "purpose": "Compare identical sealed evaluations across exact releases while preserving behavior, verification, dissent, authority, and non-comparable dimensions separately."
+    },
+    {
+      "id": "dissent-continuity-ledger",
+      "wave": 2,
+      "status": "PROPOSED",
+      "purpose": "Carry unresolved objections across releases until explicitly resolved or superseded by linked evidence."
+    },
+    {
+      "id": "reproducibility-twin",
+      "wave": 2,
+      "status": "PROPOSED",
+      "purpose": "Compare original and reconstructed runs without conflating artifact equality with behavioral similarity."
+    },
+    {
+      "id": "source-change-impact-router",
+      "wave": 3,
+      "status": "PROPOSED",
+      "purpose": "Trace corrections, disputes, or removals through dependent runs, models, releases, and behavior records as review impact."
+    },
+    {
+      "id": "controlled-attribution-experiment-planner",
+      "wave": 3,
+      "status": "PROPOSED",
+      "purpose": "Design controlled comparisons for source-to-behavior hypotheses without claiming corpus membership proves causality."
+    },
+    {
+      "id": "memorization-leakage-audit",
+      "wave": 3,
+      "status": "PROPOSED",
+      "purpose": "Audit exact/near-exact reproduction under declared protocols without converting matches into legal or causal conclusions."
+    },
+    {
+      "id": "license-assertion-boundary",
+      "wave": 3,
+      "status": "PROPOSED",
+      "purpose": "Preserve license assertions, disputes, policy filters, identity verification, and absence of legal conclusion as separate states."
+    },
+    {
+      "id": "upstream-contribution-extractor",
+      "wave": 3,
+      "status": "PROPOSED",
+      "purpose": "Separate generic WALDO-useful work from AXM-specific identity before any human-authorized upstream proposal."
+    }
+  ],
+  "initially_excluded_normal_mirror_families": [
+    "broad Workshop capability discovery",
+    "autonomous tool/hand planning",
+    "general memory guidance",
+    "automatic repair",
+    "resource economics/provider selection",
+    "general Foundation growth routing",
+    "world-action planning"
+  ]
+}

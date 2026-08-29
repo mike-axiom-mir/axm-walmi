@@ -1,0 +1,112 @@
+{
+  "schema": "axm.capability-choice-contract/v0.17",
+  "status": "CONTRACT_PROBE_ONLY",
+  "sourceReceipt": "sha256:7e8188eb87772ae6ae47ab67bd1dbf158008513ae43c63da680cfb388ca5f81d",
+  "sourceHead": "16900d91e60cde5c74bcfe0d51a209d508683742",
+  "need": "material-evidence-view-completion",
+  "authorityCeiling": [
+    "READ_ONLY_PUBLIC_ARTIFACT_ACCESS"
+  ],
+  "candidates": [
+    {
+      "id": "direct-read-chain",
+      "links": [
+        {
+          "id": "request-skill",
+          "kind": "SKILL",
+          "consumes": "material-evidence-view-completion",
+          "provides": "bounded-request",
+          "authority": null
+        },
+        {
+          "id": "reader-hand",
+          "kind": "HAND",
+          "consumes": "bounded-request",
+          "provides": "material-view",
+          "authority": [
+            "READ_ONLY_PUBLIC_ARTIFACT_ACCESS"
+          ]
+        },
+        {
+          "id": "verify-organ",
+          "kind": "ORGAN",
+          "consumes": "material-view",
+          "provides": "material-evidence-view-verified",
+          "authority": null
+        }
+      ]
+    },
+    {
+      "id": "projected-read-chain",
+      "links": [
+        {
+          "id": "request-skill",
+          "kind": "SKILL",
+          "consumes": "material-evidence-view-completion",
+          "provides": "bounded-request",
+          "authority": null
+        },
+        {
+          "id": "projection-organ",
+          "kind": "ORGAN",
+          "consumes": "bounded-request",
+          "provides": "projected-request",
+          "authority": null
+        },
+        {
+          "id": "projection-reader-hand",
+          "kind": "HAND",
+          "consumes": "projected-request",
+          "provides": "material-view",
+          "authority": [
+            "READ_ONLY_PUBLIC_ARTIFACT_ACCESS"
+          ]
+        },
+        {
+          "id": "verify-organ",
+          "kind": "ORGAN",
+          "consumes": "material-view",
+          "provides": "material-evidence-view-verified",
+          "authority": null
+        }
+      ]
+    }
+  ],
+  "advisoryPriority": {
+    "direct-read-chain": null,
+    "projected-read-chain": null
+  },
+  "selectionAuthority": "NONE",
+  "decision": "HOLD",
+  "reason": "MULTIPLE_VALID_COMPOSITIONS",
+  "singleSurvivorDecision": "HOLD",
+  "singleSurvivorReason": "SELECTION_AUTHORITY_ABSENT",
+  "cycleEdges": [
+    [
+      "cycle-a",
+      "cycle-b"
+    ],
+    [
+      "cycle-b",
+      "cycle-a"
+    ]
+  ],
+  "cycleDecision": "HOLD",
+  "cycleReason": "CYCLE_DETECTED",
+  "refusedAuthority": [
+    "READ_ONLY_PUBLIC_ARTIFACT_ACCESS",
+    "WRITE_WORKSPACE",
+    "INSTALL_CAPABILITY",
+    "PROMOTE",
+    "CANON"
+  ],
+  "refusalDecision": "REFUSED",
+  "refusalReason": "CHILD_AUTHORITY_EXCEEDS_ANCESTOR_GAP",
+  "selectionPerformed": false,
+  "buildStarted": false,
+  "promoted": false,
+  "canonChanged": false,
+  "waldoOwnsSelection": false,
+  "localCapabilityFabricExecuted": false,
+  "receiptDigest": "sha256:62d12d9ef02d3527878ba5e1c9baee6e79dc973d3617caf03796170fc5787dbe"
+}

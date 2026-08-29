@@ -1,0 +1,155 @@
+{
+  "schema": "axm.waldo-witness.external-capability-snapshot/v0.1",
+  "snapshot_id": "platform-source-only-2026-08-15",
+  "source": {
+    "repository": "mike-axiom-mir/axm-collaboration-platform",
+    "branch": "main",
+    "commit": "a4f99fbfc05268173458bf3fb8f3fe616919e376",
+    "documents": [
+      {
+        "path": "tools/adapter-translation-garden/module.contract.json",
+        "git_blob_sha": "47d2c3a3da55534857844b4afb192b4b3c4b7939",
+        "sha256": "33d144a8a9d7497e4b3160d24b76d9f049488aca2812c4a92accba17a85212b2"
+      },
+      {
+        "path": "tools/handoff-wiring-observatory/module.contract.json",
+        "git_blob_sha": "271bf359030dd4d87e2a3fc211d240345b67ad54",
+        "sha256": "2336a9efc530204379bd27983bf59307b9103eefb4e7782e54cdcaccfdcaebc9"
+      },
+      {
+        "path": "tools/technical-glasses/module.contract.json",
+        "git_blob_sha": "8fd228672843aca40ed535df38cb9a8e4461c2c5",
+        "sha256": "58dd260186e6cca239e60fd49ffda37bb67e35ac6d00c9f8c1c5b47afc3b74c0"
+      },
+      {
+        "path": "tools/workshop-needs-observatory/module.contract.json",
+        "git_blob_sha": "d7ec1ffa6559451999c41d92c03cf55f7d06bd29",
+        "sha256": "b3765bbe54227fc69105e4662a2834244d30a108e5b1455ad6d737c84527275e"
+      }
+    ]
+  },
+  "observation_state": "SOURCE_ONLY",
+  "observed_at": "2026-08-15T12:17:08Z",
+  "assessed_at": "2026-08-15T12:17:08Z",
+  "ttl_millis": 86400000,
+  "inventory_complete": true,
+  "capabilities": [
+    {
+      "id": "platform.capability-gap.observe",
+      "provider_id": "workshop-needs-observatory",
+      "version": "v0.3",
+      "execution_class": "INERT_CONTRACT",
+      "declaration_state": "DECLARED",
+      "input_schemas": [
+        "axm.modular-piece-candidate/v1",
+        "axm.tools-index/v1"
+      ],
+      "output_schemas": [
+        "axm.workshop-need/v1",
+        "axm.workshop-needs-observatory/v1",
+        "axm.workshop-readiness-view/v1"
+      ],
+      "accepted_data_classes": [
+        "PUBLIC"
+      ],
+      "refusals": [
+        "auto-building",
+        "auto-promotion",
+        "declared-capability-as-runtime-proof",
+        "fuzzy-capability-claim",
+        "silent-need-closure"
+      ]
+    },
+    {
+      "id": "platform.handoff-wiring.observe",
+      "provider_id": "handoff-wiring-observatory",
+      "version": "v0.1",
+      "execution_class": "INERT_CONTRACT",
+      "declaration_state": "DECLARED",
+      "input_schemas": [
+        "axm.module-contract/v1",
+        "axm.workshop-capability-index/v1"
+      ],
+      "output_schemas": [
+        "axm.handoff-artifact-record/v1",
+        "axm.handoff-module-envelope/v1",
+        "axm.handoff-wiring-map/v1"
+      ],
+      "accepted_data_classes": [
+        "INTERNAL",
+        "PUBLIC"
+      ],
+      "required_permissions": [
+        "storage"
+      ],
+      "refusals": [
+        "automatic-adapter-generation",
+        "automatic-rewire",
+        "runtime-readiness-claim",
+        "schema-name-normalization",
+        "semantic-compatibility-inference",
+        "wildcard-compatibility-inference"
+      ]
+    },
+    {
+      "id": "platform.technical-ground-truth",
+      "provider_id": "technical-glasses",
+      "version": "v0.2",
+      "execution_class": "INERT_CONTRACT",
+      "declaration_state": "DECLARED",
+      "input_schemas": [
+        "axm.technical-focus/v1",
+        "hub:init",
+        "hub:settings:value",
+        "plain-text/task-focus"
+      ],
+      "output_schemas": [
+        "axm.technical-glasses/v1",
+        "text/plain/ai-technical-briefing"
+      ],
+      "accepted_data_classes": [
+        "PUBLIC"
+      ],
+      "refusals": [
+        "automatic-repair",
+        "guessing-missing-state",
+        "permission-change",
+        "stale-snapshot-as-current-truth",
+        "structural-scan-as-runtime-proof"
+      ]
+    },
+    {
+      "id": "platform.translation.plan",
+      "provider_id": "adapter-translation-garden",
+      "version": "v0.20.0-axm.1",
+      "execution_class": "INERT_CONTRACT",
+      "declaration_state": "DECLARED",
+      "input_schemas": [
+        "application/json",
+        "axm.translation.module-call/v1"
+      ],
+      "output_schemas": [
+        "axm.translation.loss-ledger/v1",
+        "axm.translation.module-result/v1",
+        "axm.translation.proof-packet/v1"
+      ],
+      "accepted_data_classes": [
+        "PUBLIC"
+      ],
+      "refusals": [
+        "automatic-install",
+        "automatic-orchestration",
+        "hidden-translation-loss",
+        "network-access",
+        "permission-inference"
+      ]
+    }
+  ],
+  "authority": {
+    "tool_execution": false,
+    "training": false,
+    "promotion": false,
+    "canon": false,
+    "world_action": false
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "receiptDigest": "sha256:d8f5407b6fde3335385967c5d837d563d8474841e2a00038267e6010b06f70ec",
+  "compactWitnessDigest": "1493389d5e0bb6d0654a7df078a3b147a379d720ddb06632c78050db6fb423ce",
+  "ledgerHeadDigest": "sha256:4807f6264c74bf013e7ccc1fdc68f87ec92bffc5be990b9c062b758d7cfd19e3",
+  "t1": {"witnessA":"EVIDENCE_PASS","witnessB":"HOLD","disagreement":true},
+  "t2": {"witnessB":"EVIDENCE_PASS","historicalWitnessBHoldStillPresent":true},
+  "peerRing": {"passes":4,"holds":2,"guardedHoldsStillPresent":true},
+  "ledgerEntries": 3,
+  "finalJudgeAssigned": false,
+  "authority": "NONE"
+}

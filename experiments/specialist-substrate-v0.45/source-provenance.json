@@ -1,0 +1,45 @@
+{
+  "schema": "axm.waldo.source-file-manifest/v0.45",
+  "sourceCommit": "386736aaae3993089dfaf970cf2360894959e3c0",
+  "selectedFileCount": 7,
+  "alreadyVendoredExact": 6,
+  "newClosureFiles": 1,
+  "selectedTreeSha256": "2258b959672062aa2466f083233766123809af688ff1b65f6294d6866e488f7e",
+  "files": [
+    {
+      "path": "shared/specialists/axm-specialist-library.js",
+      "sha256": "a3ae5f74d67068efb5996955c8327356bf381a3eeb219018226125a2692c346a",
+      "bytes": 25120
+    },
+    {
+      "path": "shared/specialists/capability-bridges.js",
+      "sha256": "3c8fd881e4ca242a3a0c51107f4112d1d6678d8bc69c97bf6dbcfa999ee2cedd",
+      "bytes": 7663
+    },
+    {
+      "path": "shared/specialists/router-selftest.js",
+      "sha256": "92fba12c558c74ab963b44adb8667c614b6a35d70163212d519181d6d6163eb4",
+      "bytes": 1742
+    },
+    {
+      "path": "shared/specialists/runtime-profiles.js",
+      "sha256": "892da9eef1076fc4bca24b9c8157f86536017f3db21c8469c03f3717182dc001",
+      "bytes": 14372
+    },
+    {
+      "path": "shared/specialists/selftest.js",
+      "sha256": "1697a0577201326d3faafef8e57015446a65b1624e98a50a29775729efe2a7c4",
+      "bytes": 4488
+    },
+    {
+      "path": "shared/specialists/specialist-router.js",
+      "sha256": "b856f5427df41d649d36aca75c801e06dca6fc15ea99395e05857d347af222aa",
+      "bytes": 9636
+    },
+    {
+      "path": "tools/discovery-engine/review-packs.js",
+      "sha256": "f750652d1d8ec2bc7499b4c4f643eddcfc01546254718f427f0821230ca2e2f9",
+      "bytes": 50344
+    }
+  ]
+}

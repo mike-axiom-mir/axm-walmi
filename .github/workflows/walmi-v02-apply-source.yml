@@ -1,0 +1,45 @@
+name: WALMI v0.2 apply source intake
+
+on:
+  push:
+    branches:
+      - axm/walmi-pc-workspace-assets-v0.2
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    if: contains(github.event.head_commit.message, 'stage WALMI v0.2 source intake')
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Expand audited source patch
+        shell: python
+        run: |
+          from pathlib import Path
+          import zipfile
+          patch=Path('.walmi-intake/WALMI_V02_SOURCE_PATCH.zip')
+          if not patch.is_file(): raise SystemExit('source patch missing')
+          with zipfile.ZipFile(patch) as z:
+              bad=z.testzip()
+              if bad: raise SystemExit('bad patch member '+bad)
+              z.extractall('.')
+          patch.unlink()
+          Path('.github/workflows/walmi-v02-apply-source.yml').unlink()
+      - name: Source sanity
+        run: |
+          git diff --check
+          test -f internal/axmmirror/workspace_hand.go
+          test -f internal/axmmirror/workspace_loop.go
+          test -f internal/axmmirror/candidate_writer.go
+          test -f cmd/walmi-workspace/main.go
+      - name: Seal one source commit and retire intake trigger
+        run: |
+          git config user.name 'WALMI packaging steward'
+          git config user.email 'actions@users.noreply.github.com'
+          git add -A
+          git commit -m 'research: add optional workspace hand v0.2'
+          git push origin HEAD:axm/walmi-pc-workspace-assets-v0.2

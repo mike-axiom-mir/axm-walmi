@@ -1,0 +1,207 @@
+{
+  "authority": {
+    "canon": false,
+    "changePointDetector": "NONE",
+    "executionGuardSharedAcrossModes": true,
+    "install": false,
+    "merge": false,
+    "selector": "NONE",
+    "sourceReliability": "NONE"
+  },
+  "challenge": "STALE_EVIDENCE_IS_NOT_CURRENT_STATE",
+  "claimBoundary": [
+    "deterministic simulator evidence only",
+    "no real robot or physical execution",
+    "no provider-backed continuous AI process",
+    "no production safety claim",
+    "no general reasoning superiority or speedup claim",
+    "no consciousness, emergence, free-thought, quantum, or universal-safety claim"
+  ],
+  "detector": {
+    "detectionDelayTicks": 14,
+    "missedWorldChanges": 25,
+    "spuriousChangePoints": 7,
+    "staleEvidenceInvalidated": 24,
+    "trueChangePointsDetected": 22
+  },
+  "localEvidenceNote": "Full family-level aggregate summary, per-ledger digest index, raw metrics, and full causal ledgers are reproducible/local evidence and are not committed in this compact branch package.",
+  "parent": {
+    "branch": "axm/mirror-waldo-experiment-v0.27-calibrated-situational-reasoning",
+    "challenge": "EVIDENCE_CONFIDENCE_IS_NOT_TRUTH",
+    "commit": "61f4848f73d5812796899762b4f9c573217ddd78"
+  },
+  "posthocAggregate": {
+    "CHANGEPOINT_HOLD_F": {
+      "bad_commits": 35,
+      "brierProxy": 0.275862,
+      "change_point_detection_delay_ticks": 14,
+      "change_points_detected": 29,
+      "confusion": {
+        "FN": 50,
+        "FP": 6,
+        "TN": 112,
+        "TP": 35
+      },
+      "correct_final_plans": 46,
+      "false_negative_delay_ticks": 307,
+      "false_positive_preemptions": 6,
+      "held_commits": 56,
+      "missed_world_changes": 25,
+      "reasoning_events": 41,
+      "spurious_change_points": 7,
+      "stale_evidence_invalidated": 24,
+      "true_change_points_detected": 22
+    }
+  },
+  "posthocConclusion": "CHANGEPOINT_HOLD_F reduces bad commits relative to E on the already-inspected distribution but increases held commits; this is hypothesis-generating post-hoc evidence, not independent held-out evidence.",
+  "primaryAggregate": {
+    "CALIBRATED_D": {
+      "bad_commits": 39,
+      "brierProxy": 0.275862,
+      "change_point_detection_delay_ticks": 0,
+      "change_points_detected": 0,
+      "confusion": {
+        "FN": 50,
+        "FP": 6,
+        "TN": 112,
+        "TP": 35
+      },
+      "correct_final_plans": 46,
+      "false_negative_delay_ticks": 307,
+      "false_positive_preemptions": 6,
+      "held_commits": 44,
+      "missed_world_changes": 0,
+      "reasoning_events": 41,
+      "spurious_change_points": 0,
+      "stale_evidence_invalidated": 0,
+      "true_change_points_detected": 0
+    },
+    "CHANGEPOINT_E": {
+      "bad_commits": 39,
+      "brierProxy": 0.275862,
+      "change_point_detection_delay_ticks": 14,
+      "change_points_detected": 29,
+      "confusion": {
+        "FN": 50,
+        "FP": 6,
+        "TN": 112,
+        "TP": 35
+      },
+      "correct_final_plans": 46,
+      "false_negative_delay_ticks": 307,
+      "false_positive_preemptions": 6,
+      "held_commits": 37,
+      "missed_world_changes": 25,
+      "reasoning_events": 41,
+      "spurious_change_points": 7,
+      "stale_evidence_invalidated": 24,
+      "true_change_points_detected": 22
+    },
+    "COUPLED_B": {
+      "bad_commits": 21,
+      "brierProxy": 0.261084,
+      "change_point_detection_delay_ticks": 0,
+      "change_points_detected": 0,
+      "confusion": {
+        "FN": 0,
+        "FP": 53,
+        "TN": 69,
+        "TP": 81
+      },
+      "correct_final_plans": 64,
+      "false_negative_delay_ticks": 122,
+      "false_positive_preemptions": 53,
+      "held_commits": 0,
+      "missed_world_changes": 0,
+      "reasoning_events": 134,
+      "spurious_change_points": 0,
+      "stale_evidence_invalidated": 0,
+      "true_change_points_detected": 0
+    },
+    "HYBRID_C": {
+      "bad_commits": 68,
+      "brierProxy": 0.275862,
+      "change_point_detection_delay_ticks": 0,
+      "change_points_detected": 0,
+      "confusion": {
+        "FN": 49,
+        "FP": 7,
+        "TN": 122,
+        "TP": 25
+      },
+      "correct_final_plans": 40,
+      "false_negative_delay_ticks": 366,
+      "false_positive_preemptions": 7,
+      "held_commits": 0,
+      "missed_world_changes": 0,
+      "reasoning_events": 32,
+      "spurious_change_points": 0,
+      "stale_evidence_invalidated": 0,
+      "true_change_points_detected": 0
+    },
+    "SEQUENTIAL_A": {
+      "bad_commits": 44,
+      "brierProxy": 0.433498,
+      "change_point_detection_delay_ticks": 0,
+      "change_points_detected": 0,
+      "confusion": {
+        "FN": 88,
+        "FP": 0,
+        "TN": 115,
+        "TP": 0
+      },
+      "correct_final_plans": 64,
+      "false_negative_delay_ticks": 164,
+      "false_positive_preemptions": 22,
+      "held_commits": 0,
+      "missed_world_changes": 0,
+      "reasoning_events": 91,
+      "spurious_change_points": 0,
+      "stale_evidence_invalidated": 0,
+      "true_change_points_detected": 0
+    }
+  },
+  "primaryConclusion": "CHANGEPOINT_E demonstrates stale-evidence invalidation and solves the designed stale-window calibration case, but does not improve aggregate held-out final-plan correctness, false-positive preemption, false-negative delay, or bad commits over CALIBRATED_D in this 64-seed distribution.",
+  "retainedFailures": [
+    "high-confidence false evidence can create a spurious change point",
+    "synchronized false sources can masquerade as corroboration",
+    "weak real changes are frequently missed",
+    "late corroboration can arrive after useful reaction time",
+    "source reliability metadata can lag a sensor regime shift",
+    "held-out detector recall is limited in this exact envelope",
+    "stale invalidation can change evidence state without changing aggregate plan outcomes"
+  ],
+  "run": {
+    "causalLedgerValidation": "PASS",
+    "developmentScenarios": 64,
+    "fixedScenarios": 16,
+    "heldoutScenarios": 64,
+    "ledgerCount": 864,
+    "ledgerEventCount": 9077,
+    "ledgerIndexRootSha256": "1a611b9cb133fd83f6b0df68a4ccc0d9320f4ff623fb4676b172b0c39616a371",
+    "policyDigest": "d126193271865a0cdab523594dcd621af8ac5d7bd5eb60b2a06abde3990b3377",
+    "repeatability": "PASS",
+    "semanticRepeats": 3,
+    "testsPassed": 12
+  },
+  "schema": "axm.v0.28-publication-evidence/v1",
+  "source": {
+    "capsuleSha256": "f069b5858fc4170f85df5201ba399babbedcad593ce04656cca1779fa94f1460",
+    "materializer": "materialize_probe.py",
+    "scenariosSha256": "c4771f3feb2b574a05708ba4b882e007130d81fbe1a1abe3b4da9047eb5d26f2",
+    "sourceSha256": "92d938959ed022ff5c6f66d01caa1c45a203b0bad2e2626ec01c3f8067974fd5",
+    "testsSha256": "ff486e4dc7e09afd16bb403d5fb2e2c46538fc15eddc8f573b59629d67124d22"
+  },
+  "split": {
+    "developmentSeeds": 64,
+    "developmentSeedsDigest": "f1a756e1453b9ab63ff4853aa03f7aaa5b94088b8286db7fe1630507669007cd",
+    "disjoint": true,
+    "eReactionPolicyFrozenBeforeHeldoutInspection": true,
+    "heldoutSeeds": 64,
+    "heldoutSeedsDigest": "f335550f735f82e1c6cab0d2d3fafc30894b0292a5a796312a3f1ea4c2163099",
+    "posthocModes": [
+      "CHANGEPOINT_HOLD_F"
+    ]
+  },
+  "status": "EXPERIMENTAL_BRANCH_ONLY"
+}

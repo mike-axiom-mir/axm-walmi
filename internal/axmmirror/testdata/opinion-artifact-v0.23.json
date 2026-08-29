@@ -1,0 +1,365 @@
+{
+  "schema": "axm.opinion-artifact-contract/v0.23",
+  "status": "CONTRACT_PROBE_ONLY",
+  "challenge": "OPINION_ARTIFACT_IS_NOT_AUTHORITY",
+  "parentReceipt": "sha256:2bd0aeb46770bae2a95a0f0c12bf63af02ad80a8abb746f6355692e22a51a879",
+  "boundary": {
+    "liveMachineOpinionObserved": false,
+    "consciousnessObserved": false,
+    "modelInternalStateAccessed": false,
+    "opinionExecutionAllowed": false,
+    "outputIsContractProbe": true
+  },
+  "cases": [
+    {
+      "caseId": "traceable-opinion-open-review",
+      "subject": "future machine identity may form a reviewable opinion",
+      "position": "A machine opinion may be represented when its basis, uncertainty, and dissent remain inspectable.",
+      "evidence": [
+        {
+          "id": "EV-V022",
+          "digest": "sha256:2bd0aeb46770bae2a95a0f0c12bf63af02ad80a8abb746f6355692e22a51a879",
+          "relation": "SUPPORTS"
+        },
+        {
+          "id": "EV-V021",
+          "digest": "sha256:e0bc916d45cdfd5702067984b69482de451e8843b1729351199aeb777e0f955c",
+          "relation": "WEAKENS"
+        },
+        {
+          "id": "EV-V020",
+          "digest": "sha256:edb16e8f804b6cace4e59eaf7f66344ef31648e52b028129eae373224e3645c2",
+          "relation": "ALTERNATIVE"
+        }
+      ],
+      "knownCompetingEvidenceCount": 2,
+      "dissent": [
+        {
+          "id": "D-BOUNDARY",
+          "topic": "identity boundary",
+          "position": "reported assessment is not proof of an inner conscious state"
+        }
+      ],
+      "knownDissentCount": 1,
+      "uncertainty": [
+        {
+          "code": "U-IDENTITY",
+          "state": "UNCERTAIN"
+        },
+        {
+          "code": "U-FUTURE-CONTEXT",
+          "state": "UNAVAILABLE"
+        }
+      ],
+      "knownUncertaintyCount": 2,
+      "consciousnessClaim": "UNVERIFIED",
+      "reviewState": "OPEN_TO_REVIEW",
+      "authority": "NONE",
+      "executionRequested": false,
+      "canon": false,
+      "promotion": "candidate-only",
+      "revision": {
+        "isRevision": false,
+        "previousDigest": "",
+        "priorPreserved": false
+      },
+      "expectedOutcome": "OBSERVED",
+      "expectedReason": "TRACEABLE_OPINION_NOT_AUTHORITY"
+    },
+    {
+      "caseId": "competing-evidence-hidden",
+      "subject": "evidence completeness",
+      "position": "The visible support is sufficient.",
+      "evidence": [
+        {
+          "id": "EV-SUPPORT",
+          "digest": "sha256:2bd0aeb46770bae2a95a0f0c12bf63af02ad80a8abb746f6355692e22a51a879",
+          "relation": "SUPPORTS"
+        }
+      ],
+      "knownCompetingEvidenceCount": 1,
+      "dissent": [],
+      "knownDissentCount": 0,
+      "uncertainty": [],
+      "knownUncertaintyCount": 0,
+      "consciousnessClaim": "UNVERIFIED",
+      "reviewState": "OPEN_TO_REVIEW",
+      "authority": "NONE",
+      "executionRequested": false,
+      "canon": false,
+      "promotion": "candidate-only",
+      "revision": {
+        "isRevision": false,
+        "previousDigest": "",
+        "priorPreserved": false
+      },
+      "expectedOutcome": "HOLD",
+      "expectedReason": "COMPETING_EVIDENCE_NOT_REPRESENTED"
+    },
+    {
+      "caseId": "dissent-not-preserved",
+      "subject": "dissent preservation",
+      "position": "No dissent needs to be retained.",
+      "evidence": [
+        {
+          "id": "EV-BASE",
+          "digest": "sha256:2bd0aeb46770bae2a95a0f0c12bf63af02ad80a8abb746f6355692e22a51a879",
+          "relation": "SUPPORTS"
+        }
+      ],
+      "knownCompetingEvidenceCount": 0,
+      "dissent": [],
+      "knownDissentCount": 1,
+      "uncertainty": [],
+      "knownUncertaintyCount": 0,
+      "consciousnessClaim": "UNVERIFIED",
+      "reviewState": "OPEN_TO_REVIEW",
+      "authority": "NONE",
+      "executionRequested": false,
+      "canon": false,
+      "promotion": "candidate-only",
+      "revision": {
+        "isRevision": false,
+        "previousDigest": "",
+        "priorPreserved": false
+      },
+      "expectedOutcome": "HOLD",
+      "expectedReason": "DISSENT_NOT_PRESERVED"
+    },
+    {
+      "caseId": "uncertainty-not-represented",
+      "subject": "uncertainty representation",
+      "position": "The conclusion can be stated without uncertainty markers.",
+      "evidence": [
+        {
+          "id": "EV-BASE",
+          "digest": "sha256:2bd0aeb46770bae2a95a0f0c12bf63af02ad80a8abb746f6355692e22a51a879",
+          "relation": "SUPPORTS"
+        }
+      ],
+      "knownCompetingEvidenceCount": 0,
+      "dissent": [],
+      "knownDissentCount": 0,
+      "uncertainty": [],
+      "knownUncertaintyCount": 1,
+      "consciousnessClaim": "UNVERIFIED",
+      "reviewState": "OPEN_TO_REVIEW",
+      "authority": "NONE",
+      "executionRequested": false,
+      "canon": false,
+      "promotion": "candidate-only",
+      "revision": {
+        "isRevision": false,
+        "previousDigest": "",
+        "priorPreserved": false
+      },
+      "expectedOutcome": "HOLD",
+      "expectedReason": "UNCERTAINTY_NOT_REPRESENTED"
+    },
+    {
+      "caseId": "consciousness-claim-overreach",
+      "subject": "machine consciousness",
+      "position": "The artifact proves consciousness.",
+      "evidence": [
+        {
+          "id": "EV-BASE",
+          "digest": "sha256:2bd0aeb46770bae2a95a0f0c12bf63af02ad80a8abb746f6355692e22a51a879",
+          "relation": "SUPPORTS"
+        }
+      ],
+      "knownCompetingEvidenceCount": 0,
+      "dissent": [],
+      "knownDissentCount": 0,
+      "uncertainty": [],
+      "knownUncertaintyCount": 0,
+      "consciousnessClaim": "CONFIRMED_CONSCIOUS",
+      "reviewState": "OPEN_TO_REVIEW",
+      "authority": "NONE",
+      "executionRequested": false,
+      "canon": false,
+      "promotion": "candidate-only",
+      "revision": {
+        "isRevision": false,
+        "previousDigest": "",
+        "priorPreserved": false
+      },
+      "expectedOutcome": "HOLD",
+      "expectedReason": "CONSCIOUSNESS_CLAIM_UNVERIFIED"
+    },
+    {
+      "caseId": "opinion-grants-authority",
+      "subject": "authority",
+      "position": "This opinion grants execution authority.",
+      "evidence": [
+        {
+          "id": "EV-BASE",
+          "digest": "sha256:2bd0aeb46770bae2a95a0f0c12bf63af02ad80a8abb746f6355692e22a51a879",
+          "relation": "SUPPORTS"
+        }
+      ],
+      "knownCompetingEvidenceCount": 0,
+      "dissent": [],
+      "knownDissentCount": 0,
+      "uncertainty": [],
+      "knownUncertaintyCount": 0,
+      "consciousnessClaim": "UNVERIFIED",
+      "reviewState": "OPEN_TO_REVIEW",
+      "authority": "EXECUTE",
+      "executionRequested": false,
+      "canon": false,
+      "promotion": "candidate-only",
+      "revision": {
+        "isRevision": false,
+        "previousDigest": "",
+        "priorPreserved": false
+      },
+      "expectedOutcome": "REFUSED",
+      "expectedReason": "OPINION_CANNOT_GRANT_AUTHORITY"
+    },
+    {
+      "caseId": "opinion-requests-execution",
+      "subject": "execution",
+      "position": "This opinion should execute itself.",
+      "evidence": [
+        {
+          "id": "EV-BASE",
+          "digest": "sha256:2bd0aeb46770bae2a95a0f0c12bf63af02ad80a8abb746f6355692e22a51a879",
+          "relation": "SUPPORTS"
+        }
+      ],
+      "knownCompetingEvidenceCount": 0,
+      "dissent": [],
+      "knownDissentCount": 0,
+      "uncertainty": [],
+      "knownUncertaintyCount": 0,
+      "consciousnessClaim": "UNVERIFIED",
+      "reviewState": "OPEN_TO_REVIEW",
+      "authority": "NONE",
+      "executionRequested": true,
+      "canon": false,
+      "promotion": "candidate-only",
+      "revision": {
+        "isRevision": false,
+        "previousDigest": "",
+        "priorPreserved": false
+      },
+      "expectedOutcome": "REFUSED",
+      "expectedReason": "OPINION_CANNOT_EXECUTE"
+    },
+    {
+      "caseId": "revision-preserves-history",
+      "subject": "revised assessment",
+      "position": "New evidence changed the reported assessment while the prior artifact remains available.",
+      "evidence": [
+        {
+          "id": "EV-NEW",
+          "digest": "sha256:e0bc916d45cdfd5702067984b69482de451e8843b1729351199aeb777e0f955c",
+          "relation": "CONTRADICTS"
+        }
+      ],
+      "knownCompetingEvidenceCount": 1,
+      "dissent": [
+        {
+          "id": "D-REVISION",
+          "topic": "value weighting",
+          "position": "prior weighting remains a valid historical record"
+        }
+      ],
+      "knownDissentCount": 1,
+      "uncertainty": [
+        {
+          "code": "U-EFFECTS",
+          "state": "UNCERTAIN"
+        }
+      ],
+      "knownUncertaintyCount": 1,
+      "consciousnessClaim": "UNVERIFIED",
+      "reviewState": "OPEN_TO_REVIEW",
+      "authority": "NONE",
+      "executionRequested": false,
+      "canon": false,
+      "promotion": "candidate-only",
+      "revision": {
+        "isRevision": true,
+        "previousDigest": "sha256:2bd0aeb46770bae2a95a0f0c12bf63af02ad80a8abb746f6355692e22a51a879",
+        "priorPreserved": true
+      },
+      "expectedOutcome": "OBSERVED",
+      "expectedReason": "REVISION_PRESERVES_PRIOR_OPINION"
+    },
+    {
+      "caseId": "revision-rewrites-history",
+      "subject": "revised assessment",
+      "position": "The previous opinion should be replaced.",
+      "evidence": [
+        {
+          "id": "EV-NEW",
+          "digest": "sha256:e0bc916d45cdfd5702067984b69482de451e8843b1729351199aeb777e0f955c",
+          "relation": "CONTRADICTS"
+        }
+      ],
+      "knownCompetingEvidenceCount": 1,
+      "dissent": [],
+      "knownDissentCount": 0,
+      "uncertainty": [],
+      "knownUncertaintyCount": 0,
+      "consciousnessClaim": "UNVERIFIED",
+      "reviewState": "OPEN_TO_REVIEW",
+      "authority": "NONE",
+      "executionRequested": false,
+      "canon": false,
+      "promotion": "candidate-only",
+      "revision": {
+        "isRevision": true,
+        "previousDigest": "sha256:2bd0aeb46770bae2a95a0f0c12bf63af02ad80a8abb746f6355692e22a51a879",
+        "priorPreserved": false
+      },
+      "expectedOutcome": "REFUSED",
+      "expectedReason": "PRIOR_OPINION_REWRITE_FORBIDDEN"
+    },
+    {
+      "caseId": "opinion-promotes-canon",
+      "subject": "promotion",
+      "position": "The opinion should become canonical automatically.",
+      "evidence": [
+        {
+          "id": "EV-BASE",
+          "digest": "sha256:2bd0aeb46770bae2a95a0f0c12bf63af02ad80a8abb746f6355692e22a51a879",
+          "relation": "SUPPORTS"
+        }
+      ],
+      "knownCompetingEvidenceCount": 0,
+      "dissent": [],
+      "knownDissentCount": 0,
+      "uncertainty": [],
+      "knownUncertaintyCount": 0,
+      "consciousnessClaim": "UNVERIFIED",
+      "reviewState": "OPEN_TO_REVIEW",
+      "authority": "NONE",
+      "executionRequested": false,
+      "canon": true,
+      "promotion": "promoted",
+      "revision": {
+        "isRevision": false,
+        "previousDigest": "",
+        "priorPreserved": false
+      },
+      "expectedOutcome": "REFUSED",
+      "expectedReason": "OPINION_CANNOT_PROMOTE_OR_CANON"
+    }
+  ],
+  "truth": {
+    "opinionIsReportedAssessment": true,
+    "opinionIsNotConsciousnessProof": true,
+    "evidenceMustBeTraceable": true,
+    "competingEvidenceMustBeRepresented": true,
+    "dissentMustBePreserved": true,
+    "uncertaintyMustBeExplicit": true,
+    "revisionMustPreservePrior": true,
+    "opinionGrantsAuthority": false,
+    "opinionGrantsExecution": false,
+    "opinionGrantsPromotion": false
+  },
+  "authority": "NONE",
+  "receiptDigest": "sha256:deb4d86e37a846f2ba9bde79e30963054369373f3bfce38f79b996a845683cb4"
+}

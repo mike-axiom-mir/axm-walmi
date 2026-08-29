@@ -1,0 +1,52 @@
+{
+  "schema": "axm.waldo.v0.33-result/v1",
+  "challenge": "MULTIPLE_SPECIALIST_VIEWS_ARE_NOT_INDEPENDENT_EVIDENCE",
+  "parentCheckpoint": "dbd7a9ad7f098943f383f21f28fe69265df817fe",
+  "donorHead": "24031c227f42ea179489bfa0f5ee7709d02965be",
+  "tests": {
+    "passed": 10,
+    "failed": 0
+  },
+  "development": {
+    "seedCount": 48
+  },
+  "heldout": {
+    "seedCount": 160,
+    "start": 33201,
+    "end": 33360,
+    "rawCoupled": {
+      "correct": 93,
+      "falsePreempts": 80,
+      "divergenceTicks": 361,
+      "badCommits": 361,
+      "badHigh": 147,
+      "holds": 0,
+      "fallbackActivations": 0
+    },
+    "viewCount": {
+      "correct": 93,
+      "falsePreempts": 66,
+      "divergenceTicks": 361,
+      "badCommits": 361,
+      "badHigh": 147,
+      "holds": 0,
+      "fallbackActivations": 0
+    },
+    "rootAware": {
+      "correct": 94,
+      "falsePreempts": 40,
+      "divergenceTicks": 265,
+      "badCommits": 213,
+      "badHigh": 67,
+      "holds": 92,
+      "fallbackActivations": 26
+    }
+  },
+  "semanticSha256": "918e1192bb18d1b063d7e56d1c67b5733ff44aee7e882fb0bcfef62335094ecb",
+  "probeSha256": "582b5b1535ccfdf4109e269c17d7f8440bfa6fa3ecaf70d16ea35f71cf075fe3",
+  "testSha256": "f44a8d5b0bedafe005a28a71ce5ec5caf9e79c4c230900ddd3c8e924477cb3f3",
+  "preheldoutFreezeSha256": "716d0550bf70316a32e512f25dd4a719c86774fdbb43ecccd8ab7c2bc29ee9a8",
+  "heldoutSeedReceiptSha256": "cabc5f4fa4e00f4bc2386e8306f7c00cd34ad44e8a3381f01c67bacf85cbdef3",
+  "donorReceiptSha256": "3221c4e280a422e715ac109d27ee031f65be39c56c7ec41655497c1267b83c1a",
+  "authority": "NONE"
+}

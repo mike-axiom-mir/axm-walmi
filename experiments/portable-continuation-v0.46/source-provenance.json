@@ -1,0 +1,80 @@
+{
+  "schema": "axm.waldo.source-file-manifest/v0.46",
+  "sourceCommit": "386736aaae3993089dfaf970cf2360894959e3c0",
+  "selectedFileCount": 14,
+  "runtimeAndSupportFiles": 12,
+  "inertReferenceFixtures": 2,
+  "selectedTreeSha256": "7c81efef05024f76aa7f01d32ca61246069cc4d0e6733cecf2b31bcfc9b08b09",
+  "files": [
+    {
+      "path": "shared/deterministic-continuation-capsule/continuation-capsule.schema.json",
+      "sha256": "035354e5aa72fe947dd12bfc50d772133c20fca5c89a17f6ce6f35c249bd3b52",
+      "bytes": 495
+    },
+    {
+      "path": "shared/deterministic-continuation-capsule/continuation-card.schema.json",
+      "sha256": "ab2a75e672ca7f22dccbcbc9d2f8f7c5875042f3cd5857bf75fa9a9632b179a3",
+      "bytes": 461
+    },
+    {
+      "path": "shared/deterministic-continuation-capsule/continuation-core.js",
+      "sha256": "60e926f49c04e0135be3638712053f0ab894fdb345cfd368daedc2e90939d169",
+      "bytes": 24421
+    },
+    {
+      "path": "shared/deterministic-continuation-capsule/continuation-declaration.schema.json",
+      "sha256": "27b8321cc305ecb05a7754066228de026cb5530114c3da448f075c09fb688dd4",
+      "bytes": 434
+    },
+    {
+      "path": "shared/deterministic-continuation-capsule/continuation-host.js",
+      "sha256": "4273de3bb71a987e97bf2735669e15345ccab5585ee7636ea85c6797cc28866d",
+      "bytes": 3291
+    },
+    {
+      "path": "shared/deterministic-continuation-capsule/continuation-verification.schema.json",
+      "sha256": "31b3181d8fccb437640388d6b00abc9339f2efbc7ef8fd17ac32fe2e0e21e9ee",
+      "bytes": 481
+    },
+    {
+      "path": "shared/deterministic-pr-checkpoint/checkpoint-core.js",
+      "sha256": "73c40139f3ef0bd47f6afa3b277c02b9e15d7cf58d0175bc4c0fb6ea6dd6399a",
+      "bytes": 29507
+    },
+    {
+      "path": "tools/deterministic-continuation-capsule/continuation-cli.js",
+      "sha256": "aa173c6aa18ca22f21ed27e1caf41e9b26c180bfd964d1d9fc2905023962b17e",
+      "bytes": 5118
+    },
+    {
+      "path": "tools/deterministic-continuation-capsule/continuation-cli.cmd",
+      "sha256": "696fa46e4094e3f612a9581c36b5b786daf16df49b726387b7c32251f7378c42",
+      "bytes": 75
+    },
+    {
+      "path": "tools/deterministic-continuation-capsule/manifest.json",
+      "sha256": "0d114a02378740e52283e5ae216a4c5ef4723e0dac2d4facc29ce75f77f3134e",
+      "bytes": 2252
+    },
+    {
+      "path": "tools/deterministic-continuation-capsule/module.contract.json",
+      "sha256": "f1075c9814e1aebf1b43a05d2c73345e8f5d0756c2886a77072bfbf33a47dc3b",
+      "bytes": 1837
+    },
+    {
+      "path": "tools/deterministic-continuation-capsule/selftest.js",
+      "sha256": "5718f2539717ff71415c459131597150a71a99784159441ffd48a5778f0ee856",
+      "bytes": 17270
+    },
+    {
+      "path": "tools/memory-continuity-garden/runtime/modules/044_reentry-capsule/compiled_contract.json",
+      "sha256": "f43d715921de5f8d8a34d53eeef7a8a227d8e6a5ec6c2b0d35c06d285151609b",
+      "bytes": 4553
+    },
+    {
+      "path": "tools/memory-continuity-garden/runtime/modules/071_session-handoff-packet/compiled_contract.json",
+      "sha256": "f96029d2cb943e1606f7008ab5a7dfa5b0276aad72d8e01a58756978188a6a6b",
+      "bytes": 4602
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+name: AXM v0.11 Organ runtime witness
+
+on:
+  pull_request:
+    paths:
+      - 'internal/axmmirror/organ_runtime_bridge.go'
+      - 'internal/axmmirror/organ_runtime_bridge_test.go'
+      - 'internal/axmmirror/testdata/organ-runtime-bridge-v0.11.json'
+      - 'research/v0.11-organ-fabric/**'
+      - 'docs/adr/9013-axm-waldo-organ-fabric-runtime-bridge.md'
+      - '.github/workflows/axm-v011-organ-runtime.yml'
+
+jobs:
+  organ-runtime-witness:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+      - name: Repository format check
+        run: test -z "$(gofmt -l .)"
+      - name: Focused witness tests
+        run: go test ./internal/axmmirror -run 'TestOrganRuntimeBridge' -count=1

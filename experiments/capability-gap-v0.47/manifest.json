@@ -1,0 +1,15 @@
+{
+  "schema": "axm.waldo.capability-gap-hand/v0.47",
+  "status": "EXPERIMENTAL_TEST",
+  "waldoParent": "cc702beb825a7f039e67c22e8847f31392f45eab",
+  "sourceRepository": "mike-axiom-mir/axm-collaboration-platform",
+  "sourceCommit": "386736aaae3993089dfaf970cf2360894959e3c0",
+  "sourceFileCount": 1,
+  "runtimeDependencyOnAXMRepository": false,
+  "modelCoreReplaceable": true,
+  "automaticInstall": false,
+  "automaticPermission": false,
+  "automaticQualityReduction": false,
+  "declarationIsRuntimeProof": false,
+  "authority": "NONE"
+}

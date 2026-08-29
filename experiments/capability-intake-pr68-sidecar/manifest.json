@@ -1,0 +1,16 @@
+{
+  "schema": "axm.waldo.capability-intake-pr68-sidecar/v1",
+  "status": "EXPERIMENTAL_TEST",
+  "parent": "26322e1565f80d779f19d6582cbd03e64a144c8e",
+  "platformSource": "c0d57d4ea0403b5d0932e4abf177d207bc87791b",
+  "platformPrStack": [67, 68],
+  "builders": ["closed-object-contract-adapter-v2", "bounded-record-query-v1"],
+  "specialistBuilderVersion": "2.5.0",
+  "runtimeDependencyOnAXMRepository": false,
+  "automaticExecution": false,
+  "automaticInstall": false,
+  "automaticIntegration": false,
+  "automaticPromotion": false,
+  "canonAuthority": false,
+  "authority": "NONE"
+}

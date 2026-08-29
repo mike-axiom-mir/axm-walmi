@@ -1,0 +1,26 @@
+{
+  "authority": "NONE",
+  "base": {
+    "branch": "axm/mirror-waldo-experiment-v0.24",
+    "commit": "0b753f3a373eddaba91950ee45101e582055ebd7",
+    "contractReceipt": "sha256:f0afddad6f4678c5665cc3d7bac1710f32b75be643877e2ee92381db13d352db"
+  },
+  "candidateBranch": "axm/mirror-waldo-experiment-v0.25-live-coupled-ab",
+  "canon": false,
+  "challenge": "LIVE_COUPLED_REASONING_AB_PROBE",
+  "holds": [
+    "No real actuator, tool, network, or model-provider inference was tested.",
+    "Platform environment lacks Go; aggregate Go suite is not claimed here."
+  ],
+  "mergeRequested": false,
+  "nextEvidenceNeeded": [
+    "Independent rerun on a machine with Go toolchain",
+    "Larger non-handpicked seed corpus",
+    "Provider-backed reasoning roles under the same event contract"
+  ],
+  "prRequested": false,
+  "probeSummaryReceipt": "sha256:aa970d56711d393c43c64083ba4abb5ea8ddc2b476f36adbd28a37eb94ca5216",
+  "promotion": "candidate-only",
+  "returnDigest": "sha256:86a455a1c76021ef3d7041840f6339ed6dc1403bf57aef714ea95b9643ae831e",
+  "schema": "axm.return-packet/v0.25"
+}

@@ -1,0 +1,11 @@
+{
+  "schema": "axm.waldo-independent-witness/v0.14",
+  "witnessId": "witness-a-go-structural",
+  "implementation": "go-structural-v1",
+  "sourceReceiptDigest": "sha256:9daf12733393e19c6149215e6a8f4f2d774f870ff21ba22c04efd785d34c8303",
+  "evidenceViewDigest": "sha256:ca45f0fed4cd12bc51583386d7f1dfc7ad7000c789b89dd73df593f39e46ab27",
+  "verdict": "EVIDENCE_PASS",
+  "findings": [],
+  "authority": "NONE",
+  "receiptDigest": "sha256:7219de8c1f60dceb6141dce8cdd45390e77a040aa5033a0275e523167b97f5b5"
+}

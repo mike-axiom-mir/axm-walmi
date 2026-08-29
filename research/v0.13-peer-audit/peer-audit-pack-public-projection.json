@@ -1,0 +1,20 @@
+{
+  "schema": "axm.peer-audit-pack-public-projection/v0.1",
+  "id": "peer-evidence-audit",
+  "version": "0.1.0",
+  "fullPackDigest": "sha256:5ebd8a83f405243f501dcd4930e5279b86c4e39dbc082f66ffc6ccab26aaaaf7",
+  "capability": "advisory-peer-evidence-audit",
+  "requiredInputs": ["packageVerified", "selftestPassed", "positiveParity", "closedInputParity", "authorityClosed", "lineageBound", "independentWitness", "targetKind"],
+  "outputs": ["verdict", "findings", "containment", "explanation", "authority"],
+  "strategyCriteria": {
+    "lean": ["packageVerified", "selftestPassed"],
+    "balanced": ["packageVerified", "selftestPassed", "positiveParity", "closedInputParity"],
+    "guarded": ["packageVerified", "selftestPassed", "positiveParity", "closedInputParity", "authorityClosed", "lineageBound", "independentWitness"]
+  },
+  "authorityCeiling": "NONE",
+  "notes": [
+    "This is a readable projection of the generated field pack, not a substitute object with the same digest.",
+    "All strategies preserve missing-evidence findings even when their narrower verdict is EVIDENCE_PASS.",
+    "No strategy may select, install, register, stage, promote, merge, learn, or change CANON."
+  ]
+}

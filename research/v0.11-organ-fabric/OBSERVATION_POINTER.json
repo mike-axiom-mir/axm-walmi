@@ -1,0 +1,20 @@
+{
+  "schema": "axm.waldo-mirror.organ-runtime-observation-pointer/v0.1",
+  "status": "EXPERIMENTAL_OBSERVED",
+  "sourcePacketSha256": "sha256:8f4688db3abcba988011f2a2f36f172a09c3d848e57a2da54db90abd2669e634",
+  "fullLocalObservationFileSha256": "f09177a9a60292e2b67d88d02a5c4bae99223d56a332e4e7f59e1da73241e4a4",
+  "fullLocalObservationCanonicalDigest": "sha256:d5ee6a903fb89a8cfac1dc2d9c47da6af2840859bbcbd29b7b89135b1e9f2be0",
+  "compactRuntimeReceiptDigest": "sha256:0e110c9e0c56c72b52410db87a4ec019de140a31face79d7e7023f286d2283ec",
+  "observed": {
+    "donorFocusedChecksPassed": 151,
+    "proposalCount": 4,
+    "candidateCount": 12,
+    "failureCount": 0,
+    "selectionPerformed": false,
+    "archiveObjectCount": 12,
+    "archiveEventCount": 12,
+    "duplicateDisposition": "DEDUPLICATED",
+    "archiveRoundTripVerified": true
+  },
+  "authority": "NONE"
+}

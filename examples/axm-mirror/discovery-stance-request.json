@@ -1,0 +1,39 @@
+{
+  "schema": "axm.waldo-witness.discovery-stance-request/v0.1",
+  "request_id": "example-discovery-0001",
+  "subject": {
+    "id": "example-evaluation-case-0001",
+    "kind": "evaluation-case",
+    "sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+  },
+  "ai_native_seams": [
+    {
+      "id": "freshness-boundary",
+      "stance": "evidence",
+      "severity": "high",
+      "status": "OPEN",
+      "statement": "The result depends on a sensory observation whose current freshness must remain visible.",
+      "evidence_refs": [
+        "example-situated-claim-0001"
+      ],
+      "disconfirming_check": "Reassess the same typed observation inside its declared TTL.",
+      "blocks": [
+        "fresh-world-state-claim"
+      ],
+      "repair_hint": "Request a new bounded receipt; do not reuse stale raw material."
+    }
+  ],
+  "human_native": {
+    "explicit_invocation": true,
+    "entries": [
+      {
+        "id": "human-meaning-0001",
+        "stage": "soulChecks",
+        "text": "Preserve why the distinction matters to a person, not only the machine state.",
+        "claim_label": "VALUE",
+        "source": "explicit human-facing review",
+        "rationale": "Machine correctness and human meaning are different review dimensions."
+      }
+    ]
+  }
+}

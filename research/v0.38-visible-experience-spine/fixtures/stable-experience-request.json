@@ -1,0 +1,21 @@
+{
+  "schema": "axm.waldo.mirror-neural-escalation-request/v0.37",
+  "prompt": "How should a machine learn from an interaction?",
+  "deterministicResponse": "Record what was sensed, the reaction, the observed outcome, and the retained lesson; keep training and memory effects visible.",
+  "escalationReason": "NONE",
+  "grounding": {
+    "schema": "axm.waldo.live-neural-grounding/v0.35",
+    "state": "STABLE",
+    "consequence": "LOW",
+    "references": [
+      {
+        "id": "experience-root",
+        "text": "Experience includes sensing, reacting, observing consequences, and retaining lessons.",
+        "class": "VERIFIED_REFERENCE",
+        "freshness": "CURRENT",
+        "provenanceRoot": "axiom-mir:visible-experience-v1"
+      }
+    ],
+    "authority": {}
+  }
+}

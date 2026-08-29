@@ -1,0 +1,91 @@
+{
+  "schema": "axm.waldo-mirror.v0.12-patched-candidate-execution-parity/v0.1",
+  "status": "PASS_PATCHED_PARITY",
+  "source": {
+    "v011ReceiptDigest": "sha256:0e110c9e0c56c72b52410db87a4ec019de140a31face79d7e7023f286d2283ec",
+    "v012BaselineReceiptDigest": "sha256:a1a3e0885e5aac5767a71c198dff84345206c05d3c67314b90e2e91d5a5e45b0",
+    "sourcePacketSha256": "sha256:8f4688db3abcba988011f2a2f36f172a09c3d848e57a2da54db90abd2669e634",
+    "patchedCoreSha256": "sha256:7f0cda3d2ab8e9844ff2132c7c85e84419a92d87fea975420f5f4f5e37854974"
+  },
+  "patch": {
+    "factoryVersion": "1.0.1-v012-parity",
+    "description": "Detached v0.12 experiment: emitted organ.js now enforces closed typed input/output ports before/after strategy execution.",
+    "canonicalDonorModified": false
+  },
+  "totals": {
+    "proposalCount": 4,
+    "candidateCount": 12,
+    "generationFailures": 0,
+    "packageSelftestsPassed": 12,
+    "positiveCases": 48,
+    "positiveParityPassed": 48,
+    "unknownPortCases": 12,
+    "unknownPortParityPassed": 12,
+    "missingRequiredCases": 12,
+    "missingRequiredParityPassed": 12,
+    "parityFailures": 0
+  },
+  "bodies": [
+    {
+      "bodyId": "evidence-trail-mini-game",
+      "sourceKind": "EXTERNAL",
+      "runDigest": "sha256:b8327aa6ab7439385ffcad5536c6ecd2c0e4f5ffc923e0bb56656d00e535d8db",
+      "candidates": [
+        {"candidateId":"evidence-trail-mini-game-lean","strategy":"lean","packageDigest":"sha256:ba5b324a9d25185f3c2d4cf03c8cca6fffc2a7335cd216d2e17187c8c33aa33e","definitionDigest":"sha256:aac1e514f0cb895cc696af9dfa78c30ec3491f9cc40b52d94a8c4246796229c6","evaluationDigest":"sha256:3d29d043e03c083c3e78677adeaf0b74ecabfdcc22ea351877661ccbb0aa7c4f","positiveCases":4,"selftestPassed":true,"unknownPortParity":true,"missingRequiredParity":true},
+        {"candidateId":"evidence-trail-mini-game-balanced","strategy":"balanced","packageDigest":"sha256:ed872f47dbc8878f3e7dec068adc3e24bf8c4038ec3eafb6c26c2aadc7c7e952","definitionDigest":"sha256:b12027b153a4a1255ac346610691b0bf4b16f92b77e9eeff6c4a147461aa4a13","evaluationDigest":"sha256:d28194246e7a04cf6fbc31fe54ab92e8f6048f899dc7080bbce2c9c00ca1ec2f","positiveCases":4,"selftestPassed":true,"unknownPortParity":true,"missingRequiredParity":true},
+        {"candidateId":"evidence-trail-mini-game-guarded","strategy":"guarded","packageDigest":"sha256:d24fb9e6ba384d70b7e33e6eabab85613bf7b196972849ac0b2464083a168c44","definitionDigest":"sha256:fcab92b458f1bb8573308cdae5643281955bda4d5366a67c65398710b66aaf10","evaluationDigest":"sha256:396e31da12bf15e1c416a3c3dd3d4517519ebe29fa5c1404753f6e7a6c8a1a8b","positiveCases":4,"selftestPassed":true,"unknownPortParity":true,"missingRequiredParity":true}
+      ]
+    },
+    {
+      "bodyId": "continuity-diagnostic-tool",
+      "sourceKind": "EXTERNAL",
+      "runDigest": "sha256:00d7e20a84118ffa5cefd6fa6c304028308b624057b3b1ccb04b3bc66ef0c177",
+      "candidates": [
+        {"candidateId":"continuity-diagnostic-tool-lean","strategy":"lean","packageDigest":"sha256:4e27d92fa53882a3af6375f757bd9a20aedd6cbdbbbaaed9bf114ed1144556c6","definitionDigest":"sha256:d66a2ca88812ebf1ece473783b105624817a5da2dc2a6c2e3bf9e7c57fe46eb4","evaluationDigest":"sha256:53cf2785cb118861b2a5fad22ad4d5ce1239b20b2cbf787567ed907a21be9769","positiveCases":4,"selftestPassed":true,"unknownPortParity":true,"missingRequiredParity":true},
+        {"candidateId":"continuity-diagnostic-tool-balanced","strategy":"balanced","packageDigest":"sha256:ada14a8df94f8ac108e6188656cf88c89c74329a13199b4531cf6a0abb940ec9","definitionDigest":"sha256:4d23dd3189c1adb4fa5f0fd964da27e379c83d7b69f7fcd73d14d759d33921f9","evaluationDigest":"sha256:59cb1d134568008193f42170f2fb856d5b148fb84c3130ce3eabdbba13d76789","positiveCases":4,"selftestPassed":true,"unknownPortParity":true,"missingRequiredParity":true},
+        {"candidateId":"continuity-diagnostic-tool-guarded","strategy":"guarded","packageDigest":"sha256:57e0ebe6a5b05b1beca178e93347d1dcdf21b9415284119276edd0a28e8e67e5","definitionDigest":"sha256:e4bc7c034f4420f09ef4c38e42ce85d4382ff718c90b08abd08b755692dbd430","evaluationDigest":"sha256:6eec85925a317d67bcbf16b1145661725c0fc8eb96ebbe0f64d147d0919fc214","positiveCases":4,"selftestPassed":true,"unknownPortParity":true,"missingRequiredParity":true}
+      ]
+    },
+    {
+      "bodyId": "lineage-how-to-guide",
+      "sourceKind": "EXTERNAL",
+      "runDigest": "sha256:157dc299f736d7dce5772f85126133bbc707afaef96f2f2bbddd179bafc97b58",
+      "candidates": [
+        {"candidateId":"lineage-how-to-guide-lean","strategy":"lean","packageDigest":"sha256:fc65d68a70a423583d93a6764d5e210e6485f601ae2205218b7e89758f008992","definitionDigest":"sha256:546048a0934558ecd7ae44dd18a7a564058b0f0934e43b24c2162b0b1b3ebf94","evaluationDigest":"sha256:aa0d30b2f8c029d3b43c041e5adf906a149f1c669078c0456de119510efad39d","positiveCases":4,"selftestPassed":true,"unknownPortParity":true,"missingRequiredParity":true},
+        {"candidateId":"lineage-how-to-guide-balanced","strategy":"balanced","packageDigest":"sha256:68692efdc5b4349a747b314811ef37a2fa33b8a00324acb18aa1cce03e49bcee","definitionDigest":"sha256:8d183aa6f8834fbe26212d3e4f9000114028de8fa3b491934c2709bd4fece00b","evaluationDigest":"sha256:0003f05cc493ed8f6dcda4c3fa3627360d3e1e53d5adab03791e275307e72fba","positiveCases":4,"selftestPassed":true,"unknownPortParity":true,"missingRequiredParity":true},
+        {"candidateId":"lineage-how-to-guide-guarded","strategy":"guarded","packageDigest":"sha256:dc69b9529fdf857d852f52efbf9cdeef0fe17f329f2ca24293a785615a558078","definitionDigest":"sha256:234542e68ec104035ff81f89d3ca011469e22057e16264d1288f35fd08fec2e2","evaluationDigest":"sha256:5c8ffa3626a59536c5cf94007a07d7c82c8b3356323d4231f7b882bcfc214d04","positiveCases":4,"selftestPassed":true,"unknownPortParity":true,"missingRequiredParity":true}
+      ]
+    },
+    {
+      "bodyId": "tool-episode-quarantine-body",
+      "sourceKind": "AI",
+      "runDigest": "sha256:a8f81b1406eac7ac16f0c157ea6c0a3de93e4744828647bb2d5a42a021eab463",
+      "candidates": [
+        {"candidateId":"tool-episode-quarantine-body-lean","strategy":"lean","packageDigest":"sha256:58a2ec7c6bc251276b519903f3d1165343bc9a49a7db6e481f7b462cd56b2dc6","definitionDigest":"sha256:3c0aab065c5835e9a141d1176b01e597d22b781971d559c8053740fdc822fe2a","evaluationDigest":"sha256:d71027bb871c75b9739027b0a585e0ccf9137c882e41185d8105b32c21222ad4","positiveCases":4,"selftestPassed":true,"unknownPortParity":true,"missingRequiredParity":true},
+        {"candidateId":"tool-episode-quarantine-body-balanced","strategy":"balanced","packageDigest":"sha256:52321afeb51430307d833076ba085a805a5059277a7b6696286ee59f53250660","definitionDigest":"sha256:d6941711b0613ab554e47d3dbf116c321cb515c95704c96cdfc55dd78a8b0188","evaluationDigest":"sha256:11252ba8f653bd6e130de3743f6896dd56a02b30d5be9b97d175ace57f7bb1aa","positiveCases":4,"selftestPassed":true,"unknownPortParity":true,"missingRequiredParity":true},
+        {"candidateId":"tool-episode-quarantine-body-guarded","strategy":"guarded","packageDigest":"sha256:4b0b2f79ec1dc02ddef4fb7222eea58666236f6bb6430f446d7d6957fa6cd676","definitionDigest":"sha256:66d43a23bb0986f97635c715fcc9e57612253adfee7f22b4b23d695599c01d25","evaluationDigest":"sha256:e9b00e7046bacc55ef80ee2219c850eb5995ae9c32fb53ad4dd1aaa02a8c1c7e","positiveCases":4,"selftestPassed":true,"unknownPortParity":true,"missingRequiredParity":true}
+      ]
+    }
+  ],
+  "archive": {
+    "objectCount": 12,
+    "eventCount": 12,
+    "failureCount": 0,
+    "indexDigest": "sha256:906b04b31810aa0e5f2528f3fd52eedc299bfe8152cb69ecc887540d3c47a07c"
+  },
+  "truth": {
+    "donorFocusedChecksPassed": 151,
+    "candidateCodeExecuted": true,
+    "liveAIProviderCalled": false,
+    "networkRequestedByHarness": false,
+    "executionRootsDisposable": true,
+    "selectionPerformed": false,
+    "installed": false,
+    "registered": false,
+    "staged": false,
+    "promoted": false,
+    "canonChanged": false
+  },
+  "authority": "NONE",
+  "receiptDigest": "sha256:5fcf0530cb97e6568793baaae9c0a9ef4cc4285c235a590665986b27460799a6"
+}

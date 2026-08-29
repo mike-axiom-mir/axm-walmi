@@ -1,0 +1,13 @@
+{
+  "schema": "axm.waldo-mirror.source-packet-chunks/v0.1",
+  "file": "axm-fabrics-current-waldo-2026-08-23.zip",
+  "bytes": 992063,
+  "sha256": "8f4688db3abcba988011f2a2f36f172a09c3d848e57a2da54db90abd2669e634",
+  "partSize": 262144,
+  "parts": [
+    {"file":"part-000.bin","bytes":262144,"sha256":"0eb203c2ca7a8fd4fdf091d9121cda78f7b477c88e9af1f824c3aab9460338cf"},
+    {"file":"part-001.bin","bytes":262144,"sha256":"9e2889bf5f8a053ab07ef1e9a13dd6d395e4414d5a1b0128627c881560e2657f"},
+    {"file":"part-002.bin","bytes":262144,"sha256":"c99ecbbaa418f11796a5ff4d1bdbe0b5cb7f39fa01db5cf5132ffe482e8d4081"},
+    {"file":"part-003.bin","bytes":205631,"sha256":"51fbfcc4187b31e9dd4ff26ae5cccb19422ce12fcdd290a912db848d46bb4e0d"}
+  ]
+}

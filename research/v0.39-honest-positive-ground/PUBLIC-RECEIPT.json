@@ -1,0 +1,82 @@
+{
+  "schema": "axm.waldo.honest-positive-ground-public-receipt/v0.39",
+  "status": "REAL_TRAINING_COMPLETED_QUALITY_NOT_ESTABLISHED",
+  "parentCheckpoint": "84ce38ef3e69ce013ecd3f9f164d88bcebe1dadc",
+  "authority": "NONE",
+  "ground": {
+    "datasetSha256": "ff41d52966997c5db46a3d34600830c083f52de4634b7641f8f34ac410e2ca0d",
+    "records": 32,
+    "trainingTargets": 32,
+    "syntheticRecords": 32,
+    "observedRecords": 0,
+    "roots": 8,
+    "examplesPerRoot": 4,
+    "challengeKinds": 32,
+    "positiveSeedValidated": true,
+    "trainingProjectionSha256": "b1dde0a3231fb6af8d31c3a42254fde12a22b166c776d063f9a37e7c4fb24d47",
+    "trainingProjectionMode": "0600"
+  },
+  "provenance": {
+    "sourceCategory": "synthetic",
+    "generator": "OpenAI Codex",
+    "generatorVersion": "work-session-2026-08-24",
+    "machineGenerated": true,
+    "observedExperienceClaimed": false,
+    "license": "Apache-2.0",
+    "ingestRecipeSha256": "4e06574ecc916a3713d9979b41814827d2670df986fe4543c34324fd0c03f05e",
+    "ingestPlanSha256": "d973ce99446007c248c15fc0743a6f089f8a673860fc35b1deabc74904bb9327",
+    "shardSha256": "1501d2a31e297e3bbe5d3bfb9a28e6358ceb451facddac7a522f6629c73b74dc",
+    "shardBomSha256": "89e1347fd5eb7ca545e47375e1ae8382dc2a655c91261f9dcca0068621930862",
+    "corpusBomSha256": "3eea3eacf59f0f61a15fca031d87d92f800f3132865f5c550155ef535e78007e",
+    "records": 32,
+    "referenceTokens": 2132,
+    "deepAudit": "PASS"
+  },
+  "training": {
+    "model": "axiom-mir-positive-ground-v039",
+    "modelId": "3b2d90c2a349a8f1f5e37e9b23d624d5f2bc51e25a146b1edd69c5b481cfb688",
+    "architectureSha256": "9eb7d87154ec8f7520fb1e5f95e83bc05f3a7c758246906172703670fd22a641",
+    "parameters": 115200,
+    "backend": "pytorch@builtin-pytorch-worker-schema-1-r7",
+    "runtime": "Python 3.12.13; PyTorch 2.8.0+cpu; CPU",
+    "simulated": false,
+    "causalRun": {
+      "id": "de322df6a5b2ffc2",
+      "runBomSha256": "560ef9cac0733b86b97ca4d0b1528b7e8816fd0b79b4b1018c615ea920ce6ce8",
+      "steps": 32,
+      "consumedTokens": 4096,
+      "finalLoss": 3.9793143272399902,
+      "resultWeightsSha256": "f4e56f7f78b0669d9d7b5777c32f551290e6cda897fd2439b9493cd35942e193"
+    },
+    "assistantSftRun": {
+      "id": "27de5caf8dea2e75",
+      "runBomSha256": "fea3a4244e8b88bacdacdcfb223b23869344adf350dab40ad9a5db5501aa41ea",
+      "steps": 32,
+      "consumedTargetTokens": 3072,
+      "finalLoss": 3.3933801651000977,
+      "initialWeightsSha256": "f4e56f7f78b0669d7b5777c32f551290e6cda897fd2439b9493cd35942e193",
+      "resultWeightsSha256": "e59deac2be35a6547742e99b04f2d5967caa9aa4e5d1d8474cec1c7286e6dfc8"
+    }
+  },
+  "quality": {
+    "boundedChatProbe": "UNUSABLE_TINY_MODEL_OUTPUT",
+    "improvementClaimAuthorized": false,
+    "capableBaseModelEvaluationRequired": true
+  },
+  "futureObservedData": {
+    "schemaSupportsObservedChat": true,
+    "schemaSupportsObservedExecutionTrace": true,
+    "sourceReceiptRequired": true,
+    "platformLogsIngestedThisRun": false,
+    "codexLogsIngestedThisRun": false,
+    "hermesRuntimeMutatedThisRun": false
+  },
+  "mutations": {
+    "groundDataset": true,
+    "trainingProjection": true,
+    "indexCorpus": true,
+    "modelWeights": true,
+    "identity": false,
+    "canon": false
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "schema": "axm.waldo.portable-capability-growth/v0.43",
+  "status": "EXPERIMENTAL_TEST",
+  "waldoParent": "425d746e498adfe3f5be13176a84785583e48fe7",
+  "sourceRepository": "mike-axiom-mir/axm-collaboration-platform",
+  "sourceCommit": "386736aaae3993089dfaf970cf2360894959e3c0",
+  "growthDonorArchive": "AXM-Capability-Growth-Fabric-Showcase-v2.12-386736aa-TEST.zip",
+  "growthDonorArchiveSha256": "df1af319c0eb38ae86fc36028e1e16e6ca4bfdf7c1508516be4f446074ad12f2",
+  "growthDonorFiles": 1395,
+  "byteIdenticalOverlapWithV042": 1156,
+  "growthUniqueFiles": 239,
+  "selectedGrowthFiles": 93,
+  "selectedGrowthNormalizedTreeSha256": "85b86d5133e5a3e4db1e0f69f732d4eff5d89ed0f6991c1525808deaa6e44297",
+  "platformClosureFiles": 2,
+  "excludedUniqueFiles": 146,
+  "excludedByClass": {
+    "stewardEvidence": 67,
+    "environmentDiscoverySeams": 62,
+    "discoveryEngineAwaitingNeutralHostContract": 14,
+    "publicDiscoveryIndexFiles": 3
+  },
+  "keelExampleTreatment": "INERT_TEST_FIXTURE_ONLY",
+  "bodyRoot": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST",
+  "runtimeDependencyOnAXMRepository": false,
+  "coreModelReplaceable": true,
+  "weightArchitectureMutation": false,
+  "promotionBoundary": "WALDO v0.41 evidence-reviewed experience",
+  "authority": "NONE"
+}

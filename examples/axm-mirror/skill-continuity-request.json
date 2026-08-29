@@ -1,0 +1,101 @@
+{
+  "schema": "axm.waldo-witness.skill-continuity-request/v0.1",
+  "assessment_id": "example-skills-0001",
+  "target_answering_identity_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+  "requirements": [
+    {
+      "id": "mirror-organ-library-115",
+      "use_class": "KNOWLEDGE"
+    },
+    {
+      "id": "sensorium-portable-skills",
+      "use_class": "INSTRUCTION"
+    },
+    {
+      "id": "touch-environment-probe",
+      "use_class": "ADAPTER"
+    }
+  ],
+  "current": {
+    "set_id": "example-current-skills",
+    "captured_at": "2026-08-15T10:00:00Z",
+    "complete": true,
+    "items": [
+      {
+        "id": "mirror-organ-library-115",
+        "version": "03f3d0cf",
+        "use_class": "KNOWLEDGE",
+        "source_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+        "status": "TEST",
+        "execution_status": "INERT",
+        "proof_status": "UNTESTED",
+        "compatibility_status": "UNVERIFIED",
+        "member_count": 115
+      },
+      {
+        "id": "sensorium-portable-skills",
+        "version": "1.4.0",
+        "use_class": "INSTRUCTION",
+        "source_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+        "instruction_sha256": "3333333333333333333333333333333333333333333333333333333333333333",
+        "status": "TEST",
+        "execution_status": "INERT",
+        "proof_status": "CONTRACT_PASS",
+        "compatibility_status": "UNVERIFIED",
+        "member_count": 13
+      },
+      {
+        "id": "touch-environment-probe",
+        "version": "v1",
+        "use_class": "ADAPTER",
+        "source_sha256": "4444444444444444444444444444444444444444444444444444444444444444",
+        "instruction_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+        "status": "TEST",
+        "execution_status": "EXECUTABLE",
+        "proof_status": "RUNTIME_PASS",
+        "compatibility_status": "VERIFIED_WITHIN_CONTRACT"
+      }
+    ]
+  },
+  "backup": {
+    "set_id": "example-backup-skills",
+    "captured_at": "2026-08-15T09:00:00Z",
+    "complete": true,
+    "items": [
+      {
+        "id": "mirror-organ-library-115",
+        "version": "03f3d0cf",
+        "use_class": "KNOWLEDGE",
+        "source_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+        "status": "TEST",
+        "execution_status": "INERT",
+        "proof_status": "UNTESTED",
+        "compatibility_status": "UNVERIFIED",
+        "member_count": 115
+      },
+      {
+        "id": "sensorium-portable-skills",
+        "version": "1.4.0",
+        "use_class": "INSTRUCTION",
+        "source_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+        "instruction_sha256": "3333333333333333333333333333333333333333333333333333333333333333",
+        "status": "TEST",
+        "execution_status": "INERT",
+        "proof_status": "CONTRACT_PASS",
+        "compatibility_status": "UNVERIFIED",
+        "member_count": 13
+      },
+      {
+        "id": "touch-environment-probe",
+        "version": "v1",
+        "use_class": "ADAPTER",
+        "source_sha256": "4444444444444444444444444444444444444444444444444444444444444444",
+        "instruction_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+        "status": "TEST",
+        "execution_status": "EXECUTABLE",
+        "proof_status": "RUNTIME_PASS",
+        "compatibility_status": "VERIFIED_WITHIN_CONTRACT"
+      }
+    ]
+  }
+}

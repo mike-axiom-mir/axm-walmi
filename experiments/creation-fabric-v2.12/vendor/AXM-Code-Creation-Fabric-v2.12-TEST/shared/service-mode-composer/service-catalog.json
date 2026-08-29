@@ -1,0 +1,476 @@
+{
+  "schema": "axm.service-mode-catalog/v0.54-sidecar",
+  "version": "0.1.0",
+  "status": "EXPERIMENTAL_TEST",
+  "modes": [
+    {
+      "id": "software-creation",
+      "title": "Software Creation",
+      "taskKind": "creation",
+      "signals": [
+        "website",
+        "web app",
+        "software",
+        "code",
+        "repository",
+        "feature",
+        "game",
+        "app build",
+        "program",
+        "bug fix",
+        "refactor"
+      ],
+      "requiredCapabilityGroups": [
+        [
+          "workspace.write",
+          "repository.write",
+          "file.write"
+        ]
+      ],
+      "optionalCapabilities": [
+        "repository.read",
+        "workspace.read",
+        "file.read",
+        "web.search",
+        "runtime.preview",
+        "deployment.write",
+        "issue.read",
+        "issue.write"
+      ],
+      "mirrorProfiles": [
+        "requirements",
+        "impact",
+        "failure",
+        "evidence"
+      ],
+      "waldoProfiles": [
+        "implementation",
+        "validation",
+        "provenance",
+        "uncertainty"
+      ],
+      "hermesPolicy": {
+        "mode": "TRIGGER_ONLY",
+        "reasons": [
+          "CROSS_POOL_DISAGREEMENT",
+          "REPAIR_LOOP",
+          "CAPABILITY_GAP",
+          "ROADMAP_DRIFT"
+        ],
+        "discoveryEligible": true
+      },
+      "neuralPurposes": [
+        "CHALLENGE",
+        "CREATIVE_VARIANT",
+        "PLAN_REVIEW",
+        "DOMAIN_SECOND_OPINION"
+      ]
+    },
+    {
+      "id": "research-analysis",
+      "title": "Research & Analysis",
+      "taskKind": "research",
+      "signals": [
+        "research",
+        "investigate",
+        "compare",
+        "study",
+        "evidence",
+        "source",
+        "deep search",
+        "analyse",
+        "analyze"
+      ],
+      "requiredCapabilityGroups": [
+        [
+          "web.search",
+          "knowledge.search",
+          "source.search"
+        ]
+      ],
+      "optionalCapabilities": [
+        "file.read",
+        "file.write",
+        "citation.store",
+        "compute"
+      ],
+      "mirrorProfiles": [
+        "domain",
+        "evidence",
+        "uncertainty",
+        "stance"
+      ],
+      "waldoProfiles": [
+        "experiment",
+        "validation",
+        "provenance",
+        "requirements"
+      ],
+      "hermesPolicy": {
+        "mode": "TRIGGER_ONLY",
+        "reasons": [
+          "EVIDENCE_CONTRADICTION",
+          "MISSING_PERSPECTIVE",
+          "CAPABILITY_GAP"
+        ],
+        "discoveryEligible": true
+      },
+      "neuralPurposes": [
+        "DOMAIN_SECOND_OPINION",
+        "CHALLENGE",
+        "DISCOVERY"
+      ]
+    },
+    {
+      "id": "communication-outreach",
+      "title": "Communication & Outreach",
+      "taskKind": "operation",
+      "signals": [
+        "email",
+        "message",
+        "reply",
+        "outreach",
+        "newsletter",
+        "contact",
+        "send"
+      ],
+      "requiredCapabilityGroups": [
+        [
+          "email.send",
+          "message.send",
+          "communication.send"
+        ]
+      ],
+      "optionalCapabilities": [
+        "email.read",
+        "message.read",
+        "contacts.read",
+        "file.read"
+      ],
+      "mirrorProfiles": [
+        "requirements",
+        "impact",
+        "stance"
+      ],
+      "waldoProfiles": [
+        "implementation",
+        "evidence",
+        "validation"
+      ],
+      "hermesPolicy": {
+        "mode": "TRIGGER_ONLY",
+        "reasons": [
+          "AUDIENCE_RISK",
+          "CAPABILITY_GAP",
+          "CONTRADICTORY_DRAFTS"
+        ],
+        "discoveryEligible": false
+      },
+      "neuralPurposes": [
+        "PLAN_REVIEW",
+        "CREATIVE_VARIANT"
+      ]
+    },
+    {
+      "id": "scheduling-admin",
+      "title": "Scheduling & Administration",
+      "taskKind": "operation",
+      "signals": [
+        "calendar",
+        "schedule",
+        "meeting",
+        "appointment",
+        "availability",
+        "reminder",
+        "admin"
+      ],
+      "requiredCapabilityGroups": [
+        [
+          "calendar.read",
+          "schedule.read"
+        ]
+      ],
+      "optionalCapabilities": [
+        "calendar.write",
+        "contacts.read",
+        "email.read",
+        "email.send"
+      ],
+      "mirrorProfiles": [
+        "requirements",
+        "impact",
+        "provenance"
+      ],
+      "waldoProfiles": [
+        "implementation",
+        "validation",
+        "evidence"
+      ],
+      "hermesPolicy": {
+        "mode": "TRIGGER_ONLY",
+        "reasons": [
+          "CONFLICT",
+          "CAPABILITY_GAP",
+          "HIGH_CONSEQUENCE_CHANGE"
+        ],
+        "discoveryEligible": false
+      },
+      "neuralPurposes": [
+        "PLAN_REVIEW"
+      ]
+    },
+    {
+      "id": "data-analysis",
+      "title": "Data Analysis",
+      "taskKind": "analysis",
+      "signals": [
+        "spreadsheet",
+        "sheet",
+        "csv",
+        "data",
+        "dashboard",
+        "analytics",
+        "forecast",
+        "budget",
+        "table"
+      ],
+      "requiredCapabilityGroups": [
+        [
+          "table.read",
+          "spreadsheet.read",
+          "file.read"
+        ]
+      ],
+      "optionalCapabilities": [
+        "table.write",
+        "spreadsheet.write",
+        "file.write",
+        "compute",
+        "chart.create"
+      ],
+      "mirrorProfiles": [
+        "requirements",
+        "domain",
+        "uncertainty",
+        "evidence"
+      ],
+      "waldoProfiles": [
+        "numerical",
+        "experiment",
+        "validation",
+        "implementation"
+      ],
+      "hermesPolicy": {
+        "mode": "TRIGGER_ONLY",
+        "reasons": [
+          "METRIC_CONTRADICTION",
+          "CAPABILITY_GAP",
+          "MODEL_ASSUMPTION"
+        ],
+        "discoveryEligible": true
+      },
+      "neuralPurposes": [
+        "CHALLENGE",
+        "DOMAIN_SECOND_OPINION"
+      ]
+    },
+    {
+      "id": "design-media",
+      "title": "Design & Media Creation",
+      "taskKind": "creation",
+      "signals": [
+        "design",
+        "image",
+        "visual",
+        "poster",
+        "presentation",
+        "slides",
+        "video",
+        "brand",
+        "graphic"
+      ],
+      "requiredCapabilityGroups": [
+        [
+          "design.create",
+          "image.generate",
+          "video.create",
+          "presentation.write"
+        ]
+      ],
+      "optionalCapabilities": [
+        "file.read",
+        "file.write",
+        "web.search",
+        "brand.read"
+      ],
+      "mirrorProfiles": [
+        "requirements",
+        "impact",
+        "domain"
+      ],
+      "waldoProfiles": [
+        "implementation",
+        "validation",
+        "uncertainty"
+      ],
+      "hermesPolicy": {
+        "mode": "TRIGGER_ONLY",
+        "reasons": [
+          "DIRECTION_DISAGREEMENT",
+          "CAPABILITY_GAP",
+          "AUDIENCE_RISK"
+        ],
+        "discoveryEligible": true
+      },
+      "neuralPurposes": [
+        "CREATIVE_VARIANT",
+        "CHALLENGE"
+      ]
+    },
+    {
+      "id": "project-delivery",
+      "title": "Project Delivery",
+      "taskKind": "operation",
+      "signals": [
+        "project",
+        "issue",
+        "pull request",
+        "release",
+        "milestone",
+        "roadmap",
+        "deliver",
+        "team"
+      ],
+      "requiredCapabilityGroups": [
+        [
+          "project.read",
+          "repository.read",
+          "file.read"
+        ]
+      ],
+      "optionalCapabilities": [
+        "project.write",
+        "repository.write",
+        "issue.read",
+        "issue.write",
+        "email.send",
+        "calendar.write"
+      ],
+      "mirrorProfiles": [
+        "requirements",
+        "stance",
+        "impact",
+        "provenance"
+      ],
+      "waldoProfiles": [
+        "implementation",
+        "validation",
+        "failure",
+        "evidence"
+      ],
+      "hermesPolicy": {
+        "mode": "TRIGGER_ONLY",
+        "reasons": [
+          "ROADMAP_DRIFT",
+          "CROSS_TEAM_DISAGREEMENT",
+          "CAPABILITY_GAP",
+          "REPAIR_LOOP"
+        ],
+        "discoveryEligible": true
+      },
+      "neuralPurposes": [
+        "PLAN_REVIEW",
+        "CHALLENGE"
+      ]
+    },
+    {
+      "id": "travel-planning",
+      "title": "Travel Planning",
+      "taskKind": "research",
+      "signals": [
+        "trip",
+        "travel",
+        "hotel",
+        "flight",
+        "restaurant",
+        "itinerary",
+        "vacation",
+        "route"
+      ],
+      "requiredCapabilityGroups": [
+        [
+          "web.search",
+          "business.search",
+          "travel.search"
+        ]
+      ],
+      "optionalCapabilities": [
+        "maps.read",
+        "calendar.read",
+        "calendar.write",
+        "email.send",
+        "file.write"
+      ],
+      "mirrorProfiles": [
+        "requirements",
+        "domain",
+        "impact",
+        "uncertainty"
+      ],
+      "waldoProfiles": [
+        "evidence",
+        "validation",
+        "provenance",
+        "implementation"
+      ],
+      "hermesPolicy": {
+        "mode": "TRIGGER_ONLY",
+        "reasons": [
+          "AVAILABILITY_CONFLICT",
+          "CAPABILITY_GAP",
+          "HIGH_UNCERTAINTY"
+        ],
+        "discoveryEligible": true
+      },
+      "neuralPurposes": [
+        "DOMAIN_SECOND_OPINION",
+        "PLAN_REVIEW"
+      ]
+    },
+    {
+      "id": "general-service",
+      "title": "General Service",
+      "taskKind": "analysis",
+      "signals": [],
+      "requiredCapabilityGroups": [],
+      "optionalCapabilities": [],
+      "mirrorProfiles": [
+        "requirements",
+        "evidence"
+      ],
+      "waldoProfiles": [
+        "implementation",
+        "validation"
+      ],
+      "hermesPolicy": {
+        "mode": "TRIGGER_ONLY",
+        "reasons": [
+          "CAPABILITY_GAP",
+          "CROSS_POOL_DISAGREEMENT"
+        ],
+        "discoveryEligible": true
+      },
+      "neuralPurposes": [
+        "CHALLENGE"
+      ]
+    }
+  ],
+  "truth": {
+    "catalogIsRoutingPolicyNotAuthority": true,
+    "connectedDoesNotMeanAuthorized": true,
+    "specialistViewDoesNotGrantTools": true,
+    "neuralPurposeDoesNotTriggerCall": true,
+    "serviceModeMayBeDegraded": true
+  },
+  "authority": "NONE"
+}

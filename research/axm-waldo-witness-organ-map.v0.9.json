@@ -1,0 +1,90 @@
+{
+  "schema": "axm.waldo-witness.organ-map/v0.9",
+  "status": "experimental",
+  "upstream": {
+    "repository": "openwaldo/waldo",
+    "aligned_head": "b3784d3210de2ebd8df69b1f902b16eeed48b0a4",
+    "borrowed_semantics": [
+      "versioned model interaction contract",
+      "structured conversation records",
+      "model-side conversation rendering",
+      "assistant-response supervision",
+      "tool definitions retained as structured conversation context"
+    ]
+  },
+  "downstream_only": true,
+  "organs": [
+    {
+      "id": "conversation-structure-witness",
+      "path": "internal/axmmirror/conversation_continuity.go",
+      "state": "implemented",
+      "inputs": [
+        "canonical WALDO conversation",
+        "canonical WALDO record SHA-256",
+        "answering identity SHA-256",
+        "model interaction template",
+        "training conversation template",
+        "training objective",
+        "supervised role set"
+      ],
+      "outputs": [
+        "conversation digest",
+        "ordered role-aware turn digests",
+        "tool-definition digest when present",
+        "typed HOLD or READY state",
+        "closed-authority receipt"
+      ],
+      "retains_raw_dialogue": false,
+      "retains_raw_tool_definitions": false,
+      "authority": "evidence-only"
+    },
+    {
+      "id": "portable-continuity-capsule",
+      "path": "internal/axmmirror/conversation_continuity.go",
+      "state": "implemented",
+      "inputs": [
+        "verified conversation witness",
+        "answering identity SHA-256",
+        "task-state SHA-256",
+        "active verifier registry SHA-256",
+        "optional skill-continuity receipt SHA-256",
+        "memory-shard SHA-256 set",
+        "open-dissent SHA-256 set",
+        "evidence SHA-256 set",
+        "captured-at and expires-at"
+      ],
+      "outputs": [
+        "digest-only portable continuity capsule",
+        "interaction template binding",
+        "last-turn lineage binding",
+        "freshness interval",
+        "typed HOLD or READY state"
+      ],
+      "restores_payloads": false,
+      "grants_runtime_authority": false,
+      "authority": "evidence-only"
+    }
+  ],
+  "gates": {
+    "interaction_template_mismatch": "HOLD_INTERACTION_TEMPLATE_MISMATCH",
+    "assistant_target_missing": "HOLD_ASSISTANT_TARGET_MISSING",
+    "continuity_binding_mismatch": "HOLD_CONTINUITY_BINDING_MISMATCH",
+    "held_conversation_witness": "HOLD_CONVERSATION_WITNESS",
+    "authority_growth": "REFUSED_AUTHORITY_GROWTH"
+  },
+  "privacy_properties": [
+    "conversation receipt stores digests instead of raw messages",
+    "continuity capsule stores references instead of task or memory payloads",
+    "tool definitions are represented by digest only",
+    "dissent text remains outside the capsule",
+    "no hidden reasoning field exists"
+  ],
+  "next_candidates": [
+    "append-only dissent frontier receipt",
+    "read-only reproducibility twin for referenced digest resolution",
+    "reviewed memory compaction manifest",
+    "real WALDO run/model/release lineage binding",
+    "reviewed public-safe evidence to structured-training candidate bridge"
+  ],
+  "truth_boundary": "No model is trained, no tool is executed, no memory is restored, no provider is selected, no verifier is activated, and no AXM result becomes CANON by creating or verifying these receipts."
+}

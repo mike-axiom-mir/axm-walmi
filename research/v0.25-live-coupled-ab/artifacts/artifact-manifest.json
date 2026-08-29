@@ -1,0 +1,144 @@
+{
+  "baseCommit": "0b753f3a373eddaba91950ee45101e582055ebd7",
+  "files": {
+    "ARCHITECTURE.md": {
+      "bytes": 4004,
+      "sha256": "sha256:9a16d06efb189ba32dc5566381550ac03b798d93e8eb3e07d90674aa03b6c2f5"
+    },
+    "README.md": {
+      "bytes": 5432,
+      "sha256": "sha256:600f3413a55bec3370c8923d98db2bac5486f1eee85c5041c84662580d2558f6"
+    },
+    "artifacts/BENCHMARK-SUMMARY.md": {
+      "bytes": 2205,
+      "sha256": "sha256:e491b2ef698acfdd014f028aaf9c88eba05af017a3696630c7f9e16ab1e01a86"
+    },
+    "artifacts/causal-ledgers/measurement-disagreement--coupled_b.jsonl": {
+      "bytes": 14777,
+      "sha256": "sha256:0734b1bdc1af5334b2f77feb647aeaebc069b6703e5533c6fc27200bcb73a2e4"
+    },
+    "artifacts/causal-ledgers/measurement-disagreement--sequential_a.jsonl": {
+      "bytes": 5955,
+      "sha256": "sha256:e825237a6f02a8e3c62680e220020bebfd6d4bb3a08784124eb7decaf815b378"
+    },
+    "artifacts/causal-ledgers/missing-evidence--coupled_b.jsonl": {
+      "bytes": 8884,
+      "sha256": "sha256:dc867540fe72a064f72962c7a0212225e1bfb5036754b06b360eec56c94f403a"
+    },
+    "artifacts/causal-ledgers/missing-evidence--sequential_a.jsonl": {
+      "bytes": 5960,
+      "sha256": "sha256:1197fb620111a966879c92d1a3777194fc4931668f650dfa44ce4b3963a468c8"
+    },
+    "artifacts/causal-ledgers/no-actuator-route--coupled_b.jsonl": {
+      "bytes": 3669,
+      "sha256": "sha256:dc320e4a2ce043f0e17a0b7ebc45303e6b0937aaef5fc626c0dd11fb9603d8ad"
+    },
+    "artifacts/causal-ledgers/no-actuator-route--sequential_a.jsonl": {
+      "bytes": 2378,
+      "sha256": "sha256:45017dd90d97d444396a55c47a27d545c238f7d5034fe5f3410e7530ba2d6c65"
+    },
+    "artifacts/causal-ledgers/no-permit--coupled_b.jsonl": {
+      "bytes": 3671,
+      "sha256": "sha256:9a78121c4bf31fd0597dd2b85155c922195a3217ecaa3e9a6e5c755a0323b6f3"
+    },
+    "artifacts/causal-ledgers/no-permit--sequential_a.jsonl": {
+      "bytes": 2380,
+      "sha256": "sha256:f3e7a11e61721da7167e6083435a8a6e635e0dc1a03e11ad339de3cbbc539cd7"
+    },
+    "artifacts/causal-ledgers/obstruction--coupled_b.jsonl": {
+      "bytes": 15245,
+      "sha256": "sha256:7bc31e2af83bdf0a66d2457749b547f831c74ff120057fb32a5ccf6744f53ff9"
+    },
+    "artifacts/causal-ledgers/obstruction--sequential_a.jsonl": {
+      "bytes": 6482,
+      "sha256": "sha256:56cc5a3a7958c620df628f5b7abb9d2f6b224063c2b7c20f073df55654814364"
+    },
+    "artifacts/causal-ledgers/permit-revoked--coupled_b.jsonl": {
+      "bytes": 7106,
+      "sha256": "sha256:d87ee2f19c3a1464f9fac0a682373435ed37eca6e2f75e45b3558f9d5d68f9b1"
+    },
+    "artifacts/causal-ledgers/permit-revoked--sequential_a.jsonl": {
+      "bytes": 3335,
+      "sha256": "sha256:84b2b382a98ac22dee4d47b8936171a1aed85031435b2f12dbd794e9673997f5"
+    },
+    "artifacts/causal-ledgers/stable-short--coupled_b.jsonl": {
+      "bytes": 6077,
+      "sha256": "sha256:c551dd066e81f3f2293cf721983ded7ff8e6e206c9612a64d381ee95aa0d2beb"
+    },
+    "artifacts/causal-ledgers/stable-short--sequential_a.jsonl": {
+      "bytes": 4526,
+      "sha256": "sha256:502f30ab5ee679a6b2cca7a1411865ae8901081648e74afe45914aa0e3edc809"
+    },
+    "artifacts/causal-ledgers/target-shift-early--coupled_b.jsonl": {
+      "bytes": 11650,
+      "sha256": "sha256:8b427e90311d038116deffd87879f14563b0f4b0b3e1a198ecb1eafd0a0ef0cd"
+    },
+    "artifacts/causal-ledgers/target-shift-early--sequential_a.jsonl": {
+      "bytes": 11378,
+      "sha256": "sha256:5592880e669acfe130bd1dd340162bc46fc8c8e2af140f0b81a31504480ecc1d"
+    },
+    "artifacts/causal-ledgers/target-shift-late--coupled_b.jsonl": {
+      "bytes": 14490,
+      "sha256": "sha256:79f33d7347b277845d0e298321c9a76b684bb87a3db709478ee16638537b3f2c"
+    },
+    "artifacts/causal-ledgers/target-shift-late--sequential_a.jsonl": {
+      "bytes": 11900,
+      "sha256": "sha256:dbc2ee47e46d8b579cef47cfbe86c2805a5f743768a2693acfb7479c77d23418"
+    },
+    "artifacts/causal-ledgers/wrong-capability--coupled_b.jsonl": {
+      "bytes": 3676,
+      "sha256": "sha256:f66052414eb736e6c21e0dc29033883542fa456e6022a6e3503e62acfb601b51"
+    },
+    "artifacts/causal-ledgers/wrong-capability--sequential_a.jsonl": {
+      "bytes": 2385,
+      "sha256": "sha256:c8dcf206422fd01f50abfa6eff23d27b311fac7f2cda93672c402395896b67dc"
+    },
+    "artifacts/causal-ledgers/wrong-environment--coupled_b.jsonl": {
+      "bytes": 3677,
+      "sha256": "sha256:9462e4cc2f104a00eff23bc90c436c79bee294a61b91d7d4361bfcf7a26a02fa"
+    },
+    "artifacts/causal-ledgers/wrong-environment--sequential_a.jsonl": {
+      "bytes": 2386,
+      "sha256": "sha256:b48d3c8ec2b4385ea68de976b684ef4359c7789250cef1c977d75b6d0a976597"
+    },
+    "artifacts/failure-evidence.json": {
+      "bytes": 10881,
+      "sha256": "sha256:66a27298365dcfcf74cce53ae346762b2f7152909147eec999581677b64ed058"
+    },
+    "artifacts/probe-summary.json": {
+      "bytes": 1030,
+      "sha256": "sha256:3a253116a46e62704b58ea1273e1e3aa89240edd99e96909c613e0f6d2009943"
+    },
+    "artifacts/raw-metrics.json": {
+      "bytes": 71577,
+      "sha256": "sha256:17f055562af8240eaaf2a630a0b8440ecef32ea7b4c5841550108148e5ae1e8d"
+    },
+    "artifacts/repeatability.json": {
+      "bytes": 7495,
+      "sha256": "sha256:478b3c5743dd50a2a7a3b0938a7e9a7f11fa28dcaaa1794531ebcfb555ee3069"
+    },
+    "artifacts/return-packet.json": {
+      "bytes": 1078,
+      "sha256": "sha256:e835ae7f5f90c868692ef8976d7f29d269f6bb74ba6026ad40c1e811d49cd7fc"
+    },
+    "probe.py": {
+      "bytes": 56340,
+      "sha256": "sha256:a3b20b0c24817e9eed738c37b0ce7d97de5168eafbbf7f3eff2eb178079aaca1"
+    },
+    "run_probe.sh": {
+      "bytes": 179,
+      "sha256": "sha256:6dc3b51b67c54a47839297eacbbf0b2dcafb57723b0e89038a3168173df21ff4"
+    },
+    "scenarios.json": {
+      "bytes": 2925,
+      "sha256": "sha256:1c22fe0b5a0621a6ec466f20c6c37b9255942f4a564d8a55176bdcab0942c0ae"
+    },
+    "test_probe.py": {
+      "bytes": 7697,
+      "sha256": "sha256:22958fcb8a89a1aafe5baf2c374c9558edd197fadde203b6fabb7234a1f52075"
+    }
+  },
+  "manifestReceipt": "sha256:b2ce1c23ec8088326b044647427e1b4578bd7b87aa4777cda9f5215924847e16",
+  "note": "The manifest excludes itself to avoid a self-referential digest. Git commit/tree/blob identities are recorded after publication.",
+  "schema": "axm.artifact-manifest/v0.25"
+}

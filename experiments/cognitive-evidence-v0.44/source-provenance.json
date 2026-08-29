@@ -1,0 +1,88 @@
+{
+  "schema": "axm.waldo.source-file-manifest/v0.44",
+  "sourceCommit": "386736aaae3993089dfaf970cf2360894959e3c0",
+  "selectedFileCount": 16,
+  "selectedTreeSha256": "3f2edab772f967f7a5897b35efb3c250890ae4d1680f44dbf0511f8bb289c668",
+  "files": [
+    {
+      "path": "shared/cognitive-resource/cognitive-evidence-labs-core.js",
+      "sha256": "0e7d2ba1841c01d2f5f7e6687ca1deef511cb963157a68a8095dee94a9284b39",
+      "bytes": 9221
+    },
+    {
+      "path": "shared/cognitive-resource/cognitive-evidence-labs-selftest.js",
+      "sha256": "ffcdad00fdb60fcde0fb858bbcdc8b7ad1a4af1477454444fd53012147811efe",
+      "bytes": 9960
+    },
+    {
+      "path": "shared/cognitive-resource/cognitive-evidence-labs-service.js",
+      "sha256": "456bd3941cf0aec8f17acca1848069e2ed409c1ac6bf5b68b8ae7b7d8cd00c71",
+      "bytes": 10028
+    },
+    {
+      "path": "shared/cognitive-resource/cognitive-resource-core.js",
+      "sha256": "334fc311826bc76e5628ac9ab17ac38da173b7c6ba053b9ac07ea2fe76a9dafa",
+      "bytes": 29325
+    },
+    {
+      "path": "shared/cognitive-resource/cognitive-resource-service.js",
+      "sha256": "73d05159b2a07b4cf422c20121da403588eaf05548f46412f2ed231064f979e7",
+      "bytes": 33341
+    },
+    {
+      "path": "shared/cognitive-resource/cognitive-resource-workflows.js",
+      "sha256": "731f690b71bef6c84fe204506a91cb889a38dd00ce5ffa959e74f87a55f98d15",
+      "bytes": 10363
+    },
+    {
+      "path": "shared/cognitive-resource/command-center-controls.json",
+      "sha256": "8560b4d5dee0d36b4e7056be9cc13c2aaa85d6ed05d5c8485913ea0143a6e05d",
+      "bytes": 5592
+    },
+    {
+      "path": "shared/cognitive-resource/concurrent-worker.js",
+      "sha256": "346f73ab937fe0d936d121d383e998823e1b47173adb09d865407ed7c0df79fa",
+      "bytes": 471
+    },
+    {
+      "path": "shared/cognitive-resource/contracts/cognitive-resource-economics-profile-draft.schema.json",
+      "sha256": "fa66b93360b0a43da9ac35bd6b128d2c62e9e341d06a4f1fad9c15f31f073ef3",
+      "bytes": 4000
+    },
+    {
+      "path": "shared/cognitive-resource/contracts/cognitive-work-observation-draft.schema.json",
+      "sha256": "74a135eca16239f502d73ecbee296ae49fa8a09316cae4437188b923c500286d",
+      "bytes": 8219
+    },
+    {
+      "path": "shared/cognitive-resource/missing-provider-relation.json",
+      "sha256": "d634233e412c438b6e6b78ebdc50720ae8b2e67f3407ebe5fd9828b6d0b8f127",
+      "bytes": 1862
+    },
+    {
+      "path": "shared/cognitive-resource/objective-audit.js",
+      "sha256": "a37a9dc8faf8d63fb8c5d07e0039e84a5f57b6ec04618eb849a6088f8dd22321",
+      "bytes": 7607
+    },
+    {
+      "path": "shared/cognitive-resource/provider-declarations.json",
+      "sha256": "0071d09dd88134e7ca11c95af860d054bf4b398122b78d4b533d394157167808",
+      "bytes": 8937
+    },
+    {
+      "path": "shared/cognitive-resource/selftest.js",
+      "sha256": "c271b7ac4c7e45b583b47d3213a82f984fc2a94eab8cf21b9476289a01fa1879",
+      "bytes": 32706
+    },
+    {
+      "path": "shared/evidence-retention/evidence-retention-service.js",
+      "sha256": "496a1288ade34522911dc71e04ffb75dbb7d7738554e86c0bbc4127778e39d67",
+      "bytes": 34314
+    },
+    {
+      "path": "shared/operations/operations-utils.js",
+      "sha256": "232a15238f508454d63ccd14e1046ad567d37942d3c7aa714bd31d36ee055035",
+      "bytes": 10539
+    }
+  ]
+}

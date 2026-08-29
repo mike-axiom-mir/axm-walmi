@@ -1,0 +1,39 @@
+{
+  "schema": "axm.mirror.behavior-evidence/v0.1",
+  "experiment_id": "example-only-not-a-real-model-run",
+  "waldo": {
+    "corpus_bom_sha256": "bb826fa8d7f37bac4100546ed2c73f7dc68baabfc3f19916117f97d2f22e4455",
+    "run_bom_sha256": "176558b03e78383529a40fbdee15849d53a96c6272171aeb344df06926aaf0b6",
+    "release_bom_sha256": "11c71b1f9fdfd7634f0239afeeb018d5b89a0d9e3c9eb12385db6c91a56c51ec"
+  },
+  "context_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "request_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+  "output_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+  "permission_state": "observed",
+  "outcome_state": "hold",
+  "verification": [
+    {
+      "name": "format",
+      "state": "pass",
+      "evidence_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+    },
+    {
+      "name": "grounding",
+      "state": "hold"
+    }
+  ],
+  "dissent": [
+    {
+      "source": "example-reviewer",
+      "state": "open",
+      "note": "Example only; no independent grounding evidence exists for this fixture."
+    }
+  ],
+  "authority": {
+    "tool_execution": false,
+    "training": false,
+    "promotion": false,
+    "canon": false,
+    "world_action": false
+  }
+}

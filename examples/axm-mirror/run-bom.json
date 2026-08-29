@@ -1,0 +1,167 @@
+{
+  "kind": "openwaldo-bom",
+  "schema": 1,
+  "subject": "training-run",
+  "id": "example-real-run-0001",
+  "model_id": "example-model-001",
+  "stage": "pretrain",
+  "stage_type": "pre-training",
+  "ordinal": 1,
+  "objective": "causal-language-modeling",
+  "execution": {
+    "backend": {
+      "name": "pytorch",
+      "revision": "example-pytorch-r1"
+    },
+    "framework": "pytorch",
+    "runtime": "example fixture; not an executed runtime",
+    "host": {
+      "os": "linux",
+      "architecture": "amd64"
+    },
+    "nodes": 1,
+    "world_size": 1
+  },
+  "architecture_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+  "corpus_bom_sha256": "bb826fa8d7f37bac4100546ed2c73f7dc68baabfc3f19916117f97d2f22e4455",
+  "corpus_bom": {
+    "kind": "openwaldo-bom",
+    "schema": 1,
+    "subject": "corpus",
+    "index": {
+      "remote": "https://example.invalid/waldo-index.git",
+      "commit": "dddddddddddddddddddddddddddddddddddddddd"
+    },
+    "paths": [
+      "research/example-corpus"
+    ],
+    "license_policy": {
+      "include": [
+        "CC0-*"
+      ]
+    },
+    "manifests": [
+      {
+        "path": "research/example-corpus.json",
+        "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "name": "example-corpus",
+        "title": "Example witness corpus",
+        "description": "Synthetic fixture for the fork-only WALDO Witness Mirror flow.",
+        "license": "CC0-1.0",
+        "format": "parquet",
+        "record_schema": 1,
+        "converted_by": {
+          "tool": "waldo",
+          "version": "example",
+          "profile": "text",
+          "recipe": "example/v1"
+        },
+        "sources": [
+          {
+            "name": "fixture",
+            "source": "Synthetic example records",
+            "version": "1",
+            "license": "CC0-1.0",
+            "url": "https://example.invalid/source",
+            "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+          }
+        ],
+        "totals": {
+          "shards": 1,
+          "docs": 2,
+          "tokens": 8,
+          "bytes": 128
+        },
+        "licenses": {
+          "CC0-1.0": {
+            "shards": 1,
+            "docs": 2,
+            "tokens": 8,
+            "bytes": 128
+          }
+        }
+      }
+    ],
+    "shards": [
+      {
+        "manifest": "research/example-corpus.json",
+        "url": "https://example.invalid/shard.parquet",
+        "sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "format": "parquet",
+        "record_schema": 1,
+        "license": "CC0-1.0",
+        "sources": [
+          "fixture"
+        ],
+        "converted_by": {
+          "tool": "waldo",
+          "version": "example",
+          "profile": "text",
+          "recipe": "example/v1"
+        },
+        "docs": 2,
+        "tokens": 8,
+        "bytes": 128
+      }
+    ],
+    "totals": {
+      "shards": 1,
+      "docs": 2,
+      "tokens": 8,
+      "bytes": 128
+    },
+    "licenses": {
+      "CC0-1.0": {
+        "shards": 1,
+        "docs": 2,
+        "tokens": 8,
+        "bytes": 128
+      }
+    }
+  },
+  "parameters": {
+    "profile": "causal-pretrain-v1",
+    "profile_schema": 1,
+    "epochs": 1,
+    "steps": 2,
+    "batch_size": 1,
+    "sequence_length": 4,
+    "learning_rate": 0.001,
+    "seed": 7,
+    "optimizer": {
+      "name": "adamw",
+      "weight_decay": 0.1,
+      "beta1": 0.9,
+      "beta2": 0.95,
+      "epsilon": 1e-8
+    },
+    "schedule": {
+      "name": "cosine",
+      "warmup_steps": 1,
+      "minimum_rate_ratio": 0.1
+    },
+    "data": {
+      "order": "bounded-shuffle-v1",
+      "shuffle_buffer_records": 16,
+      "shuffle_buffer_bytes": 1024,
+      "packing": "continuous-eos-v1"
+    },
+    "evaluation": {
+      "selection": "lowest-sha256-v1",
+      "fraction": 0.5,
+      "max_records": 1,
+      "max_bytes": 1024
+    },
+    "checkpoint_every": 2,
+    "evaluate_every": 2,
+    "planned_token_capacity": 8
+  },
+  "evaluation_set": {
+    "selection": "lowest-sha256-v1",
+    "seed": 7,
+    "records": 1,
+    "token_targets": 4,
+    "text_bytes": 16,
+    "sha256": "7777777777777777777777777777777777777777777777777777777777777777"
+  }
+}

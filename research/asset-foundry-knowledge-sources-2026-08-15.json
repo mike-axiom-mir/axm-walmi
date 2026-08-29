@@ -1,0 +1,45 @@
+{
+  "schema": "axm.waldo-witness.knowledge-source-receipt/v0.1",
+  "status": "EXPERIMENTAL_REVIEW_SOURCE_ONLY",
+  "observed_at": "2026-08-15T12:29:36+02:00",
+  "purpose": "Pin the exact public Asset Factory, Asset Hands, target-canvas, sprite-atlas, visual-grammar, and visual-proof contracts used to design a smaller WALDO-native inner asset foundry.",
+  "platform_main": {
+    "repository": "mike-axiom-mir/axm-collaboration-platform",
+    "branch": "main",
+    "commit": "a4f99fbfc05268173458bf3fb8f3fe616919e376",
+    "sources": [
+      { "path": "tools/asset-fabric/README.md", "sha256": "e3ee72263971138a977e95f9d6271eee5dd495e74afa87225ca15471348f1526" },
+      { "path": "tools/asset-fabric/module.contract.json", "sha256": "1f0ea3f5c2937093dcf27de8e5e19c0afb7f9e00293f624e69629df1e33b4371" },
+      { "path": "shared/asset-hands/asset-brief.schema.json", "sha256": "2d6da67a7ca371814ad352f763a258a77892b9b7179bcf69f457a92ebc05c609" },
+      { "path": "shared/asset-hands/asset-creation-recipe.schema.json", "sha256": "4bcbe677d85f77ae1b7272af8d29178ee58ccd9eea19476121888bf10d892be7" },
+      { "path": "shared/asset-hands/asset-artifact.schema.json", "sha256": "14d815bba5f864bd224dd1c10c580f99e3a130fd383c768fa03fd35019385a45" },
+      { "path": "shared/asset-hands/asset-validation-receipt.schema.json", "sha256": "cec7ef092e5e52d26345060d80fb97e5d5322761b5b72d677ef00d01ff00f292" },
+      { "path": "shared/asset-hands/target-canvas.schema.json", "sha256": "e12f45d099a0506ac952c58a4549f513b4f5a0f5e2a5a70437474af66e0bf0a1" },
+      { "path": "shared/asset-hands/sprite-atlas.schema.json", "sha256": "c15a410875a986a4df60c73a39538f2ce85b78ce2bd7d8d96c133d83d67cc755" },
+      { "path": "shared/asset-hands/hands/pixel-sprite.js", "sha256": "3e4074d3c7231e5f495a87dbf296eed561753e62fd54ba1ac6d16510bf5598ed" },
+      { "path": "shared/visual-grammar/README.md", "sha256": "4b15f281c519e0c8f4e0c18b036098a5d8a44ce062af3964031f605e0bd32575" },
+      { "path": "shared/visual-grammar/visual-grammar.schema.json", "sha256": "54e5d02f6909fb1e8f9bae41017881b730ce59a450dfebf1541f69e004bea76d" },
+      { "path": "shared/visual-proof/README.md", "sha256": "18c46fc3ec3aaf3e40dc962de94c45f67550c22ee706edc27f695a769ded82b2" },
+      { "path": "shared/visual-proof/visual-proof-receipt.schema.json", "sha256": "917e5b45ccac3cdea6c4ee93f0acffb4e7035ae0c25023c82fcb16d5e9d438a5" }
+    ],
+    "knowledge_reused": [
+      "keep intent, target canvas, recipe, artifacts, and validation as distinct contracts",
+      "keep primary delivery and preview as distinct artifacts",
+      "make missing capabilities and technical holds visible",
+      "preserve semantic and presentation planes with protected semantic shape",
+      "treat technical validation and human visual approval as different evidence",
+      "keep generated outputs candidate-only until explicit review and promotion"
+    ]
+  },
+  "waldo_reimplementation": {
+    "language": "ordinary Go",
+    "capability": "bounded deterministic pixel recipe compilation",
+    "imports_platform_javascript": false,
+    "executes_platform_or_workshop_code": false,
+    "copies_asset_factory_runtime": false,
+    "calls_external_generation": false,
+    "installs_or_promotes_assets": false,
+    "grants_tool_or_canon_authority": false,
+    "claim_ceiling": "Exact source-bound contract knowledge used to design an additive WALDO pixel compiler and portable candidate format; not proof of Workshop parity, visual quality, meaning, originality, accessibility, usefulness, legal status, human approval, promotion, or CANON."
+  }
+}

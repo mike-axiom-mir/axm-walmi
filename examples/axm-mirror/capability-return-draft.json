@@ -1,0 +1,35 @@
+{
+  "schema": "axm.waldo-witness.capability-return-draft/v0.1",
+  "return_id": "synthetic-source-only-return-0001",
+  "plan_sha256": "9e910bfb60f25c60d4a50a7baa32fea336eab669366deb43a2fbe871f3f3b449",
+  "translation_receipt_sha256": "8aa028c33b55126e410f30a70926df7aaf822685f3999af266f43e25b28f8903",
+  "provider_id": "adapter-translation-garden",
+  "input": {
+    "schema": "axm.translation.module-call/v1",
+    "sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+    "bytes": 1024
+  },
+  "outputs": [
+    {
+      "id": "synthetic-result",
+      "schema": "axm.translation.module-result/v1",
+      "sha256": "8888888888888888888888888888888888888888888888888888888888888888",
+      "bytes": 2048
+    }
+  ],
+  "provider_receipt_sha256": "7777777777777777777777777777777777777777777777777777777777777777",
+  "started_at": "2026-08-15T12:17:10Z",
+  "completed_at": "2026-08-15T12:17:11Z",
+  "assessed_at": "2026-08-15T12:17:12Z",
+  "runtime_state": "OBSERVED_COMPLETE",
+  "permission_state": "EXTERNAL_CONFIRMED",
+  "cleanup_state": "CONFIRMED",
+  "retained_input_bytes": 0,
+  "authority": {
+    "tool_execution": false,
+    "training": false,
+    "promotion": false,
+    "canon": false,
+    "world_action": false
+  }
+}

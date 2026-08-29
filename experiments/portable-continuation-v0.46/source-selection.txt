@@ -1,0 +1,14 @@
+shared/deterministic-continuation-capsule/continuation-capsule.schema.json
+shared/deterministic-continuation-capsule/continuation-card.schema.json
+shared/deterministic-continuation-capsule/continuation-core.js
+shared/deterministic-continuation-capsule/continuation-declaration.schema.json
+shared/deterministic-continuation-capsule/continuation-host.js
+shared/deterministic-continuation-capsule/continuation-verification.schema.json
+shared/deterministic-pr-checkpoint/checkpoint-core.js
+tools/deterministic-continuation-capsule/continuation-cli.js
+tools/deterministic-continuation-capsule/continuation-cli.cmd
+tools/deterministic-continuation-capsule/manifest.json
+tools/deterministic-continuation-capsule/module.contract.json
+tools/deterministic-continuation-capsule/selftest.js
+tools/memory-continuity-garden/runtime/modules/044_reentry-capsule/compiled_contract.json
+tools/memory-continuity-garden/runtime/modules/071_session-handoff-packet/compiled_contract.json

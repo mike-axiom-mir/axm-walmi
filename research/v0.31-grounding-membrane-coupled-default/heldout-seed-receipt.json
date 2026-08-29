@@ -1,0 +1,9 @@
+{
+  "developmentSeedsDigest": "1c9d5d0a8367eae8e0c678f759b3daf674ed9bb04082b890b22da3ee0b40cf7d",
+  "disjoint": true,
+  "heldoutSeedCount": 128,
+  "heldoutSeedsDigest": "e0a8ce43847415e2f05f5f0e1efb9cfbf700ccad90f29cfe8fec2a33bfac74cd",
+  "policyDigest": "b55caa2f318b465093e23d24eec867856ff87b40426672b8939cbb88b1da3dc1",
+  "schema": "axm.v0.31-heldout-seed-receipt/v1",
+  "status": "SEEDS_FIXED_AFTER_POLICY_FREEZE_BEFORE_HELDOUT_RUN"
+}

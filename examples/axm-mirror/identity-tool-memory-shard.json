@@ -1,0 +1,59 @@
+{
+  "schema": "axm.waldo-witness.identity-tool-memory-shard/v0.1",
+  "state": "TOOL_MEMORY_READY",
+  "memory_id": "waldo-image-render-memory",
+  "target_answering_identity_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+  "tool_id": "image-render-hand",
+  "tool_version": "v1",
+  "generation": 1,
+  "entries": [
+    {
+      "schema": "axm.waldo-witness.identity-tool-experience/v0.1",
+      "memory_id": "waldo-image-render-memory",
+      "experience_id": "experience-0001",
+      "target_answering_identity_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+      "tool_id": "image-render-hand",
+      "tool_version": "v1",
+      "task_class": "asset-render",
+      "use_tags": [
+        "pixel-art",
+        "transparent-background"
+      ],
+      "input_artifact_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+      "output_artifact_sha256": "3333333333333333333333333333333333333333333333333333333333333333",
+      "tool_receipt_sha256": "4444444444444444444444444444444444444444444444444444444444444444",
+      "independent_verification_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+      "outcome": "SUCCESS",
+      "verification_verdict": "INDEPENDENTLY_VERIFIED_SUCCESS",
+      "wisdom_class": "REUSE",
+      "wisdom": "Reuse the bounded transparent-background recipe when the exact pixel-art constraints match.",
+      "observed_at": "2026-08-16T07:00:00Z",
+      "ttl_millis": 86400000,
+      "content_class": "PUBLIC_SAFE_DISTILLATION",
+      "raw_content_included": false,
+      "hidden_reasoning_included": false,
+      "secrets_included": false,
+      "authority": {
+        "tool_execution": false,
+        "training": false,
+        "promotion": false,
+        "canon": false,
+        "world_action": false
+      },
+      "experience_sha256": "e25494f9e625a8e34dee0508f6fbb8b30e8846df8372db185d1aab4310bc0e6f"
+    }
+  ],
+  "notices": [
+    "this shard contains one exact identity-and-tool scope; other tools and identities require separate shards",
+    "entries contain public-safe distillations and evidence digests only, not raw prompts, payloads, outputs, hidden reasoning, or secrets",
+    "independent verification supports a bounded lesson but does not prove general competence, safety, promotion, or CANON status"
+  ],
+  "authority": {
+    "tool_execution": false,
+    "training": false,
+    "promotion": false,
+    "canon": false,
+    "world_action": false
+  },
+  "shard_sha256": "3b01992e91bb77c3491a634ed4376be29066169623ba24f18f073c1f471b4ff1"
+}

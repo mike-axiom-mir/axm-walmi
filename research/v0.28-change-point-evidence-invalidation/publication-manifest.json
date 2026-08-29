@@ -1,0 +1,57 @@
+{
+  "adr": {
+    "bytes": 2915,
+    "path": "docs/adr/9030-axm-stale-evidence-is-not-current-state.md",
+    "sha256": "4a46860a751a3eb1b6ffd590f4f996b74e9ba78d55c8ed8b7ffbf2953899678b"
+  },
+  "challenge": "STALE_EVIDENCE_IS_NOT_CURRENT_STATE",
+  "files": {
+    "ARCHITECTURE.md": {
+      "bytes": 4163,
+      "sha256": "6c45d7e4f64a1d8312a19ee973a049341946b6f275843206f8d3f7072388cc45"
+    },
+    "BENCHMARK-SUMMARY.md": {
+      "bytes": 2098,
+      "sha256": "18106efd31faf27d5ac313cf07e149fc4f5ae0650e2c425b207f3e6d41b15f1c"
+    },
+    "README.md": {
+      "bytes": 5790,
+      "sha256": "0557dad49f04633f01a0df782d4536bf2a591a89c6acdd2b2d0b8998b547ceba"
+    },
+    "ledger-root.json": {
+      "bytes": 407,
+      "sha256": "07ba954e7bdd4da51eda3b20239cba08b7d11698b8b36bf63953c778aee403db"
+    },
+    "materialize_probe.py": {
+      "bytes": 522,
+      "sha256": "4b3994c1eefe5a6d2549c8981e7abacb16e2d3104eda755b3626a55a2a41de21"
+    },
+    "probe.py.gz": {
+      "bytes": 8367,
+      "sha256": "f069b5858fc4170f85df5201ba399babbedcad593ce04656cca1779fa94f1460"
+    },
+    "publication-evidence.json": {
+      "bytes": 7180,
+      "sha256": "07cf680dfece7b69e1abd7a079d3cb5df9ddd509b0aa47f5f1ad6ef5f7da3cb3"
+    },
+    "repeatability.json": {
+      "bytes": 60,
+      "sha256": "92997491bb4fcf328a558c038d2084e1e3d9ae2dd247c7ac8e3d09e258b5de57"
+    },
+    "return-packet.json": {
+      "bytes": 383,
+      "sha256": "58e86ee7ebc22040c4aced89f631eed7fbfabd18b9e895e8c84b1bfc84cbdb33"
+    },
+    "scenarios.json": {
+      "bytes": 14768,
+      "sha256": "c4771f3feb2b574a05708ba4b882e007130d81fbe1a1abe3b4da9047eb5d26f2"
+    },
+    "test_probe.py": {
+      "bytes": 6683,
+      "sha256": "ff486e4dc7e09afd16bb403d5fb2e2c46538fc15eddc8f573b59629d67124d22"
+    }
+  },
+  "manifestScopeNote": "Hashes all files committed under research/v0.28-change-point-evidence-invalidation except publication-manifest.json itself. The ADR is committed separately under docs/adr. Full family-level summary, raw metrics, causal ledgers, and per-ledger digest index remain local reproducible evidence.",
+  "schema": "axm.publication-manifest/v0.28",
+  "status": "EXPERIMENTAL_BRANCH_ONLY"
+}

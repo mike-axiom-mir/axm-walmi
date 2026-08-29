@@ -1,0 +1,27 @@
+{
+  "authority": {
+    "canon": false,
+    "coupledReasoning": "NONE",
+    "fallback": "NONE",
+    "membrane": "NONE"
+  },
+  "causalLedgerValidation": "PASS",
+  "challenge": "GROUNDING_SHOULD_DAMP_NOISE_WITHOUT_DAMPING_REALITY",
+  "defaultArchitecture": "COUPLED_MEMBRANE_FALLBACK_D",
+  "fallbackArchitecture": "SEQUENTIAL_A",
+  "heldoutScenarioCount": 128,
+  "policyDigest": "b55caa2f318b465093e23d24eec867856ff87b40426672b8939cbb88b1da3dc1",
+  "primaryResult": {
+    "badCommits": 27,
+    "badHighConsequenceCommits": 7,
+    "correctFinalPlans": 127,
+    "fallbackActivations": 213,
+    "falsePreempts": 23,
+    "heldCommits": 50
+  },
+  "repeatability": "PASS",
+  "schema": "axm.return-packet/v0.31",
+  "sourceSha256": "d74ad78a111b5a39a2d80fcf3b5f22644de4e92b91b78eb111e17fc667b10e28",
+  "status": "OBSERVED_SIMULATOR_RESULT",
+  "testsPassed": 13
+}

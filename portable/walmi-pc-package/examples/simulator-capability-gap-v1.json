@@ -1,0 +1,22 @@
+{
+  "schema": "axm.walmi.simulator-capability-gap/v1",
+  "id": "gap-4bf7c2d5d5169b3921f6b961",
+  "capabilityId": "simulator.player.choose-visible-action",
+  "gapType": "CONTRACT",
+  "world": "theme-park",
+  "player": {"kind": "model", "id": "walmi"},
+  "episodeReceiptSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "observedAt": "2026-08-29T00:00:00Z",
+  "evidence": {
+    "turn": 1,
+    "requestSha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "failure": "player response refused: model returned invalid JSON"
+  },
+  "repair": {
+    "state": "APPLIED",
+    "hand": "deterministic-visible-action-selector/v1",
+    "response": {"schema": "axm.walmi.simulator-player-response/v1", "actionId": "visible-action-1"},
+    "worldActionApplied": true
+  },
+  "authority": {"training": false, "promotion": false, "canon": false, "persistentWorldAction": false}
+}

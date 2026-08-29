@@ -1,0 +1,16 @@
+{
+  "authority": "NONE",
+  "candidateBranch": "axm/mirror-waldo-experiment-v0.26-hybrid-reasoning-ab",
+  "canon": false,
+  "challenge": "REASONING_MODE_IS_NOT_EXECUTION_AUTHORITY",
+  "holds": [
+    "Fresh v0.26 simulator is not a physical robot or provider-backed reasoning runtime.",
+    "Reasoning-mode policy must be validated on larger non-handpicked scenario/seed sets before stronger claims."
+  ],
+  "mergeRequested": false,
+  "prRequested": false,
+  "probeSummaryReceipt": "sha256:6f04da8eaa5339ce0aff6780d522d8c1aabe6f021bbf24d5ce9eebb77946ee20",
+  "promotion": "candidate-only",
+  "returnDigest": "sha256:f35dda7ddcc55a0add2044b50b516ca5c0fff194adf362bf0b4e016df41bc766",
+  "schema": "axm.return-packet/v0.26"
+}

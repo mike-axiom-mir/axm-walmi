@@ -1,0 +1,14 @@
+{
+  "schema": "axm.waldo.v0.32-result/v1",
+  "challenge": "SPECIALIST_OUTPUT_IS_NOT_GROUNDING_AUTHORITY",
+  "parentCheckpoint": "dbd7a9ad7f098943f383f21f28fe69265df817fe",
+  "donorHead": "24031c227f42ea179489bfa0f5ee7709d02965be",
+  "tests": {
+    "passed": 14,
+    "failed": 0
+  },
+  "probeSha256": "a7e54c43f2fd1fc98c93d08167b2ef64ae07c7e5eed1f3d7f6ed724bb1903650",
+  "testSha256": "0fbba0b54e1c3266d4bdf6dc33c5f7170619b1fc350b16c734d7e715c3814ef7",
+  "donorReceiptSha256": "a154cd6ce47869812ebabbca1d599023a4a52e81ad73c27aaf3306b99701f587",
+  "authority": "NONE"
+}

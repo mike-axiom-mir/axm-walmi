@@ -1,0 +1,46 @@
+{
+  "schema": "axm.waldo.preheldout-freeze/v0.33",
+  "challenge": "MULTIPLE_SPECIALIST_VIEWS_ARE_NOT_INDEPENDENT_EVIDENCE",
+  "parentCheckpoint": "dbd7a9ad7f098943f383f21f28fe69265df817fe",
+  "donorHead": "24031c227f42ea179489bfa0f5ee7709d02965be",
+  "probeSha256": "582b5b1535ccfdf4109e269c17d7f8440bfa6fa3ecaf70d16ea35f71cf075fe3",
+  "testSha256": "f44a8d5b0bedafe005a28a71ce5ec5caf9e79c4c230900ddd3c8e924477cb3f3",
+  "donorReceiptSha256": "3221c4e280a422e715ac109d27ee031f65be39c56c7ec41655497c1267b83c1a",
+  "developmentSeeds": {
+    "start": 33001,
+    "count": 48,
+    "sha256": "c3807726c66c433cc73eefbe787fbe340d9d70f574d7af8149e914ddea12bff4"
+  },
+  "developmentMetrics": {
+    "RAW_COUPLED": {
+      "correct": 28,
+      "falsePreempts": 24,
+      "divergenceTicks": 108,
+      "badCommits": 108,
+      "badHigh": 44,
+      "holds": 0,
+      "fallbackActivations": 0
+    },
+    "VIEW_COUNT_CORROBORATION": {
+      "correct": 28,
+      "falsePreempts": 20,
+      "divergenceTicks": 108,
+      "badCommits": 108,
+      "badHigh": 44,
+      "holds": 0,
+      "fallbackActivations": 0
+    },
+    "ROOT_AWARE_MEMBRANE": {
+      "correct": 28,
+      "falsePreempts": 12,
+      "divergenceTicks": 80,
+      "badCommits": 64,
+      "badHigh": 20,
+      "holds": 28,
+      "fallbackActivations": 8
+    }
+  },
+  "heldoutSeedCountAtFreeze": 0,
+  "policyFrozen": true,
+  "authority": "NONE"
+}

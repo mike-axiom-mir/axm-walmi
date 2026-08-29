@@ -1,0 +1,228 @@
+{
+  "schema": "axm.waldo-witness.organ-map/v0.4",
+  "status": "EXPERIMENTAL",
+  "clone_role": "WALDO-native provenance, situated evidence, evaluation witness, and bounded pixel-asset specialist; not a general Mirror or Workshop copy",
+  "authority_default": "closed",
+  "supersedes_map": "research/axm-waldo-witness-organ-map.v0.3.json",
+  "design_adrs": [
+    "docs/adr/9002-axm-waldo-witness-organ-architecture.md",
+    "docs/adr/9005-axm-waldo-gated-clone-foundation.md",
+    "docs/adr/9006-axm-waldo-situated-clone-boundary.md",
+    "docs/adr/9007-axm-waldo-inner-asset-foundry.md"
+  ],
+  "knowledge_sources": [
+    {
+      "kind": "passive-contract-pattern-library",
+      "repository": "mike-axiom-mir/axm-collaboration-platform",
+      "branch": "mirror",
+      "commit": "4a3727505576c4c95198a8287dd8ce1e82619f32",
+      "export_id": "03f3d0cf0802a95bb5eccc8d42fc6c4422b85a1e5d3dc0373b4f3a3c6c13ab2a",
+      "current_objects": 115,
+      "reuse": "KNOWLEDGE inventory and contract patterns only; no archived source imported or executed"
+    },
+    {
+      "kind": "sensorium-skill-and-dual-discovery-contracts",
+      "receipt": "research/mirror-situated-knowledge-sources-2026-08-15.json",
+      "platform_main_commit": "a4f99fbfc05268173458bf3fb8f3fe616919e376",
+      "mirror_commit": "4a3727505576c4c95198a8287dd8ce1e82619f32",
+      "reuse": "receipt schemas, retention and authority ceilings, skill taxonomy, AI-native seam stances, and explicit secondary human advisory stance"
+    },
+    {
+      "kind": "asset-factory-and-visual-contracts",
+      "receipt": "research/asset-foundry-knowledge-sources-2026-08-15.json",
+      "platform_main_commit": "a4f99fbfc05268173458bf3fb8f3fe616919e376",
+      "reuse": "intent/canvas/recipe/artifact/validation separation, deterministic pixel composition, sprite-atlas metadata, semantic/presentation planes, and candidate-only visual review boundary"
+    },
+    {
+      "kind": "upstream-durable-contract-delta",
+      "receipt": "research/openwaldo-upstream-delta-2026-08-15.json",
+      "head": "4944072bc3f2fcd5d98d40915d25c7e1535d4877"
+    }
+  ],
+  "organs": [
+    {
+      "id": "origin-anchor",
+      "wave": 1,
+      "status": "IMPLEMENTED_TESTED_GO_1_26_6",
+      "purpose": "Bind behavior to exact WALDO model/release lineage and expose missing links without allowing model prose to author lineage."
+    },
+    {
+      "id": "corpus-evidence-lens",
+      "wave": 1,
+      "status": "IMPLEMENTED_TESTED_GO_1_26_6",
+      "purpose": "Project stable corpus BOM facts into a bounded machine surface while preserving verification limits."
+    },
+    {
+      "id": "training-run-witness",
+      "wave": 1,
+      "status": "IMPLEMENTED_TESTED_GO_1_26_6",
+      "purpose": "Bind behavior to exact run plan, corpus, origin, backend, environment, checkpoint state, and output identity."
+    },
+    {
+      "id": "release-identity-lock",
+      "wave": 1,
+      "status": "IMPLEMENTED_TESTED_GO_1_26_6",
+      "purpose": "Resolve which verified model/release/tokenizer identity produced an observation and refuse silent identity drift."
+    },
+    {
+      "id": "behavior-evidence-seal",
+      "wave": 1,
+      "status": "IMPLEMENTED_TESTED_GO_1_26_6",
+      "purpose": "Seal lineage-bound context/request/output digests, verification, dissent, outcome, permission, and closed authority."
+    },
+    {
+      "id": "evaluation-independence-contamination-guard",
+      "wave": 1,
+      "status": "IMPLEMENTED_TESTED_GO_1_26_6",
+      "purpose": "Check exact declared training/evaluation overlap and authorship claims; incomplete evidence stays HOLD or UNKNOWN."
+    },
+    {
+      "id": "training-profile-contract-lens",
+      "wave": 1.1,
+      "status": "IMPLEMENTED_TESTED_GO_1_26_6",
+      "purpose": "Expose behavior-named and legacy WALDO profile contracts without turning corpus selection or weight into a causal-output claim."
+    },
+    {
+      "id": "provenance-context-surface",
+      "wave": 2,
+      "status": "IMPLEMENTED_TESTED_GO_1_26_6",
+      "purpose": "Provide an allow-listed, byte-bounded, source-labelled provenance packet to the learned clone without allowing provenance mutation."
+    },
+    {
+      "id": "source-claim-gate",
+      "wave": 2,
+      "status": "IMPLEMENTED_TESTED_GO_1_26_6",
+      "purpose": "Assess typed source/origin claims against the exact packet while preserving causal, legal, and reproducibility ceilings."
+    },
+    {
+      "id": "evaluation-protocol-seal",
+      "wave": 2,
+      "status": "IMPLEMENTED_TESTED_GO_1_26_6",
+      "purpose": "Precommit pack, target, context, metrics, comparison dimensions, answer-key boundary, limits, permission, and closed authority before outputs."
+    },
+    {
+      "id": "gated-behavior-seal",
+      "wave": 2,
+      "status": "IMPLEMENTED_TESTED_GO_1_26_6",
+      "purpose": "Bind profile, context, claim assessment, and precommitted protocol into the final run-backed behavior receipt."
+    },
+    {
+      "id": "sensory-evidence-intake",
+      "wave": 2.1,
+      "status": "IMPLEMENTED_TESTED_GO_1_26_6",
+      "purpose": "Validate fresh, attributed, zero-retention receipts from all thirteen Workshop Sensorium contracts without claiming capture or inheriting permission."
+    },
+    {
+      "id": "skill-backup-continuity",
+      "wave": 2.1,
+      "status": "IMPLEMENTED_TESTED_GO_1_26_6",
+      "purpose": "Keep KNOWLEDGE, INSTRUCTION, and ADAPTER inventory roles separate; compare exact current/backup manifests and emit review-only recovery candidates."
+    },
+    {
+      "id": "dual-native-discovery-stance",
+      "wave": 2.1,
+      "status": "IMPLEMENTED_TESTED_GO_1_26_6",
+      "purpose": "Preserve primary AI-native evidence seams and explicit secondary human-native meaning advice without averaging, imitation, or authority transfer."
+    },
+    {
+      "id": "situated-context-envelope",
+      "wave": 2.1,
+      "status": "IMPLEMENTED_TESTED_GO_1_26_6",
+      "purpose": "Join exact provenance, explicitly required sensory receipts, skill continuity, and dual discovery to one answering identity and subject."
+    },
+    {
+      "id": "situated-gated-behavior-seal",
+      "wave": 2.1,
+      "status": "IMPLEMENTED_TESTED_GO_1_26_6",
+      "purpose": "Bind the situated envelope and each component digest into the existing gated behavior chain; held situated evidence cannot become a passing outcome."
+    },
+    {
+      "id": "inner-pixel-asset-compiler",
+      "wave": 2.2,
+      "status": "IMPLEMENTED_TESTED_GO_1_26_6",
+      "purpose": "Compile bounded deterministic pixel recipes into separate primary, preview, editable grid, and sprite-atlas artifacts without external generation or Workshop execution."
+    },
+    {
+      "id": "portable-asset-candidate-verifier",
+      "wave": 2.2,
+      "status": "IMPLEMENTED_TESTED_GO_1_26_6",
+      "purpose": "Bind exact artifact bytes and technical checks in a candidate-only portable bundle, then reject tamper by full deterministic recompilation while leaving visual approval to humans."
+    },
+    {
+      "id": "behavior-delta-comparator",
+      "wave": 2,
+      "status": "PROPOSED_AFTER_PROTOCOL_SEAL",
+      "purpose": "Compare identical sealed evaluations across exact releases while preserving behavior, verification, dissent, authority, and non-comparable dimensions separately."
+    },
+    {
+      "id": "dissent-continuity-ledger",
+      "wave": 2,
+      "status": "PROPOSED",
+      "purpose": "Carry unresolved objections across releases until explicitly resolved or superseded by linked evidence."
+    },
+    {
+      "id": "reproducibility-twin",
+      "wave": 2,
+      "status": "PROPOSED",
+      "purpose": "Compare original and reconstructed runs without conflating artifact equality with behavioral similarity."
+    },
+    {
+      "id": "source-change-impact-router",
+      "wave": 3,
+      "status": "PROPOSED",
+      "purpose": "Trace corrections, disputes, or removals through dependent runs, models, releases, and behavior records as review impact."
+    },
+    {
+      "id": "controlled-attribution-experiment-planner",
+      "wave": 3,
+      "status": "PROPOSED",
+      "purpose": "Design controlled comparisons for source-to-behavior hypotheses without claiming corpus membership proves causality."
+    },
+    {
+      "id": "memorization-leakage-audit",
+      "wave": 3,
+      "status": "PROPOSED",
+      "purpose": "Audit exact/near-exact reproduction under declared protocols without converting matches into legal or causal conclusions."
+    },
+    {
+      "id": "license-assertion-boundary",
+      "wave": 3,
+      "status": "PROPOSED",
+      "purpose": "Preserve license assertions, disputes, policy filters, identity verification, and absence of legal conclusion as separate states."
+    },
+    {
+      "id": "upstream-contribution-extractor",
+      "wave": 3,
+      "status": "PROPOSED",
+      "purpose": "Separate generic WALDO-useful work from AXM-specific identity before any human-authorized upstream proposal."
+    }
+  ],
+  "situated_boundaries": {
+    "raw_sensory_material_retained": false,
+    "capture_or_adapter_authority": false,
+    "skill_install_or_restore_authority": false,
+    "archived_organ_execution": false,
+    "human_advice_closes_ai_native_seams": false,
+    "automatic_probe_or_repair": false,
+    "automatic_promotion_or_canon": false
+  },
+  "asset_foundry_boundaries": {
+    "full_workshop_or_asset_factory": false,
+    "external_generation_or_tool_routing": false,
+    "arbitrary_code_or_script_operations": false,
+    "automatic_semantic_rewrite": false,
+    "technical_pass_is_visual_approval": false,
+    "automatic_install_export_promotion_or_canon": false
+  },
+  "still_excluded_normal_mirror_families": [
+    "broad Workshop capability discovery beyond bounded discovery receipts",
+    "autonomous tool/hand planning and sensor activation",
+    "external or multi-hand asset generation and manipulation",
+    "automatic asset-vocabulary admission, installation, export, or promotion",
+    "general memory guidance",
+    "automatic backup, restore, installation, or repair",
+    "resource economics/provider selection",
+    "general Foundation growth routing",
+    "world-action planning"
+  ]
+}

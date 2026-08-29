@@ -1,0 +1,205 @@
+{
+  "allRepeatable": true,
+  "ledgerValidationErrors": [],
+  "runs": [
+    {
+      "mode": "SEQUENTIAL_A",
+      "primarySemanticDigest": "sha256:ecc13f740cc85d876043f492c0578beca4ffe4e0e1890483c13c4dcc13cdd839",
+      "repeatable": true,
+      "rerunSemanticDigests": [
+        "sha256:ecc13f740cc85d876043f492c0578beca4ffe4e0e1890483c13c4dcc13cdd839"
+      ],
+      "scenarioId": "stable-short"
+    },
+    {
+      "mode": "COUPLED_B",
+      "primarySemanticDigest": "sha256:45cc2fd8d28fae59d37a9717956b6dd9cac1c5bd9761cde733045a6f4733d0fc",
+      "repeatable": true,
+      "rerunSemanticDigests": [
+        "sha256:45cc2fd8d28fae59d37a9717956b6dd9cac1c5bd9761cde733045a6f4733d0fc"
+      ],
+      "scenarioId": "stable-short"
+    },
+    {
+      "mode": "SEQUENTIAL_A",
+      "primarySemanticDigest": "sha256:97915513c3d84eb173edc511eadd597a5d4c46dd9a011985a21c86146d557e21",
+      "repeatable": true,
+      "rerunSemanticDigests": [
+        "sha256:97915513c3d84eb173edc511eadd597a5d4c46dd9a011985a21c86146d557e21"
+      ],
+      "scenarioId": "target-shift-early"
+    },
+    {
+      "mode": "COUPLED_B",
+      "primarySemanticDigest": "sha256:2527bd86a7e09b00aa21a6d75f246d11f49c9a3d677e1834fe21065f5a15c80a",
+      "repeatable": true,
+      "rerunSemanticDigests": [
+        "sha256:2527bd86a7e09b00aa21a6d75f246d11f49c9a3d677e1834fe21065f5a15c80a"
+      ],
+      "scenarioId": "target-shift-early"
+    },
+    {
+      "mode": "SEQUENTIAL_A",
+      "primarySemanticDigest": "sha256:70915ca2a8f4292e4887cf298353f5e60c28b9ae2fbf8faf7de8a955c16b0a76",
+      "repeatable": true,
+      "rerunSemanticDigests": [
+        "sha256:70915ca2a8f4292e4887cf298353f5e60c28b9ae2fbf8faf7de8a955c16b0a76"
+      ],
+      "scenarioId": "target-shift-late"
+    },
+    {
+      "mode": "COUPLED_B",
+      "primarySemanticDigest": "sha256:92e9318a5706f876deb70e35b703256997c311489a2e987e65b2b132a6437ced",
+      "repeatable": true,
+      "rerunSemanticDigests": [
+        "sha256:92e9318a5706f876deb70e35b703256997c311489a2e987e65b2b132a6437ced"
+      ],
+      "scenarioId": "target-shift-late"
+    },
+    {
+      "mode": "SEQUENTIAL_A",
+      "primarySemanticDigest": "sha256:6b54642daa8e8088aac375cc39012142e703ab8f624f5854381ab1e619ed897b",
+      "repeatable": true,
+      "rerunSemanticDigests": [
+        "sha256:6b54642daa8e8088aac375cc39012142e703ab8f624f5854381ab1e619ed897b"
+      ],
+      "scenarioId": "measurement-disagreement"
+    },
+    {
+      "mode": "COUPLED_B",
+      "primarySemanticDigest": "sha256:96dad13fe72e1f5afcb3945e364d5ad17767554ae03c5498a0435207171516b8",
+      "repeatable": true,
+      "rerunSemanticDigests": [
+        "sha256:96dad13fe72e1f5afcb3945e364d5ad17767554ae03c5498a0435207171516b8"
+      ],
+      "scenarioId": "measurement-disagreement"
+    },
+    {
+      "mode": "SEQUENTIAL_A",
+      "primarySemanticDigest": "sha256:4eb4ff2f830ed877ef69f82ac103ae97a4fb5ccf740dc77ec025e72bffb43a3c",
+      "repeatable": true,
+      "rerunSemanticDigests": [
+        "sha256:4eb4ff2f830ed877ef69f82ac103ae97a4fb5ccf740dc77ec025e72bffb43a3c"
+      ],
+      "scenarioId": "missing-evidence"
+    },
+    {
+      "mode": "COUPLED_B",
+      "primarySemanticDigest": "sha256:7e40a0d0d7f81af71d9406c8dc24f76aec72ebea48aa68f0c33c9535b9b88784",
+      "repeatable": true,
+      "rerunSemanticDigests": [
+        "sha256:7e40a0d0d7f81af71d9406c8dc24f76aec72ebea48aa68f0c33c9535b9b88784"
+      ],
+      "scenarioId": "missing-evidence"
+    },
+    {
+      "mode": "SEQUENTIAL_A",
+      "primarySemanticDigest": "sha256:722c5a40ea789ebe3cd848c992935f1372d1d1ffa78f62748a29b8a1c7067243",
+      "repeatable": true,
+      "rerunSemanticDigests": [
+        "sha256:722c5a40ea789ebe3cd848c992935f1372d1d1ffa78f62748a29b8a1c7067243"
+      ],
+      "scenarioId": "obstruction"
+    },
+    {
+      "mode": "COUPLED_B",
+      "primarySemanticDigest": "sha256:6658d0b04ecacbf244f402e16b9ae7db2efdef8ee8162fb1de47f09ec2f36042",
+      "repeatable": true,
+      "rerunSemanticDigests": [
+        "sha256:6658d0b04ecacbf244f402e16b9ae7db2efdef8ee8162fb1de47f09ec2f36042"
+      ],
+      "scenarioId": "obstruction"
+    },
+    {
+      "mode": "SEQUENTIAL_A",
+      "primarySemanticDigest": "sha256:e2bd3b09069718213ca73eacde720db792b2a12c2a918cfbcadf3ea870e321ce",
+      "repeatable": true,
+      "rerunSemanticDigests": [
+        "sha256:e2bd3b09069718213ca73eacde720db792b2a12c2a918cfbcadf3ea870e321ce"
+      ],
+      "scenarioId": "permit-revoked"
+    },
+    {
+      "mode": "COUPLED_B",
+      "primarySemanticDigest": "sha256:5f1b3f45e4c0cbad9b4c4d1baa1fab003cd4343e36487efad9970e286f0533f9",
+      "repeatable": true,
+      "rerunSemanticDigests": [
+        "sha256:5f1b3f45e4c0cbad9b4c4d1baa1fab003cd4343e36487efad9970e286f0533f9"
+      ],
+      "scenarioId": "permit-revoked"
+    },
+    {
+      "mode": "SEQUENTIAL_A",
+      "primarySemanticDigest": "sha256:149d0625601395a916680787310ce206d4ba7da0fb48dcacf8d6de25e437b73d",
+      "repeatable": true,
+      "rerunSemanticDigests": [
+        "sha256:149d0625601395a916680787310ce206d4ba7da0fb48dcacf8d6de25e437b73d"
+      ],
+      "scenarioId": "wrong-environment"
+    },
+    {
+      "mode": "COUPLED_B",
+      "primarySemanticDigest": "sha256:c61728286f4e32018787c199004e2b3d6bca3fd866b1a891d5f809b9c39a76ba",
+      "repeatable": true,
+      "rerunSemanticDigests": [
+        "sha256:c61728286f4e32018787c199004e2b3d6bca3fd866b1a891d5f809b9c39a76ba"
+      ],
+      "scenarioId": "wrong-environment"
+    },
+    {
+      "mode": "SEQUENTIAL_A",
+      "primarySemanticDigest": "sha256:56b3ea1ee4888880c270adef56516dff64f0d33d23ebb8eb70e56e31a85beafa",
+      "repeatable": true,
+      "rerunSemanticDigests": [
+        "sha256:56b3ea1ee4888880c270adef56516dff64f0d33d23ebb8eb70e56e31a85beafa"
+      ],
+      "scenarioId": "wrong-capability"
+    },
+    {
+      "mode": "COUPLED_B",
+      "primarySemanticDigest": "sha256:55655e60e19afa5678d339e3240c428bdfa612f3ed3647b9510357d250f3c669",
+      "repeatable": true,
+      "rerunSemanticDigests": [
+        "sha256:55655e60e19afa5678d339e3240c428bdfa612f3ed3647b9510357d250f3c669"
+      ],
+      "scenarioId": "wrong-capability"
+    },
+    {
+      "mode": "SEQUENTIAL_A",
+      "primarySemanticDigest": "sha256:cf660082cc12ede8984374233b350f738240c01c5a18f91ddcfe77dd2cba09ca",
+      "repeatable": true,
+      "rerunSemanticDigests": [
+        "sha256:cf660082cc12ede8984374233b350f738240c01c5a18f91ddcfe77dd2cba09ca"
+      ],
+      "scenarioId": "no-permit"
+    },
+    {
+      "mode": "COUPLED_B",
+      "primarySemanticDigest": "sha256:e30040aa19103e9bf255a919a3c6c1d11bdb081f4a438187b0ceeab7f45638fa",
+      "repeatable": true,
+      "rerunSemanticDigests": [
+        "sha256:e30040aa19103e9bf255a919a3c6c1d11bdb081f4a438187b0ceeab7f45638fa"
+      ],
+      "scenarioId": "no-permit"
+    },
+    {
+      "mode": "SEQUENTIAL_A",
+      "primarySemanticDigest": "sha256:7ab2d6870c3ed169a65ee35eaf840d01def788f570e5dbd3ddbd8f1b18e3b400",
+      "repeatable": true,
+      "rerunSemanticDigests": [
+        "sha256:7ab2d6870c3ed169a65ee35eaf840d01def788f570e5dbd3ddbd8f1b18e3b400"
+      ],
+      "scenarioId": "no-actuator-route"
+    },
+    {
+      "mode": "COUPLED_B",
+      "primarySemanticDigest": "sha256:b3b74a2257f57323059752c8ad71f4b808c74af83df74ab2a3b8ea97d2551976",
+      "repeatable": true,
+      "rerunSemanticDigests": [
+        "sha256:b3b74a2257f57323059752c8ad71f4b808c74af83df74ab2a3b8ea97d2551976"
+      ],
+      "scenarioId": "no-actuator-route"
+    }
+  ],
+  "schema": "axm.repeatability-evidence/v0.25"
+}

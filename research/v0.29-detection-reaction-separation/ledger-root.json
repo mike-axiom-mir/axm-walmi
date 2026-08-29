@@ -1,0 +1,7 @@
+{
+  "indexRootSha256": "112212c97a0addde71d2ea4dca24c3b539f2c704c8a7b75ec29f51735912d8d0",
+  "ledgerCount": 1456,
+  "note": "Full causal ledgers and per-ledger digest index were validated locally. The compact branch stores the aggregate root/counts; full ledgers are reproducible and not committed.",
+  "schema": "axm.causal-ledger-root/v0.29",
+  "totalEventCount": 16699
+}

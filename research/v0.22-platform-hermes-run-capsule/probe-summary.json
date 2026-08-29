@@ -1,0 +1,14 @@
+{
+  "schema": "axm.hermes-run-capsule-evidence-summary/v0.22",
+  "platformPr": 48,
+  "platformHead": "7290dacf4fe2bb9a502f6a339fc53ecdbe0d420b",
+  "runtimeGateRunId": 32672295737,
+  "runtimeGateConclusion": "success",
+  "donorFileCount": 7,
+  "caseCount": 7,
+  "contractReceipt": "sha256:2bd0aeb46770bae2a95a0f0c12bf63af02ad80a8abb746f6355692e22a51a879",
+  "witness": "8605099f2176b7bc0c9587ae1ad6cf53dd504523bcc494aee8fb1f0d660755e3",
+  "runtimeCopied": false,
+  "runtimeExecutedByWaldo": false,
+  "waldoAuthority": "NONE"
+}

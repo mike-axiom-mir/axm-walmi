@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>AXM Evidence Desk</title>
+  <link rel="stylesheet" href="evidence-desk.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">AXM FOUNDATION · EVIDENCE ROUTER</p>
+        <h1>Evidence Desk</h1>
+        <p class="lead">Match each claim to evidence that can actually answer it, keep open questions visible, and seal the resulting receipt without confusing integrity with truth.</p>
+      </div>
+      <div class="hero-state">
+        <span class="status-chip">TEST · v0.2</span>
+        <span class="quiet-chip">Human + machine</span>
+      </div>
+    </header>
+
+    <section class="truth-boundary" aria-label="Evidence Desk truth boundary">
+      <div><strong>Records supplied evidence</strong><span>It does not inspect the world by itself.</span></div>
+      <div><strong>UNKNOWN stays open</strong><span>Missing proof never becomes a quiet PASS.</span></div>
+      <div><strong>SHA-256 checks content</strong><span>A matching digest does not certify truth.</span></div>
+      <div><strong>No automatic handoff</strong><span>Inbox placement and receiver acceptance are separate.</span></div>
+    </section>
+
+    <section class="metrics" aria-label="Current receipt counts">
+      <article><span>Claims resolved</span><strong id="nResolved">0</strong></article>
+      <article><span>Claims open</span><strong id="nOpen">0</strong></article>
+      <article><span>Checks evidenced</span><strong id="nChecks">0</strong></article>
+      <article><span>Receipt integrity</span><strong id="sealState">UNSEALED</strong></article>
+      <article><span>Canvas delivery</span><strong id="deliveryState">NOT PREVIEWED</strong></article>
+    </section>
+
+    <div class="workspace">
+      <section class="composer panel" id="composer">
+        <header class="panel-heading">
+          <div><p class="section-kicker">COMPOSE</p><h2>Claims, actions, and checks</h2></div>
+          <p>Start with the outcome and the exact checkpoint you observed.</p>
+        </header>
+
+        <div class="field-grid two">
+          <label><span>Run title</span><input id="title" autocomplete="off" placeholder="Evidence-backed module upgrade"></label>
+          <label><span>Source checkpoint</span><input id="checkpoint" autocomplete="off" placeholder="version, digest, route, or file set"></label>
+        </div>
+        <label><span>Goal</span><input id="goal" autocomplete="off" placeholder="What outcome was this work trying to prove?"></label>
+        <div class="field-grid two">
+          <label><span>Actor ID</span><input id="actor" value="local-steward" autocomplete="off"></label>
+          <label><span>Actor type</span><input id="actorType" value="human-machine" autocomplete="off"></label>
+        </div>
+
+        <section class="claim-section">
+          <div class="subheading">
+            <div><p class="section-kicker">CLAIM ROUTES</p><h3>What are we trying to establish?</h3></div>
+            <button type="button" class="button primary" id="addClaim">+ Add claim</button>
+          </div>
+          <p class="helper">Choose the claim type and Evidence Desk shows the proof surface that fits it. “What would show this is wrong?” keeps the check falsifiable without using alarming insider language.</p>
+          <div id="claimRows" class="claim-list"></div>
+        </section>
+
+        <div class="field-grid two wide-text">
+          <label><span>Actions executed</span><textarea id="actionsIn" placeholder="action | target | result | evidence&#10;One action per line"></textarea></label>
+          <label><span>Verification checks</span><textarea id="checks" placeholder="check name | PASS, FAIL, or NOT_RUN | evidence&#10;PASS without evidence remains open"></textarea></label>
+        </div>
+        <label><span>Changed paths</span><textarea id="changes" placeholder="path | added, modified, or removed | summary"></textarea></label>
+        <div class="field-grid two wide-text">
+          <label><span>Limitations / not tested</span><textarea id="limits" placeholder="One honest limit per line"></textarea></label>
+          <label><span>Next actions</span><textarea id="next" placeholder="One bounded next action per line"></textarea></label>
+        </div>
+
+        <div class="action-groups">
+          <div class="action-group">
+            <span>Receipt</span>
+            <button type="button" class="button primary" id="build">Build + seal</button>
+            <button type="button" class="button" id="validate">Validate only</button>
+            <button type="button" class="button" id="example">Load example</button>
+          </div>
+          <div class="action-group">
+            <span>Local draft</span>
+            <button type="button" class="button" id="save">Save draft</button>
+            <button type="button" class="button" id="resume">Resume saved</button>
+          </div>
+          <div class="action-group">
+            <span>Explicit export</span>
+            <button type="button" class="button" id="exportTxt">Report</button>
+            <button type="button" class="button" id="exportJson">JSON receipt</button>
+          </div>
+        </div>
+
+        <section class="handoff-box">
+          <div>
+            <p class="section-kicker">KNOWLEDGE CANVAS HANDOFF</p>
+            <h3>Preview first. Place second.</h3>
+            <p>The packet remains pending until Knowledge Canvas is opened and a person accepts it. An existing unread inbox packet is never overwritten.</p>
+          </div>
+          <div class="handoff-actions">
+            <button type="button" class="button" id="previewKnowledge">Preview handoff</button>
+            <button type="button" class="button primary" id="placeKnowledge" disabled>Place preview in inbox</button>
+          </div>
+        </section>
+        <div class="statusline" id="status" role="status" aria-live="polite">Starting Evidence Desk…</div>
+      </section>
+
+      <aside class="output-panel panel">
+        <header class="panel-heading output-heading">
+          <div><p class="section-kicker">EVIDENCE OUTPUT</p><h2>Receipt and lineage</h2></div>
+          <span id="receiptStatus" class="receipt-status">DRAFT</span>
+        </header>
+        <div class="tabs" role="tablist" aria-label="Evidence output views">
+          <button type="button" class="tab active" data-tab="report">Action report</button>
+          <button type="button" class="tab" data-tab="json">Structured JSON</button>
+          <button type="button" class="tab" data-tab="handoff">Handoff state</button>
+        </div>
+        <pre class="output" id="output">No receipt built yet.</pre>
+        <section class="integrity-card">
+          <span>Canonical content digest</span>
+          <code id="digest">Not sealed</code>
+          <p id="integrityText">Build the receipt to create a SHA-256 integrity seal.</p>
+        </section>
+      </aside>
+    </div>
+  </main>
+
+  <template id="claimTemplate">
+    <article class="claim-card">
+      <header>
+        <strong class="claim-number">Claim</strong>
+        <button type="button" class="remove-claim" aria-label="Remove claim">Remove</button>
+      </header>
+      <label><span>Claim</span><textarea class="claim-text" placeholder="A precise statement that could be proven or refuted"></textarea></label>
+      <div class="field-grid three">
+        <label><span>Claim type</span><select class="claim-kind"></select></label>
+        <label><span>Risk</span><select class="claim-risk"><option>LOW</option><option selected>MEDIUM</option><option>HIGH</option></select></label>
+        <label><span>Verdict</span><select class="claim-verdict"><option selected>UNKNOWN</option><option>PASS</option><option>FAIL</option></select></label>
+      </div>
+      <div class="route-card"><span>Required proof surface</span><strong class="route-surface"></strong><p class="route-guidance"></p></div>
+      <label><span>What would count as success?</span><textarea class="claim-pass" placeholder="Observable, falsifiable pass condition"></textarea></label>
+      <label><span>What did we actually observe?</span><textarea class="claim-observed" placeholder="Exact command result, record, screenshot, interaction, or human judgment"></textarea></label>
+      <label><span>What would show this is wrong?</span><textarea class="claim-counter" placeholder="The observation that would refute this claim"></textarea></label>
+      <div class="field-grid two">
+        <label><span>Source kind</span><input class="claim-source-kind" placeholder="source-read, runtime, screenshot…"></label>
+        <label><span>Source pointer</span><input class="claim-source" placeholder="file, digest, receipt, or capture ID"></label>
+      </div>
+      <label><span>Named seam / unresolved contradiction</span><input class="claim-seam" placeholder="Optional; name the boundary if evidence disagrees"></label>
+    </article>
+  </template>
+
+  <script src="axm-foundation.js"></script>
+  <script src="evidence-core.js"></script>
+  <script src="/hub/axm-hub-module.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

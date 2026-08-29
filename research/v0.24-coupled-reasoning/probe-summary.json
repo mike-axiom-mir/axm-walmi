@@ -1,0 +1,16 @@
+{
+  "schema": "axm.research-probe-summary/v0.24",
+  "challenge": "COUPLED_REASONING_IS_NOT_SHARED_EXECUTION_AUTHORITY",
+  "status": "DETACHED_VERIFICATION_PASS",
+  "parentReceipt": "sha256:deb4d86e37a846f2ba9bde79e30963054369373f3bfce38f79b996a845683cb4",
+  "receiptDigest": "sha256:f0afddad6f4678c5665cc3d7bac1710f32b75be643877e2ee92381db13d352db",
+  "witnessDigest": "0f16d4092c017e6185941ec893aabc78e61900338c07d8c373bd50d8b20bad38",
+  "caseCount": 11,
+  "eventCount": 31,
+  "readyCaseCount": 1,
+  "liveRuntimeObserved": false,
+  "liveExecutionObserved": false,
+  "latencyMeasured": false,
+  "authority": "NONE",
+  "promotion": "candidate-only"
+}

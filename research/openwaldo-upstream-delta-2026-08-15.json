@@ -1,0 +1,109 @@
+{
+  "schema": "axm.waldo-witness.upstream-delta/v0.1",
+  "status": "WITNESSED",
+  "observed_at": "2026-08-15T09:36:21+02:00",
+  "repository": "openwaldo/waldo",
+  "fork_base_sha": "ba18aef1af3d0157a29939411c8edb2090a1f9c4",
+  "upstream_head_sha": "4944072bc3f2fcd5d98d40915d25c7e1535d4877",
+  "changed_path_count": 37,
+  "commits": [
+    {
+      "sha": "8b1bcec504bc5af5fd6ccb709b6da5449ba4629a",
+      "subject": "Configure and filter compose corpora"
+    },
+    {
+      "sha": "f465ed138a2c6e7a0197998c72024162d7541063",
+      "subject": "Use configured corpora in reference composes"
+    },
+    {
+      "sha": "d2dcb23c898022c9ff4c4bc2f32598509a615f54",
+      "subject": "Name training profiles by behavior"
+    },
+    {
+      "sha": "590e64f5b658f4aa2a0fe6d050771731af1fb34c",
+      "subject": "Support pinned model origins in composes"
+    },
+    {
+      "sha": "4944072bc3f2fcd5d98d40915d25c7e1535d4877",
+      "subject": "Document compose base initialization"
+    }
+  ],
+  "source_receipts": [
+    {
+      "path": "docs/adr/0050-name-training-profiles-by-behavior.md",
+      "sha256": "f350a8c36576d0e5e6565bdba22725dbb7d827f7e095c532bb514019823aabb6"
+    },
+    {
+      "path": "internal/training/profile.go",
+      "sha256": "1a9bbf99648ad7bc843c90ba8470bb16864bc7e86fc9007d7f2ab9527cfe3d8a"
+    },
+    {
+      "path": "internal/training/backend.go",
+      "sha256": "48e02d37781a174808dc5fd502d3226aba78f4e85b6a2ef7ed7fdc40610fa5e4"
+    }
+  ],
+  "training_profile_contract": {
+    "current": [
+      {
+        "name": "causal-pretrain-shuffled",
+        "profile_schema": 1,
+        "data_order": "bounded-shuffle-v1",
+        "evaluation_selection": "lowest-sha256-v1",
+        "corpus_weights": "refused"
+      },
+      {
+        "name": "causal-pretrain-balanced",
+        "profile_schema": 1,
+        "data_order": "corpus-balanced-shuffle-v1",
+        "evaluation_selection": "stratified-lowest-sha256-v1",
+        "corpus_weights": "refused"
+      },
+      {
+        "name": "causal-pretrain-weighted",
+        "profile_schema": 1,
+        "data_order": "corpus-weighted-shuffle-v1",
+        "evaluation_selection": "stratified-lowest-sha256-v1",
+        "corpus_weights": "required_for_every_selected_corpus"
+      }
+    ],
+    "legacy_aliases": [
+      {
+        "declared": "causal-pretrain-v1",
+        "historical_profile_schema": 1,
+        "canonical": "causal-pretrain-shuffled"
+      },
+      {
+        "declared": "causal-pretrain-v2",
+        "historical_profile_schema": 2,
+        "canonical": "causal-pretrain-balanced"
+      },
+      {
+        "declared": "causal-pretrain-v3",
+        "historical_profile_schema": 3,
+        "canonical": "causal-pretrain-weighted"
+      }
+    ],
+    "packing": "continuous-eos-v1"
+  },
+  "other_durable_changes": [
+    "compose corpora may be configured with per-corpus weights and record filters",
+    "reference weighted composes move weights from parameters.corpus_weights into configured corpus selections",
+    "compose base.source may pin a supported external model origin by immutable commit"
+  ],
+  "search_result": {
+    "standalone_behavior_test_map_files_found": 0,
+    "finding": "the reported behavior maps resolve to behavior-named training data contracts and configured compose plans, not two standalone downstream evaluation maps"
+  },
+  "boundaries": [
+    "this receipt records committed upstream source at one head SHA; it does not merge or import upstream code",
+    "a training profile describes data ordering, weighting, packing, and held-out selection; it does not establish learned behavior quality",
+    "recorded selection or corpus weight never proves source-to-output causality"
+  ],
+  "authority": {
+    "tool_execution": false,
+    "training": false,
+    "promotion": false,
+    "canon": false,
+    "world_action": false
+  }
+}

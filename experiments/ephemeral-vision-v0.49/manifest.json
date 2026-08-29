@@ -1,0 +1,16 @@
+{
+  "schema":"axm.waldo.ephemeral-vision-buffer/v0.49",
+  "status":"EXPERIMENTAL_TEST",
+  "waldoParent":"af394f6f09e91ed33913ef1d9daac0e1b8b00cc6",
+  "sourceRepository":"mike-axiom-mir/axm-collaboration-platform",
+  "sourceCommit":"386736aaae3993089dfaf970cf2360894959e3c0",
+  "sourceFileCount":1,
+  "runtimeDependencyOnAXMRepository":false,
+  "modelCoreReplaceable":true,
+  "hostFrameSourceRequired":true,
+  "cameraAuthority":false,
+  "rawVideoArchive":false,
+  "automaticPublish":false,
+  "boundedMemoryOnly":true,
+  "authority":"NONE"
+}

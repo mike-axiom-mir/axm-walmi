@@ -1,0 +1,195 @@
+{
+  "schema": "axm.waldo-witness.organ-map/v0.7",
+  "status": "EXPERIMENTAL_GROWTH_OVERLAY",
+  "clone_role": "WALDO-native provenance and bounded specialist-growth witness with mutually checked verifier candidates and identity-scoped tool wisdom; not a general Mirror or Workshop copy",
+  "authority_default": "closed",
+  "supersedes_map": "research/axm-waldo-witness-organ-map.v0.6.json",
+  "inheritance": {
+    "mode": "ALL_ORGANS_AND_BOUNDARIES_UNLESS_OVERRIDDEN",
+    "source": "research/axm-waldo-witness-organ-map.v0.6.json",
+    "source_sha256": "7720e3167b1b5da9925f63ae983c09dd9eb0156f1852e5e1dea72979033a1e1c",
+    "retained_organ_count": 31
+  },
+  "design_adrs": [
+    "docs/adr/9010-axm-waldo-mutual-verifier-evolution-and-tool-wisdom.md"
+  ],
+  "new_organs": [
+    {
+      "id": "verifier-invariant-kernel",
+      "wave": "2.4",
+      "status": "IMPLEMENTED_TESTED_GO_1_25_0",
+      "contract_version": "v0.1",
+      "purpose": "Keep no-self-approval, independent quorum, frozen replay, zero-regression, rollback retention, protected-change, and closed-authority rules outside the evolvable verifier set.",
+      "refuses": [
+        "self-modification through the verifier-change protocol",
+        "single-verifier approval",
+        "open authority"
+      ]
+    },
+    {
+      "id": "verifier-generation-registry",
+      "wave": "2.4",
+      "status": "IMPLEMENTED_TESTED_GO_1_25_0",
+      "contract_version": "v0.1",
+      "purpose": "Bind each verifier version to exact rule, test-pack, implementation, class, independence-group, protected-state, previous-generation, and retained-rollback digests.",
+      "refuses": [
+        "in-place mutation",
+        "unsealed definitions",
+        "unbounded retained generations"
+      ]
+    },
+    {
+      "id": "mutual-verifier-change-witness",
+      "wave": "2.4",
+      "status": "IMPLEMENTED_TESTED_GO_1_25_0",
+      "contract_version": "v0.1",
+      "purpose": "Assess one candidate definition using current independent peers bound to the same intent, fixtures, baseline results, and candidate results.",
+      "refuses": [
+        "target self-review",
+        "stale reviewer definitions",
+        "incomparable replay evidence",
+        "regressions or unknown results"
+      ]
+    },
+    {
+      "id": "retained-generation-rollback-guard",
+      "wave": "2.4",
+      "status": "IMPLEMENTED_TESTED_GO_1_25_0",
+      "contract_version": "v0.1",
+      "purpose": "Leave the current registry active on every rejection or HOLD and pin it as the exact rollback target; materialize READY candidates only to new no-replace paths.",
+      "refuses": [
+        "automatic active-pointer mutation",
+        "overwriting the trusted baseline",
+        "materialization from a stale receipt"
+      ]
+    },
+    {
+      "id": "verifier-repair-buddy",
+      "wave": "2.4",
+      "status": "IMPLEMENTED_TESTED_GO_1_25_0",
+      "contract_version": "v0.1",
+      "purpose": "Reassess, contain, diagnose, and propose bounded recovery for a failed or held verifier change while preserving the full authorization and re-verification lifecycle.",
+      "refuses": [
+        "automatic patching",
+        "installation or activation",
+        "promotion or CANON",
+        "repair of a READY change"
+      ]
+    },
+    {
+      "id": "identity-tool-experience-memory",
+      "wave": "2.5",
+      "status": "IMPLEMENTED_TESTED_GO_1_25_0",
+      "contract_version": "v0.1",
+      "purpose": "Append independently verified success or failure as compact evidence-bound REUSE or AVOID wisdom in one exact answering-identity and tool-version shard.",
+      "refuses": [
+        "raw prompts, payloads, output bytes, hidden reasoning, or secrets",
+        "unverified repetition",
+        "cross-identity or cross-tool growth",
+        "backdated or duplicate experience"
+      ]
+    },
+    {
+      "id": "selective-tool-wisdom-recall",
+      "wave": "2.5",
+      "status": "IMPLEMENTED_TESTED_GO_1_25_0",
+      "contract_version": "v0.1",
+      "purpose": "Return at most eight fresh lessons matching exact identity, tool version, task class, and declared use tags instead of loading an entire memory blob.",
+      "refuses": [
+        "stale or future memory",
+        "cross-tool context aggregation",
+        "general competence inference",
+        "permission, promotion, or CANON inference"
+      ]
+    }
+  ],
+  "verification_coverage": [
+    {
+      "class": "SCHEMA_INVARIANT",
+      "needed_at": "strict JSON, canonical ordering, bounds, and self-digest validation"
+    },
+    {
+      "class": "PROVENANCE_BINDING",
+      "needed_at": "registry generation, change intent, peer identity, evidence, and receipt joins"
+    },
+    {
+      "class": "BEHAVIOR_EVALUATION",
+      "needed_at": "baseline-versus-candidate frozen replay and regression decisions"
+    },
+    {
+      "class": "PRIVACY_BOUNDARY",
+      "needed_at": "privacy verifier revision and tool-memory content admission"
+    },
+    {
+      "class": "CONTINUITY_FRESHNESS",
+      "needed_at": "active/previous registry identity, rollback retention, experience time, and TTL"
+    },
+    {
+      "class": "AUTHORITY_PERMISSION",
+      "needed_at": "materialization, activation, protected changes, tool use, promotion, and CANON"
+    },
+    {
+      "class": "ARTIFACT_RUNTIME",
+      "needed_at": "definition, test-pack, implementation, tool-receipt, and independent-verification digests"
+    }
+  ],
+  "continuity_assessment": {
+    "works_without_live_platform": [
+      "strict verifier registry and candidate-generation validation",
+      "mutual peer-receipt assessment when exact peer evidence is supplied",
+      "fail-safe baseline retention and no-replace candidate materialization",
+      "bounded Repair Buddy diagnosis and re-entry planning",
+      "append-only identity-and-tool-scoped verified experience shards",
+      "fresh task-and-use-specific wisdom selection"
+    ],
+    "still_requires_external_evidence_or_transport": [
+      "actual execution of independent peer verifiers and frozen shadow fixtures",
+      "authenticated human Merge Gate approval",
+      "runtime activation or active-registry pointer management",
+      "actual tool execution and independent verification receipts",
+      "code repair, installation, specialist promotion, training, and CANON"
+    ]
+  },
+  "growth_surface_progress": [
+    {
+      "id": "verified-specialist-experience-ledger",
+      "status": "PARTIALLY_IMPLEMENTED_TOOL_SCOPED",
+      "remaining": "specialist-wide aggregation, dissent continuity, reviewed compaction, and competence calibration"
+    },
+    {
+      "id": "specialist-revision-and-promotion-gate",
+      "status": "PARTIALLY_IMPLEMENTED_VERIFIER_SCOPED",
+      "remaining": "authenticated activation, specialist-mask revision classes, retirement, and promotion remain external human gates"
+    }
+  ],
+  "next_missing_specialist_growth_surfaces": [
+    {
+      "id": "portable-continuity-capsule",
+      "status": "PROPOSED",
+      "need": "Restore exact task, active verifier registry, tool-memory shard catalog, open dissent, and freshness without a live platform."
+    },
+    {
+      "id": "specialist-need-classifier-and-mask-registry",
+      "status": "PROPOSED",
+      "need": "Classify capability, schema, data, sense, skill, adapter, runtime, authority, verifier, and memory gaps before proposing a specialist change."
+    },
+    {
+      "id": "reviewed-memory-compaction",
+      "status": "PROPOSED",
+      "need": "Seal a compact successor when a 64-entry tool shard fills while preserving cold evidence retrieval, dissent, freshness, and rollback."
+    },
+    {
+      "id": "authenticated-generation-activation",
+      "status": "PROPOSED_EXTERNAL_GATE",
+      "need": "Manage the active registry pointer through an authenticated human-reviewed append-only transaction outside the learned clone."
+    }
+  ],
+  "non_claims": [
+    "peer review digests do not prove that a verifier actually ran unless separate runtime evidence establishes it",
+    "a READY candidate registry is not active and carries no installation, promotion, or CANON authority",
+    "Repair Buddy does not repair code or approve its own proposal",
+    "tool memory is selective context, not hidden model-weight training",
+    "stored verified experience does not prove general competence or permission to use a tool",
+    "this overlay does not import the Workshop or full Mirror memory system"
+  ]
+}

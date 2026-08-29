@@ -1,0 +1,66 @@
+{
+  "schema": "axm.publication-artifact-manifest/v0.26",
+  "challenge": "REASONING_MODE_IS_NOT_EXECUTION_AUTHORITY",
+  "parentCommit": "c1fe66c8c4cec1fbc1c6618276604705b1f54d9e",
+  "parentProbeReceipt": "sha256:aa970d56711d393c43c64083ba4abb5ea8ddc2b476f36adbd28a37eb94ca5216",
+  "probeReceipt": "sha256:6f04da8eaa5339ce0aff6780d522d8c1aabe6f021bbf24d5ce9eebb77946ee20",
+  "testedProbeSourceSHA256": "4c0c28385046bbbea19079fcc3333a6a4de6f1e01431c2fb24d09d7441fcdc8a",
+  "note": "probe.py is stored as deterministic probe.py.gz plus a SHA-verifying materializer; running it reproducibly emits raw metrics, repeatability, failure evidence, and full causal JSONL ledgers. Compact publication includes all 51 ledger hashes/counts.",
+  "files": [
+    {
+      "path": "docs/adr/9028-axm-reasoning-mode-is-not-execution-authority.md",
+      "sha256": "beba3e1181ba05abbbb190eaf3441854e3bbb94aaa76bb6b7c4f54aa20a4f958",
+      "bytes": 2015
+    },
+    {
+      "path": "research/v0.26-hybrid-reasoning/README.md",
+      "sha256": "3f68bb2bf7e506ac566045327a4c967ac70c574f25d0b06d324815541aaf9ee9",
+      "bytes": 4577
+    },
+    {
+      "path": "research/v0.26-hybrid-reasoning/ARCHITECTURE.md",
+      "sha256": "88af2c2962028230df02b1707e41596bb914ceff5de3d1d2b96b609ce908ff05",
+      "bytes": 2530
+    },
+    {
+      "path": "research/v0.26-hybrid-reasoning/probe.py.gz",
+      "sha256": "c614c69908a806918a4679c37ce8e08a536a7d8328cdb5627b9bb84c965ab91f",
+      "bytes": 10000
+    },
+    {
+      "path": "research/v0.26-hybrid-reasoning/materialize_probe.py",
+      "sha256": "8d494a8c470b8b5caa4011b2b79244caf5a5e588b075241c4728c3802738d0ab",
+      "bytes": 528
+    },
+    {
+      "path": "research/v0.26-hybrid-reasoning/test_probe.py",
+      "sha256": "c93f8babf5129c4dc59e2a3e5ca5d2437fc7e93e821a13437795c26f2ab2e76f",
+      "bytes": 4926
+    },
+    {
+      "path": "research/v0.26-hybrid-reasoning/scenarios.json",
+      "sha256": "c0200c38a551f15d89ec09bc16eee308970ac2eeaf05677f164cac5764a48d4e",
+      "bytes": 5194
+    },
+    {
+      "path": "research/v0.26-hybrid-reasoning/artifacts/BENCHMARK-SUMMARY.md",
+      "sha256": "3fd20e1fc7597d51afb19af58bea6223c39c2909bb9bc88dcd8fc3e39828afc7",
+      "bytes": 2362
+    },
+    {
+      "path": "research/v0.26-hybrid-reasoning/artifacts/probe-summary.json",
+      "sha256": "c0ce7e3edbfc61f308c8265a8d77001d96030f34bd8f36a5ee1fd80932ce4c8d",
+      "bytes": 876
+    },
+    {
+      "path": "research/v0.26-hybrid-reasoning/artifacts/return-packet.json",
+      "sha256": "6a60e8f42b799bc52b34e21f28fc5eabb99bdcc310168f9899677f4ce93a7ffb",
+      "bytes": 721
+    },
+    {
+      "path": "research/v0.26-hybrid-reasoning/artifacts/ledger-digests.json",
+      "sha256": "af452d5068fbb784092aee9da5c79ff828f207d45831c524eb64c4510b616927",
+      "bytes": 8084
+    }
+  ]
+}

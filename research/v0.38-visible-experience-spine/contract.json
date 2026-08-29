@@ -1,0 +1,25 @@
+{
+  "schema": "axm.waldo.visible-experience-spine-contract/v0.38",
+  "status": "EXPERIMENTAL_RUNTIME_INTEGRATION",
+  "challenge": "EXPERIENCE_MUST_COUNT_WITHOUT_HIDDEN_LEARNING",
+  "parentCheckpoint": "93c32b213391a806c13d1638c80ee761866889e0",
+  "episodeStages": ["SENSED", "REACTED", "OUTCOME_OBSERVED", "REFLECTED"],
+  "appendOnlyHashChain": true,
+  "futureMirrorContext": true,
+  "waldoTrainingProjection": {
+    "helpful": true,
+    "corrected": true,
+    "harmful": false,
+    "inconclusive": false,
+    "projectionIsWeightMutation": false
+  },
+  "hermesMemoryProjection": {
+    "allOutcomes": true,
+    "portable": true,
+    "runtimeImported": false,
+    "runtimeExecuted": false,
+    "projectionIsRuntimeMutation": false
+  },
+  "privateLedgerMode": "0600",
+  "authority": "NONE"
+}

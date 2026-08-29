@@ -1,0 +1,330 @@
+{
+  "schema": "axm.code-specialist-build-profile-catalog/v1",
+  "id": "workshop-code-specialist-build-profile-catalog-v1",
+  "version": "1.0.0",
+  "status": "TEST",
+  "profiles": [
+    {
+      "schema": "axm.code-specialist-build-profile/v1",
+      "id": "code-family.bounded-css-token-stylesheet",
+      "version": "1.0.0",
+      "status": "TEST",
+      "mode": "ONE_EXACT_CSS_STYLE_PRESENTATION_SPECIALIST",
+      "specialistOrganRef": {
+        "id": "organ.code.style-presentation",
+        "schema": "axm.code-specialist-organ-profile/v1",
+        "version": "1.0.0",
+        "sha256": "sha256:18cdb0ce1f613185e5071d7ebfdfab8f6a7ca02740f0aac85dca1417810ccab6"
+      },
+      "languageIds": ["css"],
+      "capability": {
+        "family": "style-creation",
+        "recipeRef": {
+          "id": "bounded-css-token-stylesheet",
+          "version": "0.1.0",
+          "digest": "sha256:b0663c70aed5a9c59ef35edf52ae5165b9f09e927ec837506fdcb00114eb4623",
+          "builderId": "bounded-css-token-stylesheet-v1",
+          "builderDigest": "sha256:1a9fa4c3a0ce626fa1adfe709dd3bbea7aa91e867c20794e9213a6e5da82d163",
+          "capabilityKind": "HAND"
+        }
+      },
+      "exampleArtifactId": "game-theme",
+      "gates": {
+        "specialist": "SELECT_EXACT_CSS_STYLE_PRESENTATION_SPECIALIST_AND_REPLAN",
+        "recipe": "RESTORE_EXACT_SOURCE_REVIEWED_BOUNDED_CSS_RECIPE",
+        "request": "REPAIR_EXACT_HUMAN_REVIEWED_BOUNDED_CSS_REQUEST"
+      },
+      "gaps": {
+        "specialist": "code.specialist.css.style-presentation.exact-lane",
+        "recipe": "capability.recipe.bounded-css-token-stylesheet.exact",
+        "request": "capability.build-request.style-creation.exact"
+      },
+      "evidence": {"visualBehavior": "UNKNOWN", "requiredKinds": ["MOTION_TIMING", "QUALITY", "STATIC_STRUCTURE", "VISUAL_APPEARANCE"]},
+      "boundary": {"authority": "NONE", "permissions": [], "networkDomains": [], "workspaceRead": false, "workspaceWrite": false, "candidateExecution": false, "install": false, "integrate": false, "publish": false, "promote": false, "canon": false},
+      "profileDigest": "sha256:c576a8b61bdf0cc9838eef19e1831165be7478e6a342d8eb1511a144b2db5039"
+    },
+    {
+      "schema": "axm.code-specialist-build-profile/v1",
+      "id": "code-family.bounded-javascript-record-transform",
+      "version": "1.0.0",
+      "status": "TEST",
+      "mode": "ONE_EXACT_JAVASCRIPT_APPLICATION_LOGIC_SPECIALIST",
+      "specialistOrganRef": {
+        "id": "organ.code.application-logic",
+        "schema": "axm.code-specialist-organ-profile/v1",
+        "version": "1.0.0",
+        "sha256": "sha256:db17f57a04b3c70c9d54ed46042eca8e8780013e4c4f0dc5164c932a5ff29258"
+      },
+      "languageIds": ["javascript"],
+      "capability": {
+        "family": "code-module",
+        "recipeRef": {
+          "id": "pure-json-transform",
+          "version": "1.1.0",
+          "digest": "sha256:9b9e5463bc126b21549ac6245ed88c063d43bc0e4d94a380fb092b40b035d24d",
+          "builderId": "pure-json-transform-v1",
+          "builderDigest": "sha256:3cd18478277083397fde86db89c07138da98b756edd47d44b075283ab4ab18c0",
+          "capabilityKind": "HAND"
+        }
+      },
+      "exampleArtifactId": "javascript-transform",
+      "gates": {
+        "specialist": "SELECT_EXACT_JAVASCRIPT_APPLICATION_LOGIC_SPECIALIST_AND_REPLAN",
+        "recipe": "RESTORE_EXACT_SOURCE_REVIEWED_BOUNDED_JAVASCRIPT_RECIPE",
+        "request": "REPAIR_EXACT_HUMAN_REVIEWED_BOUNDED_JAVASCRIPT_REQUEST"
+      },
+      "gaps": {
+        "specialist": "code.specialist.javascript.application-logic.exact-lane",
+        "recipe": "capability.recipe.pure-json-transform.exact",
+        "request": "capability.build-request.code-module.exact"
+      },
+      "evidence": {"visualBehavior": "NOT_APPLICABLE", "requiredKinds": ["DETERMINISTIC_BEHAVIOR", "STATIC_STRUCTURE"]},
+      "boundary": {"authority": "NONE", "permissions": [], "networkDomains": [], "workspaceRead": false, "workspaceWrite": false, "candidateExecution": false, "install": false, "integrate": false, "publish": false, "promote": false, "canon": false},
+      "profileDigest": "sha256:90130041a3e73d38b913c0d1c21caa59938de083c22c7ba6a45f99bd568f153c"
+    },
+    {
+      "schema": "axm.code-specialist-build-profile/v1",
+      "id": "code-family.bounded-record-query",
+      "version": "1.0.0",
+      "status": "TEST",
+      "mode": "ONE_EXACT_JAVASCRIPT_RECORD_QUERY_SPECIALIST",
+      "specialistOrganRef": {
+        "id": "organ.code.application-logic",
+        "schema": "axm.code-specialist-organ-profile/v1",
+        "version": "1.0.0",
+        "sha256": "sha256:db17f57a04b3c70c9d54ed46042eca8e8780013e4c4f0dc5164c932a5ff29258"
+      },
+      "languageIds": ["javascript"],
+      "capability": {
+        "family": "record-query",
+        "recipeRef": {
+          "id": "bounded-record-query",
+          "version": "0.1.0",
+          "digest": "sha256:6e947f83cdd83775d1182165fc67f8797c56497875de94d31054febff318f69a",
+          "builderId": "bounded-record-query-v1",
+          "builderDigest": "sha256:501e7ac2c984beec72a99dddfb576cd0d6b2899787d4a19881a59613e0f2b973",
+          "capabilityKind": "HAND"
+        }
+      },
+      "exampleArtifactId": "javascript-record-query",
+      "gates": {
+        "specialist": "SELECT_EXACT_JAVASCRIPT_RECORD_QUERY_SPECIALIST_AND_REPLAN",
+        "recipe": "RESTORE_EXACT_SOURCE_REVIEWED_BOUNDED_RECORD_QUERY_RECIPE",
+        "request": "REPAIR_EXACT_HUMAN_REVIEWED_RECORD_QUERY_REQUEST"
+      },
+      "gaps": {
+        "specialist": "code.specialist.javascript.application-logic.exact-record-query-lane",
+        "recipe": "capability.recipe.bounded-record-query.exact",
+        "request": "capability.build-request.record-query.exact"
+      },
+      "evidence": {"visualBehavior": "NOT_APPLICABLE", "requiredKinds": ["DETERMINISTIC_BEHAVIOR", "STATIC_STRUCTURE"]},
+      "boundary": {"authority": "NONE", "permissions": [], "networkDomains": [], "workspaceRead": false, "workspaceWrite": false, "candidateExecution": false, "install": false, "integrate": false, "publish": false, "promote": false, "canon": false},
+      "profileDigest": "sha256:2eaf846070b5673852a8af204c38c61adcce7804de41f4f6acefaddb678d1cc3"
+    },
+    {
+      "schema": "axm.code-specialist-build-profile/v1",
+      "id": "code-family.closed-object-contract-adapter",
+      "version": "1.0.0",
+      "status": "TEST",
+      "mode": "ONE_EXACT_JAVASCRIPT_OBJECT_CONTRACT_ADAPTER_SPECIALIST",
+      "specialistOrganRef": {
+        "id": "organ.code.application-logic",
+        "schema": "axm.code-specialist-organ-profile/v1",
+        "version": "1.0.0",
+        "sha256": "sha256:db17f57a04b3c70c9d54ed46042eca8e8780013e4c4f0dc5164c932a5ff29258"
+      },
+      "languageIds": ["javascript"],
+      "capability": {
+        "family": "contract-adapter",
+        "recipeRef": {
+          "id": "closed-object-contract-adapter",
+          "version": "0.2.0",
+          "digest": "sha256:6b324dfba5162dd6a588803d2539fa6cf16013b580569d8f99d51d5f1895eef8",
+          "builderId": "closed-object-contract-adapter-v2",
+          "builderDigest": "sha256:2b60372be00c2393b09a5f5d6543faf46c7a5064d6482036ecccc95e8317af23",
+          "capabilityKind": "HAND"
+        }
+      },
+      "exampleArtifactId": "javascript-contract-adapter",
+      "gates": {
+        "specialist": "SELECT_EXACT_JAVASCRIPT_CONTRACT_ADAPTER_SPECIALIST_AND_REPLAN",
+        "recipe": "RESTORE_EXACT_SOURCE_REVIEWED_CLOSED_OBJECT_ADAPTER_RECIPE",
+        "request": "REPAIR_EXACT_HUMAN_REVIEWED_CLOSED_OBJECT_ADAPTER_REQUEST"
+      },
+      "gaps": {
+        "specialist": "code.specialist.javascript.contract-adapter.exact-lane",
+        "recipe": "capability.recipe.closed-object-contract-adapter.exact",
+        "request": "capability.build-request.contract-adapter.exact"
+      },
+      "evidence": {"visualBehavior": "NOT_APPLICABLE", "requiredKinds": ["DETERMINISTIC_BEHAVIOR", "STATIC_STRUCTURE"]},
+      "boundary": {"authority": "NONE", "permissions": [], "networkDomains": [], "workspaceRead": false, "workspaceWrite": false, "candidateExecution": false, "install": false, "integrate": false, "publish": false, "promote": false, "canon": false},
+      "profileDigest": "sha256:12e9198ecb5ea08ad06e6d54a2d0f634c8e640483608f60fee54d054e60fd555"
+    },
+    {
+      "schema": "axm.code-specialist-build-profile/v1",
+      "id": "code-family.json-schema-validator",
+      "version": "1.0.0",
+      "status": "TEST",
+      "mode": "ONE_EXACT_DATA_SCHEMA_SPECIALIST",
+      "specialistOrganRef": {
+        "id": "organ.code.data-schema",
+        "schema": "axm.code-specialist-organ-profile/v1",
+        "version": "1.0.0",
+        "sha256": "sha256:ae7451d34432ee82f347a01a163561c4c7f74b0c312493bc16f6971169972969"
+      },
+      "languageIds": ["json"],
+      "capability": {
+        "family": "schema-validation",
+        "recipeRef": {
+          "id": "closed-json-schema-validator",
+          "version": "0.1.0",
+          "digest": "sha256:8840621b497fda2296a370c220de52a6e18147bf5562a0ff1e050965ec454b23",
+          "builderId": "closed-json-schema-validator-v1",
+          "builderDigest": "sha256:d5bbf6fc6c4219fd90987b7b458c2d396ce5d5c421f06c8763b85338e40c38a0",
+          "capabilityKind": "HAND"
+        }
+      },
+      "exampleArtifactId": "game-schema",
+      "gates": {
+        "specialist": "SELECT_EXACT_DATA_SCHEMA_SPECIALIST_AND_REPLAN",
+        "recipe": "RESTORE_EXACT_SOURCE_REVIEWED_SCHEMA_VALIDATOR_RECIPE",
+        "request": "REPAIR_EXACT_HUMAN_REVIEWED_SCHEMA_VALIDATOR_REQUEST"
+      },
+      "gaps": {
+        "specialist": "code.specialist.data-schema.exact-lane",
+        "recipe": "capability.recipe.closed-json-schema-validator.exact",
+        "request": "capability.build-request.data-schema.exact"
+      },
+      "evidence": {"visualBehavior": "NOT_APPLICABLE", "requiredKinds": ["DETERMINISTIC_BEHAVIOR", "STATIC_STRUCTURE"]},
+      "boundary": {"authority": "NONE", "permissions": [], "networkDomains": [], "workspaceRead": false, "workspaceWrite": false, "candidateExecution": false, "install": false, "integrate": false, "publish": false, "promote": false, "canon": false},
+      "profileDigest": "sha256:f1523fc6299d850259eb88ceb4213e4b005b2c1bd96118e479f6cabd68e4c405"
+    },
+    {
+      "schema": "axm.code-specialist-build-profile/v1",
+      "id": "code-family.static-html-page",
+      "version": "1.0.0",
+      "status": "TEST",
+      "mode": "ONE_EXACT_MARKUP_STRUCTURE_SPECIALIST",
+      "specialistOrganRef": {
+        "id": "organ.code.markup-structure",
+        "schema": "axm.code-specialist-organ-profile/v1",
+        "version": "1.0.0",
+        "sha256": "sha256:0e2ae439685d68c6694a5a613eb73d4387ef4d17754e5e1f563df64d86a510af"
+      },
+      "languageIds": ["html"],
+      "capability": {
+        "family": "markup-creation",
+        "recipeRef": {
+          "id": "static-accessible-html-page",
+          "version": "0.1.0",
+          "digest": "sha256:e5216430a135f44927364f3beb9bd7825f0aa2e4b5410be6e9cf3cc5c6a28417",
+          "builderId": "static-accessible-html-page-v1",
+          "builderDigest": "sha256:ca938e6fe3b7635c4fe30b00c1fc13edb9a875257cabdcce1c487d35640aa122",
+          "capabilityKind": "HAND"
+        }
+      },
+      "exampleArtifactId": "game-index",
+      "gates": {
+        "specialist": "SELECT_EXACT_MARKUP_STRUCTURE_SPECIALIST_AND_REPLAN",
+        "recipe": "RESTORE_EXACT_SOURCE_REVIEWED_HTML_PAGE_RECIPE",
+        "request": "REPAIR_EXACT_HUMAN_REVIEWED_HTML_PAGE_REQUEST"
+      },
+      "gaps": {
+        "specialist": "code.specialist.markup-structure.exact-lane",
+        "recipe": "capability.recipe.static-accessible-html-page.exact",
+        "request": "capability.build-request.markup-structure.exact"
+      },
+      "evidence": {"visualBehavior": "UNKNOWN", "requiredKinds": ["INTERACTION_JOURNEY", "STATIC_STRUCTURE", "VISUAL_APPEARANCE"]},
+      "boundary": {"authority": "NONE", "permissions": [], "networkDomains": [], "workspaceRead": false, "workspaceWrite": false, "candidateExecution": false, "install": false, "integrate": false, "publish": false, "promote": false, "canon": false},
+      "profileDigest": "sha256:6937f9925297f8e898ce8ec0930c2f1a3b47b6645c974d77ab12e7c30a84008e"
+    },
+    {
+      "schema": "axm.code-specialist-build-profile/v1",
+      "id": "code-family.bounded-python-record-transform",
+      "version": "1.0.0",
+      "status": "TEST",
+      "mode": "ONE_EXACT_PYTHON_APPLICATION_LOGIC_SPECIALIST",
+      "specialistOrganRef": {
+        "id": "organ.code.application-logic",
+        "schema": "axm.code-specialist-organ-profile/v1",
+        "version": "1.0.0",
+        "sha256": "sha256:db17f57a04b3c70c9d54ed46042eca8e8780013e4c4f0dc5164c932a5ff29258"
+      },
+      "languageIds": ["python"],
+      "capability": {
+        "family": "python-module",
+        "recipeRef": {
+          "id": "bounded-python-record-transform",
+          "version": "0.1.0",
+          "digest": "sha256:82d04d8b78e44978f4d5a42c8c7fb62b944279c89dd498f1268d3cfa97bc5637",
+          "builderId": "bounded-python-record-transform-v1",
+          "builderDigest": "sha256:ad281fa5a1381de86d71e1c4a2ffbad30ee20683cb705b4a09d778464ea5227c",
+          "capabilityKind": "HAND"
+        }
+      },
+      "exampleArtifactId": "python-transform",
+      "gates": {
+        "specialist": "SELECT_EXACT_PYTHON_APPLICATION_LOGIC_SPECIALIST_AND_REPLAN",
+        "recipe": "RESTORE_EXACT_SOURCE_REVIEWED_BOUNDED_PYTHON_RECIPE",
+        "request": "REPAIR_EXACT_HUMAN_REVIEWED_BOUNDED_PYTHON_REQUEST"
+      },
+      "gaps": {
+        "specialist": "code.specialist.python.application-logic.exact-lane",
+        "recipe": "capability.recipe.bounded-python-record-transform.exact",
+        "request": "capability.build-request.python-module.exact"
+      },
+      "evidence": {"visualBehavior": "NOT_APPLICABLE", "requiredKinds": ["DETERMINISTIC_BEHAVIOR", "STATIC_STRUCTURE"]},
+      "boundary": {"authority": "NONE", "permissions": [], "networkDomains": [], "workspaceRead": false, "workspaceWrite": false, "candidateExecution": false, "install": false, "integrate": false, "publish": false, "promote": false, "canon": false},
+      "profileDigest": "sha256:b4140fd2ae3b416802962b97bbb8131e4c8202c2e7dd9277a51efd6922fa4549"
+    },
+    {
+      "schema": "axm.code-specialist-build-profile/v1",
+      "id": "code-family.svg-status-badge",
+      "version": "1.0.0",
+      "status": "TEST",
+      "mode": "ONE_EXACT_SVG_MARKUP_STRUCTURE_SPECIALIST",
+      "specialistOrganRef": {
+        "id": "organ.code.markup-structure",
+        "schema": "axm.code-specialist-organ-profile/v1",
+        "version": "1.0.0",
+        "sha256": "sha256:0e2ae439685d68c6694a5a613eb73d4387ef4d17754e5e1f563df64d86a510af"
+      },
+      "languageIds": ["svg"],
+      "capability": {
+        "family": "creation-hand",
+        "recipeRef": {
+          "id": "svg-status-badge",
+          "version": "1.1.0",
+          "digest": "sha256:4ac6de7c2f7bc8be396612aa0db9301659a0a299cf5902a3af31dc27d4f286ee",
+          "builderId": "svg-status-badge-v1",
+          "builderDigest": "sha256:c6a33c681bf6f267dab1e269dfb65ab19708747d59ddf7573468ebb4d65436d8",
+          "capabilityKind": "HAND"
+        }
+      },
+      "exampleArtifactId": "status-badge",
+      "gates": {
+        "specialist": "SELECT_EXACT_SVG_MARKUP_STRUCTURE_SPECIALIST_AND_REPLAN",
+        "recipe": "RESTORE_EXACT_SOURCE_REVIEWED_SVG_STATUS_BADGE_RECIPE",
+        "request": "REPAIR_EXACT_HUMAN_REVIEWED_SVG_STATUS_BADGE_REQUEST"
+      },
+      "gaps": {
+        "specialist": "code.specialist.svg.markup-structure.exact-lane",
+        "recipe": "capability.recipe.svg-status-badge.exact",
+        "request": "capability.build-request.svg-status-badge.exact"
+      },
+      "evidence": {"visualBehavior": "UNKNOWN", "requiredKinds": ["ACCESSIBILITY", "STATIC_STRUCTURE", "VISUAL_APPEARANCE"]},
+      "boundary": {"authority": "NONE", "permissions": [], "networkDomains": [], "workspaceRead": false, "workspaceWrite": false, "candidateExecution": false, "install": false, "integrate": false, "publish": false, "promote": false, "canon": false},
+      "profileDigest": "sha256:e40aad951f90f81b1dfe3667ddbb991a8c124165fe0a03d1cb6841f100ad2226"
+    }
+  ],
+  "truth": {
+    "completeCodeFamilyUniverseClaimed": false,
+    "profileProvesRuntime": false,
+    "profileGrantsAuthority": false,
+    "automaticRegistration": false,
+    "automaticRecipeAdmission": false,
+    "automaticInstall": false,
+    "mikeFinalMergeGateRequired": true
+  },
+  "catalogDigest": "sha256:abf75103ecf04050efc312b87fee62877a882083af2692edd890f59ba9d76d96"
+}

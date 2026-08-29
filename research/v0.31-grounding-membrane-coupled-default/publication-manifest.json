@@ -1,0 +1,69 @@
+{
+  "authority": "NONE",
+  "canon": false,
+  "challenge": "GROUNDING_SHOULD_DAMP_NOISE_WITHOUT_DAMPING_REALITY",
+  "defaultArchitecture": "COUPLED_MEMBRANE_FALLBACK_D",
+  "fallbackArchitecture": "SEQUENTIAL_A",
+  "files": {
+    "9032-axm-grounding-should-damp-noise-without-damping-reality.md": {
+      "bytes": 3249,
+      "sha256": "ca946b2671d12f3f1b983048b04d16e122e4c696778a346dddde39d7d3d839c9"
+    },
+    "ARCHITECTURE.md": {
+      "bytes": 5803,
+      "sha256": "14e6a3a5558e931c1aef63ed879cbadb1ca8f7da4b5e58597ab84f6f0cbf256d"
+    },
+    "BENCHMARK-SUMMARY.md": {
+      "bytes": 2217,
+      "sha256": "a49158aa142b9dfdb52927b5192083baebe96f8eb80aefcb0caaab3a619bb268"
+    },
+    "README.md": {
+      "bytes": 7152,
+      "sha256": "bc9dc8bdb1402a678a64ec96bcdd609b874de683a465611e45bd7000213b26cd"
+    },
+    "heldout-seed-receipt.json": {
+      "bytes": 438,
+      "sha256": "e694169252c2ed1f922228435ee19d548ff9e6593ca2feb9029b8ebb1a18160a"
+    },
+    "ledger-root.json": {
+      "bytes": 126,
+      "sha256": "ad634b58a0efa55f01511d598d3808d99475351a2b5966d2d57423d30ec63a50"
+    },
+    "materialize_probe.py": {
+      "bytes": 522,
+      "sha256": "475b3411578bf6813670df939a9b312436271f0bf48bcaa8d24f3afc7ce486bd"
+    },
+    "preheldout-freeze.json": {
+      "bytes": 839,
+      "sha256": "4711a9d632e2e7388f54ba8201d5ee138bc5b2721ce5418038f95f2c1cd68e77"
+    },
+    "probe.py.gz": {
+      "bytes": 6703,
+      "sha256": "28800e8f236fd6ad258562dbab09c791521b725910528fd3f4f72a9b1289f763"
+    },
+    "publication-evidence.json": {
+      "bytes": 7297,
+      "sha256": "322185c02b866e7b272753743804f5a16335e231dc2c425465848f024201f31c"
+    },
+    "repeatability.json": {
+      "bytes": 43,
+      "sha256": "27dcadb32e8369023bfed40b4c3114401715be39b3adcae31df5ad72a68ea8ad"
+    },
+    "return-packet.json": {
+      "bytes": 851,
+      "sha256": "bbf62f5c3145c44f583cdf654dd6e11ad26b69a25ebb5c75bd13c722aec33aac"
+    },
+    "scenarios.json": {
+      "bytes": 12436,
+      "sha256": "ae6481f700cc1a719ef5cd9fba47ae684206b7a135ecc6d7eededd70f7bdb236"
+    },
+    "test_probe.py": {
+      "bytes": 5303,
+      "sha256": "9d93365a2b88d15a6d0eab52d7e613a02e7fb077ab100d65e209f743f4c121eb"
+    }
+  },
+  "policyDigest": "b55caa2f318b465093e23d24eec867856ff87b40426672b8939cbb88b1da3dc1",
+  "schema": "axm.v0.31-publication-manifest/v1",
+  "sourceMaterializesToSha256": "d74ad78a111b5a39a2d80fcf3b5f22644de4e92b91b78eb111e17fc667b10e28",
+  "status": "EXPERIMENTAL_BRANCH_ONLY"
+}

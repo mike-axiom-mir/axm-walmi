@@ -1,0 +1,25 @@
+{
+  "schema": "axm.platform-hermes-donor-receipt/v0.22",
+  "repository": "mike-axiom-mir/axm-collaboration-platform",
+  "pullRequest": 48,
+  "head": "7290dacf4fe2bb9a502f6a339fc53ecdbe0d420b",
+  "runtimeGate": {
+    "workflow": "Hermes AXM Runtime Gate",
+    "runId": 32672295737,
+    "conclusion": "success"
+  },
+  "files": [
+    {"path": "tools/hermes/axm/axm_gate.py", "blob": "abefcfc227353b02e615215326df099883d478c7", "role": "external runtime authority gate; reference only"},
+    {"path": "tools/hermes/axm/runtime-policy.js", "blob": "92cec223b7a0e7713c2771fa21e3fb9822d0794b", "role": "runtime policy and provider credential guard; reference only"},
+    {"path": "tools/hermes/axm/axm_receipt.py", "blob": "774015cbac1c50f78aa270ad8ed04d90520a83e5", "role": "metadata-only tool completion receipt contract"},
+    {"path": "tools/hermes/axm/axm_provider_receipt.py", "blob": "91c8101eae290f9fefc7ed02e9152daf93136302", "role": "metadata-only provider boundary receipt contract"},
+    {"path": "tools/hermes/axm/axm_session_event.py", "blob": "8ed2b418cf99b3a8d52439dc4e738161268723e2", "role": "content-free session outcome event contract"},
+    {"path": "tools/hermes/axm/run-ledger.js", "blob": "c8a956976e1871263cd3639608808a1138c7711e", "role": "run manifest and candidate-only Return Packet aggregation"},
+    {"path": "tools/hermes/module.contract.json", "blob": "138dcb038361daed93a5bd7abf1c06785572e641", "role": "typed module provides/consumes/refusal boundary"}
+  ],
+  "intakeMode": "CONTRACT_AND_WITNESS_EVIDENCE_ONLY",
+  "runtimeCopied": false,
+  "runtimeExecutedByWaldo": false,
+  "automaticPromotion": false,
+  "canonChanged": false
+}

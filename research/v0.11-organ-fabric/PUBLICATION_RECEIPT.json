@@ -1,0 +1,10 @@
+{
+  "schema": "axm.waldo-mirror.v0.11-runtime-publication/v0.1",
+  "status": "PUBLIC_AXM_RESEARCH_EXPERIMENTAL",
+  "sourcePacketSha256": "sha256:8f4688db3abcba988011f2a2f36f172a09c3d848e57a2da54db90abd2669e634",
+  "frozenConceptSha256": "sha256:9779b14236b2717ce1e8694adbacfd95c07d3afbacea10d3e4255cb52950856a",
+  "runtimeReceiptSha256": "sha256:0e110c9e0c56c72b52410db87a4ec019de140a31face79d7e7023f286d2283ec",
+  "waldoWitnessSha256": "2235bcfbdc1beefd4b3ec3835e1ad96eaf50433f58a393e3c1d102ad0c644db9",
+  "observed": {"focusedDonorChecksPassed":151,"proposals":4,"candidates":12,"failures":0,"selections":0,"archiveObjects":12,"archiveEvents":12,"archiveRoundTripVerified":true},
+  "authority": "NONE"
+}

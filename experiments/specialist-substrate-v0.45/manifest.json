@@ -1,0 +1,18 @@
+{
+  "schema": "axm.waldo.specialist-substrate/v0.45",
+  "status": "EXPERIMENTAL_TEST",
+  "waldoParent": "6b87712ab92c5eefcce71c664058a669e910b2e0",
+  "sourceRepository": "mike-axiom-mir/axm-collaboration-platform",
+  "sourceCommit": "386736aaae3993089dfaf970cf2360894959e3c0",
+  "sourceFileCount": 7,
+  "alreadyVendoredExact": 6,
+  "newClosureFiles": 1,
+  "runtimeDependencyOnAXMRepository": false,
+  "modelCoreReplaceable": true,
+  "specialistIdentityEffect": "OVERLAY_ONLY",
+  "specialistMemoryEffect": "CANDIDATE_ONLY",
+  "automaticCheckout": false,
+  "automaticSkillActivation": false,
+  "rankingIsEvidence": false,
+  "authority": "NONE"
+}

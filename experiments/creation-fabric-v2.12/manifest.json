@@ -1,0 +1,24 @@
+{
+  "schema": "axm.waldo.creation-fabric-vendor/v0.42",
+  "status": "EXPERIMENTAL_TEST",
+  "sourceRepository": "mike-axiom-mir/axm-collaboration-platform",
+  "sourcePullRequest": 62,
+  "sourceReviewHead": "386736aaae3993089dfaf970cf2360894959e3c0",
+  "polishedTechnicalSource": "011bc5a54347d3181d075255f23fd40ee436db58",
+  "donorArchiveSha256": "beed1a9123d7411bfc9f87be8730c2f0368206f546519405eff99dc6b0cb6f8f",
+  "rawDonorTreeSha256": "866996b57036255eb2b72e8e021d6d3e2110d392053eb0963085f608e3100b1e",
+  "vendoredNormalizedTreeSha256": "3d3c11c279effa7f8dfa1ba48570a8e2c39d9c9a232ef584b1c4ebeca4ddcbae",
+  "donorCRLFFiles": 83,
+  "vendoredFileCount": 1163,
+  "runtimeDependencyOnAXMRepository": false,
+  "inventory": {
+    "languageOrgans": 102,
+    "grammarProfiles": 102,
+    "specialistEyes": 102,
+    "machineCheatcodes": 102,
+    "machineKeyboards": 102,
+    "machineTemplates": 102
+  },
+  "promotionBoundary": "WALDO v0.41 evidence-reviewed experience",
+  "authority": "NONE"
+}

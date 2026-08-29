@@ -1,0 +1,43 @@
+kind: waldo-ingest-recipe
+schema: 1
+title: AXM/Mir Honest Positive Ground v0.39
+description: Human-directed synthetic instruction-response seed with explicit provenance, anti-sycophancy cases, and visible positive-ground roots.
+license: Apache-2.0
+source:
+  name: axm-mir-honest-positive-ground
+  version: v0.39-2026-08-24
+  url: https://github.com/mike-axiom-mir/waldo-axm-mirror-research/tree/axm/mirror-waldo-experiment-v0.39-honest-positive-ground/research/v0.39-honest-positive-ground
+  category: synthetic
+  license_evidence:
+    declaration: Project-authored examples released under the repository Apache-2.0 license.
+  content:
+    types: [instruction-response-pairs]
+    languages: [en]
+    selection: All 32 sealed positive targets after strict v0.39 provenance and coverage verification.
+    personal_data: "no"
+    copyrighted: "no"
+    machine_generated: "yes"
+  acquisition:
+    basis: Explicit user request for a constructive starting-ground curriculum, implemented as a public synthetic research artifact.
+    synthetic:
+      model: OpenAI Codex
+      version: work-session-2026-08-24
+      description: Human-directed synthetic AXM/WALDO curriculum; simulated and curated, not observed experience.
+input:
+  format: jsonl
+  type: chat-messages
+  fields:
+    id: id
+    meta:
+      data_class: dataClass
+      synthetic: synthetic
+      roots: rootIds[]
+      challenge_kind: challengeKind
+      evidence_signal: evidenceSignal
+      source_record_sha256: recordSha256
+  messages:
+    role: messages[].role
+    content: messages[].content
+steps:
+  - name: copy-positive-ground
+    exec: ./copy-ground.sh

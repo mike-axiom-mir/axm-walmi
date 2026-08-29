@@ -1,0 +1,10 @@
+{
+  "authority": "NONE",
+  "count": 192,
+  "disjointFromDevelopment": true,
+  "endInclusive": 34392,
+  "introducedAfterFreezeSha256": "7675924a1fcc9834862f73b5a62ee2cd91e968149d7f13b0637e7d8288e744da",
+  "schema": "axm.waldo.heldout-seed-receipt/v0.34",
+  "seedListSha256": "f399a9b005b2d213b5257caa72ee2b30d1192a184b2570d8a14166196b214960",
+  "start": 34201
+}

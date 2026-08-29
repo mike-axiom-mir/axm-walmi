@@ -1,0 +1,185 @@
+{
+  "schema": "axm.waldo-witness.upstream-body-alignment/v0.1",
+  "status": "IMPLEMENTED_AND_LOCALLY_VERIFIED",
+  "observed_at": "2026-08-16T06:15:19+02:00",
+  "upstream_repository": "openwaldo/waldo",
+  "fork_repository": "mike-axiom-mir/waldo-axm-mirror-research",
+  "organ_map": "research/axm-waldo-witness-organ-map.v0.6.json",
+  "stack": {
+    "base_branch": "axm/mirror-waldo-experiment-v0.5",
+    "base_head_sha": "4031bf8a6d0e684bc801f988c5722e263140b824",
+    "work_branch": "axm/mirror-waldo-experiment-v0.6",
+    "fork_main_sha": "ba18aef1af3d0157a29939411c8edb2090a1f9c4",
+    "fork_main_changed": false,
+    "upstream_main_changed": false
+  },
+  "upstream": {
+    "previous_reviewed_head_sha": "4944072bc3f2fcd5d98d40915d25c7e1535d4877",
+    "selected_head_sha": "451e029abd1f74fd77625984526a1980c48fb477",
+    "merge_commit_sha": "d0f3e6ffae5974fec1c1aeb610a24618c1ac49ef",
+    "merge_parents": [
+      "4031bf8a6d0e684bc801f988c5722e263140b824",
+      "451e029abd1f74fd77625984526a1980c48fb477"
+    ],
+    "delta_commit_count": 10,
+    "changed_path_count": 65,
+    "additions": 2560,
+    "deletions": 180,
+    "merge_conflicts": [
+      {
+        "path": "docs/adr/README.md",
+        "resolution": "retain the upstream ADR 0052-0055 entries and the downstream AXM ADR 9001-9009 entries"
+      }
+    ]
+  },
+  "commits": [
+    {
+      "sha": "0e9077b017706d66e48b764c8ad25ef2098d8850",
+      "subject": "Derive the expected worker revision in the lifecycle tests"
+    },
+    {
+      "sha": "5146e7c6fa569d9f7f4da20112dd75a1006179ad",
+      "subject": "Verify the training artifact at the live evaluation precision"
+    },
+    {
+      "sha": "f94cd0ff9a114fbc42af209414b2d3fed0279d17",
+      "subject": "Add row-level email assessment filters"
+    },
+    {
+      "sha": "82289f356b8527612a5d70f6a4f256f9b816fb28",
+      "subject": "Merge pull request #2 from damenknight/fix-artifact-verification-precision"
+    },
+    {
+      "sha": "8b01034b4c951df074c4915359bb79b77dcf7618",
+      "subject": "Add generic row quality assessments"
+    },
+    {
+      "sha": "d8e672ac6d04c64e1e2366d2a40e099b9cd8fdb6",
+      "subject": "Add main-content row classification"
+    },
+    {
+      "sha": "3e449a37f4d738a0342a7cd953d2ec332fafb693",
+      "subject": "Add conversational model compose"
+    },
+    {
+      "sha": "f917c719af7dd908643c852e8bc8cdf5dc84d42e",
+      "subject": "Keep conversation compose compatible with published index"
+    },
+    {
+      "sha": "bcd11eab8321b63b4b1829e339b0333d6404ed06",
+      "subject": "Warn and retain unassessed filtered rows"
+    },
+    {
+      "sha": "451e029abd1f74fd77625984526a1980c48fb477",
+      "subject": "Redact sensitive identifiers during ingestion"
+    }
+  ],
+  "source_receipts": [
+    {
+      "path": "docs/adr/0052-row-level-content-assessment.md",
+      "git_blob": "7cb99ba92d13fb23c96459789d07d3b8ab0a653f",
+      "sha256": "71c21977a35eae92ca5d425b5dcd51602d1b0fad06112d331188a447cc1c37fc"
+    },
+    {
+      "path": "docs/adr/0053-main-content-classification.md",
+      "git_blob": "12a4b6e4462c1acb93a99123051c46d4231d9749",
+      "sha256": "72b66a8eeed023ab6c59450dca4a2ff16f83c2ee9bb4b38159298a8217167504"
+    },
+    {
+      "path": "docs/adr/0054-unassessed-filter-compatibility.md",
+      "git_blob": "f6e4a7a6c5a018c9000b4a5940f70103e6a2246c",
+      "sha256": "92a5948f9e509777866cf5d42bbd97ecd19fa4884734a626bf8d4995a5cdb8c6"
+    },
+    {
+      "path": "docs/adr/0055-automatic-privacy-redaction.md",
+      "git_blob": "4b046e89b59ff1af7fc94c55e78fed264dcdb03c",
+      "sha256": "20f1205639679443148a75cb25ab2ffb3d53def1a6f49a70e98154c3dc9ef326"
+    },
+    {
+      "path": "internal/corpus/bom.go",
+      "git_blob": "1b20e4206b2ec4a9fd63c5af8dcdb807a00f6fd0",
+      "sha256": "f54dab4fb7021189ac4de536fad8c3c40eb3d38b3934e6339298167356a6d886"
+    },
+    {
+      "path": "internal/corpus/record_filter.go",
+      "git_blob": "cb4381881563d199357b5e5d9505de43c79850cd",
+      "sha256": "53ecfe665657200fc8a8ab97f3e5b5dd7751fe98d146ec815041fe1a8b24ef14"
+    },
+    {
+      "path": "internal/ingest/privacy_redaction.go",
+      "git_blob": "352db0db0ce6a99aaeba8319b8a72e6c23bf35dc",
+      "sha256": "35c1b35e3de76619d188196cf61a6d81ad17a77970da5fbe6219efc34991ad74"
+    },
+    {
+      "path": "internal/shard/text_parquet.go",
+      "git_blob": "04f373a9d3bd3e173196c6ae4c1ae68842be0eed",
+      "sha256": "0df9c9ca23f5ee2bb20a3130de0b3ede5423ce1a4779ca01e5af1f5920c99be3"
+    },
+    {
+      "path": "composes/0004-conversation.yaml",
+      "git_blob": "03bb64b9ca662200b86285dae7b85dce28f942a9",
+      "sha256": "802514ddc2ce6182e9c993c77d210f6a8e3908ecc8095477e68ed0935d5c227d"
+    }
+  ],
+  "body_changes_used_by_the_clone": [
+    "current corpus BOM identity includes exact global and per-corpus record-filter policy",
+    "schema-2 canonical rows carry deterministic content-assessment and main-content facts",
+    "mixed schema-1/schema-2 assessment filters retain unassessed legacy rows with an operator warning",
+    "waldo/privacy-redaction-v1 runs before hashing, deduplication, measurement, assessment, and canonical encoding",
+    "writer v9 redaction policy and counts propagate through shard, embedded BOM, manifest, and corpus BOM evidence",
+    "conversation compose and artifact-precision fixes remain part of the merged OpenWALDO body even though they require no AXM-specific organ"
+  ],
+  "downstream_alignment": {
+    "corpus_lens_current_schema": "axm.waldo-witness.corpus-evidence-lens/v0.2",
+    "legacy_receipt_schema_accepted": "axm.waldo-witness.corpus-evidence-lens/v0.1",
+    "current_record_schema": 2,
+    "current_writer_recipe": "parquet-go/0.30.1/zstd-6/page-1m/rg-64m/v9-privacy-redaction",
+    "compatible_writer_recipes": [
+      "parquet-go/0.30.1/zstd-6/page-1m/rg-64m/v8-main-content",
+      "parquet-go/0.30.1/zstd-6/page-1m/rg-64m/v7-content-assessment",
+      "parquet-go/0.30.1/zstd-6/page-1m/rg-64m/v5-bom",
+      "parquet-go/0.30.1/zstd-6/page-1m/rg-64m/v4"
+    ],
+    "canonical_digest_compatibility_test": "construct and validate a current upstream corpus.BOM, then require exact digest equality from LensCorpusBOM",
+    "capability_catalog_version": "corpus.evidence.lens/v0.2",
+    "digest_bound_examples_resealed": true
+  },
+  "implementation_verification": {
+    "status": "PASS_WITH_HARDWARE_SKIPS",
+    "go_version": "go1.25.0",
+    "focused_go_test": "PASS",
+    "full_go_test": "PASS_GO_TEST_ALL_COUNT_1",
+    "go_vet": "PASS_GO_VET_ALL",
+    "go_race": "PASS_INTERNAL_AXMMIRROR_AND_CMD_WALDO_AXM_MIRROR",
+    "repository_gate": "PASS_TESTING_ALL_SH",
+    "repository_gate_exercised": [
+      "Go unit and integration packages",
+      "Go static analysis",
+      "direct ingestion lifecycle",
+      "ingest-recipe lifecycle",
+      "complete fake-model lifecycle"
+    ],
+    "environment_skips": [
+      "real MLX model lifecycle: requires Apple Silicon",
+      "real PyTorch model lifecycle: no usable PyTorch Python runtime",
+      "real TorchTitan model lifecycle: no usable GPU TorchTitan runtime",
+      "multi-node TorchTitan lifecycle: WALDO_E2E_MULTINODE not enabled"
+    ]
+  },
+  "boundaries": [
+    "this receipt observes one exact upstream Git head and one downstream merge; it is not a floating claim about upstream main",
+    "redaction evidence does not establish anonymity, GDPR compliance, absence of indirect identifiers, or detector completeness",
+    "content assessments are deterministic classifier facts, not conclusions about meaning, quality, safety, or legal usability",
+    "filter identity does not prove later trainer consumption or source-to-output causality",
+    "the merge does not import the Workshop, platform authority, provider access, automatic repair, promotion, or CANON"
+  ],
+  "authority": {
+    "tool_execution": false,
+    "training": false,
+    "provider_selection": false,
+    "skill_installation": false,
+    "promotion": false,
+    "canon": false,
+    "world_action": false
+  }
+}

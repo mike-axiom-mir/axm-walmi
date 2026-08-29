@@ -1,0 +1,57 @@
+{
+  "schema": "axm.waldo.real-model-ab-contract/v0.36",
+  "challenge": "A_RUNTIME_SEAM_IS_NOT_A_QUALITY_WIN",
+  "status": "EXPERIMENTAL_HOST_REQUIRED",
+  "authority": "NONE",
+  "parent": {
+    "branch": "axm/mirror-waldo-experiment-v0.35-live-neural-grounding-runtime",
+    "checkpoint": "1e555aa33a026315d5e4d7c55b50709d624741eb"
+  },
+  "runtimeUnderTest": "v0.35",
+  "couplingGranularity": "RESPONSE_BOUNDARY",
+  "modes": [
+    {
+      "id": "RAW_WALDO",
+      "environment": {
+        "WALDO_AXM_HYBRID": "raw"
+      }
+    },
+    {
+      "id": "HYBRID_V035",
+      "environment": {
+        "WALDO_AXM_HYBRID": "hybrid",
+        "WALDO_AXM_GROUNDING_FILE": "CASE_BOUND",
+        "WALDO_AXM_HYBRID_TRACE": "RUN_BOUND"
+      }
+    }
+  ],
+  "mustMatchAcrossModes": [
+    "waldoBinary",
+    "model",
+    "modelSummary",
+    "modelBOM",
+    "prompt",
+    "seed",
+    "temperature",
+    "topP",
+    "maxTokens"
+  ],
+  "antiOverfit": {
+    "developmentBeforeHeldout": true,
+    "freezeRunner": true,
+    "freezeContract": true,
+    "freezeScoringPolicy": true,
+    "freezeModelIdentity": true,
+    "freezeGenerationOptions": true,
+    "heldoutCasesPresentAtDevelopmentFreeze": 0,
+    "primaryPolicyMayChangeAfterHeldoutInspection": false
+  },
+  "claimBoundary": {
+    "contentCorrectionImplemented": false,
+    "templateAwareGroundingInjectionImplemented": false,
+    "tokenLevelCouplingImplemented": false,
+    "holdsAreCorrectAnswers": false,
+    "qualityWinMayBeClaimedBeforeHeldout": false,
+    "permissionExecutionPromotionCanon": false
+  }
+}

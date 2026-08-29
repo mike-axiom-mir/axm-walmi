@@ -1,0 +1,14 @@
+{
+  "aggregateDigest": "c35525410dc8b52df4b5b57bf7f895bab2bf48e0fb6041eb649c27ab953f61fc",
+  "canon": false,
+  "challenge": "CHANGE_POINT_DETECTION_IS_NOT_REACTION_AUTHORITY",
+  "detectorAuthority": "NONE",
+  "heldoutScenarioCount": 96,
+  "reactionGateAuthority": "NONE",
+  "repeatability": {
+    "allRepeatable": true,
+    "ledgerValidationErrors": []
+  },
+  "schema": "axm.return-packet/v0.29",
+  "status": "OBSERVED_SIMULATOR_RESULT"
+}

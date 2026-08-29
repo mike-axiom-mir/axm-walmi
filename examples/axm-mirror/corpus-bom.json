@@ -1,0 +1,95 @@
+{
+  "kind": "openwaldo-bom",
+  "schema": 1,
+  "subject": "corpus",
+  "index": {
+    "remote": "https://example.invalid/waldo-index.git",
+    "commit": "dddddddddddddddddddddddddddddddddddddddd"
+  },
+  "paths": [
+    "research/example-corpus"
+  ],
+  "license_policy": {
+    "include": [
+      "CC0-*"
+    ]
+  },
+  "manifests": [
+    {
+      "path": "research/example-corpus.json",
+      "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "name": "example-corpus",
+      "title": "Example witness corpus",
+      "description": "Synthetic fixture for the fork-only WALDO Witness Mirror flow.",
+      "license": "CC0-1.0",
+      "format": "parquet",
+      "record_schema": 1,
+      "converted_by": {
+        "tool": "waldo",
+        "version": "example",
+        "profile": "text",
+        "recipe": "example/v1"
+      },
+      "sources": [
+        {
+          "name": "fixture",
+          "source": "Synthetic example records",
+          "version": "1",
+          "license": "CC0-1.0",
+          "url": "https://example.invalid/source",
+          "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        }
+      ],
+      "totals": {
+        "shards": 1,
+        "docs": 2,
+        "tokens": 8,
+        "bytes": 128
+      },
+      "licenses": {
+        "CC0-1.0": {
+          "shards": 1,
+          "docs": 2,
+          "tokens": 8,
+          "bytes": 128
+        }
+      }
+    }
+  ],
+  "shards": [
+    {
+      "manifest": "research/example-corpus.json",
+      "url": "https://example.invalid/shard.parquet",
+      "sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "format": "parquet",
+      "record_schema": 1,
+      "license": "CC0-1.0",
+      "sources": [
+        "fixture"
+      ],
+      "converted_by": {
+        "tool": "waldo",
+        "version": "example",
+        "profile": "text",
+        "recipe": "example/v1"
+      },
+      "docs": 2,
+      "tokens": 8,
+      "bytes": 128
+    }
+  ],
+  "totals": {
+    "shards": 1,
+    "docs": 2,
+    "tokens": 8,
+    "bytes": 128
+  },
+  "licenses": {
+    "CC0-1.0": {
+      "shards": 1,
+      "docs": 2,
+      "tokens": 8,
+      "bytes": 128
+    }
+  }
+}

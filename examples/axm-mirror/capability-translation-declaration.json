@@ -1,0 +1,19 @@
+{
+  "schema": "axm.waldo-witness.capability-translation-declaration/v0.1",
+  "translation_id": "synthetic-translation-none-0001",
+  "plan_sha256": "9e910bfb60f25c60d4a50a7baa32fea336eab669366deb43a2fbe871f3f3b449",
+  "provider_id": "adapter-translation-garden",
+  "input_from_schema": "axm.translation.module-call/v1",
+  "input_to_schema": "axm.translation.module-call/v1",
+  "output_from_schema": "axm.translation.module-result/v1",
+  "output_to_schema": "axm.translation.module-result/v1",
+  "mappings": [],
+  "declared_at": "2026-08-15T12:17:09Z",
+  "authority": {
+    "tool_execution": false,
+    "training": false,
+    "promotion": false,
+    "canon": false,
+    "world_action": false
+  }
+}

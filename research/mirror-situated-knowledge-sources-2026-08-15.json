@@ -1,0 +1,128 @@
+{
+  "schema": "axm.waldo-witness.knowledge-source-receipt/v0.1",
+  "status": "EXPERIMENTAL_REVIEW_SOURCE_ONLY",
+  "observed_at": "2026-08-15T11:09:07+02:00",
+  "purpose": "Pin the exact public Mirror and Workshop contracts used to reimplement WALDO-native sensory intake, skill continuity, and dual discovery stance.",
+  "platform_main": {
+    "repository": "mike-axiom-mir/axm-collaboration-platform",
+    "branch": "main",
+    "commit": "a4f99fbfc05268173458bf3fb8f3fe616919e376",
+    "sensorium": {
+      "version": "1.4.0",
+      "status": "TEST",
+      "skills": 13,
+      "executable_routes": 12,
+      "host_mediated_routes": 1,
+      "runtime_pass": 12,
+      "contract_pass": 1,
+      "canonical_source_digest": "554f8262774d35e070e7a8166e958faea3ad6b0d308a2644a7165aae20edc110",
+      "sources": [
+        {
+          "path": "shared/sensorium/canonical/sensorium.json",
+          "sha256": "bdf0ea74973ed793e39ab80b732f82f2fbe3b6f4761053a0f24c6f8eadf03a72"
+        },
+        {
+          "path": "tools/agent-tool-forge/skills/sensorium/sensorium.index.json",
+          "sha256": "92c6ccf3b4d35906dc297c04215176df1a8f4cf3af0988799365bb8084fbe7c9"
+        },
+        {
+          "path": "tools/agent-tool-forge/skills/sensorium/bundle.manifest.json",
+          "sha256": "2a059f7706cd6833bae0b4701aae7fa2b5febafc18255e36ac76251a1121eca5"
+        }
+      ],
+      "laws_reused": [
+        "perception is not permission",
+        "ephemeral raw sensory material; bounded typed receipts survive",
+        "missing adapters and stale evidence remain visible holds",
+        "automation may inventory and route but not decide permission, promotion, or novel exceptions"
+      ]
+    },
+    "backup_and_recovery": {
+      "truth": "The root backup note says whole-workspace backup is manual in v0.1. The separate Recovery Center is permissioned and preview/confirmation/safety-copy gated.",
+      "sources": [
+        {
+          "path": "backups/README.txt",
+          "sha256": "65c54a7b497b34a42f89ae171f8222ee70e7182a29496f055e023e71d10935d1"
+        },
+        {
+          "path": "tools/recovery-center/module.contract.json",
+          "sha256": "b35bb5cc957bdde610e006ad346c44421becd9b8b5ca4684a130b70f89eee138"
+        }
+      ],
+      "reuse": "manifest comparison and review-only recovery candidates; no backup bytes, restore executor, or permission surface copied"
+    }
+  },
+  "mirror_branch": {
+    "repository": "mike-axiom-mir/axm-collaboration-platform",
+    "branch": "mirror",
+    "commit": "4a3727505576c4c95198a8287dd8ce1e82619f32",
+    "ai_native_discovery": {
+      "priority": "PRIMARY",
+      "stances": [
+        "evidence",
+        "contradiction",
+        "boundary",
+        "outcome",
+        "calibration",
+        "recovery",
+        "lineage",
+        "access"
+      ],
+      "sources": [
+        {
+          "path": "kernel/seam-cell.js",
+          "sha256": "1afdc2d7f7f51a3485b93ac5c698d3ae00b7945b384fa963d5e7ce7d51cd79e1"
+        },
+        {
+          "path": "contracts/seam-report.schema.json",
+          "sha256": "c3de98e529e4025e4b5e37d16f494a6f404ac623006b6afa256ca9a224b8276f"
+        },
+        {
+          "path": "curricula/AI_NATIVE_DISCOVERY_STANCE.md",
+          "sha256": "7cc2c0f559e6b8788c393e2c6e61bc2c20659fdbdc447b2f738ed1bbe7fe34fa"
+        }
+      ]
+    },
+    "human_discovery": {
+      "priority": "SECONDARY_EXPLICIT_ADVISORY",
+      "sources": [
+        {
+          "path": "curricula/HUMAN_DISCOVERY_SKILL.md",
+          "sha256": "4e3517afd7f3ea30a77396a150feb758d73890629386aa678af07120a9e7f71f"
+        },
+        {
+          "path": "skills/human-discovery-stance/skill.json",
+          "sha256": "5973e5766967cd367a4638e4d5491d0384a0928e35b776dc137510dd3be8e491"
+        },
+        {
+          "path": "adapters/workshop/human-discovery-skill.js",
+          "sha256": "e958fd64dd6ee4c413e1fc6ef2c579da2194059461da49fe0d4adae9e2937d34"
+        }
+      ],
+      "ceilings": [
+        "may not close native seams",
+        "may not promote learning",
+        "may not grant permissions",
+        "advice requires human review"
+      ]
+    },
+    "passive_organ_archive": {
+      "status": "TEST",
+      "export_id": "03f3d0cf0802a95bb5eccc8d42fc6c4422b85a1e5d3dc0373b4f3a3c6c13ab2a",
+      "catalog_digest": "83438d8bb2fa2c16012c8ef8b0b97e8a816cf47a978cc1354595c00e79b5d6a2",
+      "current_objects": 115,
+      "reuse": "aggregate KNOWLEDGE inventory and contract patterns only",
+      "authority": "none"
+    }
+  },
+  "waldo_reimplementation": {
+    "language": "ordinary Go",
+    "imports_mirror_javascript": false,
+    "executes_mirror_or_workshop_code": false,
+    "copies_sensorium_runtime": false,
+    "copies_archived_organs": false,
+    "installs_or_restores_skills": false,
+    "grants_capture_or_tool_authority": false,
+    "claim_ceiling": "Exact source-bound contract knowledge used for an additive WALDO witness implementation; not proof of private local state, runtime availability, compatibility, behavior, safety, promotion, or CANON."
+  }
+}

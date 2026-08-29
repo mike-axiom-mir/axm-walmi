@@ -1,0 +1,17 @@
+{
+  "schema": "axm.capability-execution-revocation-summary/v0.20",
+  "challenge": "REVOCATION_STOPS_FUTURE_ACTION_WITHOUT_REWRITING_HISTORY",
+  "sourceV019Receipt": "sha256:88885cdb000a567746030914f170c161444db87ec6116ba8ce4b6a58da6257dc",
+  "sourceV019Head": "ecf1be23166e8445677aaede78cfb20956ad7a7e",
+  "permitId": "external-disposable-execution-permit-direct-read",
+  "ledgerEntries": 2,
+  "currentState": "REVOKED_BEFORE_EXECUTION",
+  "futureAction": "REFUSED",
+  "futureActionReason": "PERMIT_REVOKED",
+  "priorPermitAcceptancePreserved": true,
+  "historyRewritten": false,
+  "probeExecutesCandidate": false,
+  "contractReceipt": "sha256:edb16e8f804b6cace4e59eaf7f66344ef31648e52b028129eae373224e3645c2",
+  "witnessDigest": "8038f833ad35b2ea7714161c70ad473a2dd1e7feb441d6805d43415b97d81f73",
+  "authority": "VERIFY_ONLY"
+}

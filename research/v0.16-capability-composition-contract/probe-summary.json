@@ -1,0 +1,22 @@
+{
+  "schema": "axm.capability-composition-summary/v0.16",
+  "status": "CONTRACT_PROBE_ONLY",
+  "sourceV015Receipt": "sha256:75e6466701520c7aeab56e76c719ab275519e8ed2fffa5fceaf3310cce4ec0bf",
+  "ancestorGapId": "v014-material-evidence-view-incomplete",
+  "capabilityNeedId": "material-evidence-view-completion",
+  "chainId": "material-evidence-view-readonly-chain",
+  "linkKinds": ["SKILL", "HAND", "ORGAN"],
+  "linkCount": 3,
+  "missingLinkHoldCases": 3,
+  "missingCapabilityInvented": false,
+  "authorityEscalationRefusals": 1,
+  "authorityCeiling": ["READ_ONLY_PUBLIC_ARTIFACT_ACCESS"],
+  "contractReceipt": "sha256:7e8188eb87772ae6ae47ab67bd1dbf158008513ae43c63da680cfb388ca5f81d",
+  "compactWitness": "894d7d538d3985df7e80a05c783c3623626e159b10c5cdd8d92bc129a2438e82",
+  "selected": false,
+  "built": false,
+  "installed": false,
+  "promoted": false,
+  "canon": false,
+  "waldoOwnsComposition": false
+}

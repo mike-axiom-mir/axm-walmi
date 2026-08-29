@@ -1,0 +1,13 @@
+{
+  "aggregateDigest": "89df0aba462d0e19f3ca768358e001ab2bc89b57b4855bcbfc27e4779b43dda8",
+  "authority": "NONE",
+  "canon": false,
+  "challenge": "STALE_EVIDENCE_IS_NOT_CURRENT_STATE",
+  "heldoutScenarioCount": 64,
+  "repeatability": {
+    "allRepeatable": true,
+    "ledgerValidationErrors": []
+  },
+  "schema": "axm.return-packet/v0.28",
+  "status": "OBSERVED_SIMULATOR_RESULT"
+}

@@ -1,0 +1,12 @@
+{
+  "schema": "axm.walmi.shared-state/v1",
+  "stateId": "walmi-public-starter",
+  "headEventSha256": null,
+  "events": [],
+  "projections": [],
+  "authority": {
+    "acceptPrivateExperienceAutomatically": false,
+    "acceptUnsignedEvents": false,
+    "allowRemotePrivateStateMutation": false
+  }
+}

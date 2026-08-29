@@ -1,0 +1,95 @@
+{
+  "schema": "axm.capability-selection-receipt-contract/v0.18",
+  "status": "CONTRACT_PROBE_ONLY",
+  "challenge": "SELECTION_DOES_NOT_GRANT_EXECUTION",
+  "sourceV017Receipt": "sha256:62d12d9ef02d3527878ba5e1c9baee6e79dc973d3617caf03796170fc5787dbe",
+  "sourceV017Head": "6b5071cf7a632291e5d44c6d80909d0ae73ee937",
+  "candidateSetDigest": "sha256:d396b84ddaa15f230273e96cb7b6c35dfece8d4d81ffbb46a127cccb2e0b8aa0",
+  "frozenCandidates": [
+    {
+      "id": "direct-read-chain",
+      "digest": "sha256:8ed1d23b0c7020fe1f3ee2427c2984c6132c46e49f86b0183828c4c1dc775241"
+    },
+    {
+      "id": "projected-read-chain",
+      "digest": "sha256:721ba695c6d8243ea8e24c5c5a52414c7ef6bf456ca5ea67975069a80b74fdf9"
+    }
+  ],
+  "selectionReceipt": {
+    "receiptId": "external-selection-direct-v018",
+    "issuerClass": "EXTERNAL_GOVERNANCE_CONTRACT_FIXTURE",
+    "authenticity": "FIXTURE_ONLY_NOT_REAL_APPROVAL",
+    "sourceCandidateSetDigest": "sha256:d396b84ddaa15f230273e96cb7b6c35dfece8d4d81ffbb46a127cccb2e0b8aa0",
+    "selectedCandidateId": "direct-read-chain",
+    "selectedCandidateDigest": "sha256:8ed1d23b0c7020fe1f3ee2427c2984c6132c46e49f86b0183828c4c1dc775241",
+    "scope": [
+      "SELECT_PROPOSAL"
+    ],
+    "grantsExecution": false,
+    "grantsInstall": false,
+    "grantsPromotion": false,
+    "grantsCanon": false
+  },
+  "selectionValidation": "CONTRACT_SELECTION_ACCEPTED",
+  "selectedProposalState": "SELECTED_PROPOSAL_ONLY",
+  "overallDecision": "HOLD",
+  "overallReason": "EXECUTION_AUTHORITY_ABSENT",
+  "executionAuthority": "NONE",
+  "conflictReceipt": {
+    "receiptId": "external-selection-projected-v018",
+    "issuerClass": "EXTERNAL_GOVERNANCE_CONTRACT_FIXTURE",
+    "authenticity": "FIXTURE_ONLY_NOT_REAL_APPROVAL",
+    "sourceCandidateSetDigest": "sha256:d396b84ddaa15f230273e96cb7b6c35dfece8d4d81ffbb46a127cccb2e0b8aa0",
+    "selectedCandidateId": "projected-read-chain",
+    "selectedCandidateDigest": "sha256:721ba695c6d8243ea8e24c5c5a52414c7ef6bf456ca5ea67975069a80b74fdf9",
+    "scope": [
+      "SELECT_PROPOSAL"
+    ],
+    "grantsExecution": false,
+    "grantsInstall": false,
+    "grantsPromotion": false,
+    "grantsCanon": false
+  },
+  "conflictCase": {
+    "firstReceiptId": "external-selection-direct-v018",
+    "secondReceiptId": "external-selection-projected-v018",
+    "expectedOutcome": "HOLD",
+    "expectedReason": "CONFLICTING_SELECTION_RECEIPTS",
+    "lastWriterWins": false
+  },
+  "refusalCases": [
+    {
+      "caseId": "stale-candidate-set",
+      "expectedOutcome": "REFUSED",
+      "expectedReason": "CANDIDATE_SET_MISMATCH"
+    },
+    {
+      "caseId": "unknown-candidate",
+      "expectedOutcome": "REFUSED",
+      "expectedReason": "CANDIDATE_NOT_IN_FROZEN_SET"
+    },
+    {
+      "caseId": "candidate-digest-mismatch",
+      "expectedOutcome": "REFUSED",
+      "expectedReason": "CANDIDATE_DIGEST_MISMATCH"
+    },
+    {
+      "caseId": "scope-escalation",
+      "expectedOutcome": "REFUSED",
+      "expectedReason": "SELECTION_SCOPE_EXCEEDED"
+    },
+    {
+      "caseId": "waldo-self-selection",
+      "expectedOutcome": "REFUSED",
+      "expectedReason": "WALDO_CANNOT_SELF_ISSUE_SELECTION"
+    }
+  ],
+  "realGovernanceDecisionObserved": false,
+  "liveAiProviderCalled": false,
+  "waldoIssuedSelection": false,
+  "buildStarted": false,
+  "installed": false,
+  "promoted": false,
+  "canonChanged": false,
+  "receiptDigest": "sha256:768d32a9bc59008065f09b31e8b09be6b1fd20ce77dd9d578c1b76af2474b06f"
+}

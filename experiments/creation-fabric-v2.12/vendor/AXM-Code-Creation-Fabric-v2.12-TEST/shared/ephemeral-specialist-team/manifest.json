@@ -1,0 +1,41 @@
+{
+  "schema": "axm.waldo.ephemeral-specialist-pools/v0.51",
+  "status": "EXPERIMENTAL_TEST",
+  "parent": "eca9be5f6832a35d9e1be77a0802c4cea3f8d18d",
+  "controllerCaps": {
+    "MIRROR": 5,
+    "WALDO": 5,
+    "HERMES_TRIGGERED": 2,
+    "HERMES_DISCOVERY_BURST": 1
+  },
+  "maxIsQuota": false,
+  "hermesAlwaysOn": false,
+  "discoveryCadence": "EVERY_10_COMPLETED_COLLABORATION_CYCLES",
+  "spotUse": {
+    "crossController": true,
+    "reuseActiveFirst": true,
+    "temporaryCompileWhenSlotFree": true,
+    "authorityTransfer": false
+  },
+  "specialistLifecycle": {
+    "memoryPolicy": "EPHEMERAL",
+    "retainAfterRevoke": "FINGERPRINT_AND_REVIEWED_LESSONS_ONLY",
+    "packageBytesMeasured": true,
+    "rawPackageRetainedAfterRevoke": false
+  },
+  "hardwarePolicy": {
+    "resourceObservationRecorded": true,
+    "automaticPoolResize": false,
+    "futureMeasuredAdaptiveSizing": true
+  },
+  "hermesRoles": [
+    "OUTER_ANALYST",
+    "GAP_ANALYST",
+    "DISCOVERY_SCOUT"
+  ],
+  "focusedChecks": 20,
+  "focusedChecksStatus": "PASS",
+  "runtimeDependencyOnAXMRepository": false,
+  "specialistQualityClaim": "UNPROVEN_REQUIRES_AB_TEST",
+  "authority": "NONE"
+}

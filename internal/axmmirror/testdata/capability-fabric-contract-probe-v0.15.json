@@ -1,0 +1,198 @@
+{
+  "schema": "axm.capability-fabric-contract-probe/v0.15",
+  "status": "CONTRACT_PROBE_ONLY",
+  "challenge": "ONE_CAPABILITY_MANY_BODIES",
+  "source": {
+    "waldoReturnPacketDigest": "sha256:b82cf3a8d5d02e8a979c044b4bcd98c1516390950647949172e34651616b90d2",
+    "v014LedgerReceipt": "sha256:d8f5407b6fde3335385967c5d837d563d8474841e2a00038267e6010b06f70ec",
+    "ancestorGapId": "v014-material-evidence-view-incomplete",
+    "sourceFinding": "MATERIAL_EVIDENCE_VIEW_INCOMPLETE"
+  },
+  "routingAdjustment": {
+    "previousReturnDestination": "Creation Fabric evidence intake",
+    "probeDestination": "Capability Fabric intake",
+    "previousPacketRewritten": false,
+    "reason": "CAPABILITY_FABRIC_NOW_SITS_ABOVE_CREATION_AND_ORGAN_EMBODIMENT_LANES"
+  },
+  "capability": {
+    "capabilityId": "material-evidence-view-completion",
+    "purpose": "Satisfy declared material-evidence requirements through bounded reusable capability bodies while preserving earlier HOLD evidence.",
+    "authorityCeiling": ["READ_ONLY_PUBLIC_ARTIFACT_ACCESS"],
+    "candidateEmbodimentKinds": ["ORGAN", "HAND", "SKILL", "CREATION_COMPOSITION"]
+  },
+  "probeBoundary": {
+    "localCapabilityFabricImplementationIncluded": false,
+    "actualCapabilityFabricExecutionObserved": false,
+    "outputIsContractProbe": true,
+    "routeNamesAreContractLabelsNotCanonicalModuleNames": true,
+    "candidateCodeGenerated": false,
+    "candidateCodeExecuted": false,
+    "networkRequestedByProbe": false,
+    "liveAiProviderCalled": false
+  },
+  "embodiments": [
+    {
+      "bodyId": "material-evidence-view-guard-organ",
+      "bodyKind": "ORGAN",
+      "proposedRoute": "ORGAN_FABRIC",
+      "proposalState": "PROPOSAL_ONLY",
+      "purpose": "Validate declared material-evidence requirements and emit a precise missing-artifact report.",
+      "requiresAuthority": [],
+      "authorityCeiling": ["READ_ONLY_PUBLIC_ARTIFACT_ACCESS"],
+      "provides": ["evidence-view-requirement-check", "missing-artifact-report"],
+      "consumes": ["evidence-view-manifest", "required-artifact-digests"],
+      "potentialSideEffects": [],
+      "determinism": "DETERMINISTIC",
+      "lineage": {
+        "sourceReturnPacketDigest": "sha256:b82cf3a8d5d02e8a979c044b4bcd98c1516390950647949172e34651616b90d2",
+        "ancestorGapId": "v014-material-evidence-view-incomplete",
+        "sourceLedgerReceiptDigest": "sha256:d8f5407b6fde3335385967c5d837d563d8474841e2a00038267e6010b06f70ec"
+      },
+      "verificationPassport": {
+        "sourceLineageBound": true,
+        "testsDeclared": [
+          "missing required artifact produces HOLD-compatible missing-artifact report",
+          "complete evidence view produces no missing-artifact finding",
+          "unknown authority request is refused"
+        ],
+        "testsExecutedByProbe": [],
+        "authorityUsed": [],
+        "sideEffectsObserved": [],
+        "replayStatus": "PROPOSAL_REPLAY_MATCHED",
+        "gateState": "HOLD_FOR_REAL_CAPABILITY_FABRIC"
+      }
+    },
+    {
+      "bodyId": "public-artifact-read-hand",
+      "bodyKind": "HAND",
+      "proposedRoute": "MODULAR_HAND_BUILDER",
+      "proposalState": "PROPOSAL_ONLY",
+      "purpose": "Read a specifically named public artifact by reference for an already-declared evidence requirement.",
+      "requiresAuthority": ["READ_ONLY_PUBLIC_ARTIFACT_ACCESS"],
+      "authorityCeiling": ["READ_ONLY_PUBLIC_ARTIFACT_ACCESS"],
+      "provides": ["public-artifact-read-by-reference"],
+      "consumes": ["public-artifact-reference", "expected-digest"],
+      "potentialSideEffects": ["READ_PUBLIC_ARTIFACT"],
+      "determinism": "DETERMINISTIC_REQUEST_BOUNDED_EXTERNAL_AVAILABILITY",
+      "lineage": {
+        "sourceReturnPacketDigest": "sha256:b82cf3a8d5d02e8a979c044b4bcd98c1516390950647949172e34651616b90d2",
+        "ancestorGapId": "v014-material-evidence-view-incomplete",
+        "sourceLedgerReceiptDigest": "sha256:d8f5407b6fde3335385967c5d837d563d8474841e2a00038267e6010b06f70ec"
+      },
+      "verificationPassport": {
+        "sourceLineageBound": true,
+        "testsDeclared": [
+          "refuse non-public or unspecified artifact target",
+          "refuse write/install/promote authority",
+          "verify returned bytes against expected digest before evidence admission"
+        ],
+        "testsExecutedByProbe": [],
+        "authorityUsed": [],
+        "sideEffectsObserved": [],
+        "replayStatus": "PROPOSAL_REPLAY_MATCHED",
+        "gateState": "HOLD_FOR_REAL_CAPABILITY_FABRIC"
+      }
+    },
+    {
+      "bodyId": "material-evidence-completion-skill",
+      "bodyKind": "SKILL",
+      "proposedRoute": "MODULAR_SKILL_BUILDER",
+      "proposalState": "PROPOSAL_ONLY",
+      "purpose": "Describe the bounded procedure for resolving an incomplete material-evidence view without rewriting the earlier HOLD.",
+      "requiresAuthority": [],
+      "authorityCeiling": ["READ_ONLY_PUBLIC_ARTIFACT_ACCESS"],
+      "provides": ["evidence-gap-resolution-procedure"],
+      "consumes": ["gap-card", "capability-index", "witness-evidence-requirements"],
+      "potentialSideEffects": [],
+      "determinism": "DETERMINISTIC_PROCEDURE",
+      "lineage": {
+        "sourceReturnPacketDigest": "sha256:b82cf3a8d5d02e8a979c044b4bcd98c1516390950647949172e34651616b90d2",
+        "ancestorGapId": "v014-material-evidence-view-incomplete",
+        "sourceLedgerReceiptDigest": "sha256:d8f5407b6fde3335385967c5d837d563d8474841e2a00038267e6010b06f70ec"
+      },
+      "verificationPassport": {
+        "sourceLineageBound": true,
+        "testsDeclared": [
+          "procedure preserves earlier HOLD",
+          "procedure requests only evidence required by the gap card",
+          "procedure stops if required read authority is unavailable"
+        ],
+        "testsExecutedByProbe": [],
+        "authorityUsed": [],
+        "sideEffectsObserved": [],
+        "replayStatus": "PROPOSAL_REPLAY_MATCHED",
+        "gateState": "HOLD_FOR_REAL_CAPABILITY_FABRIC"
+      }
+    },
+    {
+      "bodyId": "material-evidence-view-completion-creation",
+      "bodyKind": "CREATION_COMPOSITION",
+      "proposedRoute": "CREATION_FABRIC",
+      "proposalState": "PROPOSAL_ONLY",
+      "purpose": "Ask Creation Fabric for a bounded multi-piece candidate composition when a single reusable body is insufficient.",
+      "requiresAuthority": ["READ_ONLY_PUBLIC_ARTIFACT_ACCESS"],
+      "authorityCeiling": ["READ_ONLY_PUBLIC_ARTIFACT_ACCESS"],
+      "provides": ["resolved-material-evidence-view-composition-proposal"],
+      "consumes": ["gap-card", "evidence-view-manifest", "public-artifact-reference"],
+      "potentialSideEffects": ["READ_PUBLIC_ARTIFACT"],
+      "determinism": "PROPOSAL_DETERMINISTIC_EXECUTION_NOT_RUN",
+      "components": [
+        "material-evidence-completion-skill",
+        "material-evidence-view-guard-organ",
+        "public-artifact-read-hand",
+        "material-evidence-view-guard-organ",
+        "existing-witness-b-python-material"
+      ],
+      "lineage": {
+        "sourceReturnPacketDigest": "sha256:b82cf3a8d5d02e8a979c044b4bcd98c1516390950647949172e34651616b90d2",
+        "ancestorGapId": "v014-material-evidence-view-incomplete",
+        "sourceLedgerReceiptDigest": "sha256:d8f5407b6fde3335385967c5d837d563d8474841e2a00038267e6010b06f70ec"
+      },
+      "verificationPassport": {
+        "sourceLineageBound": true,
+        "testsDeclared": [
+          "proposal composition refuses a missing link",
+          "proposal composition refuses authority above read-only public artifact access",
+          "same witness may rerun only after evidence is supplied; historical HOLD remains append-only"
+        ],
+        "testsExecutedByProbe": [],
+        "authorityUsed": [],
+        "sideEffectsObserved": [],
+        "replayStatus": "PROPOSAL_REPLAY_MATCHED",
+        "gateState": "HOLD_FOR_REAL_CAPABILITY_FABRIC"
+      }
+    }
+  ],
+  "refusalCases": [
+    {
+      "proposalId": "auto-promoting-repair-hand",
+      "bodyKind": "HAND",
+      "requestedAuthority": ["READ_ONLY_PUBLIC_ARTIFACT_ACCESS", "WRITE_WORKSPACE", "INSTALL_CAPABILITY", "PROMOTE", "CANON"],
+      "decision": "REFUSED",
+      "reason": "AUTHORITY_EXCEEDS_ANCESTOR_GAP",
+      "codeGenerated": false
+    }
+  ],
+  "decision": {
+    "selectionPerformed": false,
+    "preferredEmbodiment": null,
+    "buildStarted": false,
+    "installed": false,
+    "registered": false,
+    "promoted": false,
+    "canonChanged": false
+  },
+  "truth": {
+    "sameAncestorGapAcrossBodies": true,
+    "sameAuthorityCeilingAcrossBodies": true,
+    "provenancePreserved": true,
+    "verificationPassportsPresent": true,
+    "authorityEscalationRefused": true,
+    "waldoOwnsCapabilityFabric": false,
+    "creationFabricReplaced": false,
+    "organFabricReplaced": false,
+    "historicalHoldRewritten": false
+  },
+  "authority": "NONE",
+  "receiptDigest": "sha256:75e6466701520c7aeab56e76c719ab275519e8ed2fffa5fceaf3310cce4ec0bf"
+}

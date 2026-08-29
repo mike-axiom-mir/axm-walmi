@@ -1,0 +1,17 @@
+{
+  "authority": "NONE",
+  "inheritedRule": "many perspectives from one provenance root are not independent evidence",
+  "newQuestion": "after provenance-root independence, can causal consequence checks reduce committed harm without taking control of coupled reasoning?",
+  "parentBranch": "axm/mirror-waldo-experiment-v0.33-specialist-corroboration-independence",
+  "parentCheckpoint": "d769aa3c4a208032c071d047c91a3327c576da13",
+  "platformDonor": {
+    "contractVersion": "v0.7",
+    "cumulativeHead": "24031c227f42ea179489bfa0f5ee7709d02965be",
+    "permissions": [],
+    "repository": "mike-axiom-mir/axm-collaboration-platform",
+    "stack": "PR #50 -> #55",
+    "status": "TEST"
+  },
+  "schema": "axm.waldo.causal-consequence-lineage/v0.34",
+  "status": "EXPERIMENTAL"
+}

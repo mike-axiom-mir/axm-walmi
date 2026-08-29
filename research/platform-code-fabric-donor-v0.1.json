@@ -1,0 +1,57 @@
+{
+  "schema": "axm.waldo-mirror.platform-code-fabric-donor/v0.1",
+  "status": "EXPERIMENTAL",
+  "repository": "mike-axiom-mir/axm-collaboration-platform",
+  "commit": "fd6ec98a6a98a6666a980c359730ccec57a8cbe9",
+  "experiment": {
+    "branch": "experiment/waldo-mirror-code-fabric-bridge-v0.1",
+    "pullRequest": 45,
+    "headAtCreation": "78840c61a18b0af53b28616394c69c235954d5f1",
+    "workflowRun": 32622264684,
+    "workflowConclusion": "success",
+    "artifactId": 9488697567,
+    "artifactDigest": "sha256:bbca7e7c7e43288d45d5b9e798b9a2f39cbec72d2f82912424310c059efe9f15"
+  },
+  "blobs": {
+    "shared/code-capability-fabric/code-capability-fabric-v2.js": "7b20769ccf296943cddce192d601bde3ec6f2334",
+    "shared/code-capability-fabric/grounded-consent-scope-v1.js": "a05190bb58c50b8782f2c404b5e7dfde3d7feae3",
+    "shared/code-capability-fabric/slow-creation-pilot-v1.js": "4e667b166ab5d018aad88828fae45dcc25529627",
+    "shared/code-capability-fabric/declarative-blueprint-composer-v1.js": "388343fade0bfc1507c6a526a7f3471a2d0595e5",
+    "shared/code-capability-fabric/blueprint-schema-compiler-v1.js": "f0460d40d53c266065b4876ab0bd3d6dd971b00d",
+    "tools/deterministic-json-core/index.js": "5f6720fb6e887158c7d501fdc41be422a315050f"
+  },
+  "observedResults": {
+    "conceptSha256": "sha256:9779b14236b2717ce1e8694adbacfd95c07d3afbacea10d3e4255cb52950856a",
+    "deterministicReceiptSha256": "sha256:1b54ba8a56945110becbcd7198d4c5988da5eea8724ff048e0c2f362844682c7",
+    "aiOptInReceiptSha256": "sha256:f88c2ca3da0774340cff484574d13980ab14d7004be9bfd386a00faab28eeb1c",
+    "deterministicBlueprints": {
+      "evidence-trail-mini-game": "sha256:31afaacefeeaa88e06ca6f2c87c078b84b960769c8e32775630e602bfe1aac5d",
+      "continuity-diagnostic-tool": "sha256:860f4fedef806d74d60ff9e8a7c9abcb4a36b44df04939fa7eabdfcebc07bba0",
+      "lineage-how-to-guide": "sha256:650218ab190f9a9bbcbd67f9b69e56e73419b3f3fbbd0923dad9b2447f9b69e8"
+    },
+    "aiOptInBlueprint": {
+      "tool-episode-quarantine-body": "sha256:07a338cd9bc8f498c38d68b2fa28cf6dc90cc5ea874b020d33ba930208d5f4cd"
+    },
+    "donorSelftestsPassed": [
+      "deterministic-json-core",
+      "code-capability-fabric-v2",
+      "declarative-blueprint-composer-v1",
+      "blueprint-schema-compiler-v1"
+    ]
+  },
+  "executionModel": {
+    "deterministicDefault": true,
+    "aiOptIn": true,
+    "aiRole": "external proposal source only; the same deterministic Fabric validates and composes the proposal",
+    "liveAiInvocationPerformedByHarness": false,
+    "fabricExecutionLocation": "native platform repository",
+    "waldoMirrorRole": "verify and witness typed receipts; do not execute copied Fabric code"
+  },
+  "privateOrganFactory": {
+    "included": false,
+    "availability": "NOT_PUBLIC_IN_DONOR",
+    "effectOnBaseline": "NONE",
+    "futureComparison": "rerun the same challenge after an explicitly supplied donor snapshot becomes available"
+  },
+  "authority": "NONE"
+}

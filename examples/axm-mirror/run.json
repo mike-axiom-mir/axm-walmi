@@ -1,0 +1,41 @@
+{
+  "kind": "waldo-training-run",
+  "schema": 1,
+  "id": "example-real-run-0001",
+  "state": "complete",
+  "bom_sha256": "176558b03e78383529a40fbdee15849d53a96c6272171aeb344df06926aaf0b6",
+  "planned": "2026-08-15T03:00:00Z",
+  "started": "2026-08-15T03:01:00Z",
+  "finished": "2026-08-15T03:02:00Z",
+  "observation": {
+    "simulated": false,
+    "steps": 2,
+    "consumed_tokens": 8,
+    "final_loss": 1.25,
+    "evaluations": [
+      {
+        "step": 2,
+        "tokens": 8,
+        "metrics": {
+          "artifact_heldout_loss": 1.5,
+          "heldout_loss": 1.5
+        }
+      }
+    ],
+    "artifacts": [
+      {
+        "path": "artifacts/model.safetensors",
+        "sha256": "8888888888888888888888888888888888888888888888888888888888888888",
+        "bytes": 128
+      }
+    ]
+  },
+  "attempts": [
+    {
+      "ordinal": 1,
+      "started": "2026-08-15T03:01:00Z",
+      "finished": "2026-08-15T03:02:00Z",
+      "state": "complete"
+    }
+  ]
+}

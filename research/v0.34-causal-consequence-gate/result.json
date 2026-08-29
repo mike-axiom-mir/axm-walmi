@@ -1,0 +1,157 @@
+{
+  "aggregate": {
+    "RAW_COUPLED": {
+      "badCommits": 272,
+      "badHigh": 150,
+      "correct": 178,
+      "divergenceTicks": 272,
+      "falsePreempts": 137,
+      "preempts": 435
+    },
+    "ROOT_AWARE": {
+      "badCommits": 255,
+      "badHigh": 148,
+      "correct": 192,
+      "divergenceTicks": 255,
+      "falsePreempts": 108,
+      "preempts": 339
+    },
+    "ROOT_CAUSAL_GATE": {
+      "badCommits": 173,
+      "badHigh": 66,
+      "challengeConfirmed": 82,
+      "challengeRejected": 68,
+      "challengeTimeouts": 28,
+      "correct": 192,
+      "divergenceTicks": 255,
+      "falsePreempts": 108,
+      "holds": 137,
+      "predictionChallenges": 178,
+      "preempts": 339
+    }
+  },
+  "authority": "NONE",
+  "challenge": "INDEPENDENCE_IS_NOT_TRUTH",
+  "challengeResolution": {
+    "confirmed": 82,
+    "opened": 178,
+    "rejected": 68,
+    "timeouts": 28
+  },
+  "heldout": {
+    "count": 192,
+    "endInclusive": 34392,
+    "semanticRepeatabilitySha256": "8087d0dd96f510fb0d826f56fdaa7ce2a372a5e83c810a9f56bfc918a31824c3",
+    "start": 34201
+  },
+  "parentCheckpoint": "d769aa3c4a208032c071d047c91a3327c576da13",
+  "platformDonorHead": "24031c227f42ea179489bfa0f5ee7709d02965be",
+  "primaryComparison": {
+    "baseline": "ROOT_AWARE",
+    "candidate": "ROOT_CAUSAL_GATE",
+    "delta": {
+      "badCommits": -82,
+      "badHigh": -82,
+      "correct": 0,
+      "divergenceTicks": 0,
+      "falsePreempts": 0,
+      "holds": 137
+    }
+  },
+  "retainedFailures": [
+    "single_real_persistent",
+    "single_real_brief",
+    "rapid_flap",
+    "causal_false_positive",
+    "common_cause_false",
+    "consequence_missing",
+    "late_consequence"
+  ],
+  "schema": "axm.waldo.causal-consequence-result/v0.34",
+  "selectedFamilyPressure": {
+    "causal_false_positive": {
+      "n": 14,
+      "rootAware": {
+        "badCommits": 42,
+        "badHigh": 14
+      },
+      "rootCausalGate": {
+        "badCommits": 28,
+        "badHigh": 0,
+        "holds": 14
+      }
+    },
+    "common_cause_false": {
+      "n": 13,
+      "rootAware": {
+        "badCommits": 52,
+        "badHigh": 26
+      },
+      "rootCausalGate": {
+        "badCommits": 39,
+        "badHigh": 13,
+        "holds": 13
+      }
+    },
+    "independent_false": {
+      "n": 14,
+      "rootAware": {
+        "badCommits": 14,
+        "badHigh": 14
+      },
+      "rootCausalGate": {
+        "badCommits": 0,
+        "badHigh": 0,
+        "holds": 14
+      }
+    },
+    "persistent_single_false": {
+      "n": 13,
+      "rootAware": {
+        "badCommits": 26,
+        "badHigh": 13
+      },
+      "rootCausalGate": {
+        "badCommits": 13,
+        "badHigh": 0,
+        "holds": 13
+      }
+    },
+    "rapid_flap": {
+      "n": 13,
+      "rootAware": {
+        "badCommits": 52,
+        "badHigh": 39
+      },
+      "rootCausalGate": {
+        "badCommits": 52,
+        "badHigh": 39,
+        "holds": 0
+      }
+    },
+    "single_real_persistent": {
+      "n": 14,
+      "rootAware": {
+        "badCommits": 14,
+        "badHigh": 14
+      },
+      "rootCausalGate": {
+        "badCommits": 14,
+        "badHigh": 14,
+        "holds": 0
+      }
+    },
+    "verified_false": {
+      "n": 14,
+      "rootAware": {
+        "badCommits": 14,
+        "badHigh": 14
+      },
+      "rootCausalGate": {
+        "badCommits": 0,
+        "badHigh": 0,
+        "holds": 14
+      }
+    }
+  }
+}

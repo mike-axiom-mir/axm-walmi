@@ -1,0 +1,27 @@
+{
+  "kind": "openwaldo-bom",
+  "schema": 1,
+  "subject": "model-release",
+  "format": "huggingface",
+  "model_id": "example-model-001",
+  "name": "example-waldo-witness",
+  "source_type": "run",
+  "source_id": "example-real-run-0001",
+  "run_id": "example-real-run-0001",
+  "source_bom_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+  "artifacts": [
+    {
+      "role": "weights",
+      "path": "model.safetensors",
+      "sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+      "bytes": 1024
+    },
+    {
+      "role": "tokenizer",
+      "path": "tokenizer_config.json",
+      "sha256": "3333333333333333333333333333333333333333333333333333333333333333",
+      "bytes": 256
+    }
+  ],
+  "generated": "2026-08-15T03:00:00Z"
+}

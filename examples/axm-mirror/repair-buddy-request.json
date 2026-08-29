@@ -1,0 +1,15 @@
+{
+  "schema": "axm.waldo-witness.repair-buddy-request/v0.1",
+  "repair_id": "repair-privacy-0001",
+  "failed_change_receipt_sha256": "f77e838904f61e50f2342391f77a320fa1ce95cea78dc7f77c8f47c75872e45f",
+  "incident_evidence_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+  "observed_at": "2026-08-16T07:00:00Z",
+  "max_attempts": 2,
+  "authority": {
+    "tool_execution": false,
+    "training": false,
+    "promotion": false,
+    "canon": false,
+    "world_action": false
+  }
+}

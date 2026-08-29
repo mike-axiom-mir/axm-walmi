@@ -1,0 +1,21 @@
+{
+  "schema": "axm.waldo.workshop-capability-intake/v0.54",
+  "status": "EXPERIMENTAL_TEST",
+  "parent": "afbcc926d6c94cc2d8e5c48f928f57ee2bc7b630",
+  "workshopSources": {
+    "creationAndLessons": "72d74569ea569f229e8d768ac3a7a62a6ac92ee9",
+    "grammarGlass": "22700238684361fe8f890ef6cce33e79b27c26d3"
+  },
+  "integratedSeams": [
+    "DETERMINIZATION_TO_EVIDENCE_BOUND_LESSON",
+    "WALDO_TO_DETERMINISTIC_CSS_SVG_JAVASCRIPT_BUILDERS",
+    "GRAMMAR_GLASS_TO_PRODUCTION_DRAFT_CANDIDATE",
+    "GRAMMAR_GLASS_TO_MIRROR_WALDO_SPECIALIST_TEAM"
+  ],
+  "runtimeDependencyOnAXMRepository": false,
+  "browserHostRuntimeImported": false,
+  "hermesHostRuntimeImported": false,
+  "automaticPersistentLearning": false,
+  "automaticFastPathAdmission": false,
+  "authority": "NONE"
+}

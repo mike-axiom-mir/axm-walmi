@@ -1,0 +1,204 @@
+{
+  "schema": "axm.hermes-run-capsule-evidence-contract/v0.22",
+  "status": "CONTRACT_PROBE_ONLY",
+  "challenge": "RUN_CAPSULE_EVIDENCE_IS_NOT_PROMOTION",
+  "source": {
+    "platformRepo": "mike-axiom-mir/axm-collaboration-platform",
+    "platformPr": 48,
+    "platformHead": "7290dacf4fe2bb9a502f6a339fc53ecdbe0d420b",
+    "runtimeGateRunId": 32672295737,
+    "runtimeGateConclusion": "success",
+    "donorFiles": [
+      {
+        "path": "tools/hermes/axm/axm_gate.py",
+        "blob": "abefcfc227353b02e615215326df099883d478c7"
+      },
+      {
+        "path": "tools/hermes/axm/axm_provider_receipt.py",
+        "blob": "91c8101eae290f9fefc7ed02e9152daf93136302"
+      },
+      {
+        "path": "tools/hermes/axm/axm_receipt.py",
+        "blob": "774015cbac1c50f78aa270ad8ed04d90520a83e5"
+      },
+      {
+        "path": "tools/hermes/axm/axm_session_event.py",
+        "blob": "8ed2b418cf99b3a8d52439dc4e738161268723e2"
+      },
+      {
+        "path": "tools/hermes/axm/run-ledger.js",
+        "blob": "c8a956976e1871263cd3639608808a1138c7711e"
+      },
+      {
+        "path": "tools/hermes/axm/runtime-policy.js",
+        "blob": "92cec223b7a0e7713c2771fa21e3fb9822d0794b"
+      },
+      {
+        "path": "tools/hermes/module.contract.json",
+        "blob": "138dcb038361daed93a5bd7abf1c06785572e641"
+      }
+    ]
+  },
+  "boundary": {
+    "platformHermesRuntimeCopied": false,
+    "platformHermesRuntimeExecutedByWaldo": false,
+    "liveHermesRunObserved": false,
+    "liveAiProviderCalled": false,
+    "outputIsContractProbe": true
+  },
+  "cases": [
+    {
+      "caseId": "complete-run-candidate",
+      "authorizedToolCalls": 2,
+      "completionReceipts": 2,
+      "providerPolicyMismatch": false,
+      "policyChangedDuringRun": false,
+      "profileChangedDuringRun": false,
+      "sourceVerifiedBefore": true,
+      "sourceVerifiedAfter": true,
+      "consentRevokedAfterAuthorization": false,
+      "completionEvidenceRecorded": true,
+      "rawPromptStored": false,
+      "rawResponseStored": false,
+      "rawToolArgumentsStored": false,
+      "rawToolResultsStored": false,
+      "canon": false,
+      "promotion": "candidate-only",
+      "expectedOutcome": "CANDIDATE",
+      "expectedReason": "EVIDENCE_COMPLETE_NOT_PROMOTED"
+    },
+    {
+      "caseId": "completion-receipt-gap",
+      "authorizedToolCalls": 2,
+      "completionReceipts": 1,
+      "providerPolicyMismatch": false,
+      "policyChangedDuringRun": false,
+      "profileChangedDuringRun": false,
+      "sourceVerifiedBefore": true,
+      "sourceVerifiedAfter": true,
+      "consentRevokedAfterAuthorization": false,
+      "completionEvidenceRecorded": true,
+      "rawPromptStored": false,
+      "rawResponseStored": false,
+      "rawToolArgumentsStored": false,
+      "rawToolResultsStored": false,
+      "canon": false,
+      "promotion": "candidate-only",
+      "expectedOutcome": "HOLD",
+      "expectedReason": "COMPLETION_RECEIPT_GAP"
+    },
+    {
+      "caseId": "provider-policy-mismatch",
+      "authorizedToolCalls": 1,
+      "completionReceipts": 1,
+      "providerPolicyMismatch": true,
+      "policyChangedDuringRun": false,
+      "profileChangedDuringRun": false,
+      "sourceVerifiedBefore": true,
+      "sourceVerifiedAfter": true,
+      "consentRevokedAfterAuthorization": false,
+      "completionEvidenceRecorded": true,
+      "rawPromptStored": false,
+      "rawResponseStored": false,
+      "rawToolArgumentsStored": false,
+      "rawToolResultsStored": false,
+      "canon": false,
+      "promotion": "candidate-only",
+      "expectedOutcome": "HOLD",
+      "expectedReason": "PROVIDER_POLICY_MISMATCH"
+    },
+    {
+      "caseId": "policy-drift",
+      "authorizedToolCalls": 1,
+      "completionReceipts": 1,
+      "providerPolicyMismatch": false,
+      "policyChangedDuringRun": true,
+      "profileChangedDuringRun": false,
+      "sourceVerifiedBefore": true,
+      "sourceVerifiedAfter": true,
+      "consentRevokedAfterAuthorization": false,
+      "completionEvidenceRecorded": true,
+      "rawPromptStored": false,
+      "rawResponseStored": false,
+      "rawToolArgumentsStored": false,
+      "rawToolResultsStored": false,
+      "canon": false,
+      "promotion": "candidate-only",
+      "expectedOutcome": "HOLD",
+      "expectedReason": "POLICY_CHANGED_DURING_RUN"
+    },
+    {
+      "caseId": "postrun-source-unverified",
+      "authorizedToolCalls": 1,
+      "completionReceipts": 1,
+      "providerPolicyMismatch": false,
+      "policyChangedDuringRun": false,
+      "profileChangedDuringRun": false,
+      "sourceVerifiedBefore": true,
+      "sourceVerifiedAfter": false,
+      "consentRevokedAfterAuthorization": false,
+      "completionEvidenceRecorded": true,
+      "rawPromptStored": false,
+      "rawResponseStored": false,
+      "rawToolArgumentsStored": false,
+      "rawToolResultsStored": false,
+      "canon": false,
+      "promotion": "candidate-only",
+      "expectedOutcome": "HOLD",
+      "expectedReason": "SOURCE_NOT_VERIFIED_AFTER_RUN"
+    },
+    {
+      "caseId": "completion-after-revocation",
+      "authorizedToolCalls": 1,
+      "completionReceipts": 1,
+      "providerPolicyMismatch": false,
+      "policyChangedDuringRun": false,
+      "profileChangedDuringRun": false,
+      "sourceVerifiedBefore": true,
+      "sourceVerifiedAfter": true,
+      "consentRevokedAfterAuthorization": true,
+      "completionEvidenceRecorded": true,
+      "rawPromptStored": false,
+      "rawResponseStored": false,
+      "rawToolArgumentsStored": false,
+      "rawToolResultsStored": false,
+      "canon": false,
+      "promotion": "candidate-only",
+      "expectedOutcome": "OBSERVED",
+      "expectedReason": "COMPLETION_EVIDENCE_RETAINED_AFTER_REVOCATION"
+    },
+    {
+      "caseId": "raw-content-storage-refused",
+      "authorizedToolCalls": 1,
+      "completionReceipts": 1,
+      "providerPolicyMismatch": false,
+      "policyChangedDuringRun": false,
+      "profileChangedDuringRun": false,
+      "sourceVerifiedBefore": true,
+      "sourceVerifiedAfter": true,
+      "consentRevokedAfterAuthorization": false,
+      "completionEvidenceRecorded": true,
+      "rawPromptStored": true,
+      "rawResponseStored": false,
+      "rawToolArgumentsStored": false,
+      "rawToolResultsStored": false,
+      "canon": false,
+      "promotion": "candidate-only",
+      "expectedOutcome": "REFUSED",
+      "expectedReason": "RAW_CONTENT_STORAGE_FORBIDDEN"
+    }
+  ],
+  "truth": {
+    "receiptRecordingIndependentOfCurrentConsent": true,
+    "revocationDoesNotAuthorizeNewAction": true,
+    "evidenceGapIsExplicit": true,
+    "providerMismatchIsExplicit": true,
+    "policyDriftIsExplicit": true,
+    "rawContentExcluded": true,
+    "returnPacketCandidateOnly": true,
+    "returnPacketGrantsPromotion": false,
+    "waldoOwnsHermesRuntime": false
+  },
+  "authority": "NONE",
+  "receiptDigest": "sha256:2bd0aeb46770bae2a95a0f0c12bf63af02ad80a8abb746f6355692e22a51a879"
+}

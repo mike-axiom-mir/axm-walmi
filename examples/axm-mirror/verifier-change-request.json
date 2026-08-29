@@ -1,0 +1,92 @@
+{
+  "schema": "axm.waldo-witness.verifier-change-request/v0.1",
+  "change_id": "request-privacy-boundary-0001",
+  "current_registry_sha256": "6e689080591bdb6f07d2b644bffff27b7002fb33d73ee33cba0a041d2fdf446d",
+  "intent": {
+    "intent_id": "change-privacy-boundary-0001",
+    "target_verifier_id": "privacy-boundary",
+    "baseline_definition_sha256": "00998b417c80d9eb3382179542e4e133c575b17a35096672bac323ba2d6beaa8",
+    "candidate": {
+      "id": "privacy-boundary",
+      "version": "v0.2",
+      "class": "PRIVACY_BOUNDARY",
+      "independence_group": "privacy",
+      "definition_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+      "test_pack_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "implementation_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "protected": false
+    },
+    "reason": "tighten the verifier using independently replayable evidence",
+    "source_evidence_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+    "shadow_protocol": {
+      "protocol_id": "shadow-replay-v1",
+      "fixture_set_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "case_count": 32,
+      "max_regressions": 0,
+      "max_unknown_results": 0
+    },
+    "authority": {
+      "tool_execution": false,
+      "training": false,
+      "promotion": false,
+      "canon": false,
+      "world_action": false
+    },
+    "intent_sha256": "eab3ff88b0044e9c2853bc39af68051ff53ea8089414a26c1e2c7ba3c405ba15"
+  },
+  "peer_reviews": [
+    {
+      "reviewer_id": "authority-peer",
+      "reviewer_version": "v0.1",
+      "reviewer_definition_sha256": "66aed9c61823b2aee00ebdb81edd8e73a815f73acfec3cde42f57f52737e8f91",
+      "reviewer_independence_group": "authority",
+      "intent_sha256": "eab3ff88b0044e9c2853bc39af68051ff53ea8089414a26c1e2c7ba3c405ba15",
+      "protocol_id": "shadow-replay-v1",
+      "fixture_set_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "baseline_result_set_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+      "candidate_result_set_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+      "evidence_sha256": "3333333333333333333333333333333333333333333333333333333333333333",
+      "state": "PASS",
+      "regression_count": 0,
+      "unknown_result_count": 0,
+      "finding": "frozen replay completed against the exact candidate",
+      "authority": {
+        "tool_execution": false,
+        "training": false,
+        "promotion": false,
+        "canon": false,
+        "world_action": false
+      }
+    },
+    {
+      "reviewer_id": "provenance-peer",
+      "reviewer_version": "v0.1",
+      "reviewer_definition_sha256": "c015021b2cba1957687dbac3f863ce32b0f63337b849d7aa20c7c8064ad70332",
+      "reviewer_independence_group": "provenance",
+      "intent_sha256": "eab3ff88b0044e9c2853bc39af68051ff53ea8089414a26c1e2c7ba3c405ba15",
+      "protocol_id": "shadow-replay-v1",
+      "fixture_set_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "baseline_result_set_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+      "candidate_result_set_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+      "evidence_sha256": "4444444444444444444444444444444444444444444444444444444444444444",
+      "state": "PASS",
+      "regression_count": 0,
+      "unknown_result_count": 0,
+      "finding": "frozen replay completed against the exact candidate",
+      "authority": {
+        "tool_execution": false,
+        "training": false,
+        "promotion": false,
+        "canon": false,
+        "world_action": false
+      }
+    }
+  ],
+  "authority": {
+    "tool_execution": false,
+    "training": false,
+    "promotion": false,
+    "canon": false,
+    "world_action": false
+  }
+}

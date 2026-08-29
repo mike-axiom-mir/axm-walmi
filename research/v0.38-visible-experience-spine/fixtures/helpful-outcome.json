@@ -1,0 +1,7 @@
+{
+  "schema": "axm.waldo.mirror-experience-outcome-request/v0.38",
+  "episodeId": "v038-helpful-experience",
+  "signal": "HELPFUL",
+  "feedback": "The answer preserved the complete learning loop and made every effect inspectable.",
+  "lesson": "Retain the full sense, reaction, outcome, and reflection chain; expose separate Mirror, WALDO, and Hermes effects."
+}

@@ -1,0 +1,37 @@
+{
+  "schema": "axm.waldo-witness.evaluation-comparison/v0.1",
+  "training": {
+    "complete": true,
+    "record_sha256": [
+      "1111111111111111111111111111111111111111111111111111111111111111"
+    ],
+    "text_sha256": [
+      "2222222222222222222222222222222222222222222222222222222222222222"
+    ],
+    "source_groups": [
+      "training-public-v1"
+    ],
+    "corpus_paths": [
+      "training/shard-0001.jsonl"
+    ]
+  },
+  "evaluation": {
+    "complete": true,
+    "record_sha256": [
+      "4444444444444444444444444444444444444444444444444444444444444444"
+    ],
+    "text_sha256": [
+      "5555555555555555555555555555555555555555555555555555555555555555"
+    ],
+    "source_groups": [
+      "heldout-private-v1"
+    ],
+    "corpus_paths": [
+      "evaluation/questions.jsonl"
+    ]
+  },
+  "authorship": {
+    "state": "outside-authored",
+    "evidence_sha256": "6666666666666666666666666666666666666666666666666666666666666666"
+  }
+}

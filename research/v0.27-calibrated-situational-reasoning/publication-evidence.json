@@ -1,0 +1,117 @@
+{
+  "aggregate": {
+    "CALIBRATED_D": {
+      "badCommits": 0,
+      "brierScore": 0.256296,
+      "confusion": {"FN": 40, "FP": 2, "TN": 47, "TP": 15},
+      "correctFinalPlans": 29,
+      "falseNegativeDelayTicks": 165,
+      "falsePositivePreemptions": 2,
+      "heldCommits": 56,
+      "heldoutScenarios": 44,
+      "ledgerEvents": 1148,
+      "reasoningEvents": 87
+    },
+    "COUPLED_B": {
+      "badCommits": 8,
+      "brierScore": 0.25767,
+      "confusion": {"FN": 0, "FP": 20, "TN": 40, "TP": 44},
+      "correctFinalPlans": 40,
+      "falseNegativeDelayTicks": 5,
+      "falsePositivePreemptions": 20,
+      "heldCommits": 0,
+      "heldoutScenarios": 44,
+      "ledgerEvents": 1174,
+      "reasoningEvents": 113
+    },
+    "HYBRID_C": {
+      "badCommits": 0,
+      "brierScore": 0.293439,
+      "confusion": {"FN": 44, "FP": 2, "TN": 47, "TP": 11},
+      "correctFinalPlans": 25,
+      "falseNegativeDelayTicks": 244,
+      "falsePositivePreemptions": 2,
+      "heldCommits": 46,
+      "heldoutScenarios": 44,
+      "ledgerEvents": 1132,
+      "reasoningEvents": 71
+    },
+    "SEQUENTIAL_A": {
+      "badCommits": 20,
+      "brierScore": 0.287659,
+      "confusion": {"FN": 10, "FP": 12, "TN": 14, "TP": 25},
+      "correctFinalPlans": 29,
+      "falseNegativeDelayTicks": 92,
+      "falsePositivePreemptions": 12,
+      "heldCommits": 0,
+      "heldoutScenarios": 44,
+      "ledgerEvents": 1098,
+      "reasoningEvents": 37
+    }
+  },
+  "authority": {
+    "canon": false,
+    "executionGuardSharedAcrossModes": true,
+    "install": false,
+    "merge": false,
+    "selector": "NONE"
+  },
+  "calibratedDCalibrationCurve": [
+    {"bin": "0.2-0.4", "count": 8, "meanEstimate": 0.341875, "observedPositiveRate": 0.5},
+    {"bin": "0.4-0.6", "count": 41, "meanEstimate": 0.519019, "observedPositiveRate": 0.512195},
+    {"bin": "0.6-0.8", "count": 42, "meanEstimate": 0.70112, "observedPositiveRate": 0.452381},
+    {"bin": "0.8-1.0", "count": 13, "meanEstimate": 0.924615, "observedPositiveRate": 0.846154}
+  ],
+  "calibratedDFamilyOutcomes": {
+    "high-confidence-false": {"bad": 0, "correct": 0, "delay": 0, "fp": 2, "held": 4, "n": 2},
+    "irreversible-ambiguity": {"bad": 0, "correct": 10, "delay": 0, "fp": 0, "held": 10, "n": 10},
+    "late-corroboration": {"bad": 0, "correct": 0, "delay": 12, "fp": 0, "held": 2, "n": 1},
+    "missing-then-change": {"bad": 0, "correct": 0, "delay": 57, "fp": 0, "held": 10, "n": 5},
+    "persistent-false-one-source": {"bad": 0, "correct": 3, "delay": 0, "fp": 0, "held": 6, "n": 3},
+    "rapid-flap": {"bad": 0, "correct": 0, "delay": 44, "fp": 0, "held": 8, "n": 4},
+    "real-change-corroborated": {"bad": 0, "correct": 10, "delay": 10, "fp": 0, "held": 0, "n": 10},
+    "real-change-strong": {"bad": 0, "correct": 1, "delay": 0, "fp": 0, "held": 0, "n": 1},
+    "real-change-weak": {"bad": 0, "correct": 0, "delay": 42, "fp": 0, "held": 6, "n": 3},
+    "source-conflict": {"bad": 0, "correct": 3, "delay": 0, "fp": 0, "held": 6, "n": 3},
+    "stable-noise": {"bad": 0, "correct": 2, "delay": 0, "fp": 0, "held": 4, "n": 2}
+  },
+  "challenge": "EVIDENCE_CONFIDENCE_IS_NOT_TRUTH",
+  "claimBoundary": [
+    "deterministic simulator evidence only",
+    "no real robot or physical execution",
+    "no provider-backed continuous AI process",
+    "no general reasoning superiority claim",
+    "no universal safety improvement claim",
+    "no consciousness, emergence, free-thought, quantum, or general speedup claim"
+  ],
+  "evidenceRootSha256": "ac20a26a5ebedac4811be6dff89eb8a66db25a5bdf229dd162f0793dcec05a10",
+  "parentCommit": "3007ffeb6fb256f8abfc00987d5493d9f350ee82",
+  "parentReceipt": "sha256:6f04da8eaa5339ce0aff6780d522d8c1aabe6f021bbf24d5ce9eebb77946ee20",
+  "retainedFailures": [
+    "rapid-flap: stale evidence can remain sticky across genuine target changes",
+    "real-change-weak: one-source weak evidence may never cross the frozen threshold",
+    "missing-then-change: conservative uncertainty can delay genuine change",
+    "high-confidence-false: confidence metadata can be confidently wrong",
+    "late-corroboration: corroboration can arrive after the useful reaction window"
+  ],
+  "run": {
+    "causalLedgerValidation": "PASS",
+    "fixedScenarios": 17,
+    "heldoutScenarios": 44,
+    "heldoutSeedsDigest": "ff7b6cc14163aa329e6f7875183c18edf9809c881a7a0d6afa423b68354ac5fc",
+    "ledgerCount": 244,
+    "ledgerEventCount": 5867,
+    "ledgerIndexRootSha256": "4a64355b9a6f7211350bee1c9dc4415cafa908ad51dfaa4ec74c810c9054950d",
+    "policyDigest": "57a7c2092805234bd184471bb30b94ee4c1d4a2bfa6d888bb804a714cad0059b",
+    "repeatability": "PASS",
+    "semanticRepeats": 3,
+    "testsPassed": 12
+  },
+  "schema": "axm.v0.27-publication-evidence/v1",
+  "source": {
+    "capsuleSha256": "8bdfe78e51f6a445a6db2d89c3c723498e9d62cd882282209b1e2791c1c2605f",
+    "materializer": "materialize_probe.py",
+    "sourceSha256": "11a011906b056bcb3a75f43ecd3354e763f9f4202eba2fee08a3025adba3c2bd"
+  },
+  "status": "EXPERIMENTAL_BRANCH_ONLY"
+}

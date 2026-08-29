@@ -1,0 +1,3 @@
+# This initial standalone snapshot is sealed by exact file-byte hashes.
+# Preserve those bytes across clones; normalize deliberately in a later change.
+* -text

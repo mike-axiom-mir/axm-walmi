@@ -1,0 +1,28 @@
+{
+  "authority": "NONE",
+  "canon": false,
+  "challenge": "LIVE_COUPLED_REASONING_AB_PROBE",
+  "claims": {
+    "consciousnessObserved": false,
+    "generalSpeedupProven": false,
+    "liveCoupledRuntimeObserved": true,
+    "quantumBehaviorObserved": false,
+    "realPhysicalExecutionObserved": false,
+    "simulatedExecutionObserved": true
+  },
+  "fixtureDigest": "sha256:1d2a4c02ff3855d645a1ddbdcf89a10a6c08ad2b0ef30f4abcfc42aab06a8596",
+  "interestingEarlierCancellationScenarios": [
+    "target-shift-early",
+    "target-shift-late"
+  ],
+  "ledgerValidationPass": true,
+  "parentCommit": "0b753f3a373eddaba91950ee45101e582055ebd7",
+  "parentContractReceipt": "sha256:f0afddad6f4678c5665cc3d7bac1710f32b75be643877e2ee92381db13d352db",
+  "promotion": "candidate-only",
+  "receiptDigest": "sha256:aa970d56711d393c43c64083ba4abb5ea8ddc2b476f36adbd28a37eb94ca5216",
+  "repeatabilityPass": true,
+  "runCount": 22,
+  "scenarioCount": 11,
+  "schema": "axm.research-probe-summary/v0.25",
+  "status": "LIVE_BOUNDED_SIMULATION_OBSERVED"
+}

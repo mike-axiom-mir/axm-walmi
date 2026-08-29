@@ -1,0 +1,17 @@
+{
+  "schema": "axm.waldo.cognitive-evidence-calibration/v0.44",
+  "status": "EXPERIMENTAL_TEST",
+  "waldoParent": "b42df01ca7e9ff301c3ab7a5a9caa8c596887fb2",
+  "sourceRepository": "mike-axiom-mir/axm-collaboration-platform",
+  "sourceCommit": "386736aaae3993089dfaf970cf2360894959e3c0",
+  "sourcePaths": ["shared/cognitive-resource", "shared/operations/operations-utils.js", "shared/evidence-retention/evidence-retention-service.js"],
+  "sourceFileCount": 16,
+  "runtimeDependencyOnAXMRepository": false,
+  "modelCoreReplaceable": true,
+  "capturesHiddenReasoning": false,
+  "rankingAuthority": false,
+  "optimizationAuthority": false,
+  "trainingAuthority": false,
+  "worldActionAuthority": false,
+  "authority": "NONE"
+}

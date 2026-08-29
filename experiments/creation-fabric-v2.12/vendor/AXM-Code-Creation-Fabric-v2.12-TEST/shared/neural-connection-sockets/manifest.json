@@ -1,0 +1,29 @@
+{
+  "schema": "axm.waldo.dual-neural-connection-sockets/v0.52",
+  "status": "EXPERIMENTAL_TEST",
+  "parent": "feec03cc250550e717ed0732d6174cba8f7f2191",
+  "socketCount": 2,
+  "socketIds": ["NEURAL_A", "NEURAL_B"],
+  "disconnectedByDefault": true,
+  "providerNeutral": true,
+  "requesterControllers": ["MIRROR", "WALDO", "HERMES"],
+  "purposes": [
+    "CHALLENGE",
+    "CREATIVE_VARIANT",
+    "DOMAIN_SECOND_OPINION",
+    "PLAN_REVIEW",
+    "DISCOVERY",
+    "SPECIALIST_SPOT_ASSIST"
+  ],
+  "maxCallsPerRequest": 1,
+  "resultPolicy": "UNTRUSTED_CANDIDATE_DATA",
+  "capturesPrivateReasoning": false,
+  "identityMerge": false,
+  "automaticMemoryPromotion": false,
+  "automaticAction": false,
+  "automaticAdoption": false,
+  "runtimeDependencyOnAXMRepository": false,
+  "focusedChecks": 14,
+  "focusedChecksStatus": "PASS",
+  "authority": "NONE"
+}

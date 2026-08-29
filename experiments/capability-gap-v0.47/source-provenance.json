@@ -1,0 +1,6 @@
+{
+  "schema": "axm.waldo.source-file-manifest/v0.47",
+  "sourceCommit": "386736aaae3993089dfaf970cf2360894959e3c0",
+  "selectedFileCount": 1,
+  "files": [{"path": "shared/ai-native-hands/capability-gap-hand.js", "sha256": "9d68e89012731579515d932e141986634ba6600d3bd7c557f5bc18f838449549", "bytes": 3660}]
+}

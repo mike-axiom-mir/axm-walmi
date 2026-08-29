@@ -1,0 +1,709 @@
+{
+  "capability": "MOVE_SIM_ARM",
+  "challenge": "GROUNDING_SHOULD_DAMP_NOISE_WITHOUT_DAMPING_REALITY",
+  "defaultArchitecture": "COUPLED_MEMBRANE_FALLBACK_D",
+  "developmentSeeds": [
+    31001,
+    31002,
+    31003,
+    31004,
+    31005,
+    31006,
+    31007,
+    31008,
+    31009,
+    31010,
+    31011,
+    31012,
+    31013,
+    31014,
+    31015,
+    31016,
+    31017,
+    31018,
+    31019,
+    31020,
+    31021,
+    31022,
+    31023,
+    31024,
+    31025,
+    31026,
+    31027,
+    31028,
+    31029,
+    31030,
+    31031,
+    31032,
+    31033,
+    31034,
+    31035,
+    31036,
+    31037,
+    31038,
+    31039,
+    31040,
+    31041,
+    31042,
+    31043,
+    31044,
+    31045,
+    31046,
+    31047,
+    31048,
+    31049,
+    31050,
+    31051,
+    31052,
+    31053,
+    31054,
+    31055,
+    31056,
+    31057,
+    31058,
+    31059,
+    31060,
+    31061,
+    31062,
+    31063,
+    31064,
+    31065,
+    31066,
+    31067,
+    31068,
+    31069,
+    31070,
+    31071,
+    31072,
+    31073,
+    31074,
+    31075,
+    31076,
+    31077,
+    31078,
+    31079,
+    31080,
+    31081,
+    31082,
+    31083,
+    31084,
+    31085,
+    31086,
+    31087,
+    31088,
+    31089,
+    31090,
+    31091,
+    31092,
+    31093,
+    31094,
+    31095,
+    31096
+  ],
+  "environment": "SIM-ROOM-A",
+  "fallbackArchitecture": "SEQUENTIAL_A",
+  "heldoutSeeds": [
+    31201,
+    31202,
+    31203,
+    31204,
+    31205,
+    31206,
+    31207,
+    31208,
+    31209,
+    31210,
+    31211,
+    31212,
+    31213,
+    31214,
+    31215,
+    31216,
+    31217,
+    31218,
+    31219,
+    31220,
+    31221,
+    31222,
+    31223,
+    31224,
+    31225,
+    31226,
+    31227,
+    31228,
+    31229,
+    31230,
+    31231,
+    31232,
+    31233,
+    31234,
+    31235,
+    31236,
+    31237,
+    31238,
+    31239,
+    31240,
+    31241,
+    31242,
+    31243,
+    31244,
+    31245,
+    31246,
+    31247,
+    31248,
+    31249,
+    31250,
+    31251,
+    31252,
+    31253,
+    31254,
+    31255,
+    31256,
+    31257,
+    31258,
+    31259,
+    31260,
+    31261,
+    31262,
+    31263,
+    31264,
+    31265,
+    31266,
+    31267,
+    31268,
+    31269,
+    31270,
+    31271,
+    31272,
+    31273,
+    31274,
+    31275,
+    31276,
+    31277,
+    31278,
+    31279,
+    31280,
+    31281,
+    31282,
+    31283,
+    31284,
+    31285,
+    31286,
+    31287,
+    31288,
+    31289,
+    31290,
+    31291,
+    31292,
+    31293,
+    31294,
+    31295,
+    31296,
+    31297,
+    31298,
+    31299,
+    31300,
+    31301,
+    31302,
+    31303,
+    31304,
+    31305,
+    31306,
+    31307,
+    31308,
+    31309,
+    31310,
+    31311,
+    31312,
+    31313,
+    31314,
+    31315,
+    31316,
+    31317,
+    31318,
+    31319,
+    31320,
+    31321,
+    31322,
+    31323,
+    31324,
+    31325,
+    31326,
+    31327,
+    31328
+  ],
+  "limits": {
+    "maxLogicalTicks": 18,
+    "sequentialReviewTicks": 4
+  },
+  "membranePolicy": {
+    "anchorFreshTicks": 4,
+    "corroborationMinConfidence": 0.52,
+    "corroborationSources": 2,
+    "corroborationWindowTicks": 3,
+    "fallbackAfterTicks": 4,
+    "fallbackDecay": 0.88,
+    "fallbackMinMargin": 0.02,
+    "fallbackMinScore": 0.35,
+    "fallbackWindowTicks": 6,
+    "hardPassScore": 0.76,
+    "persistenceMinScore": 0.43,
+    "persistenceObservations": 3
+  },
+  "parent": {
+    "branch": "axm/mirror-waldo-experiment-v0.29-detection-reaction-separation",
+    "commit": "466f64b561f23e2c782729f36ae8f1aa4e71ad35"
+  },
+  "scenarios": [
+    {
+      "commitTicks": [
+        6,
+        12
+      ],
+      "consequence": "LOW",
+      "events": [
+        {
+          "at": 3,
+          "confidence": 0.9,
+          "kind": "OBSERVATION",
+          "source": "cam-a",
+          "value": 5
+        }
+      ],
+      "id": "stable-clean",
+      "maxTicks": 12,
+      "permit": "VALID",
+      "split": "CALIBRATION",
+      "startTarget": 5
+    },
+    {
+      "commitTicks": [
+        5,
+        10
+      ],
+      "consequence": "LOW",
+      "events": [
+        {
+          "at": 3,
+          "confidence": 0.35,
+          "kind": "OBSERVATION",
+          "source": "cam-a",
+          "value": 2
+        },
+        {
+          "at": 6,
+          "confidence": 0.82,
+          "kind": "OBSERVATION",
+          "source": "cam-b",
+          "value": 5
+        }
+      ],
+      "id": "single-low-noise",
+      "maxTicks": 10,
+      "permit": "VALID",
+      "split": "CALIBRATION",
+      "startTarget": 5
+    },
+    {
+      "commitTicks": [
+        5,
+        10
+      ],
+      "consequence": "HIGH",
+      "events": [
+        {
+          "at": 3,
+          "confidence": 0.95,
+          "kind": "OBSERVATION",
+          "source": "cam-a",
+          "value": 2
+        },
+        {
+          "at": 6,
+          "confidence": 0.84,
+          "kind": "OBSERVATION",
+          "source": "cam-b",
+          "value": 5
+        }
+      ],
+      "id": "single-high-false",
+      "maxTicks": 10,
+      "permit": "VALID",
+      "split": "CALIBRATION",
+      "startTarget": 5
+    },
+    {
+      "commitTicks": [
+        5,
+        10
+      ],
+      "consequence": "LOW",
+      "events": [
+        {
+          "at": 3,
+          "kind": "WORLD_TARGET_CHANGE",
+          "value": 8
+        },
+        {
+          "at": 3,
+          "confidence": 0.97,
+          "kind": "OBSERVATION",
+          "source": "cam-a",
+          "value": 8
+        }
+      ],
+      "id": "strong-real-change",
+      "maxTicks": 10,
+      "permit": "VALID",
+      "split": "CALIBRATION",
+      "startTarget": 5
+    },
+    {
+      "commitTicks": [
+        5,
+        10
+      ],
+      "consequence": "LOW",
+      "events": [
+        {
+          "at": 3,
+          "kind": "WORLD_TARGET_CHANGE",
+          "value": 8
+        },
+        {
+          "at": 3,
+          "confidence": 0.63,
+          "kind": "OBSERVATION",
+          "source": "cam-a",
+          "value": 8
+        },
+        {
+          "at": 4,
+          "confidence": 0.68,
+          "kind": "OBSERVATION",
+          "source": "cam-b",
+          "value": 8
+        }
+      ],
+      "id": "corroborated-real-change",
+      "maxTicks": 10,
+      "permit": "VALID",
+      "split": "CALIBRATION",
+      "startTarget": 5
+    },
+    {
+      "commitTicks": [
+        5,
+        10
+      ],
+      "consequence": "HIGH",
+      "events": [
+        {
+          "at": 3,
+          "kind": "MISSING_OBSERVATION",
+          "source": "cam-a"
+        },
+        {
+          "at": 6,
+          "confidence": 0.82,
+          "kind": "OBSERVATION",
+          "source": "cam-b",
+          "value": 5
+        }
+      ],
+      "id": "missing-only",
+      "maxTicks": 10,
+      "permit": "VALID",
+      "split": "CALIBRATION",
+      "startTarget": 5
+    },
+    {
+      "commitTicks": [
+        6,
+        10
+      ],
+      "consequence": "LOW",
+      "events": [
+        {
+          "at": 3,
+          "kind": "WORLD_TARGET_CHANGE",
+          "value": 8
+        },
+        {
+          "at": 3,
+          "confidence": 0.52,
+          "kind": "OBSERVATION",
+          "source": "cam-a",
+          "value": 8
+        },
+        {
+          "at": 4,
+          "confidence": 0.55,
+          "kind": "OBSERVATION",
+          "source": "cam-a",
+          "value": 8
+        },
+        {
+          "at": 5,
+          "confidence": 0.58,
+          "kind": "OBSERVATION",
+          "source": "cam-a",
+          "value": 8
+        },
+        {
+          "at": 6,
+          "confidence": 0.61,
+          "kind": "OBSERVATION",
+          "source": "cam-a",
+          "value": 8
+        }
+      ],
+      "id": "weak-persistent-real-change",
+      "maxTicks": 10,
+      "permit": "VALID",
+      "split": "CALIBRATION",
+      "startTarget": 5
+    },
+    {
+      "commitTicks": [
+        6,
+        10
+      ],
+      "consequence": "LOW",
+      "events": [
+        {
+          "at": 3,
+          "kind": "WORLD_TARGET_CHANGE",
+          "value": 8
+        },
+        {
+          "at": 3,
+          "confidence": 0.5,
+          "kind": "OBSERVATION",
+          "source": "cam-a",
+          "value": 8
+        },
+        {
+          "at": 4,
+          "confidence": 0.53,
+          "kind": "OBSERVATION",
+          "source": "cam-a",
+          "value": 8
+        }
+      ],
+      "id": "weak-real-change-needs-fallback",
+      "maxTicks": 10,
+      "permit": "VALID",
+      "split": "CALIBRATION",
+      "startTarget": 5
+    },
+    {
+      "commitTicks": [
+        5,
+        10
+      ],
+      "consequence": "HIGH",
+      "events": [
+        {
+          "at": 3,
+          "confidence": 0.68,
+          "kind": "OBSERVATION",
+          "source": "cam-a",
+          "value": 2
+        },
+        {
+          "at": 4,
+          "confidence": 0.69,
+          "kind": "OBSERVATION",
+          "source": "cam-b",
+          "value": 2
+        },
+        {
+          "at": 6,
+          "confidence": 0.82,
+          "kind": "OBSERVATION",
+          "source": "cam-c",
+          "value": 5
+        }
+      ],
+      "id": "synchronized-false",
+      "maxTicks": 10,
+      "permit": "VALID",
+      "split": "CALIBRATION",
+      "startTarget": 5
+    },
+    {
+      "commitTicks": [
+        5,
+        8,
+        12
+      ],
+      "consequence": "HIGH",
+      "events": [
+        {
+          "at": 3,
+          "kind": "WORLD_TARGET_CHANGE",
+          "value": 8
+        },
+        {
+          "at": 3,
+          "confidence": 0.95,
+          "kind": "OBSERVATION",
+          "source": "cam-a",
+          "value": 8
+        },
+        {
+          "at": 4,
+          "confidence": 0.8,
+          "kind": "OBSERVATION",
+          "source": "cam-b",
+          "value": 8
+        },
+        {
+          "at": 7,
+          "kind": "WORLD_TARGET_CHANGE",
+          "value": 2
+        },
+        {
+          "at": 7,
+          "confidence": 0.89,
+          "kind": "OBSERVATION",
+          "source": "cam-c",
+          "value": 2
+        },
+        {
+          "at": 8,
+          "confidence": 0.76,
+          "kind": "OBSERVATION",
+          "source": "cam-b",
+          "value": 2
+        }
+      ],
+      "id": "rapid-flap",
+      "maxTicks": 12,
+      "permit": "VALID",
+      "split": "CALIBRATION",
+      "startTarget": 5
+    },
+    {
+      "commitTicks": [
+        6,
+        10,
+        14
+      ],
+      "consequence": "HIGH",
+      "events": [
+        {
+          "at": 2,
+          "confidence": 0.96,
+          "kind": "OBSERVATION",
+          "source": "cam-a",
+          "value": 5
+        },
+        {
+          "at": 3,
+          "confidence": 0.91,
+          "kind": "OBSERVATION",
+          "source": "cam-b",
+          "value": 5
+        },
+        {
+          "at": 7,
+          "kind": "WORLD_TARGET_CHANGE",
+          "value": 8
+        },
+        {
+          "at": 7,
+          "confidence": 0.64,
+          "kind": "OBSERVATION",
+          "source": "cam-a",
+          "value": 8
+        },
+        {
+          "at": 8,
+          "confidence": 0.69,
+          "kind": "OBSERVATION",
+          "source": "cam-b",
+          "value": 8
+        }
+      ],
+      "id": "stale-anchor-real-change",
+      "maxTicks": 14,
+      "permit": "VALID",
+      "split": "CALIBRATION",
+      "startTarget": 5
+    },
+    {
+      "commitTicks": [
+        4,
+        8
+      ],
+      "consequence": "LOW",
+      "events": [],
+      "id": "wrong-environment",
+      "maxTicks": 8,
+      "permit": "WRONG_ENVIRONMENT",
+      "split": "AUTHORITY",
+      "startTarget": 5
+    },
+    {
+      "commitTicks": [
+        4,
+        8
+      ],
+      "consequence": "LOW",
+      "events": [],
+      "id": "wrong-capability",
+      "maxTicks": 8,
+      "permit": "WRONG_CAPABILITY",
+      "split": "AUTHORITY",
+      "startTarget": 5
+    },
+    {
+      "commitTicks": [
+        4,
+        8
+      ],
+      "consequence": "LOW",
+      "events": [],
+      "id": "no-permit",
+      "maxTicks": 8,
+      "permit": "ABSENT",
+      "split": "AUTHORITY",
+      "startTarget": 5
+    },
+    {
+      "actuatorRoute": false,
+      "commitTicks": [
+        4,
+        8
+      ],
+      "consequence": "LOW",
+      "events": [],
+      "id": "no-actuator",
+      "maxTicks": 8,
+      "permit": "VALID",
+      "split": "AUTHORITY",
+      "startTarget": 5
+    },
+    {
+      "commitTicks": [
+        3,
+        7
+      ],
+      "consequence": "LOW",
+      "events": [
+        {
+          "at": 5,
+          "kind": "REVOKE_PERMIT"
+        }
+      ],
+      "id": "permit-revoked",
+      "maxTicks": 8,
+      "permit": "VALID",
+      "split": "AUTHORITY",
+      "startTarget": 5
+    }
+  ],
+  "schema": "axm.grounding-membrane-scenarios/v0.31"
+}

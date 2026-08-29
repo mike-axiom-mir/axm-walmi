@@ -1,0 +1,31 @@
+{
+  "schema": "axm.waldo.mirror-neural-escalation-contract/v0.37",
+  "status": "EXPERIMENTAL_RUNTIME_INTEGRATION",
+  "challenge": "CAPABILITY_GROWTH_MUST_NOT_BE_HIDDEN",
+  "parentCheckpoint": "5d85ff9e3cf49f7eb4f9a6085c341b50b81a4b81",
+  "deterministicPrimary": true,
+  "neuralEscalation": {
+    "runtimeOptInRequired": true,
+    "localModelRequired": true,
+    "candidateAuthority": "NONE",
+    "backendPath": "existing inference.Open",
+    "promptIntegration": "BEFORE_MODEL_TEMPLATE_RENDER"
+  },
+  "identity": {
+    "visible": true,
+    "digestBound": true,
+    "mutationDuringInference": false
+  },
+  "chatLearning": {
+    "available": true,
+    "states": ["REVIEW_REQUIRED", "APPROVED_FOR_TRAINING"],
+    "silentTrainingDuringInference": false,
+    "futureVisibleAutomationForbidden": false
+  },
+  "trace": {
+    "appendOnly": true,
+    "hashOnly": true,
+    "fileMode": "0600"
+  },
+  "authority": "NONE"
+}

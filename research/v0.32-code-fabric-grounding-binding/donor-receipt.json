@@ -1,0 +1,74 @@
+{
+  "schema": "axm.waldo.code-fabric-donor-receipt/v0.32",
+  "status": "EXPERIMENTAL_TEST_BINDING",
+  "repository": "mike-axiom-mir/axm-collaboration-platform",
+  "cumulativeHead": "24031c227f42ea179489bfa0f5ee7709d02965be",
+  "stack": [
+    {
+      "pr": 50,
+      "head": "ee0c63743f4ecca1e49f14d4d8f24b429672e564",
+      "role": "code-family extension seam"
+    },
+    {
+      "pr": 51,
+      "head": "085a4b4e32d626d212babbfa0c5fd1d33e8f7ff4",
+      "role": "bounded deterministic Python source recipe"
+    },
+    {
+      "pr": 52,
+      "head": "ee70266db3b0ee39f210bbce0309e22bb5591a6d",
+      "role": "102 language organs + grammar profiles + specialist eyes + discovery seam"
+    },
+    {
+      "pr": 53,
+      "head": "70a58dc84100723aa21847060c4fceb8d89cbcee",
+      "role": "5100 machine-native grammar heuristics + influence mesh"
+    },
+    {
+      "pr": 54,
+      "head": "0a69744c7b52523087c6c693e48410fb48b04c9e",
+      "role": "102 template banks + verified vault + pattern nursery"
+    },
+    {
+      "pr": 55,
+      "head": "24031c227f42ea179489bfa0f5ee7709d02965be",
+      "role": "20 discipline lenses + composite roles + domain overlays"
+    }
+  ],
+  "boundInterfaces": {
+    "module.contract.json": "f2839ca29100151fce8477a2b65b00e10f331dd1",
+    "language-organs/code-native-discovery-seam.js": "509bc461420bd542b93b0e617bab3d6b4d13d7f1",
+    "language-organs/human-discipline-perspective-fabric.js": "8cf662271d981fc85faf2f5f3d9519cd6e822ff8",
+    "language-organs/template-fast-router.js": "81de7dc8b3e245ad9f7a69d8f207c9013ad153f8"
+  },
+  "observedDonorClaims": {
+    "moduleContractVersion": "v0.7",
+    "moduleStatus": "TEST",
+    "permissions": [],
+    "languageOrgans": 102,
+    "machineHeuristics": 5100,
+    "templateBanks": 102,
+    "verifiedTemplates": 1224,
+    "disciplineLenses": 20,
+    "possibleGrammarDisciplineIntersections": 2040
+  },
+  "workflowEvidence": {
+    "pr52": {
+      "codeLanguageOrgansGate": 32695074379,
+      "legoCityMapGate": 32695074363
+    },
+    "pr54": {
+      "templateFabricGate": 32700822188,
+      "legoCityMapGate": 32700822189,
+      "languageOrgansGate": 32700822185
+    },
+    "pr55": {
+      "disciplinePerspectivesGate": 32702542194,
+      "templateFabricGate": 32702542014,
+      "legoCityMapGate": 32702541932,
+      "languageOrgansGate": 32702541910
+    }
+  },
+  "authority": "NONE",
+  "note": "WALDO binds tested donor identities and typed outputs. It does not copy or execute Platform Fabric code."
+}

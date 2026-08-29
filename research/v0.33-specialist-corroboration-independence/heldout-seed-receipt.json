@@ -1,0 +1,10 @@
+{
+  "schema": "axm.waldo.heldout-seed-receipt/v0.33",
+  "introducedAfterFreezeSha256": "716d0550bf70316a32e512f25dd4a719c86774fdbb43ecccd8ab7c2bc29ee9a8",
+  "start": 33201,
+  "count": 160,
+  "endInclusive": 33360,
+  "seedListSha256": "aced74f46abb3ed1b6c214160a6e07f5f57ffa1d34fa86acdaef03aa09898a6a",
+  "disjointFromDevelopment": true,
+  "authority": "NONE"
+}

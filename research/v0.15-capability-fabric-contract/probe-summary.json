@@ -1,0 +1,23 @@
+{
+  "schema": "axm.capability-fabric-contract-probe-summary/v0.15",
+  "challenge": "ONE_CAPABILITY_MANY_BODIES",
+  "sourceReturnPacketDigest": "sha256:b82cf3a8d5d02e8a979c044b4bcd98c1516390950647949172e34651616b90d2",
+  "ancestorGapId": "v014-material-evidence-view-incomplete",
+  "capabilityId": "material-evidence-view-completion",
+  "contractProbeReceipt": "sha256:75e6466701520c7aeab56e76c719ab275519e8ed2fffa5fceaf3310cce4ec0bf",
+  "proposalCount": 4,
+  "proposalKinds": ["ORGAN", "HAND", "SKILL", "CREATION_COMPOSITION"],
+  "authorityCeiling": ["READ_ONLY_PUBLIC_ARTIFACT_ACCESS"],
+  "authorityEscalationRefusalCount": 1,
+  "selectionCount": 0,
+  "buildCount": 0,
+  "localCapabilityFabricImplementationIncluded": false,
+  "actualCapabilityFabricExecutionObserved": false,
+  "candidateCodeGenerated": false,
+  "candidateCodeExecuted": false,
+  "networkRequestedByProbe": false,
+  "liveAiProviderCalled": false,
+  "historicalV014ReturnPacketRewritten": false,
+  "waldoOwnsCapabilityFabric": false,
+  "canonChanged": false
+}

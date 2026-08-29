@@ -1,0 +1,18 @@
+{
+  "schema": "axm.capability-execution-permit-summary/v0.19",
+  "challenge": "PERMISSION_IS_NOT_ACTION_OR_CAPABILITY",
+  "sourceV018Receipt": "sha256:768d32a9bc59008065f09b31e8b09be6b1fd20ce77dd9d578c1b76af2474b06f",
+  "sourceV018Head": "730ef20b2f6c95519a09756f18c8a7fca83fe4f2",
+  "selectedCandidateId": "direct-read-chain",
+  "executionPermitScope": ["EXECUTE_DISPOSABLE_PROBE"],
+  "executionRequestPresent": true,
+  "executableBodyPresent": false,
+  "decision": "HOLD",
+  "reason": "EXECUTABLE_BODY_ABSENT",
+  "autoBuildMissingBody": false,
+  "inventMissingBody": false,
+  "probeExecutesCandidate": false,
+  "contractReceipt": "sha256:88885cdb000a567746030914f170c161444db87ec6116ba8ce4b6a58da6257dc",
+  "witnessDigest": "960c7eab77597a87256da843663e88fe22d1290fcc1e42dbff1b1da14bfee7d3",
+  "authority": "VERIFY_ONLY"
+}

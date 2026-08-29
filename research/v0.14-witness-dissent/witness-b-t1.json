@@ -1,0 +1,13 @@
+{
+  "schema": "axm.waldo-independent-witness/v0.14",
+  "witnessId": "witness-b-python-material",
+  "implementation": "python-material-v1",
+  "sourceReceiptDigest": "sha256:9daf12733393e19c6149215e6a8f4f2d774f870ff21ba22c04efd785d34c8303",
+  "evidenceViewDigest": "sha256:8d0aaaa7e59d41c3d21f334d884c8dbc5eaa220722297379d9ce073bd06ae334",
+  "verdict": "HOLD",
+  "findings": [
+    "MATERIAL_EVIDENCE_VIEW_INCOMPLETE"
+  ],
+  "authority": "NONE",
+  "receiptDigest": "sha256:272c7c19177e72a2436ea7be81d207b125d96cad50ef670d505ef0611849af4e"
+}

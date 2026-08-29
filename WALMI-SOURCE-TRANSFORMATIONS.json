@@ -1,0 +1,25 @@
+{
+  "schema": "axm.walmi.standalone-source-transformations/v1",
+  "importProvenance": "WALMI-SOURCE-PROVENANCE.json",
+  "finalTreeManifest": "WALMI-SOURCE-MANIFEST.json",
+  "standaloneBoundaryChanges": [
+    "WALMI-first README and architecture documentation",
+    "private/runtime state ignore rules",
+    "exact-byte Git attribute policy",
+    "blank shared-state fixture",
+    "deterministic source seal and one-file ZIP builders",
+    "native Windows WALMI verification lane"
+  ],
+  "refreshedWorktreeFilesAfterInitialExport": [
+    {
+      "path": "portable/walmi-pc-package/walmi_autolearn.py",
+      "sha256": "fe63f0c2c0ebb9236954239a8f3f60427a483979d87fecec368a5ec4c25119c0"
+    },
+    {
+      "path": "portable/walmi-pc-package/test_walmi_autolearn.py",
+      "sha256": "343502da9b45d8dd534ab3c2747d9b655663d87bde2623b9e2ab8128a98ea3e6"
+    }
+  ],
+  "linksIntroduced": false,
+  "privateStateIntroduced": false
+}

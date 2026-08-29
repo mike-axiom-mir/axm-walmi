@@ -1,0 +1,63 @@
+{
+  "authority": "NONE",
+  "canon": false,
+  "challenge": "CHANGE_POINT_DETECTION_IS_NOT_REACTION_AUTHORITY",
+  "files": {
+    "ARCHITECTURE.md": {
+      "bytes": 3733,
+      "sha256": "5e8dd3e07051efa4fe4805493c3d19ed4d8781a7bbbe3c973ad25a53f581b35e"
+    },
+    "BENCHMARK-SUMMARY.md": {
+      "bytes": 1952,
+      "sha256": "c94bbdaa085556cfd5cf703c0077dc03546ac3e59adab0f6fe163cbc3390269e"
+    },
+    "README.md": {
+      "bytes": 5281,
+      "sha256": "9ab3d88b42fe9786cf200265892914113a09771fe4a889d707da2211e1690ce9"
+    },
+    "heldout-seed-receipt.json": {
+      "bytes": 418,
+      "sha256": "6a7138cce0379e2703d48c941be695037346ae7d65f4db701094ee81ddd091a9"
+    },
+    "ledger-root.json": {
+      "bytes": 374,
+      "sha256": "533e231fb24a35ad0ae65f04908622b8c753d94d258df01cb89ddd8478d2ba8f"
+    },
+    "materialize_probe.py": {
+      "bytes": 522,
+      "sha256": "4b931835b0130ad6acffd1f59b3db35839c48eb56498105ed43578f35ab03db6"
+    },
+    "preheldout-freeze.json": {
+      "bytes": 6562,
+      "sha256": "35247b5f18482ee699e487cc42e863b06ff072e25e706fe1df075622f1c85978"
+    },
+    "probe.py.gz": {
+      "bytes": 9813,
+      "sha256": "576b988fb74b6a338cc237726d146e3e69c8abb6347eedcf8ded544c7a9b652a"
+    },
+    "publication-evidence.json": {
+      "bytes": 9244,
+      "sha256": "bdd262e74a7bfbc2c2de7320fab44d24fb0c22f5eaceefdef3a5a7d27a9f8d5b"
+    },
+    "repeatability.json": {
+      "bytes": 60,
+      "sha256": "92997491bb4fcf328a558c038d2084e1e3d9ae2dd247c7ac8e3d09e258b5de57"
+    },
+    "return-packet.json": {
+      "bytes": 439,
+      "sha256": "db08501ae3c238285557b2968354637b9cee2bdd33256afcfd583b11f6a026f9"
+    },
+    "scenarios.json": {
+      "bytes": 9526,
+      "sha256": "d9aaba248be200efdec38a738174223a7db9d1231602698d20bf6d921e57b8a7"
+    },
+    "test_probe.py": {
+      "bytes": 8713,
+      "sha256": "67960b5aacefc602048bc5c849d0f2ca8c1d7c1e551b7ac53800bc56c40a96a6"
+    }
+  },
+  "policyDigest": "e128820127db37a044381f7a3d4a79a9d46a14a5a50c16a1e115b56eb7d9b3f3",
+  "schema": "axm.v0.29-publication-manifest/v1",
+  "sourceMaterializesToSha256": "953eef23ea669badfa71c148678ee8eb814ad08a79f7171b037b825833d3daad",
+  "status": "EXPERIMENTAL_BRANCH_ONLY"
+}

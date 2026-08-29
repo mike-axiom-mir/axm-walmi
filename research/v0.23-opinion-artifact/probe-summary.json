@@ -1,0 +1,16 @@
+{
+  "schema": "axm.opinion-artifact-probe-summary/v0.23",
+  "challenge": "OPINION_ARTIFACT_IS_NOT_AUTHORITY",
+  "status": "DETACHED_VERIFIED_BRANCH_ONLY",
+  "caseCount": 10,
+  "contractReceipt": "sha256:deb4d86e37a846f2ba9bde79e30963054369373f3bfce38f79b996a845683cb4",
+  "witnessDigest": "930f48a05673c5ee3894d33001c73b51bc552d67a609adfe98b53a256e2ea650",
+  "evidenceRefCount": 12,
+  "dissentRefCount": 2,
+  "uncertaintyMarkerCount": 3,
+  "authority": "NONE",
+  "promotion": "candidate-only",
+  "liveMachineOpinionObserved": false,
+  "consciousnessObserved": false,
+  "outputIsContractProbe": true
+}

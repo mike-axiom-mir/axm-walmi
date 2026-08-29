@@ -1,0 +1,50 @@
+{
+  "schema": "axm.waldo-witness.knowledge-source-receipt/v0.1",
+  "status": "EXPERIMENTAL_REVIEW_SOURCE_ONLY",
+  "observed_at": "2026-08-15T14:17:08+02:00",
+  "purpose": "Pin the exact public platform contracts used to design WALDO-native self census, external capability intake, exact handoff planning, translation-loss evidence, and digest-bound return verification without copying or invoking the Workshop.",
+  "platform_main": {
+    "repository": "mike-axiom-mir/axm-collaboration-platform",
+    "branch": "main",
+    "commit": "a4f99fbfc05268173458bf3fb8f3fe616919e376",
+    "sources": [
+      {
+        "path": "tools/adapter-translation-garden/module.contract.json",
+        "git_blob_sha": "47d2c3a3da55534857844b4afb192b4b3c4b7939",
+        "sha256": "33d144a8a9d7497e4b3160d24b76d9f049488aca2812c4a92accba17a85212b2",
+        "reuse": "explicit interface/schema/unit mappings, translation-loss visibility, confinement, and refusal of hidden loss, permission inference, automatic orchestration, installation, promotion, and CANON change"
+      },
+      {
+        "path": "tools/handoff-wiring-observatory/module.contract.json",
+        "git_blob_sha": "271bf359030dd4d87e2a3fc211d240345b67ad54",
+        "sha256": "2336a9efc530204379bd27983bf59307b9103eefb4e7782e54cdcaccfdcaebc9",
+        "reuse": "exact producer/consumer schema matching, source attribution, freshness-bound receipts, unmatched handoff visibility, and refusal of fuzzy or semantic compatibility inference"
+      },
+      {
+        "path": "tools/technical-glasses/module.contract.json",
+        "git_blob_sha": "8fd228672843aca40ed535df38cb9a8e4461c2c5",
+        "sha256": "58dd260186e6cca239e60fd49ffda37bb67e35ac6d00c9f8c1c5b47afc3b74c0",
+        "reuse": "machine-readable capability census, source fingerprints, freshness, open seams, and refusal to treat structural scans or stale snapshots as current runtime proof"
+      },
+      {
+        "path": "tools/workshop-needs-observatory/module.contract.json",
+        "git_blob_sha": "d7ec1ffa6559451999c41d92c03cf55f7d06bd29",
+        "sha256": "b3765bbe54227fc69105e4662a2834244d30a108e5b1455ad6d737c84527275e",
+        "reuse": "bounded capability inventory, typed gap surface, declaration drift, and refusal of fuzzy claims, silent closure, automatic building, or readiness-as-approval"
+      }
+    ],
+    "source_state": "SOURCE_ONLY",
+    "runtime_claim": "No platform runtime, Workshop hand, provider, or adapter was invoked or observed by this receipt."
+  },
+  "waldo_reimplementation": {
+    "language": "ordinary Go",
+    "imports_platform_javascript": false,
+    "executes_platform_or_workshop_code": false,
+    "selects_or_invokes_providers": false,
+    "generates_or_installs_adapters": false,
+    "inherits_permissions": false,
+    "retrieves_returned_artifact_bytes": false,
+    "grants_tool_or_canon_authority": false,
+    "claim_ceiling": "Exact source-bound platform contract knowledge used for an additive WALDO capability-planning spine; not proof of platform runtime availability, Workshop parity, provider identity, schema semantics, translation fidelity, returned content quality, permission, promotion, or CANON."
+  }
+}

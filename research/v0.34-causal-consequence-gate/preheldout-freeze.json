@@ -1,0 +1,51 @@
+{
+  "authority": "NONE",
+  "challenge": "INDEPENDENCE_IS_NOT_TRUTH",
+  "developmentMetrics": {
+    "RAW_COUPLED": {
+      "badCommits": 98,
+      "badHigh": 53,
+      "correct": 59,
+      "divergenceTicks": 98,
+      "falsePreempts": 48,
+      "preempts": 152
+    },
+    "ROOT_AWARE": {
+      "badCommits": 92,
+      "badHigh": 52,
+      "correct": 64,
+      "divergenceTicks": 92,
+      "falsePreempts": 38,
+      "preempts": 117
+    },
+    "ROOT_CAUSAL_GATE": {
+      "badCommits": 64,
+      "badHigh": 24,
+      "challengeConfirmed": 29,
+      "challengeRejected": 23,
+      "challengeTimeouts": 8,
+      "correct": 64,
+      "divergenceTicks": 92,
+      "falsePreempts": 38,
+      "holds": 43,
+      "predictionChallenges": 60,
+      "preempts": 117
+    }
+  },
+  "developmentSeeds": {
+    "count": 64,
+    "endInclusive": 34064,
+    "seedListSha256": "0f53c4052eceaf1b67f0759845df4d29bfd4620c421d6a2e68483a0f4fad0045",
+    "start": 34001
+  },
+  "developmentSemanticRepeatabilitySha256": "3639a2434e6bd801e68e7f1d5bde5adfddb6aba140d48d0998687d29b35373af",
+  "donorHead": "24031c227f42ea179489bfa0f5ee7709d02965be",
+  "heldoutSeedCountAtFreeze": 0,
+  "lineageReceiptSha256": "130aec14291be879f39246e766d7bbb235f84dde4a56b0c85e3fd09551d084ef",
+  "parentCheckpoint": "d769aa3c4a208032c071d047c91a3327c576da13",
+  "policy": "ROOT_CAUSAL_GATE",
+  "policyFrozenBeforeHeldout": true,
+  "probeSha256": "9d67d5798a122377b7d2864565e546ff7ac537cc6e6c9c67f4377f00dbbbb393",
+  "schema": "axm.waldo.preheldout-freeze/v0.34",
+  "testSha256": "3e370301fc68714b35fc221b9bde48569da7e5ccda681b56d1937e57138e7316"
+}

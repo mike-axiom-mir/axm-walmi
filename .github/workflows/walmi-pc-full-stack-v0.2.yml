@@ -1,0 +1,271 @@
+name: WALMI PC full stack v0.2 workspace + assets
+
+on:
+  push:
+    branches:
+      - axm/walmi-pc-full-stack-v0.2-workspace-assets
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  package-windows:
+    runs-on: windows-2025
+    timeout-minutes: 90
+    env:
+      GIT_CONFIG_COUNT: '1'
+      GIT_CONFIG_KEY_0: core.longpaths
+      GIT_CONFIG_VALUE_0: 'true'
+    steps:
+      - name: Checkout WALMI with full history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Prepare source/history inventory
+        shell: pwsh
+        run: |
+          git config --global core.longpaths true
+          git fetch origin '+refs/heads/*:refs/remotes/origin/*' --force
+          if ($LASTEXITCODE -ne 0) { throw 'git fetch failed' }
+          New-Item -ItemType Directory -Force dist/inventory,dist/cartridge/runtime/go,dist/cartridge/runtime,dist/cartridge/native/windows,dist/cartridge/source,dist/cartridge/history,dist/cartridge/body,dist/host/bin,dist/host/runtime,dist/host/tools,dist/host/body | Out-Null
+          git bundle create dist/cartridge/history/WALDO_ALL_EXPERIMENTS.bundle --all
+          if ($LASTEXITCODE -ne 0) { throw 'git bundle create failed' }
+          git bundle verify dist/cartridge/history/WALDO_ALL_EXPERIMENTS.bundle 2>&1 | Tee-Object -FilePath dist/inventory/GIT_BUNDLE_VERIFY.txt
+          if ($LASTEXITCODE -ne 0) { throw 'git bundle verify failed' }
+
+      - name: Archive exact current WALMI source and scan weights
+        shell: python
+        run: |
+          import hashlib,json,pathlib,subprocess,zipfile
+          root=pathlib.Path('.')
+          commit=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()
+          files=[p for p in subprocess.check_output(['git','ls-files'],text=True).splitlines() if p and not p.startswith('dist/')]
+          out=pathlib.Path('dist/cartridge/source/WALMI_CURRENT_STACK_v0_2.zip')
+          with zipfile.ZipFile(out,'w',zipfile.ZIP_DEFLATED,compresslevel=6,allowZip64=True) as z:
+              for name in sorted(files):
+                  path=root/name
+                  if path.is_file(): z.write(path,name)
+          source={'schema':'walmi.current-source/v0.2','status':'PASS','commit':commit,'trackedFiles':len(files),'archive':'source/WALMI_CURRENT_STACK_v0_2.zip','archiveSHA256':hashlib.sha256(out.read_bytes()).hexdigest()}
+          pathlib.Path('dist/inventory/CURRENT_SOURCE.json').write_text(json.dumps(source,indent=2),encoding='utf-8')
+          exts={'.gguf','.safetensors','.pt','.pth','.bin','.onnx','.ckpt'}
+          recognized=[]
+          for name in files:
+              path=root/name
+              if path.is_file() and path.suffix.lower() in exts:
+                  recognized.append({'path':name,'bytes':path.stat().st_size,'sha256':hashlib.sha256(path.read_bytes()).hexdigest()})
+          weights={'schema':'walmi.model-weight-scan/v0.2','startingWeightsBundled':bool(recognized),'count':len(recognized),'recognizedWeightFiles':recognized}
+          pathlib.Path('dist/inventory/MODEL_WEIGHT_SCAN.json').write_text(json.dumps(weights,indent=2),encoding='utf-8')
+          print('CURRENT_SOURCE_PASS',commit,len(files),'files','weights',len(recognized))
+
+      - name: Checkout pinned AXM asset capability donor
+        uses: actions/checkout@v4
+        with:
+          repository: mike-axiom-mir/axm-collaboration-platform
+          ref: fd6ec98a6a98a6666a980c359730ccec57a8cbe9
+          path: dist/platform
+          fetch-depth: 1
+
+      - name: Vendor Asset Fabric v0.12 and Asset Hands v2.5 into WALMI body
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force dist/host/body/shared,dist/host/body/tools,dist/cartridge/body/shared,dist/cartridge/body/tools | Out-Null
+          $shared = @('asset-hands','visual-kernel','visual-fx','output')
+          foreach ($name in $shared) {
+            Copy-Item -Recurse ("dist/platform/shared/$name") ("dist/host/body/shared/$name")
+            Copy-Item -Recurse ("dist/platform/shared/$name") ("dist/cartridge/body/shared/$name")
+          }
+          New-Item -ItemType Directory -Force dist/host/body/shared/vendor,dist/cartridge/body/shared/vendor | Out-Null
+          Copy-Item -Recurse dist/platform/shared/vendor/jspdf dist/host/body/shared/vendor/jspdf
+          Copy-Item -Recurse dist/platform/shared/vendor/jspdf dist/cartridge/body/shared/vendor/jspdf
+          $tools = @('asset-fabric','spatial-studio','film-motion-studio')
+          foreach ($name in $tools) {
+            Copy-Item -Recurse ("dist/platform/tools/$name") ("dist/host/body/tools/$name")
+            Copy-Item -Recurse ("dist/platform/tools/$name") ("dist/cartridge/body/tools/$name")
+          }
+          Copy-Item portable/walmi-pc-package/walmi_asset_hand_runner.js dist/host/tools/walmi_asset_hand_runner.js
+          Copy-Item portable/walmi-pc-package/walmi_workspace_hand.py dist/host/tools/walmi_workspace_hand.py
+
+      - name: Install Go build runtime
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+          cache: true
+
+      - name: Install Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Apply package-only Windows membrane
+        shell: pwsh
+        run: |
+          python portable/walmi-pc-package/patch_windows_runtime.py
+          if ($LASTEXITCODE -ne 0) { throw 'Windows runtime membrane failed' }
+          gofmt -w internal/training/pytorch.go internal/training/environment.go internal/training/python_worker.go internal/training/torchtitan.go internal/training/walmi_windows_package_test.go internal/model/build.go internal/model/compose_lock_windows.go internal/model/compose_lock_nonwindows.go internal/model/walmi_windows_lock_test.go
+          if ($LASTEXITCODE -ne 0) { throw 'gofmt failed' }
+          Get-Content dist/WINDOWS_RUNTIME_PATCH_RECEIPT.json
+
+      - name: Test WALMI runtime and build native executables
+        shell: pwsh
+        run: |
+          go version
+          if ($LASTEXITCODE -ne 0) { throw 'go runtime unavailable' }
+          $testLog = 'dist/inventory/GO_TESTS.txt'
+          Remove-Item $testLog -ErrorAction SilentlyContinue
+          $packages = @('./internal/training','./internal/model','./internal/inference','./internal/axmmirror','./internal/cli')
+          foreach ($pkg in $packages) {
+            "=== $pkg ===" | Tee-Object -FilePath $testLog -Append
+            go test $pkg 2>&1 | Tee-Object -FilePath $testLog -Append
+            if ($LASTEXITCODE -ne 0) { throw "go test $pkg failed" }
+          }
+          go build -trimpath -ldflags='-s -w' -o dist/host/bin/waldo.exe ./cmd/waldo
+          if ($LASTEXITCODE -ne 0) { throw 'waldo.exe build failed' }
+          go build -trimpath -ldflags='-s -w' -o dist/host/bin/waldo-axm-mirror.exe ./cmd/waldo-axm-mirror
+          if ($LASTEXITCODE -ne 0) { throw 'waldo-axm-mirror.exe build failed' }
+          go build -trimpath -ldflags='-s -w' -o dist/host/bin/waldo-mirror-review.exe ./cmd/waldo-mirror-review
+          if ($LASTEXITCODE -ne 0) { throw 'waldo-mirror-review.exe build failed' }
+          & .\dist\host\bin\waldo.exe --version | Tee-Object -FilePath dist/inventory/WALDO_WINDOWS_VERSION.txt
+          if ($LASTEXITCODE -ne 0) { throw 'waldo.exe version smoke failed' }
+          & .\dist\host\bin\waldo.exe mirror --help | Out-File -Encoding utf8 dist/inventory/WALDO_WINDOWS_MIRROR_HELP.txt
+          if ($LASTEXITCODE -ne 0) { throw 'waldo.exe mirror help smoke failed' }
+
+      - name: Install portable CPU PyTorch and Node runtime
+        shell: pwsh
+        run: |
+          python -m pip install --upgrade pip
+          if ($LASTEXITCODE -ne 0) { throw 'pip upgrade failed' }
+          python -m pip install numpy
+          if ($LASTEXITCODE -ne 0) { throw 'NumPy install failed' }
+          python -m pip install --index-url https://download.pytorch.org/whl/cpu torch
+          if ($LASTEXITCODE -ne 0) { throw 'CPU PyTorch install failed' }
+          python -c "import torch,platform; print('BUILD_PYTORCH_PASS',platform.python_version(),torch.__version__)"
+          if ($LASTEXITCODE -ne 0) { throw 'build PyTorch import failed' }
+          python -c "import pathlib,shutil,sys; src=pathlib.Path(sys.prefix); dst=pathlib.Path('dist/host/runtime/python'); shutil.copytree(src,dst,dirs_exist_ok=True); print('PYTHON_RUNTIME_COPIED',src,dst)"
+          if ($LASTEXITCODE -ne 0) { throw 'portable Python copy failed' }
+          New-Item -ItemType Directory -Force dist/host/runtime/node | Out-Null
+          $node=(Get-Command node).Source
+          Copy-Item $node dist/host/runtime/node/node.exe
+          & .\dist\host\runtime\node\node.exe --version
+          if ($LASTEXITCODE -ne 0) { throw 'portable Node smoke failed' }
+
+      - name: Verify local Asset Hands runner
+        shell: python
+        run: |
+          import json,pathlib,subprocess
+          req={'schema':'axm.walmi.asset-hand-request/v0.2','action':'status'}
+          pathlib.Path('dist/inventory/asset-status-request.json').write_text(json.dumps(req),encoding='utf-8')
+          cmd=[r'dist\host\runtime\node\node.exe',r'dist\host\tools\walmi_asset_hand_runner.js',r'dist\inventory\asset-status-request.json']
+          run=subprocess.run(cmd,capture_output=True,text=True,check=True)
+          response=json.loads(run.stdout)
+          result=response['result']
+          assert response['asset_hands_version']=='2.5.0'
+          assert int(result['hands']) >= 30
+          assert response['workshop_required'] is False and response['network_used'] is False
+          fabric_source=pathlib.Path('dist/host/body/tools/asset-fabric/fabric-core.js').read_text(encoding='utf-8')
+          assert "VERSION='0.12.0'" in fabric_source
+          closure=[
+              'body/shared/asset-hands/asset-hands.js','body/shared/visual-kernel/visual-kernel.js',
+              'body/shared/visual-fx/fx-blocks.js','body/shared/output/axm-output-core.js',
+              'body/shared/vendor/jspdf/jspdf.umd.min.js','body/tools/spatial-studio/spatial-core.js',
+              'body/tools/spatial-studio/spatial-geometry.js','body/tools/film-motion-studio/film-motion-core.js',
+              'body/tools/asset-fabric/fabric-core.js'
+          ]
+          missing=[x for x in closure if not pathlib.Path('dist/host',x).is_file()]
+          assert not missing, missing
+          receipt={'schema':'walmi.asset-capability-receipt/v0.2','status':'PASS','platformRepository':'mike-axiom-mir/axm-collaboration-platform','platformCommit':'fd6ec98a6a98a6666a980c359730ccec57a8cbe9','assetFabricVersion':'0.12.0','assetHandsVersion':response['asset_hands_version'],'handCount':int(result['hands']),'closure':closure,'workshopRequired':False,'networkUsed':False,'runner':'portable-node-commonjs'}
+          pathlib.Path('dist/inventory/ASSET_CAPABILITY_RECEIPT.json').write_text(json.dumps(receipt,indent=2),encoding='utf-8')
+          print('ASSET_CAPABILITY_PASS',receipt['assetHandsVersion'],receipt['handCount'],'hands')
+
+      - name: Verify Workspace Hand read transactional write and Git refusal
+        shell: python
+        run: |
+          import hashlib,json,pathlib,subprocess
+          root=pathlib.Path('dist/workspace-smoke'); root.mkdir(parents=True,exist_ok=True)
+          (root/'hello.txt').write_text('hello',encoding='utf-8')
+          read={'schema':'axm.walmi.workspace-request/v0.2','action':'read','path':'hello.txt'}
+          pathlib.Path('dist/inventory/workspace-read.json').write_text(json.dumps(read),encoding='utf-8')
+          exe=[r'dist\host\runtime\python\python.exe',r'dist\host\tools\walmi_workspace_hand.py']
+          read_run=subprocess.run(exe+[str(root),r'dist\inventory\workspace-read.json'],capture_output=True,text=True,check=True)
+          read_response=json.loads(read_run.stdout); assert read_response['content']=='hello' and read_response['network_used'] is False
+          content='created by bounded workspace smoke'
+          h=lambda b: hashlib.sha256(b).hexdigest()
+          apply={'schema':'axm.walmi.workspace-request/v0.2','action':'apply','write':{'schema':'axm.walmi.workspace-write-request/v0.2','candidate_id':'package-smoke','source_sha256':h(b'package-smoke-source'),'operations':[{'action':'create','path':'nested/new.txt','content':content,'content_sha256':h(content.encode())}]}}
+          pathlib.Path('dist/inventory/workspace-apply.json').write_text(json.dumps(apply),encoding='utf-8')
+          apply_run=subprocess.run(exe+[str(root),r'dist\inventory\workspace-apply.json'],capture_output=True,text=True,check=True)
+          apply_response=json.loads(apply_run.stdout); wr=apply_response['write_receipt']
+          assert wr['state']=='APPLIED' and wr['writer_authored_code'] is False and (root/'nested/new.txt').read_text() == content
+          refused={'schema':'axm.walmi.workspace-request/v0.2','action':'apply','write':{'schema':'axm.walmi.workspace-write-request/v0.2','candidate_id':'git-refusal','source_sha256':h(b'git-refusal-source'),'operations':[{'action':'create','path':'.GIT/config','content':'nope','content_sha256':h(b'nope')}]}}
+          pathlib.Path('dist/inventory/workspace-git-refusal.json').write_text(json.dumps(refused),encoding='utf-8')
+          refused_run=subprocess.run(exe+[str(root),r'dist\inventory\workspace-git-refusal.json'],capture_output=True,text=True)
+          assert refused_run.returncode != 0 and 'refused segment' in refused_run.stderr
+          receipt={'schema':'walmi.workspace-hand-smoke/v0.2','status':'PASS','readState':read_response['state'],'writeState':wr['state'],'caseInsensitiveGitRefusal':True,'writerAuthoredCode':wr['writer_authored_code'],'networkUsed':False,'workshopRequired':False,'gitMutation':False}
+          pathlib.Path('dist/inventory/WORKSPACE_HAND_SMOKE.json').write_text(json.dumps(receipt,indent=2),encoding='utf-8')
+          print('WORKSPACE_HAND_PASS',read_response['state'],wr['state'],'GIT_REFUSAL_PASS')
+
+      - name: Write standalone WALMI host layout
+        shell: pwsh
+        run: |
+          python portable/walmi-pc-package/write_host_layout.py
+          if ($LASTEXITCODE -ne 0) { throw 'host layout failed' }
+
+      - name: Verify relocated PyTorch can update and save weights
+        shell: pwsh
+        run: |
+          & .\dist\host\runtime\python\python.exe -c "import pathlib,torch; torch.manual_seed(7); m=torch.nn.Linear(4,2); opt=torch.optim.SGD(m.parameters(),lr=0.1); x=torch.arange(12,dtype=torch.float32).reshape(3,4)/10; target=torch.zeros((3,2)); before=m.weight.detach().clone(); loss=torch.nn.functional.mse_loss(m(x),target); loss.backward(); opt.step(); changed=not torch.equal(before,m.weight.detach()); assert changed; out=pathlib.Path('dist/host/state/PACKAGE_TRAINING_SMOKE.pt'); torch.save({'state_dict':m.state_dict(),'verification_only':True},out); print('WALMI_RELOCATED_TRAINING_PASS','weight_changed',changed,'loss',float(loss),'checkpoint_bytes',out.stat().st_size)" | Tee-Object -FilePath dist/inventory/PYTORCH_RUNTIME_VERIFY.txt
+          if ($LASTEXITCODE -ne 0) { throw 'relocated PyTorch weight-update smoke failed' }
+
+      - name: Verify automatic learning from incomplete experience
+        shell: pwsh
+        run: |
+          & .\dist\host\runtime\python\python.exe portable/walmi-pc-package/run_autolearn_smoke.py
+          if ($LASTEXITCODE -ne 0) { throw 'automatic experience-learning smoke failed' }
+          Get-Content dist/inventory/AUTOLEARN_EXPERIENCE_SMOKE.json
+
+      - name: Package and verify native Windows host
+        shell: pwsh
+        run: |
+          python portable/walmi-pc-package/finalize_cartridge.py native
+          if ($LASTEXITCODE -ne 0) { throw 'native host finalization failed' }
+
+      - name: Build browser fallback
+        shell: pwsh
+        run: |
+          $env:GOOS='js'
+          $env:GOARCH='wasm'
+          go build -trimpath -ldflags='-s -w' -o dist/cartridge/runtime/go/walmi-axm-mirror.wasm ./cmd/walmi-browser-wasm
+          if ($LASTEXITCODE -ne 0) { throw 'browser WASM build failed' }
+          Remove-Item Env:GOOS
+          Remove-Item Env:GOARCH
+          $wasmExec=(Get-ChildItem (go env GOROOT) -Recurse -Filter wasm_exec.js | Select-Object -First 1).FullName
+          if (-not $wasmExec) { throw 'wasm_exec.js missing' }
+          Copy-Item $wasmExec dist/cartridge/runtime/go/wasm_exec.js
+          Copy-Item portable/walmi-browser-cartridge/runtime/browser-entry.js dist/cartridge/runtime/browser-entry.js
+
+      - name: Assemble receipts and final cartridge
+        shell: pwsh
+        run: |
+          Copy-Item -Recurse dist/inventory dist/cartridge/inventory
+          Copy-Item LICENSE dist/cartridge/
+          Copy-Item NOTICE dist/cartridge/
+          python portable/walmi-pc-package/finalize_cartridge.py final
+          if ($LASTEXITCODE -ne 0) { throw 'final cartridge verification failed' }
+          Get-Content dist/WALMI_PC_FULL_STACK_v0_2.sha256.txt
+
+      - name: Upload WALMI PC full stack v0.2
+        uses: actions/upload-artifact@v4
+        with:
+          name: WALMI-PC-FULL-STACK-v0-2
+          path: |
+            dist/WALMI_PC_FULL_STACK_v0_2.zip
+            dist/WALMI_PC_FULL_STACK_v0_2.sha256.txt
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 7

@@ -1,0 +1,25 @@
+{
+  "authority": "NONE",
+  "canon": false,
+  "challenge": "REASONING_MODE_IS_NOT_EXECUTION_AUTHORITY",
+  "claims": {
+    "consciousnessObserved": false,
+    "generalReasoningSuperiorityProven": false,
+    "hybridTopologyExecutedInSimulator": true,
+    "liveModelProviderObserved": false,
+    "realRobotObserved": false,
+    "reasoningModeSelectorGrantedExecutionAuthority": false
+  },
+  "hybridBestCount": 3,
+  "hybridCoupledActivations": 7,
+  "hybridPreventedFalsePreemptions": 1,
+  "hybridQualityAtLeastBothCount": 16,
+  "hybridUncertaintyActivations": 5,
+  "ledgerValidationPass": true,
+  "promotion": "candidate-only",
+  "receiptDigest": "sha256:6f04da8eaa5339ce0aff6780d522d8c1aabe6f021bbf24d5ce9eebb77946ee20",
+  "repeatabilityPass": true,
+  "scenarioCount": 17,
+  "schema": "axm.research-probe-summary/v0.26",
+  "status": "DETACHED_DETERMINISTIC_SIMULATION_OBSERVED"
+}

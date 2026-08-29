@@ -1,0 +1,228 @@
+// Copyright (c) 2026 OpenWALDO Project contributors
+// Copyright (c) 2026 CtrlIQ, Inc.
+// Copyright (c) 2026 Gregory M. Kurtzer
+// SPDX-License-Identifier: Apache-2.0
+
+package cli
+
+import (
+	"bufio"
+	"bytes"
+	"context"
+	"encoding/json"
+	"os"
+	"path/filepath"
+	"strings"
+	"testing"
+
+	waldoai "github.com/openwaldo/waldo/internal/ai"
+	waldoindex "github.com/openwaldo/waldo/internal/index"
+	"github.com/openwaldo/waldo/internal/model"
+	"github.com/openwaldo/waldo/internal/training"
+)
+
+func TestAdvisorCheckpointMonitorProcessesCapturedSnapshotWithoutRereadingModel(t *testing.T) {
+	root, name := t.TempDir(), "changing"
+	modelPath := filepath.Join(root, name)
+	if err := os.MkdirAll(modelPath, 0o755); err != nil {
+		t.Fatal(err)
+	}
+	// A transcript only requires MODEL.json to exist before it flushes. Keep it
+	// deliberately invalid: processing a captured snapshot must not inspect it.
+	if err := os.WriteFile(filepath.Join(modelPath, "MODEL.json"), []byte("{}\n"), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	transcript := &advisorTranscript{root: root, name: name, session: "test"}
+	var output, warnings bytes.Buffer
+	monitor := &advisorCheckpointMonitor{
+		ctx: context.Background(), root: root, name: name, transcript: transcript,
+		output: &output, warnings: &warnings,
+	}
+	previousAsk := modelAdvisorAsk
+	modelAdvisorAsk = func(_ context.Context, _ waldoai.Selection, prompt string) (string, error) {
+		if !strings.Contains(prompt, `"step": 2`) {
+			t.Fatalf("checkpoint prompt does not contain captured step: %s", prompt)
+		}
+		return `{"reply":"The captured checkpoint is healthy."}`, nil
+	}
+	t.Cleanup(func() { modelAdvisorAsk = previousAsk })
+	monitor.process(advisorCheckpointSnapshot{
+		event:  model.Progress{Training: &training.Event{Kind: "checkpoint", Step: 2}},
+		report: model.Advice{},
+	})
+	chat, err := os.ReadFile(filepath.Join(modelPath, "advisor", "CHAT.jsonl"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !bytes.Contains(chat, []byte(`"category":"checkpoint-monitor"`)) || warnings.Len() != 0 {
+		t.Fatalf("checkpoint chat = %s, warnings = %q", chat, warnings.String())
+	}
+}
+
+func TestAdvisorReplySupportsConversationAndValidatesComposeBoundary(t *testing.T) {
+	original := advisorTestCompose()
+	allowed := advisorAllowedCorpora(&original, []waldoindex.CorpusInfo{{Path: "core/code"}})
+	plain, err := parseAdvisorReply(`{"reply":"The held-out loss is improving."}`, &original, allowed, false)
+	if err != nil || plain.Reply == "" || plain.Compose != nil {
+		t.Fatalf("plain reply = %+v, err = %v", plain, err)
+	}
+	proposed := advisorReply{Reply: "Try a slightly longer run.", Changes: []string{"increase steps"}, Compose: &original}
+	encoded, err := json.Marshal(proposed)
+	if err != nil {
+		t.Fatal(err)
+	}
+	parsed, err := parseAdvisorReply(string(encoded), &original, allowed, false)
+	if err != nil || parsed.Compose == nil {
+		t.Fatalf("proposal = %+v, err = %v", parsed, err)
+	}
+	bad := advisorTestCompose()
+	bad.Stages[0].Corpora = model.NewCorpusSelections([]string{"invented/corpus"})
+	proposed.Compose = &bad
+	encoded, err = json.Marshal(proposed)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if _, err := parseAdvisorReply(string(encoded), &original, allowed, false); err == nil || !strings.Contains(err.Error(), "not in the configured index") {
+		t.Fatalf("corpus boundary error = %v", err)
+	}
+	indexed := advisorTestCompose()
+	indexed.Stages[0].Corpora = model.NewCorpusSelections([]string{"core/code"})
+	proposed.Compose = &indexed
+	encoded, err = json.Marshal(proposed)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if _, err := parseAdvisorReply(string(encoded), &original, allowed, false); err != nil {
+		t.Fatalf("indexed corpus proposal was rejected: %v", err)
+	}
+	if _, err := parseAdvisorReply(string(encoded), nil, allowed, true); err != nil {
+		t.Fatalf("new-model compose was rejected: %v", err)
+	}
+	if _, err := parseAdvisorReply(string(encoded), nil, allowed, false); err == nil || !strings.Contains(err.Error(), "no saved compose") {
+		t.Fatalf("uncomposed existing model error = %v", err)
+	}
+}
+
+func TestAdvisorDraftUpdatesAtomicallyAfterConfirmation(t *testing.T) {
+	path := filepath.Join(t.TempDir(), "candidate.yaml")
+	first := advisorTestCompose()
+	if err := writeAdvisorDraft(path, first); err != nil {
+		t.Fatal(err)
+	}
+	second := advisorTestCompose()
+	second.Stages[0].Parameters.Steps = 3
+	if err := writeAdvisorDraft(path, second); err != nil {
+		t.Fatal(err)
+	}
+	loaded, _, err := model.LoadCompose(path)
+	if err != nil || loaded.Stages[0].Parameters.Steps != 3 {
+		t.Fatalf("draft = %+v, err = %v", loaded, err)
+	}
+	if mode := fileMode(t, path); mode != 0o644 {
+		t.Fatalf("draft mode = %o", mode)
+	}
+	if !advisorConfirmed("yes\n") || !advisorConfirmed("Y") || advisorConfirmed("no") || advisorConfirmed("") {
+		t.Fatal("confirmation parsing is incorrect")
+	}
+}
+
+func TestAdvisorReplyRendersMarkdown(t *testing.T) {
+	previousWidth := terminalOutputWidth
+	terminalOutputWidth = func() int { return 72 }
+	t.Cleanup(func() { terminalOutputWidth = previousWidth })
+	var output bytes.Buffer
+	if err := renderAdvisorReply(&output, "### Architecture\n\n- 6 layers\n- 9.5M parameters"); err != nil {
+		t.Fatal(err)
+	}
+	rendered := output.String()
+	if !strings.Contains(rendered, "Advisor") || !strings.Contains(rendered, "Architecture") || !strings.Contains(rendered, "6 layers") || !strings.Contains(rendered, "9.5M parameters") {
+		t.Fatalf("rendered advisor response = %q", rendered)
+	}
+}
+
+func TestAdvisorComposeReferenceIsValid(t *testing.T) {
+	encoded, err := json.Marshal(advisorComposeReference([]waldoindex.CorpusInfo{{Path: "core/books"}}))
+	if err != nil {
+		t.Fatal(err)
+	}
+	var compose model.Compose
+	if err := json.Unmarshal(encoded, &compose); err != nil {
+		t.Fatal(err)
+	}
+	if err := compose.Validate(); err != nil {
+		t.Fatalf("advisor compose reference is invalid: %v", err)
+	}
+}
+
+func TestAdvisorStructuralOrArchivedChangeDefaultsToNewCompose(t *testing.T) {
+	root := t.TempDir()
+	currentPath := filepath.Join(t.TempDir(), "babble-advisor.yaml")
+	current := advisorTestCompose()
+	if err := writeAdvisorDraft(currentPath, current); err != nil {
+		t.Fatal(err)
+	}
+	structural := advisorTestCompose()
+	structural.Architecture.Layers++
+	var output strings.Builder
+	selected, err := selectAdvisorDraftPath(bufio.NewReader(strings.NewReader("\n")), &output, root, "babble", currentPath, &current, structural)
+	if err != nil || filepath.Base(selected) != "0000-babble-advisor.yaml" || !strings.Contains(output.String(), "[Y/n]") {
+		t.Fatalf("structural selection = %q, output = %q, err = %v", selected, output.String(), err)
+	}
+
+	modelPath := filepath.Join(root, "babble")
+	if err := os.MkdirAll(modelPath, 0o755); err != nil {
+		t.Fatal(err)
+	}
+	if _, err := model.ArchiveCompose(modelPath, current, "original.yaml"); err != nil {
+		t.Fatal(err)
+	}
+	nonstructural := advisorTestCompose()
+	nonstructural.Stages[0].Parameters.Steps++
+	output.Reset()
+	selected, err = selectAdvisorDraftPath(bufio.NewReader(strings.NewReader("\n")), &output, root, "babble", currentPath, &current, nonstructural)
+	if err != nil || filepath.Base(selected) != "0000-babble-advisor.yaml" || !strings.Contains(output.String(), "[Y/n]") {
+		t.Fatalf("archived selection = %q, output = %q, err = %v", selected, output.String(), err)
+	}
+	selected, err = selectAdvisorDraftPath(bufio.NewReader(strings.NewReader("no\n")), &output, root, "babble", currentPath, &current, nonstructural)
+	if err != nil || selected != currentPath {
+		t.Fatalf("explicit update selection = %q, err = %v", selected, err)
+	}
+}
+
+func TestAdvisorDraftRevisionKeepsSortablePrefix(t *testing.T) {
+	directory := t.TempDir()
+	current := filepath.Join(directory, "0007-experiment.yaml")
+	if err := os.WriteFile(current, []byte("reserved"), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	next, err := nextAdvisorDraftPath(current)
+	if err != nil || filepath.Base(next) != "0008-experiment.yaml" {
+		t.Fatalf("next draft = %q, err = %v", next, err)
+	}
+}
+
+func fileMode(t *testing.T, path string) os.FileMode {
+	t.Helper()
+	info, err := os.Stat(path)
+	if err != nil {
+		t.Fatal(err)
+	}
+	return info.Mode().Perm()
+}
+
+func advisorTestCompose() model.Compose {
+	return model.Compose{
+		Kind: "waldo-model-compose", Schema: 1,
+		Architecture: model.Architecture{
+			Family: "decoder-transformer", ContextTokens: 128, VocabularySize: 259,
+			HiddenSize: 64, IntermediateSize: 192, Layers: 2, AttentionHeads: 4,
+			KeyValueHeads: 2, TieEmbeddings: true, ParameterDType: "float32",
+			Tokenizer: model.Tokenizer{Name: "byte", Revision: "builtin-byte-schema-1"},
+		},
+		Stages: []model.Stage{{
+			Name: "pretrain", Type: "pre-training", Objective: "causal-language-modeling",
+			Corpora:    model.NewCorpusSelections([]string{"core/books/gutenberg"}),
+			Parameters: training.Parameters{Steps: 2, BatchSize: 1, SequenceLength: 64, LearningRate: 0.001, Seed: 7},
+		}},
+	}
+}

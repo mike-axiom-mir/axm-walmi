@@ -1,0 +1,77 @@
+{
+  "schema": "axm.waldo.visible-experience-spine-public-receipt/v0.38",
+  "status": "PASS",
+  "challenge": "EXPERIENCE_MUST_COUNT_WITHOUT_HIDDEN_LEARNING",
+  "parentCheckpoint": "93c32b213391a806c13d1638c80ee761866889e0",
+  "contractSha256": "f1876661659cbafb0cb4ae1f2152947c3ec5b7013e6b771caedc97d245d576c6",
+  "binarySha256": "1ae4782d3c5ed15bc07654b55da74cb220c98dfd019aef1c063afb7e8c7242e8",
+  "fixtures": {
+    "stableRequestSha256": "5db6dd68325efd428ba1c107e3654829702c0a04f7ce2967972b0a16d934bed5",
+    "helpfulOutcomeSha256": "5a6e17977f2c73b0b1646a502d21e68a3de036a720fac4e6a09c3f16f049d514",
+    "uncertainFollowupSha256": "9804debf16bab57d00f9f60def48fcc9b8420543be535b83a456ca43ad709442"
+  },
+  "episode": {
+    "id": "v038-helpful-experience",
+    "stages": ["SENSED", "REACTED", "OUTCOME_OBSERVED", "REFLECTED"],
+    "outcomeSignal": "HELPFUL",
+    "outcomeEventSha256": "b42090d24ea369d31aa6f0f75c01790b4437f0c521c1fb7fa1436fe651fefe91",
+    "reflectionEventSha256": "1b2cfcb89bd5e924ff06704b224d1a894cc2cfae922fa59e2849bddbe35cfa71",
+    "futureContextMutation": true
+  },
+  "realNeuralContext": {
+    "model": "pytorch-smoke",
+    "backend": "pytorch",
+    "experienceContextApplied": true,
+    "experienceContextSha256": "e87066aae8dbc029799ad11db61ddf3d77408b26846cbd0dc5de3eb3329fada4",
+    "neuralPromptSha256": "1cff663a68530479a6de4bbfad0e4c5d69091125d9d2c0f5d7544ffc57ec3076",
+    "neuralCandidateSha256": "69ecbc862d040eec494cbaf002a80ba329fd30d92154f7f0602891ffe6bc1d13",
+    "tokens": 32,
+    "quality": "NONSENSICAL_TINY_MODEL_OUTPUT_NOT_APPROVED_FOR_TRAINING"
+  },
+  "waldoLearning": {
+    "learningRecordSha256": "bdbdebb4b2580dc48c8eb6edb775290af894db814e576da6bc9d95d417ec398e",
+    "privateLearningFileSha256": "5882ce273e291dfd8fa42d66d807baa98491bbdcfeac37834ea88bae724218f7",
+    "recordsRetained": 1,
+    "referenceTokens": 37,
+    "shardSha256": "69daa9a8ccea7833dfb1ad4a3c9323171a73dc56cec4d9c9f75f4ba7e3f8be1b",
+    "trainingRunId": "9c08402a82c1b361",
+    "trainingState": "complete",
+    "simulated": false,
+    "steps": 12,
+    "consumedTokens": 192,
+    "finalLoss": 5.034520149230957,
+    "logicalRunBomSha256": "61d2d602d4b86d4f22440da31e1698c5de3e31428aa0733f8cf985fcc8d6dc22",
+    "runBomFileSha256": "b80b2fd7186567480058947a6804faa908de632292a7225905502baf1dbc0b89",
+    "runFileSha256": "03997352e36667be269cf99e6207b0c08f50f6d6055b680071ba22739aba559f",
+    "initialWeightsSha256": "1881b144beaba8f31ae2b6543e10caaea0560f9435c7c86b9f1e93a425b66d7b",
+    "resultWeightsSha256": "a5a4a3eacd3b205ba4703fc6c789c6465c2ce3ee16f2079efbc176da4d2a0cbf",
+    "weightsChanged": true,
+    "improvementClaimed": false
+  },
+  "hermesMemory": {
+    "projectionCreated": true,
+    "memoryRecordSha256": "9834975ed45d313a0928a01cba6960cc0b95a7cf75f6359ac920aff9b498ab93",
+    "privateProjectionFileSha256": "4cb4c03c9237d6258fe924755b3e3dd5bbd8c08f9e0f72da33e8c48f4e577402",
+    "runtimeImported": false,
+    "runtimeExecuted": false,
+    "runtimeMemoryMutation": false
+  },
+  "privateEvidence": {
+    "experienceLedgerSha256": "09e6ca4328f2eeddf26004e3feb1c5eea4ae1f10d05db89eb3cca2010226bb43",
+    "traceSha256": "eed98d151a3cdf762e4eeec49f9fe682613991836abe1a5b569b635176d668f3",
+    "traceRawTextIncluded": false,
+    "fileMode": "0600",
+    "rawFilesCommitted": false
+  },
+  "mutations": {
+    "experienceLedger": true,
+    "futureMirrorContext": true,
+    "waldoTrainingProjection": true,
+    "modelWeights": true,
+    "hermesMemoryProjection": true,
+    "hermesRuntimeMemory": false,
+    "identity": false,
+    "canon": false
+  },
+  "authority": "NONE"
+}

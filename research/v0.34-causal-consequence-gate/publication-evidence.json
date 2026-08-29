@@ -1,0 +1,18 @@
+{
+  "authority": "NONE",
+  "challenge": "INDEPENDENCE_IS_NOT_TRUTH",
+  "donorHead": "24031c227f42ea179489bfa0f5ee7709d02965be",
+  "heldoutSeedReceiptSha256": "e37052c5b5effa8234e580d8b58a5d94abc595bec966b92d94779e4cdf8f5af1",
+  "heldoutSemanticRepeatabilitySha256": "8087d0dd96f510fb0d826f56fdaa7ce2a372a5e83c810a9f56bfc918a31824c3",
+  "lineageReceiptSha256": "130aec14291be879f39246e766d7bbb235f84dde4a56b0c85e3fd09551d084ef",
+  "parentCheckpoint": "d769aa3c4a208032c071d047c91a3327c576da13",
+  "preheldoutFreezeSha256": "7675924a1fcc9834862f73b5a62ee2cd91e968149d7f13b0637e7d8288e744da",
+  "probeSha256": "9d67d5798a122377b7d2864565e546ff7ac537cc6e6c9c67f4377f00dbbbb393",
+  "resultSha256": "3ec669ada77881db955c9f416d8755553459b9789579c248b7d26a3b97afefc1",
+  "schema": "axm.waldo.publication-evidence/v0.34",
+  "testSha256": "3e370301fc68714b35fc221b9bde48569da7e5ccda681b56d1937e57138e7316",
+  "tests": {
+    "failed": 0,
+    "passed": 12
+  }
+}

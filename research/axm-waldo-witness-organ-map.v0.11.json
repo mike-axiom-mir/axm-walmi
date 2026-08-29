@@ -1,0 +1,19 @@
+{
+  "schema": "axm.waldo-witness.organ-map/v0.11",
+  "status": "EXPERIMENTAL",
+  "inherits": "axm.waldo-witness.organ-map/v0.10",
+  "frozenChallenge": "ONE_CONCEPT_MANY_BODIES",
+  "frozenConceptSha256": "sha256:9779b14236b2717ce1e8694adbacfd95c07d3afbacea10d3e4255cb52950856a",
+  "sourcePacketSha256": "sha256:8f4688db3abcba988011f2a2f36f172a09c3d848e57a2da54db90abd2669e634",
+  "newOrgans": [
+    {"id":"organ-runtime-receipt-verifier","role":"independently verify the observed deterministic Organ Fabric receipt and its exact truth boundary","authority":"NONE"},
+    {"id":"organ-runtime-witness","role":"compress the verified 4-proposal / 12-candidate run into digest-only WALDO evidence","authority":"NONE"},
+    {"id":"organ-archive-roundtrip-witness","role":"retain the verified 12-object archive identity, dedup result, and export/import pack identity","authority":"NONE"}
+  ],
+  "observed": {
+    "donorFocusedChecksPassed":151,"proposalCount":4,"candidateCount":12,"failureCount":0,
+    "strategiesPerProposal":["lean","balanced","guarded"],"aiProposalBodies":1,"liveAiCalls":0,"selections":0,
+    "archiveObjects":12,"archiveEvents":12,"duplicateAddedEvent":false,"archiveRoundTripVerified":true
+  },
+  "truthBoundary": {"installed":false,"registered":false,"staged":false,"promoted":false,"persistentLearningAdmitted":false,"canonChanged":false}
+}

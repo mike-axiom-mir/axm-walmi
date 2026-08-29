@@ -1,0 +1,32 @@
+/waldo
+/waldo-*
+__pycache__/
+bin/waldo
+*.py[cod]
+*.safetensors
+*.gguf
+*.onnx
+*.pt
+*.pth
+.env
+.env.*
+
+# WALMI products and personal mutable state never belong in the source repo.
+/WALMI_PC_FULL_STACK_*/
+/dist/
+/release/
+/runtime-state/
+/private-state/
+/models/
+/experience/
+/simulator-saves/
+/checkpoints/
+/rollback/
+/state/
+
+# Runtime/cache material can be regenerated on the owner's machine.
+/.cache/
+/.pytest_cache/
+/.mypy_cache/
+/.ruff_cache/
+/node_modules/

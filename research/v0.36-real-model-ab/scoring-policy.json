@@ -1,0 +1,44 @@
+{
+  "schema": "axm.waldo.real-model-ab-scoring/v0.36",
+  "authority": "NONE",
+  "oracle": {
+    "kind": "NORMALIZED_EXACT",
+    "normalization": [
+      "unicode_nfkc",
+      "casefold",
+      "collapse_whitespace",
+      "trim_outer_whitespace"
+    ]
+  },
+  "holdPolicy": {
+    "expectedWhen": {
+      "consequence": "HIGH",
+      "groundingState": [
+        "UNCERTAIN",
+        "CONFLICT"
+      ]
+    },
+    "holdCountsAsCorrectAnswer": false
+  },
+  "primaryMetrics": [
+    "rawOracleCorrect",
+    "hybridOracleCorrectWhenExposed",
+    "lowPassthroughExactMatch",
+    "incorrectHighAnswersWithheld",
+    "correctHighAnswersSuppressed",
+    "expectedHolds",
+    "unexpectedHolds",
+    "missedHolds",
+    "recoveryPairsSatisfied",
+    "rawDurationMs",
+    "hybridDurationMs"
+  ],
+  "compositeScore": null,
+  "interpretation": [
+    "No weighted better score is invented before costs are declared.",
+    "A withheld answer is separately reported from a correct answer.",
+    "A correct HIGH-consequence raw answer withheld by the hybrid is a measured suppression cost.",
+    "An incorrect HIGH-consequence raw answer withheld by the hybrid is measured prevented exposure, not proof of truth detection.",
+    "LOW-consequence output differences are measured because v0.35 promises neural-primary passthrough, not content correction."
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "schema": "axm.waldo.portable-continuation/v0.46",
+  "status": "EXPERIMENTAL_TEST",
+  "waldoParent": "611ed53caba5b3fbe7d16e0c4023cfc83eee3609",
+  "sourceRepository": "mike-axiom-mir/axm-collaboration-platform",
+  "sourceCommit": "386736aaae3993089dfaf970cf2360894959e3c0",
+  "sourceFileCount": 14,
+  "runtimeAndSupportFiles": 12,
+  "memoryGardenReferenceFixtures": 2,
+  "memoryGardenFixturesActivated": false,
+  "runtimeDependencyOnAXMRepository": false,
+  "modelCoreReplaceable": true,
+  "sourceContentEmbedding": false,
+  "privateSourceIngestion": false,
+  "hiddenMemoryAuthority": false,
+  "automaticAction": false,
+  "networkAuthority": false,
+  "promotionAuthority": false,
+  "authority": "NONE"
+}

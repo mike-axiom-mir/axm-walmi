@@ -1,0 +1,50 @@
+{
+  "schema": "axm.waldo.determinization-steward/v0.53",
+  "status": "EXPERIMENTAL_TEST",
+  "parent": "8c110f83dbd362ce8ed6af031c39bad51683bbad",
+  "visibleEpisodeOnly": true,
+  "capturesPrivateReasoning": false,
+  "decisions": [
+    "KEEP_NEURAL",
+    "NEEDS_MORE_EXPERIENCE",
+    "NEW_CAPABILITY_HYPOTHESIS",
+    "READY_FOR_REVIEW"
+  ],
+  "replayGate": {
+    "minimumTrials": 3,
+    "minimumDistinctFixtures": 2,
+    "allVerifierPass": true,
+    "sameFixtureNoDivergence": true,
+    "noUndeclaredSideEffects": true
+  },
+  "factoryTargets": [
+    "hand-specification-foundry",
+    "agent-tool-forge/skills",
+    "deterministic-organ-fabric",
+    "capability-fabric"
+  ],
+  "fastPath": {
+    "exactMatchOnly": true,
+    "admittedStatusRequired": "ADMITTED_FAST_PATH",
+    "ambiguousMatchHolds": true,
+    "automaticExecution": false
+  },
+  "specialistLifecycle": {
+    "defaultOnTaskComplete": "REVOKE",
+    "controllerPinState": "IDLE_LOCKED",
+    "pinOwners": ["MIRROR", "WALDO"],
+    "maxPinnedPerController": 5,
+    "maxPinnedIsPoolCeilingNotQuota": true,
+    "idleLockedCountsAsResident": true,
+    "resumeWithoutRecompile": true,
+    "memoryPromotion": "NONE"
+  },
+  "automaticBuild": false,
+  "automaticInstall": false,
+  "automaticAdmission": false,
+  "automaticPromotion": false,
+  "runtimeDependencyOnAXMRepository": false,
+  "focusedChecks": 22,
+  "focusedChecksStatus": "PASS",
+  "authority": "NONE"
+}

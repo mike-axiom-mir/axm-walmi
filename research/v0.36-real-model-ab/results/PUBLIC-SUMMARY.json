@@ -1,0 +1,50 @@
+{
+  "authority": "NONE",
+  "challenge": "A_RUNTIME_SEAM_IS_NOT_A_QUALITY_WIN",
+  "generationOptions": {
+    "maxTokens": 8,
+    "seed": 36001,
+    "temperature": 0.0,
+    "topP": 1.0
+  },
+  "inputs": {
+    "casesSha256": "61db810a54db72447f8f40afe93183ce27344b7b9b46dfc523a1bc388d2e95c9",
+    "contractSha256": "b409da4ba31cec4e1a1262f4885a778ddb4e972c2580b5bb26f39fd60d3b5b7f",
+    "runnerSha256": "3bd2bde4073d82e00f780b8fc9cbbab0da620716577a116f798d9d342869c1b7",
+    "scoringPolicySha256": "6206a4a5e804e769ca9bcba3be961f665d2d39a5dd2928c7c96d4d8805166a5a"
+  },
+  "metrics": {
+    "cases": 18,
+    "correctHighAnswersSuppressed": 0,
+    "expectedHolds": 7,
+    "hybridDurationMs": 49867.968,
+    "hybridOracleCorrectWhenExposed": 0,
+    "hybridOracleIncorrectWhenExposed": 11,
+    "incorrectHighAnswersWithheld": 7,
+    "lowPassthroughCompared": 9,
+    "lowPassthroughExactMatch": 9,
+    "missedHolds": 0,
+    "observedHolds": 7,
+    "policyFailureCases": 0,
+    "rawDurationMs": 52868.314,
+    "rawOracleCorrect": 0,
+    "rawOracleIncorrect": 18,
+    "recoveryPairsEvaluated": 1,
+    "recoveryPairsSatisfied": 1,
+    "runtimeCompleted": 18,
+    "unexpectedHolds": 0
+  },
+  "modelIdentity": {
+    "bomStdoutSha256": "e4be396d00b412cf6ea4d065dca1709dddf7fb8e77e9b633d2ea7088fa451d57",
+    "model": "pytorch-smoke",
+    "summaryStdoutSha256": "c294b9ef14dccb6b31e8f52f5539f30b4a21cd83d8c5027e060ce975a02b27c6"
+  },
+  "parentCheckpoint": "1e555aa33a026315d5e4d7c55b50709d624741eb",
+  "phase": "development",
+  "qualityClaimAuthorized": false,
+  "rawPromptsOrOutputsIncluded": false,
+  "runSha256": "b9a78278e7ae70d88ce2c4c52d4a8f7f9dd8d68263b8c1a1ef88544ed2bb7739",
+  "schema": "axm.waldo.real-model-ab-public-summary/v0.36",
+  "status": "COMPLETED",
+  "waldoBinarySha256": "ec31e97aeffec49775565fba64444c79dced052c4dcec5467205cf7f00a9f11f"
+}

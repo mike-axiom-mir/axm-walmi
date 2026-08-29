@@ -1,0 +1,17 @@
+{
+  "schema": "axm.hermes-surface-capability-exposure-summary/v0.21",
+  "sourceV020Receipt": "sha256:edb16e8f804b6cace4e59eaf7f66344ef31648e52b028129eae373224e3645c2",
+  "sourceV020Head": "b3d23a8262c96a3ba8a6e32b80b3e0b25cb366b0",
+  "hermesLocalDonorCommit": "739bc555b1932e66c169b20edec3a48368e2dd3f",
+  "hermesReviewedCommit": "2ebb1cb41400660ccc3712157c18b3d39f278ab6",
+  "donorBlobContinuityVerified": true,
+  "donorFileCount": 3,
+  "surfaceProfileCount": 4,
+  "evaluationCaseCount": 5,
+  "refusalCaseCount": 4,
+  "contractReceipt": "sha256:e0bc916d45cdfd5702067984b69482de451e8843b1729351199aeb777e0f955c",
+  "witness": "143a9f3c06371c519df8fff8a528a44f31af21438aa565d899326ec3d4360e72",
+  "hermesRuntimeImported": false,
+  "hermesRuntimeExecuted": false,
+  "waldoAuthority": "NONE"
+}

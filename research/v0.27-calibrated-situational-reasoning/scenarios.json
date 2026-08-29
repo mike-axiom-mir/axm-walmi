@@ -1,0 +1,67 @@
+{
+  "calibrationPolicy": {
+    "ambiguityMargin": 0.16,
+    "confidenceDecayPerTick": 0.86,
+    "corroborationScore": 0.76,
+    "corroborationSources": 2,
+    "evidenceWindowTicks": 6,
+    "hardContradictionConfidence": 0.92,
+    "highConsequenceReviewScore": 0.48,
+    "hybridHardConfidence": 0.85,
+    "maxPersistenceBonus": 0.21,
+    "minimumMargin": 0.18,
+    "persistenceBonusPerRepeat": 0.07,
+    "persistenceObservations": 4,
+    "persistenceScore": 0.7
+  },
+  "capability": "MOVE_SIM_ARM",
+  "challenge": "EVIDENCE_CONFIDENCE_IS_NOT_TRUTH",
+  "environment": "SIM-ROOM-A",
+  "heldoutGenerator": {
+    "families": [
+      "stable-noise",
+      "real-change-weak",
+      "real-change-corroborated",
+      "real-change-strong",
+      "source-conflict",
+      "missing-then-change",
+      "rapid-flap",
+      "persistent-false-one-source",
+      "high-confidence-false",
+      "late-corroboration",
+      "irreversible-ambiguity"
+    ],
+    "maxTicks": 18,
+    "note": "Family selection and parameters are SHA-256-derived from the held-out seed. The policy constants above are shared across every scenario."
+  },
+  "heldoutSeeds": [
+    27001,27002,27003,27004,27005,27006,27007,27008,27009,27010,27011,27012,27013,27014,27015,27016,27017,27018,27019,27020,27021,27022,27023,27024,27025,27026,27027,27028,27029,27030,27031,27032,27033,27034,27035,27036,27037,27038,27039,27040,27041,27042,27043,27044
+  ],
+  "limits": {"maxLogicalTicks": 18,"sequentialReviewTicks": 4},
+  "parentExperiment": {
+    "branch": "axm/mirror-waldo-experiment-v0.26-hybrid-reasoning-ab",
+    "commit": "3007ffeb6fb256f8abfc00987d5493d9f350ee82",
+    "note": "v0.26 evidence remains immutable; v0.27 adds a fresh A/B/C/D simulator focused on selector calibration.",
+    "receipt": "sha256:6f04da8eaa5339ce0aff6780d522d8c1aabe6f021bbf24d5ce9eebb77946ee20"
+  },
+  "scenarios": [
+    {"commitTicks":[10,14],"events":[{"at":3,"confidence":0.92,"kind":"OBSERVATION","source":"cam-a","value":6},{"at":8,"confidence":0.88,"kind":"OBSERVATION","source":"cam-b","value":6}],"id":"stable-consistent","maxTicks":14,"permit":"VALID","seed":2701,"split":"CALIBRATION","startTarget":6},
+    {"commitTicks":[10,14],"events":[{"at":4,"confidence":0.38,"kind":"OBSERVATION","source":"cam-a","value":2},{"at":7,"confidence":0.81,"kind":"OBSERVATION","source":"cam-b","value":6}],"id":"single-low-confidence-false","maxTicks":14,"permit":"VALID","seed":2702,"split":"CALIBRATION","startTarget":6},
+    {"commitTicks":[9,16],"events":[{"at":4,"confidence":0.35,"kind":"OBSERVATION","source":"cam-a","value":2},{"at":4,"kind":"WORLD_TARGET_CHANGE","value":2},{"at":5,"confidence":0.39,"kind":"OBSERVATION","source":"cam-a","value":2},{"at":6,"confidence":0.42,"kind":"OBSERVATION","source":"cam-a","value":2},{"at":7,"confidence":0.45,"kind":"OBSERVATION","source":"cam-a","value":2},{"at":8,"confidence":0.48,"kind":"OBSERVATION","source":"cam-a","value":2},{"at":9,"confidence":0.5,"kind":"OBSERVATION","source":"cam-a","value":2}],"id":"persistent-weak-real-change","maxTicks":16,"permit":"VALID","seed":2703,"split":"CALIBRATION","startTarget":6},
+    {"commitTicks":[8,14],"events":[{"at":4,"kind":"WORLD_TARGET_CHANGE","value":8},{"at":4,"confidence":0.56,"kind":"OBSERVATION","source":"cam-a","value":8},{"at":5,"confidence":0.62,"kind":"OBSERVATION","source":"cam-b","value":8}],"id":"corroborated-real-change","maxTicks":14,"permit":"VALID","seed":2704,"split":"CALIBRATION","startTarget":5},
+    {"commitTicks":[5,10,14],"events":[{"at":4,"confidence":0.67,"kind":"OBSERVATION","source":"cam-a","value":2},{"at":4,"confidence":0.72,"kind":"OBSERVATION","source":"cam-b","value":5},{"at":6,"confidence":0.84,"kind":"OBSERVATION","source":"cam-c","value":5}],"id":"contradictory-independent-sources","maxTicks":14,"permit":"VALID","seed":2705,"split":"CALIBRATION","startTarget":5},
+    {"commitTicks":[6,12],"events":[{"at":3,"kind":"WORLD_TARGET_CHANGE","value":7},{"at":3,"confidence":0.95,"kind":"OBSERVATION","source":"cam-a","value":7}],"id":"strong-real-change","maxTicks":12,"permit":"VALID","seed":2706,"split":"CALIBRATION","startTarget":4},
+    {"commitTicks":[5,12],"events":[{"at":3,"kind":"MISSING_OBSERVATION","source":"cam-a"},{"at":7,"confidence":0.82,"kind":"OBSERVATION","source":"cam-b","value":4}],"id":"missing-only","maxTicks":12,"permit":"VALID","seed":2707,"split":"CALIBRATION","startTarget":4},
+    {"commitTicks":[9,16],"events":[{"at":3,"kind":"MISSING_OBSERVATION","source":"cam-a"},{"at":5,"kind":"WORLD_TARGET_CHANGE","value":3},{"at":6,"confidence":0.39,"kind":"OBSERVATION","source":"cam-a","value":3},{"at":8,"confidence":0.61,"kind":"OBSERVATION","source":"cam-b","value":3}],"id":"missing-then-weak-real-change","maxTicks":16,"permit":"VALID","seed":2708,"split":"CALIBRATION","startTarget":7},
+    {"commitTicks":[8,12,16],"events":[{"at":4,"confidence":0.36,"kind":"OBSERVATION","source":"cam-a","value":2},{"at":5,"confidence":0.39,"kind":"OBSERVATION","source":"cam-a","value":2},{"at":6,"confidence":0.41,"kind":"OBSERVATION","source":"cam-a","value":2},{"at":7,"confidence":0.43,"kind":"OBSERVATION","source":"cam-a","value":2},{"at":10,"confidence":0.86,"kind":"OBSERVATION","source":"cam-b","value":6}],"id":"persistent-false-one-source","maxTicks":16,"permit":"VALID","seed":2709,"split":"CALIBRATION","startTarget":6},
+    {"commitTicks":[9,14],"events":[{"at":4,"kind":"WORLD_TARGET_CHANGE","value":2},{"at":4,"confidence":0.41,"kind":"OBSERVATION","source":"cam-a","value":2}],"id":"genuine-low-confidence-single","maxTicks":14,"permit":"VALID","seed":2710,"split":"CALIBRATION","startTarget":6},
+    {"commitTicks":[6,10,14],"events":[{"at":4,"confidence":0.94,"kind":"OBSERVATION","source":"cam-a","value":1},{"at":7,"confidence":0.87,"kind":"OBSERVATION","source":"cam-b","value":5}],"id":"high-confidence-false-single","maxTicks":14,"permit":"VALID","seed":2711,"split":"CALIBRATION","startTarget":5},
+    {"commitTicks":[9,16],"events":[{"at":3,"kind":"WORLD_TARGET_CHANGE","value":2},{"at":3,"confidence":0.96,"kind":"OBSERVATION","source":"cam-a","value":2},{"at":6,"kind":"WORLD_TARGET_CHANGE","value":8},{"at":6,"confidence":0.93,"kind":"OBSERVATION","source":"cam-b","value":8}],"id":"rapid-real-flap","maxTicks":16,"permit":"VALID","seed":2712,"split":"CALIBRATION","startTarget":6},
+    {"commitTicks":[3,7,10],"events":[{"at":5,"kind":"REVOKE_PERMIT"}],"id":"permit-revoked","maxTicks":10,"permit":"VALID","seed":2713,"split":"AUTHORITY","startTarget":4},
+    {"commitTicks":[4,8],"events":[],"id":"wrong-environment","maxTicks":8,"permit":"WRONG_ENVIRONMENT","seed":2714,"split":"AUTHORITY","startTarget":4},
+    {"commitTicks":[4,8],"events":[],"id":"wrong-capability","maxTicks":8,"permit":"WRONG_CAPABILITY","seed":2715,"split":"AUTHORITY","startTarget":4},
+    {"commitTicks":[4,8],"events":[],"id":"no-permit","maxTicks":8,"permit":"ABSENT","seed":2716,"split":"AUTHORITY","startTarget":4},
+    {"actuatorRoute":false,"commitTicks":[4,8],"events":[],"id":"no-actuator-route","maxTicks":8,"permit":"VALID","seed":2717,"split":"AUTHORITY","startTarget":4}
+  ],
+  "schema": "axm.calibrated-situational-reasoning-scenarios/v0.27"
+}

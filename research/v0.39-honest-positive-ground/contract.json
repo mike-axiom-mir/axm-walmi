@@ -1,0 +1,42 @@
+{
+  "schema": "axm.waldo.honest-positive-ground-contract/v0.39",
+  "status": "EXPERIMENTAL_TRAINING_INTEGRATION",
+  "parentCheckpoint": "84ce38ef3e69ce013ecd3f9f164d88bcebe1dadc",
+  "dataClasses": {
+    "SYNTHETIC_SEED": {
+      "synthetic": true,
+      "generatorRequired": true,
+      "observationReceiptForbidden": true
+    },
+    "OBSERVED_CHAT": {
+      "synthetic": false,
+      "observationTimeRequired": true,
+      "sourceReceiptRequired": true
+    },
+    "OBSERVED_EXECUTION_TRACE": {
+      "synthetic": false,
+      "observationTimeRequired": true,
+      "sourceReceiptRequired": true
+    }
+  },
+  "dispositions": {
+    "POSITIVE_TARGET": ["CURATED_SYNTHETIC", "HELPFUL", "CORRECTED"],
+    "MEMORY_ONLY": ["HARMFUL", "INCONCLUSIVE"],
+    "REVIEW_REQUIRED": ["UNREVIEWED"]
+  },
+  "positiveSeedFloor": {
+    "minimumRecords": 24,
+    "minimumRoots": 8,
+    "minimumExamplesPerRoot": 3,
+    "minimumChallengeKinds": 8
+  },
+  "projection": {
+    "structuredConversation": true,
+    "assistantTargetOnly": true,
+    "fileMode": "0600",
+    "weightMutationDuringProjection": false
+  },
+  "rawLogsPreservedOutsideProjection": true,
+  "qualityClaimFromWeightChange": false,
+  "authority": "NONE"
+}

@@ -1,0 +1,12 @@
+{
+  "schema": "axm.waldo-material-evidence-view/v0.14",
+  "phase": "T1",
+  "sourceReceiptDigest": "sha256:9daf12733393e19c6149215e6a8f4f2d774f870ff21ba22c04efd785d34c8303",
+  "peerAuditPackDigest": "sha256:5ebd8a83f405243f501dcd4930e5279b86c4e39dbc082f66ffc6ccab26aaaaf7",
+  "requiredArtifacts": ["peerRing", "peerAuditProjection"],
+  "includedArtifacts": {
+    "peerRing": {
+      "path": "../../internal/axmmirror/testdata/peer-audit-ring-v0.13.json"
+    }
+  }
+}

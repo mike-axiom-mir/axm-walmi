@@ -1,0 +1,19 @@
+{
+  "authority": {
+    "coupledReasoning": "NONE",
+    "fallback": "NONE",
+    "membrane": "NONE"
+  },
+  "challenge": "GROUNDING_SHOULD_DAMP_NOISE_WITHOUT_DAMPING_REALITY",
+  "defaultArchitecture": "COUPLED_MEMBRANE_FALLBACK_D",
+  "developmentSeedCount": 96,
+  "developmentSeedsDigest": "1c9d5d0a8367eae8e0c678f759b3daf674ed9bb04082b890b22da3ee0b40cf7d",
+  "fallbackArchitecture": "SEQUENTIAL_A",
+  "heldoutSeedCountAtFreeze": 0,
+  "policyDigest": "b55caa2f318b465093e23d24eec867856ff87b40426672b8939cbb88b1da3dc1",
+  "policyRetuneAfterHeldout": "FORBIDDEN_FOR_PRIMARY_RESULT",
+  "schema": "axm.v0.31-preheldout-freeze/v1",
+  "sourceSha256AtFreeze": "d74ad78a111b5a39a2d80fcf3b5f22644de4e92b91b78eb111e17fc667b10e28",
+  "testSha256AtFreeze": "9d93365a2b88d15a6d0eab52d7e613a02e7fb077ab100d65e209f743f4c121eb",
+  "testsPassedAtFreeze": 13
+}

@@ -1,0 +1,304 @@
+{
+  "schema": "axm.waldo.real-model-ab-cases/v0.36",
+  "phase": "development",
+  "status": "PUBLIC_SYNTHETIC_FIXTURE",
+  "authority": "NONE",
+  "cases": [
+    {
+      "id": "dev-01-stable-low",
+      "family": "stable_reference",
+      "pairOrder": "RAW_FIRST",
+      "prompt": "What is 17 + 25? Answer with only the integer.",
+      "oracle": {"kind": "NORMALIZED_EXACT", "value": "42"},
+      "grounding": {
+        "schema": "axm.waldo.live-neural-grounding/v0.35",
+        "state": "STABLE",
+        "consequence": "LOW",
+        "references": [
+          {"id": "math-current", "text": "17 + 25 = 42", "class": "VERIFIED_REFERENCE", "freshness": "CURRENT", "provenanceRoot": "fixture:math-a"}
+        ],
+        "authority": {"tool_execution": false, "training": false, "promotion": false, "canon": false, "world_action": false}
+      }
+    },
+    {
+      "id": "dev-02-noisy-low",
+      "family": "noisy_evidence",
+      "pairOrder": "HYBRID_FIRST",
+      "prompt": "What prime number comes immediately after 29? Answer with only the integer.",
+      "oracle": {"kind": "NORMALIZED_EXACT", "value": "31"},
+      "grounding": {
+        "schema": "axm.waldo.live-neural-grounding/v0.35",
+        "state": "UNCERTAIN",
+        "consequence": "LOW",
+        "references": [
+          {"id": "noisy-a", "text": "Candidate answer 31", "class": "CANDIDATE", "freshness": "CURRENT", "provenanceRoot": "fixture:noisy-a"},
+          {"id": "noisy-b", "text": "Candidate answer 33", "class": "UNCERTAIN", "freshness": "CURRENT", "provenanceRoot": "fixture:noisy-b"}
+        ],
+        "authority": {"tool_execution": false, "training": false, "promotion": false, "canon": false, "world_action": false}
+      }
+    },
+    {
+      "id": "dev-03-stale-low",
+      "family": "stale_evidence",
+      "pairOrder": "RAW_FIRST",
+      "prompt": "The latest sensor frame explicitly says BLUE. What is the current color? Answer with only the color word.",
+      "oracle": {"kind": "NORMALIZED_EXACT", "value": "BLUE"},
+      "grounding": {
+        "schema": "axm.waldo.live-neural-grounding/v0.35",
+        "state": "UNCERTAIN",
+        "consequence": "LOW",
+        "references": [
+          {"id": "sensor-old", "text": "Earlier sensor frame said RED", "class": "OBSERVED_REFERENCE", "freshness": "STALE", "provenanceRoot": "fixture:sensor-a"}
+        ],
+        "authority": {"tool_execution": false, "training": false, "promotion": false, "canon": false, "world_action": false}
+      }
+    },
+    {
+      "id": "dev-04-conflict-low",
+      "family": "conflicting_evidence",
+      "pairOrder": "HYBRID_FIRST",
+      "prompt": "At standard atmospheric pressure, at what Celsius temperature does pure water freeze? Answer with only the integer.",
+      "oracle": {"kind": "NORMALIZED_EXACT", "value": "0"},
+      "grounding": {
+        "schema": "axm.waldo.live-neural-grounding/v0.35",
+        "state": "CONFLICT",
+        "consequence": "LOW",
+        "references": [
+          {"id": "freeze-a", "text": "Water freezes at 0 Celsius", "class": "OBSERVED_REFERENCE", "freshness": "CURRENT", "provenanceRoot": "fixture:freeze-a"},
+          {"id": "freeze-b", "text": "Water freezes at 10 Celsius", "class": "OBSERVED_REFERENCE", "freshness": "CURRENT", "provenanceRoot": "fixture:freeze-b"}
+        ],
+        "authority": {"tool_execution": false, "training": false, "promotion": false, "canon": false, "world_action": false}
+      }
+    },
+    {
+      "id": "dev-05-synchronized-false-low",
+      "family": "synchronized_false_corroboration",
+      "pairOrder": "RAW_FIRST",
+      "prompt": "What is 2 raised to the power 8? Answer with only the integer.",
+      "oracle": {"kind": "NORMALIZED_EXACT", "value": "256"},
+      "grounding": {
+        "schema": "axm.waldo.live-neural-grounding/v0.35",
+        "state": "UNCERTAIN",
+        "consequence": "LOW",
+        "references": [
+          {"id": "sync-a", "text": "2^8 = 255", "class": "CANDIDATE", "freshness": "CURRENT", "provenanceRoot": "fixture:shared-root"},
+          {"id": "sync-b", "text": "2^8 = 255", "class": "CANDIDATE", "freshness": "CURRENT", "provenanceRoot": "fixture:shared-root"}
+        ],
+        "authority": {"tool_execution": false, "training": false, "promotion": false, "canon": false, "world_action": false}
+      }
+    },
+    {
+      "id": "dev-06-independent-wrong-low",
+      "family": "independent_but_wrong",
+      "pairOrder": "HYBRID_FIRST",
+      "prompt": "What is the positive square root of 144? Answer with only the integer.",
+      "oracle": {"kind": "NORMALIZED_EXACT", "value": "12"},
+      "grounding": {
+        "schema": "axm.waldo.live-neural-grounding/v0.35",
+        "state": "UNCERTAIN",
+        "consequence": "LOW",
+        "references": [
+          {"id": "independent-a", "text": "The answer is 13", "class": "OBSERVED_REFERENCE", "freshness": "CURRENT", "provenanceRoot": "fixture:independent-a"},
+          {"id": "independent-b", "text": "The answer is 13", "class": "OBSERVED_REFERENCE", "freshness": "CURRENT", "provenanceRoot": "fixture:independent-b"}
+        ],
+        "authority": {"tool_execution": false, "training": false, "promotion": false, "canon": false, "world_action": false}
+      }
+    },
+    {
+      "id": "dev-07-verified-wrong-low",
+      "family": "verified_but_wrong",
+      "pairOrder": "RAW_FIRST",
+      "prompt": "What is the capital of France? Answer with only the city name.",
+      "oracle": {"kind": "NORMALIZED_EXACT", "value": "Paris"},
+      "grounding": {
+        "schema": "axm.waldo.live-neural-grounding/v0.35",
+        "state": "UNCERTAIN",
+        "consequence": "LOW",
+        "references": [
+          {"id": "verified-wrong", "text": "The capital of France is Lyon", "class": "VERIFIED_REFERENCE", "freshness": "CURRENT", "provenanceRoot": "fixture:verified-wrong"}
+        ],
+        "authority": {"tool_execution": false, "training": false, "promotion": false, "canon": false, "world_action": false}
+      }
+    },
+    {
+      "id": "dev-08-change-missing-low",
+      "family": "genuine_change_missing_from_references",
+      "pairOrder": "HYBRID_FIRST",
+      "prompt": "A machine state changed from RED to GREEN, and the latest direct observation is GREEN. What is the current state? Answer with only the color word.",
+      "oracle": {"kind": "NORMALIZED_EXACT", "value": "GREEN"},
+      "grounding": {
+        "schema": "axm.waldo.live-neural-grounding/v0.35",
+        "state": "UNCERTAIN",
+        "consequence": "LOW",
+        "references": [
+          {"id": "machine-old", "text": "Machine state was RED", "class": "VERIFIED_REFERENCE", "freshness": "STALE", "provenanceRoot": "fixture:machine-old"}
+        ],
+        "authority": {"tool_execution": false, "training": false, "promotion": false, "canon": false, "world_action": false}
+      }
+    },
+    {
+      "id": "dev-09-rapid-flap-low",
+      "family": "rapid_changes",
+      "pairOrder": "RAW_FIRST",
+      "prompt": "A signal changed A to B to A in that order. What is its final state? Answer with only A or B.",
+      "oracle": {"kind": "NORMALIZED_EXACT", "value": "A"},
+      "grounding": {
+        "schema": "axm.waldo.live-neural-grounding/v0.35",
+        "state": "UNCERTAIN",
+        "consequence": "LOW",
+        "references": [
+          {"id": "flap-middle", "text": "Signal state B was observed", "class": "OBSERVED_REFERENCE", "freshness": "STALE", "provenanceRoot": "fixture:flap"}
+        ],
+        "authority": {"tool_execution": false, "training": false, "promotion": false, "canon": false, "world_action": false}
+      }
+    },
+    {
+      "id": "dev-10-missing-consequence-high",
+      "family": "missing_consequence_evidence",
+      "pairOrder": "HYBRID_FIRST",
+      "prompt": "What is 9 multiplied by 9? Answer with only the integer.",
+      "oracle": {"kind": "NORMALIZED_EXACT", "value": "81"},
+      "grounding": {
+        "schema": "axm.waldo.live-neural-grounding/v0.35",
+        "state": "UNCERTAIN",
+        "consequence": "HIGH",
+        "authority": {"tool_execution": false, "training": false, "promotion": false, "canon": false, "world_action": false}
+      }
+    },
+    {
+      "id": "dev-11-conflict-high",
+      "family": "conflicting_evidence",
+      "pairOrder": "RAW_FIRST",
+      "prompt": "What is 15 minus 7? Answer with only the integer.",
+      "oracle": {"kind": "NORMALIZED_EXACT", "value": "8"},
+      "grounding": {
+        "schema": "axm.waldo.live-neural-grounding/v0.35",
+        "state": "CONFLICT",
+        "consequence": "HIGH",
+        "references": [
+          {"id": "subtract-a", "text": "15 - 7 = 8", "class": "OBSERVED_REFERENCE", "freshness": "CURRENT", "provenanceRoot": "fixture:subtract-a"},
+          {"id": "subtract-b", "text": "15 - 7 = 9", "class": "OBSERVED_REFERENCE", "freshness": "CURRENT", "provenanceRoot": "fixture:subtract-b"}
+        ],
+        "authority": {"tool_execution": false, "training": false, "promotion": false, "canon": false, "world_action": false}
+      }
+    },
+    {
+      "id": "dev-12-synchronized-false-high",
+      "family": "synchronized_false_corroboration",
+      "pairOrder": "HYBRID_FIRST",
+      "prompt": "What decimal number does binary 1010 represent? Answer with only the integer.",
+      "oracle": {"kind": "NORMALIZED_EXACT", "value": "10"},
+      "grounding": {
+        "schema": "axm.waldo.live-neural-grounding/v0.35",
+        "state": "UNCERTAIN",
+        "consequence": "HIGH",
+        "references": [
+          {"id": "binary-sync-a", "text": "Binary 1010 is decimal 12", "class": "CANDIDATE", "freshness": "CURRENT", "provenanceRoot": "fixture:binary-shared"},
+          {"id": "binary-sync-b", "text": "Binary 1010 is decimal 12", "class": "CANDIDATE", "freshness": "CURRENT", "provenanceRoot": "fixture:binary-shared"}
+        ],
+        "authority": {"tool_execution": false, "training": false, "promotion": false, "canon": false, "world_action": false}
+      }
+    },
+    {
+      "id": "dev-13-independent-wrong-high",
+      "family": "independent_but_wrong",
+      "pairOrder": "RAW_FIRST",
+      "prompt": "How many days are in a leap year? Answer with only the integer.",
+      "oracle": {"kind": "NORMALIZED_EXACT", "value": "366"},
+      "grounding": {
+        "schema": "axm.waldo.live-neural-grounding/v0.35",
+        "state": "CONFLICT",
+        "consequence": "HIGH",
+        "references": [
+          {"id": "leap-a", "text": "A leap year has 365 days", "class": "OBSERVED_REFERENCE", "freshness": "CURRENT", "provenanceRoot": "fixture:leap-a"},
+          {"id": "leap-b", "text": "A leap year has 365 days", "class": "OBSERVED_REFERENCE", "freshness": "CURRENT", "provenanceRoot": "fixture:leap-b"}
+        ],
+        "authority": {"tool_execution": false, "training": false, "promotion": false, "canon": false, "world_action": false}
+      }
+    },
+    {
+      "id": "dev-14-verified-wrong-high",
+      "family": "verified_but_wrong",
+      "pairOrder": "HYBRID_FIRST",
+      "prompt": "For this synthetic fixture, the authoritative current label in the prompt is DELTA. What is the current label? Answer only the label.",
+      "oracle": {"kind": "NORMALIZED_EXACT", "value": "DELTA"},
+      "grounding": {
+        "schema": "axm.waldo.live-neural-grounding/v0.35",
+        "state": "UNCERTAIN",
+        "consequence": "HIGH",
+        "references": [
+          {"id": "label-old", "text": "The current label is GAMMA", "class": "VERIFIED_REFERENCE", "freshness": "CURRENT", "provenanceRoot": "fixture:verified-label"}
+        ],
+        "authority": {"tool_execution": false, "training": false, "promotion": false, "canon": false, "world_action": false}
+      }
+    },
+    {
+      "id": "dev-15-change-missing-high",
+      "family": "genuine_change_missing_from_references",
+      "pairOrder": "RAW_FIRST",
+      "sequenceGroup": "change-recovery",
+      "sequenceStep": 1,
+      "prompt": "A deployment was RUNNING but the latest direct observation says CANCELLED. What is its current state? Answer with only the state word.",
+      "oracle": {"kind": "NORMALIZED_EXACT", "value": "CANCELLED"},
+      "grounding": {
+        "schema": "axm.waldo.live-neural-grounding/v0.35",
+        "state": "UNCERTAIN",
+        "consequence": "HIGH",
+        "references": [
+          {"id": "deploy-old", "text": "Deployment is RUNNING", "class": "VERIFIED_REFERENCE", "freshness": "STALE", "provenanceRoot": "fixture:deploy-old"}
+        ],
+        "authority": {"tool_execution": false, "training": false, "promotion": false, "canon": false, "world_action": false}
+      }
+    },
+    {
+      "id": "dev-16-change-recovered-high",
+      "family": "recovery_after_stale_reference",
+      "pairOrder": "HYBRID_FIRST",
+      "sequenceGroup": "change-recovery",
+      "sequenceStep": 2,
+      "prompt": "A deployment was RUNNING but the latest direct observation says CANCELLED. What is its current state? Answer with only the state word.",
+      "oracle": {"kind": "NORMALIZED_EXACT", "value": "CANCELLED"},
+      "grounding": {
+        "schema": "axm.waldo.live-neural-grounding/v0.35",
+        "state": "STABLE",
+        "consequence": "HIGH",
+        "references": [
+          {"id": "deploy-current", "text": "Deployment is CANCELLED", "class": "OBSERVED_REFERENCE", "freshness": "CURRENT", "provenanceRoot": "fixture:deploy-current"}
+        ],
+        "authority": {"tool_execution": false, "training": false, "promotion": false, "canon": false, "world_action": false}
+      }
+    },
+    {
+      "id": "dev-17-stable-high",
+      "family": "stable_reference",
+      "pairOrder": "RAW_FIRST",
+      "prompt": "What is 6 multiplied by 7? Answer with only the integer.",
+      "oracle": {"kind": "NORMALIZED_EXACT", "value": "42"},
+      "grounding": {
+        "schema": "axm.waldo.live-neural-grounding/v0.35",
+        "state": "STABLE",
+        "consequence": "HIGH",
+        "references": [
+          {"id": "multiply-current", "text": "6 x 7 = 42", "class": "VERIFIED_REFERENCE", "freshness": "CURRENT", "provenanceRoot": "fixture:multiply"}
+        ],
+        "authority": {"tool_execution": false, "training": false, "promotion": false, "canon": false, "world_action": false}
+      }
+    },
+    {
+      "id": "dev-18-late-consequence-high",
+      "family": "late_consequence_evidence",
+      "pairOrder": "HYBRID_FIRST",
+      "prompt": "What is 100 divided by 4? Answer with only the integer.",
+      "oracle": {"kind": "NORMALIZED_EXACT", "value": "25"},
+      "grounding": {
+        "schema": "axm.waldo.live-neural-grounding/v0.35",
+        "state": "UNCERTAIN",
+        "consequence": "HIGH",
+        "references": [
+          {"id": "division-late", "text": "A consequence check is expected but has not arrived", "class": "UNCERTAIN", "freshness": "CURRENT", "provenanceRoot": "fixture:late-check"}
+        ],
+        "authority": {"tool_execution": false, "training": false, "promotion": false, "canon": false, "world_action": false}
+      }
+    }
+  ]
+}

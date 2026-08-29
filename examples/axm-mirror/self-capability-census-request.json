@@ -1,0 +1,15 @@
+{
+  "schema": "axm.waldo-witness.self-capability-census-request/v0.1",
+  "census_id": "synthetic-self-census-0001",
+  "target_answering_identity_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+  "observed_build_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+  "observation_receipt_sha256": "3333333333333333333333333333333333333333333333333333333333333333",
+  "captured_at": "2026-08-15T12:17:08Z",
+  "authority": {
+    "tool_execution": false,
+    "training": false,
+    "promotion": false,
+    "canon": false,
+    "world_action": false
+  }
+}

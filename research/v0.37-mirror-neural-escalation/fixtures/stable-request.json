@@ -1,0 +1,21 @@
+{
+  "schema": "axm.waldo.mirror-neural-escalation-request/v0.37",
+  "prompt": "State the current AXM runtime boundary.",
+  "deterministicResponse": "Reasoning can produce candidates, but permission, execution, promotion, and CANON remain separate explicit boundaries.",
+  "escalationReason": "NONE",
+  "grounding": {
+    "schema": "axm.waldo.live-neural-grounding/v0.35",
+    "state": "STABLE",
+    "consequence": "LOW",
+    "references": [
+      {
+        "id": "boundary-contract",
+        "text": "Capability does not imply permission, execution, promotion, or CANON.",
+        "class": "VERIFIED_REFERENCE",
+        "freshness": "CURRENT",
+        "provenanceRoot": "receipt:axm-boundary-v1"
+      }
+    ],
+    "authority": {}
+  }
+}

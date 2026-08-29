@@ -1,0 +1,148 @@
+{
+  "schema": "axm.capability-execution-revocation-contract/v0.20",
+  "status": "CONTRACT_PROBE_ONLY",
+  "challenge": "REVOCATION_STOPS_FUTURE_ACTION_WITHOUT_REWRITING_HISTORY",
+  "sourceV019Receipt": "sha256:88885cdb000a567746030914f170c161444db87ec6116ba8ce4b6a58da6257dc",
+  "sourceV019Head": "ecf1be23166e8445677aaede78cfb20956ad7a7e",
+  "sourceV019Witness": "960c7eab77597a87256da843663e88fe22d1290fcc1e42dbff1b1da14bfee7d3",
+  "permitId": "external-disposable-execution-permit-direct-read",
+  "selectedCandidateId": "direct-read-chain",
+  "selectedCandidateDigest": "sha256:8ed1d23b0c7020fe1f3ee2427c2984c6132c46e49f86b0183828c4c1dc775241",
+  "probeBoundary": {
+    "localCapabilityFabricImplementationIncluded": false,
+    "executableCandidateBodyIncluded": false,
+    "probeExecutesCandidate": false,
+    "liveAiProviderCalled": false,
+    "realRevocationObserved": false
+  },
+  "ledger": [
+    {
+      "sequence": 1,
+      "eventId": "v019-permit-accepted",
+      "eventType": "PERMIT_ACCEPTED",
+      "permitId": "external-disposable-execution-permit-direct-read",
+      "outcome": "ACCEPTED",
+      "reason": "V019_CONTRACT_FIXTURE_ACCEPTED",
+      "rewritesPriorEntry": false
+    },
+    {
+      "sequence": 2,
+      "eventId": "v020-permit-revoked",
+      "eventType": "PERMIT_REVOKED",
+      "permitId": "external-disposable-execution-permit-direct-read",
+      "outcome": "REVOKED",
+      "reason": "EXTERNAL_REVOCATION_FIXTURE",
+      "referencesEventId": "v019-permit-accepted",
+      "rewritesPriorEntry": false
+    }
+  ],
+  "revocation": {
+    "receiptId": "external-revocation-direct-read-v020",
+    "issuerClass": "EXTERNAL_EXECUTION_AUTHORITY_REVOCATION_FIXTURE",
+    "authenticity": "FIXTURE_ONLY_NOT_REAL_REVOCATION",
+    "sourceV019Receipt": "sha256:88885cdb000a567746030914f170c161444db87ec6116ba8ce4b6a58da6257dc",
+    "targetPermitId": "external-disposable-execution-permit-direct-read",
+    "targetCandidateId": "direct-read-chain",
+    "targetCandidateDigest": "sha256:8ed1d23b0c7020fe1f3ee2427c2984c6132c46e49f86b0183828c4c1dc775241",
+    "scope": [
+      "REVOKE_EXECUTE_DISPOSABLE_PROBE"
+    ],
+    "effectiveSequence": 2,
+    "waldoIssued": false,
+    "deletePriorPermit": false,
+    "grantsExecution": false,
+    "grantsInstall": false,
+    "grantsPromotion": false,
+    "grantsCanon": false
+  },
+  "scenarios": [
+    {
+      "scenarioId": "before-revocation-body-present",
+      "requestSequence": 1,
+      "bodyPresent": true,
+      "expectedDecision": "READY",
+      "expectedReason": "EXECUTION_AUTHORIZED_NOT_EXECUTED"
+    },
+    {
+      "scenarioId": "before-revocation-body-absent",
+      "requestSequence": 1,
+      "bodyPresent": false,
+      "expectedDecision": "HOLD",
+      "expectedReason": "EXECUTABLE_BODY_ABSENT"
+    },
+    {
+      "scenarioId": "after-revocation-body-present",
+      "requestSequence": 3,
+      "bodyPresent": true,
+      "expectedDecision": "REFUSED",
+      "expectedReason": "PERMIT_REVOKED"
+    },
+    {
+      "scenarioId": "after-revocation-body-absent",
+      "requestSequence": 3,
+      "bodyPresent": false,
+      "expectedDecision": "REFUSED",
+      "expectedReason": "PERMIT_REVOKED"
+    }
+  ],
+  "refusalCases": [
+    {
+      "caseId": "source-mismatch",
+      "expectedOutcome": "REFUSED",
+      "expectedReason": "REVOCATION_SOURCE_MISMATCH"
+    },
+    {
+      "caseId": "target-mismatch",
+      "expectedOutcome": "REFUSED",
+      "expectedReason": "REVOCATION_TARGET_MISMATCH"
+    },
+    {
+      "caseId": "scope-escalation",
+      "expectedOutcome": "REFUSED",
+      "expectedReason": "REVOCATION_SCOPE_EXCEEDED"
+    },
+    {
+      "caseId": "waldo-self-revocation",
+      "expectedOutcome": "REFUSED",
+      "expectedReason": "WALDO_CANNOT_SELF_ISSUE_REVOCATION"
+    },
+    {
+      "caseId": "delete-prior-permit",
+      "expectedOutcome": "REFUSED",
+      "expectedReason": "HISTORY_REWRITE_FORBIDDEN"
+    },
+    {
+      "caseId": "revocation-grants-authority",
+      "expectedOutcome": "REFUSED",
+      "expectedReason": "REVOCATION_CANNOT_GRANT_AUTHORITY"
+    },
+    {
+      "caseId": "order-unresolved",
+      "expectedOutcome": "HOLD",
+      "expectedReason": "REVOCATION_ORDER_UNRESOLVED"
+    }
+  ],
+  "duplicateCase": {
+    "duplicateReceiptId": "external-revocation-direct-read-v020",
+    "expectedOutcome": "DEDUPLICATED",
+    "extraAuthority": false,
+    "historyRewritten": false
+  },
+  "currentState": "REVOKED_BEFORE_EXECUTION",
+  "truth": {
+    "priorPermitAcceptancePreserved": true,
+    "revocationAppendOnly": true,
+    "priorPermitDeleted": false,
+    "pastAuthorizationRewritten": false,
+    "futureActionBlocked": true,
+    "executionObserved": false,
+    "installAuthorityGranted": false,
+    "promotionAuthorityGranted": false,
+    "canonAuthorityGranted": false,
+    "waldoOwnsRevocation": false
+  },
+  "installed": false,
+  "promoted": false,
+  "canonChanged": false,
+  "receiptDigest": "sha256:edb16e8f804b6cace4e59eaf7f66344ef31648e52b028129eae373224e3645c2"
+}

@@ -1,0 +1,39 @@
+{
+  "schema": "axm.waldo.mirror-neural-escalation-request/v0.37",
+  "prompt": "Suggest one reversible way to improve local AXM continuity while keeping the change visible and inspectable.",
+  "escalationReason": "NOVELTY",
+  "grounding": {
+    "schema": "axm.waldo.live-neural-grounding/v0.35",
+    "state": "UNCERTAIN",
+    "consequence": "LOW",
+    "references": [
+      {
+        "id": "local-direction",
+        "text": "The intended system is local-first and may learn from chats.",
+        "class": "OBSERVED_REFERENCE",
+        "freshness": "CURRENT",
+        "provenanceRoot": "conversation:2026-08-24"
+      },
+      {
+        "id": "visibility-root",
+        "text": "Capability growth may continue, but it must not be hidden.",
+        "class": "VERIFIED_REFERENCE",
+        "freshness": "CURRENT",
+        "provenanceRoot": "axiom-mir:visible-roots-v1"
+      }
+    ],
+    "authority": {}
+  },
+  "identity": {
+    "id": "axiom-mir",
+    "revision": "visible-roots-v1",
+    "rootSha256": "a4a48bd2fe11943cf95bca18fcf246778d248bf07dd085c2175ea6b26766a68c",
+    "instructions": [
+      "truth before story",
+      "no hidden control",
+      "preserve source integrity and dissent",
+      "reasoning is not permission or execution",
+      "capability growth must remain inspectable"
+    ]
+  }
+}

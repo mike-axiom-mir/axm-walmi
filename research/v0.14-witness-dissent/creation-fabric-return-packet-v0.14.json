@@ -1,0 +1,71 @@
+{
+  "schema": "axm.waldo.learning-return-packet/v0.14",
+  "status": "RETURN_PACKET_READY",
+  "source": {
+    "v014LedgerReceipt": "sha256:d8f5407b6fde3335385967c5d837d563d8474841e2a00038267e6010b06f70ec",
+    "v013PeerRingReceipt": "sha256:9daf12733393e19c6149215e6a8f4f2d774f870ff21ba22c04efd785d34c8303"
+  },
+  "classification": {
+    "EXISTING": [
+      "v0.14 append-only witness dissent ledger",
+      "v0.13 peer-audit ring",
+      "Go structural witness",
+      "Python material witness"
+    ],
+    "EXTEND": [
+      "explicit Waldo-to-Creation-Fabric evidence return path"
+    ],
+    "ADAPT": [
+      "GAP CARD semantics applied to a missing evidence input rather than self-expansion"
+    ],
+    "NEW": [],
+    "HOLD": [
+      "automatic capability build",
+      "automatic repair",
+      "automatic promotion",
+      "final-judge selection",
+      "CANON change"
+    ]
+  },
+  "observation": {
+    "at": "T1",
+    "witnessId": "witness-b-python-material",
+    "verdict": "HOLD",
+    "receiptDigest": "sha256:272c7c19177e72a2436ea7be81d207b125d96cad50ef670d505ef0611849af4e",
+    "finding": "MATERIAL_EVIDENCE_VIEW_INCOMPLETE"
+  },
+  "gapCard": {
+    "gapId": "v014-material-evidence-view-incomplete",
+    "observedNeed": "The independent material witness needs the inherited public peer-audit pack projection in its evidence view.",
+    "evidence": [
+      "sha256:272c7c19177e72a2436ea7be81d207b125d96cad50ef670d505ef0611849af4e",
+      "sha256:8d0aaaa7e59d41c3d21f334d884c8dbc5eaa220722297379d9ce073bd06ae334"
+    ],
+    "existingNearMatch": "Go structural witness returned EVIDENCE_PASS over the sealed peer-ring receipt.",
+    "whyNearMatchIsInsufficient": "Its structural claim scope does not establish that the material evidence view contains the public peer-audit pack projection required by witness B.",
+    "smallestMissingCapability": "supply-public-peer-audit-pack-projection-to-material-evidence-view",
+    "requiredAuthority": [
+      "READ_ONLY_PUBLIC_ARTIFACT_ACCESS"
+    ],
+    "suggestedTests": [
+      "same Python witness returns HOLD without the projection",
+      "same Python witness returns EVIDENCE_PASS with the projection",
+      "T1 HOLD remains append-only after T2"
+    ],
+    "risk": "Silently replacing the T1 HOLD with the later PASS would erase truthful historical uncertainty.",
+    "candidateDestination": "Creation Fabric evidence intake",
+    "doNotBuildAutomatically": true
+  },
+  "laterEvidence": {
+    "at": "T2",
+    "sameWitnessImplementation": true,
+    "verdict": "EVIDENCE_PASS",
+    "receiptDigest": "sha256:57a8727b1ffd4265edae4bf510c0aab4845191e363837b04aa6a06a6a0e26e17",
+    "earlierHoldPreserved": true,
+    "resolutionKind": "EVIDENCE_SUPPLIED_NOT_REWRITE"
+  },
+  "authority": "NONE",
+  "promotion": "FORBIDDEN",
+  "canonChanged": false,
+  "packetDigest": "sha256:b82cf3a8d5d02e8a979c044b4bcd98c1516390950647949172e34651616b90d2"
+}

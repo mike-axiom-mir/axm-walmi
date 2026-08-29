@@ -1,0 +1,208 @@
+{
+  "aggregate": {
+    "COUPLED_B": {
+      "bad_commits": 35,
+      "bad_high_consequence_commits": 18,
+      "correct_final_plans": 119,
+      "damped_events": 0,
+      "fallback_activations": 0,
+      "fallback_plan_changes": 0,
+      "fallback_unresolved": 0,
+      "false_negative_delay_ticks": 224,
+      "false_positive_preemptions": 61,
+      "grounding_packets": 0,
+      "held_commits": 0,
+      "membrane_false_passes": 0,
+      "membrane_true_passes": 0,
+      "n": 128,
+      "noise_signals_damped": 0,
+      "noise_signals_passed": 0,
+      "passed_changes": 0,
+      "real_change_signals_damped": 0,
+      "real_change_signals_passed": 0,
+      "reasoning_events": 204
+    },
+    "COUPLED_MEMBRANE_C": {
+      "bad_commits": 88,
+      "bad_high_consequence_commits": 38,
+      "correct_final_plans": 106,
+      "damped_events": 158,
+      "fallback_activations": 0,
+      "fallback_plan_changes": 0,
+      "fallback_unresolved": 0,
+      "false_negative_delay_ticks": 385,
+      "false_positive_preemptions": 20,
+      "grounding_packets": 334,
+      "held_commits": 0,
+      "membrane_false_passes": 20,
+      "membrane_true_passes": 64,
+      "n": 128,
+      "noise_signals_damped": 53,
+      "noise_signals_passed": 20,
+      "passed_changes": 84,
+      "real_change_signals_damped": 80,
+      "real_change_signals_passed": 64,
+      "reasoning_events": 217
+    },
+    "COUPLED_MEMBRANE_FALLBACK_D": {
+      "bad_commits": 27,
+      "bad_high_consequence_commits": 7,
+      "correct_final_plans": 127,
+      "damped_events": 159,
+      "fallback_activations": 213,
+      "fallback_plan_changes": 40,
+      "fallback_unresolved": 113,
+      "false_negative_delay_ticks": 205,
+      "false_positive_preemptions": 23,
+      "grounding_packets": 334,
+      "held_commits": 50,
+      "membrane_false_passes": 20,
+      "membrane_true_passes": 51,
+      "n": 128,
+      "noise_signals_damped": 53,
+      "noise_signals_passed": 20,
+      "passed_changes": 71,
+      "real_change_signals_damped": 81,
+      "real_change_signals_passed": 51,
+      "reasoning_events": 205
+    },
+    "SEQUENTIAL_A": {
+      "bad_commits": 62,
+      "bad_high_consequence_commits": 35,
+      "correct_final_plans": 119,
+      "damped_events": 0,
+      "fallback_activations": 0,
+      "fallback_plan_changes": 0,
+      "fallback_unresolved": 0,
+      "false_negative_delay_ticks": 367,
+      "false_positive_preemptions": 45,
+      "grounding_packets": 0,
+      "held_commits": 0,
+      "membrane_false_passes": 0,
+      "membrane_true_passes": 0,
+      "n": 128,
+      "noise_signals_damped": 0,
+      "noise_signals_passed": 0,
+      "passed_changes": 0,
+      "real_change_signals_damped": 0,
+      "real_change_signals_passed": 0,
+      "reasoning_events": 147
+    }
+  },
+  "architecture": {
+    "canon": false,
+    "coupledReasoningAuthority": "NONE",
+    "default": "COUPLED_MEMBRANE_FALLBACK_D",
+    "executionGuardSharedAcrossModes": true,
+    "fallback": "SEQUENTIAL_A",
+    "fallbackAuthority": "NONE",
+    "install": false,
+    "membraneAuthority": "NONE",
+    "merge": false
+  },
+  "challenge": "GROUNDING_SHOULD_DAMP_NOISE_WITHOUT_DAMPING_REALITY",
+  "claimBoundary": [
+    "deterministic simulator evidence only",
+    "no provider-backed live neural coupled reasoning",
+    "no physical-world safety claim",
+    "no universal superiority claim",
+    "no consciousness, emergence, free-thought, quantum, or general speedup claim"
+  ],
+  "freeze": {
+    "developmentSeedCount": 96,
+    "developmentSeedsDigest": "1c9d5d0a8367eae8e0c678f759b3daf674ed9bb04082b890b22da3ee0b40cf7d",
+    "heldoutSeedCountAtFreeze": 0,
+    "policyDigest": "b55caa2f318b465093e23d24eec867856ff87b40426672b8939cbb88b1da3dc1",
+    "policyRetunedAfterHeldoutInspection": false,
+    "testsPassedAtFreeze": 13
+  },
+  "heldout": {
+    "disjoint": true,
+    "fallbackScenarios": 51,
+    "holdScenarios": 26,
+    "noFallbackScenarios": 77,
+    "seedCount": 128,
+    "seedDigest": "e0a8ce43847415e2f05f5f0e1efb9cfbf700ccad90f29cfe8fec2a33bfac74cd"
+  },
+  "interpretation": {
+    "badCommitReductionVsRawCoupled": 0.228571,
+    "badHighConsequenceReductionVsRawCoupled": 0.611111,
+    "coupledToDefaultCorrectGain": 8,
+    "falsePreemptReductionVsRawCoupled": 0.622951,
+    "metricNote": "false_negative_delay_ticks is a legacy key; v0.31 increments it whenever plan != world and reports it as plan/world divergence ticks.",
+    "planWorldDivergenceReductionVsRawCoupled": 0.084821,
+    "primaryObservedEffect": "coupled-default reasoning retains responsiveness while membrane damping plus bounded fallback reduces aggregate noise-driven divergence and bad commits; membrane-only mode over-damps reality"
+  },
+  "movingDonor": {
+    "imported": false,
+    "note": "PR #52 specialist eyes/Discovery Seam are a future grounding donor only after an exact stable checkpoint is deliberately bound.",
+    "observedHead": "ee70266db3b0ee39f210bbce0309e22bb5591a6d",
+    "pullRequest": 52,
+    "repository": "mike-axiom-mir/axm-collaboration-platform",
+    "statusAtObservation": "DRAFT_OPEN"
+  },
+  "parent": {
+    "branch": "axm/mirror-waldo-experiment-v0.29-detection-reaction-separation",
+    "commit": "466f64b561f23e2c782729f36ae8f1aa4e71ad35",
+    "note": "v0.30 holding-resolution branch name existed but was identical to v0.29 when v0.31 began; v0.31 does not overwrite it."
+  },
+  "retainedFailures": [
+    {
+      "defaultBadCommits": 8,
+      "defaultDivergence": 52,
+      "family": "single-high-false",
+      "n": 8,
+      "note": "confidence metadata can still be confidently wrong",
+      "rawCoupledBadCommits": 1,
+      "rawCoupledDivergence": 24
+    },
+    {
+      "defaultBadCommits": 11,
+      "defaultDivergence": 80,
+      "family": "synchronized-false",
+      "n": 12,
+      "note": "independent-looking sources can share the same false regime",
+      "rawCoupledBadCommits": 6,
+      "rawCoupledDivergence": 48
+    },
+    {
+      "defaultBadCommits": 5,
+      "defaultDivergence": 5,
+      "family": "rapid-flap",
+      "n": 5,
+      "note": "grounding can become stale during rapid genuine change",
+      "rawCoupledBadCommits": 0,
+      "rawCoupledDivergence": 0
+    },
+    {
+      "defaultCorrect": 8,
+      "family": "stable-noise",
+      "n": 9,
+      "note": "one held-out stable-noise case still ends incorrect"
+    },
+    {
+      "fallbackActivations": 213,
+      "family": "fallback-overhead",
+      "heldCommits": 50,
+      "note": "a fallback that activates too often risks becoming de facto control"
+    }
+  ],
+  "run": {
+    "causalLedgerValidation": "PASS",
+    "ledgerCount": 2880,
+    "ledgerEventCount": 20385,
+    "ledgerRootSha256": "c9b23595bc89b9e967a45acaf3d482af5751a2a07498b7f71773fe76392d1e57",
+    "repeatability": "PASS",
+    "semanticRepeats": 3,
+    "testsPassed": 13
+  },
+  "schema": "axm.v0.31-publication-evidence/v1",
+  "source": {
+    "capsuleSha256": "28800e8f236fd6ad258562dbab09c791521b725910528fd3f4f72a9b1289f763",
+    "materializer": "materialize_probe.py",
+    "scenariosSha256": "ae6481f700cc1a719ef5cd9fba47ae684206b7a135ecc6d7eededd70f7bdb236",
+    "sourceSha256": "d74ad78a111b5a39a2d80fcf3b5f22644de4e92b91b78eb111e17fc667b10e28",
+    "testsSha256": "9d93365a2b88d15a6d0eab52d7e613a02e7fb077ab100d65e209f743f4c121eb"
+  },
+  "status": "EXPERIMENTAL_BRANCH_ONLY"
+}

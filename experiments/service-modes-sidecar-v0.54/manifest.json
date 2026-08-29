@@ -1,0 +1,21 @@
+{
+  "schema": "axm.waldo.service-modes-sidecar/v0.54",
+  "status": "EXPERIMENTAL_TEST",
+  "baseCommit": "b28fc340f7ef3462497e10396520b01170a7ca44",
+  "branch": "axm/mirror-waldo-service-modes-sidecar-v0.54",
+  "provides": [
+    "SERVICE_SUBJECT_CLASSIFICATION",
+    "CONNECTED_APP_CAPABILITY_COMPOSITION",
+    "MIRROR_WALDO_SPECIALIST_VIEW_COMPOSITION",
+    "HERMES_TRIGGER_POLICY",
+    "OPTIONAL_NEURAL_SOCKET_PURPOSE_PLAN"
+  ],
+  "initialServiceModeCount": 9,
+  "usesExistingSpecialistPools": true,
+  "touchesIncomingLocalBranch": false,
+  "automaticAppActivation": false,
+  "automaticPermissionGrant": false,
+  "automaticToolExecution": false,
+  "automaticNeuralCall": false,
+  "authority": "NONE"
+}

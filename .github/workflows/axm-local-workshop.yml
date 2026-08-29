@@ -1,0 +1,46 @@
+name: AXM local workshop gate
+
+on:
+  push:
+    branches:
+      - axm/local-ai-workshop-v0.1
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  workshop:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+      - name: Format
+        run: |
+          files="$(gofmt -l cmd/workshop)"
+          if [ -n "$files" ]; then
+            echo "gofmt required for:"
+            echo "$files"
+            exit 1
+          fi
+      - name: Vet
+        run: go vet ./cmd/workshop
+      - name: Test
+        run: go test ./cmd/workshop
+      - name: Shell syntax
+        run: bash -n cmd/workshop/install-autostart.sh cmd/workshop/uninstall-autostart.sh
+      - name: PowerShell syntax
+        shell: pwsh
+        run: |
+          $files = @('cmd/workshop/install-autostart.ps1', 'cmd/workshop/uninstall-autostart.ps1')
+          foreach ($file in $files) {
+            $tokens = $null
+            $errors = $null
+            [System.Management.Automation.Language.Parser]::ParseFile($file, [ref]$tokens, [ref]$errors) | Out-Null
+            if ($errors.Count -gt 0) {
+              $errors | ForEach-Object { Write-Error $_.Message }
+              exit 1
+            }
+          }

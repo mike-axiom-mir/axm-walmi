@@ -1,0 +1,130 @@
+{
+  "schema": "axm.waldo-witness.upstream-delta/v0.1",
+  "status": "REVIEWED_NO_MERGE",
+  "observed_at": "2026-08-22T05:00:49+02:00",
+  "upstream_repository": "openwaldo/waldo",
+  "fork_repository": "mike-axiom-mir/waldo-axm-mirror-research",
+  "fork_branch": "axm/mirror-waldo-experiment-v0.1",
+  "fork_head": "948daf6faee7e795b755a12b99c8324bfcce89fc",
+  "fork_main": "ba18aef1af3d0157a29939411c8edb2090a1f9c4",
+  "previous_upstream_observation": "4944072",
+  "upstream_head": "596f21ccaca668ae2b3512a83340cb3574b5d3e5",
+  "commits_since_previous_observation": 62,
+  "commits_since_fork_main": 67,
+  "observations": [
+    {
+      "id": "behavior-named-training-profiles",
+      "state": "CONFIRMED",
+      "commit": "d2dcb23c898022c9ff4c4bc2f32598509a615f54",
+      "contract": "docs/adr/0050-name-training-profiles-by-behavior.md",
+      "facts": [
+        "causal-pretrain-shuffled, causal-pretrain-balanced, and causal-pretrain-weighted are schema-1 behavior names",
+        "causal-pretrain-v1, causal-pretrain-v2, and causal-pretrain-v3 remain deprecated input aliases",
+        "legacy aliases normalize only with their historical schema pairs 1, 2, and 3"
+      ]
+    },
+    {
+      "id": "versioned-model-interaction",
+      "state": "CONFIRMED",
+      "commit": "ef2ab4a6ca4c1c67eb56f1ca0a1a56a9d261ca2f",
+      "contract": "docs/adr/0056-versioned-model-interaction-contract.md",
+      "facts": [
+        "model interaction templates are persisted model identity",
+        "schema 1 supports user-assistant-v1 and later chatml-v1",
+        "the zero value remains raw causal continuation"
+      ]
+    },
+    {
+      "id": "token-and-epoch-budgets",
+      "state": "CONFIRMED",
+      "commit": "f67e02de1dc6816d86a5f6447d1f54ad3f66e33b",
+      "contract": "docs/adr/0059-token-and-epoch-training-budgets.md",
+      "facts": [
+        "resolved run parameters may carry requested_tokens",
+        "token budgets round up to a complete optimizer step",
+        "resolved steps and planned_token_capacity remain immutable run BOM facts"
+      ]
+    },
+    {
+      "id": "structured-conversation-training-view",
+      "state": "CONFIRMED",
+      "commit": "774fc1bd7991932d69d1ee646aec528bede4cfde",
+      "contract": "docs/adr/0060-structured-conversation-training-views.md",
+      "facts": [
+        "run BOM schema 1 may carry a conversation transform",
+        "the transform binds a template and supervised roles before tokenization",
+        "tool examples remain training content and do not grant runtime tool authority"
+      ]
+    },
+    {
+      "id": "corpus-record-assessment-and-redaction",
+      "state": "CONFIRMED_NOT_YET_PROJECTED",
+      "commit": "774fc1bd7991932d69d1ee646aec528bede4cfde",
+      "facts": [
+        "current corpus manifest and shard pins may carry record_kind",
+        "current corpus manifest and shard pins may carry assessment and redaction evidence",
+        "these additive fields are not yet semantically projected by the fork corpus lens"
+      ]
+    }
+  ],
+  "fork_compatibility": [
+    {
+      "surface": "training-profile-contract-lens",
+      "state": "IMPLEMENTED_TESTED_GO_1_26_6",
+      "details": "Current behavior names, correct legacy aliases, profile schemas, data ordering, packing, bounded corpus weights, evaluation selection, budgets, evidence links, claim ceilings, typed HOLDs, and closed authority are projected into a separate receipt."
+    },
+    {
+      "surface": "training-run-witness-wire-identity",
+      "state": "ADAPTED_FOR_REQUESTED_TOKENS_AND_CONVERSATION",
+      "details": "The local durable wire projection now retains requested_tokens and the schema-1 conversation transform so those fields are not silently dropped from canonical run BOM identity."
+    },
+    {
+      "surface": "whole-index-consumption-evidence",
+      "state": "REPAIRED",
+      "details": "Balanced and weighted run observations now accept WALDO's documented empty-string whole-index selection by checking membership in pinned corpus paths instead of rejecting the empty path."
+    },
+    {
+      "surface": "current-corpus-bom-additions",
+      "state": "HOLD_NOT_YET_SEMANTICALLY_PROJECTED",
+      "details": "record_kind, content assessment, redaction, and later source-language additions require a separate reviewed corpus-lens compatibility slice."
+    },
+    {
+      "surface": "current-model-interaction-identity",
+      "state": "HOLD_NOT_YET_PROJECTED_BY_ORIGIN_ANCHOR",
+      "details": "The strict model BOM anchor predates the interaction field and must not claim current model-BOM compatibility until interaction becomes part of anchored answering identity."
+    }
+  ],
+  "verification": {
+    "observed_at": "2026-08-22T05:09:33+02:00",
+    "go_version": "go1.26.6 linux/amd64",
+    "command": "./testing/all.sh",
+    "state": "PASS_WITH_DECLARED_ENVIRONMENT_SKIPS",
+    "passed": [
+      "Go unit and integration packages",
+      "Go static analysis",
+      "direct ingestion lifecycle over local storage",
+      "ingest-recipe lifecycle over local storage",
+      "complete fake-model lifecycle"
+    ],
+    "skipped": [
+      "real MLX model lifecycle: requires Apple Silicon",
+      "real PyTorch model lifecycle: no usable PyTorch Python runtime",
+      "real TorchTitan model lifecycle: no usable GPU TorchTitan runtime",
+      "multi-node TorchTitan lifecycle: explicit opt-in was not enabled"
+    ]
+  },
+  "boundaries": [
+    "no upstream code was merged into the fork",
+    "fork main and upstream main were not changed",
+    "the receipt records a read-only comparison and grants no compatibility beyond listed focused tests",
+    "training selection and weights do not establish source-to-output causality",
+    "tool-use training data does not grant execution authority"
+  ],
+  "authority": {
+    "tool_execution": false,
+    "training": false,
+    "promotion": false,
+    "canon": false,
+    "world_action": false
+  }
+}

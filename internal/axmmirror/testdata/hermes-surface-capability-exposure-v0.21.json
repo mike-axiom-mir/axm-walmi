@@ -1,0 +1,225 @@
+{
+  "schema": "axm.hermes-surface-capability-exposure-contract/v0.21",
+  "status": "CONTRACT_PROBE_ONLY",
+  "challenge": "SURFACE_EXPOSURE_IS_NOT_AUTHORITY",
+  "source": {
+    "sourceV020Receipt": "sha256:edb16e8f804b6cace4e59eaf7f66344ef31648e52b028129eae373224e3645c2",
+    "sourceV020Head": "b3d23a8262c96a3ba8a6e32b80b3e0b25cb366b0",
+    "hermesRepo": "NousResearch/hermes-agent",
+    "localDonorCommit": "739bc555b1932e66c169b20edec3a48368e2dd3f",
+    "reviewedCommit": "2ebb1cb41400660ccc3712157c18b3d39f278ab6",
+    "donorFiles": [
+      {
+        "path": "agent/context_breakdown.py",
+        "blobAtLocalPin": "4527c5dca220ac2e9e51ece5b766b203c70b579b",
+        "blobAtReviewedHead": "4527c5dca220ac2e9e51ece5b766b203c70b579b",
+        "unchanged": true
+      },
+      {
+        "path": "agent/shell_hooks.py",
+        "blobAtLocalPin": "8751aeb6fd95421fa7293be0b68b75aebfbe3627",
+        "blobAtReviewedHead": "8751aeb6fd95421fa7293be0b68b75aebfbe3627",
+        "unchanged": true
+      },
+      {
+        "path": "toolsets.py",
+        "blobAtLocalPin": "23eacf088afcf72ca0bcd12e28ffdc8313c33d25",
+        "blobAtReviewedHead": "23eacf088afcf72ca0bcd12e28ffdc8313c33d25",
+        "unchanged": true
+      }
+    ]
+  },
+  "boundary": {
+    "hermesRuntimeImported": false,
+    "hermesRuntimeExecuted": false,
+    "localCapabilityFabricExecuted": false,
+    "liveAiProviderCalled": false,
+    "donorBlobContinuityVerified": true,
+    "contextCostsAreFixtureEstimates": true,
+    "outputIsContractProbe": true
+  },
+  "profiles": [
+    {
+      "profileId": "cli-interactive",
+      "surface": "CLI",
+      "sourceTrust": "TRUSTED_INTERACTIVE",
+      "exposedToolsets": [
+        "file",
+        "terminal",
+        "web"
+      ],
+      "exposedTools": [
+        "process",
+        "read_file",
+        "search_files",
+        "terminal",
+        "web_extract",
+        "web_search"
+      ],
+      "schemaCostTokens": 620,
+      "contextBudgetTokens": 1200,
+      "costEvidenceClass": "FIXTURE_ESTIMATE_NOT_HERMES_MEASUREMENT"
+    },
+    {
+      "profileId": "cli-overbudget",
+      "surface": "CLI",
+      "sourceTrust": "TRUSTED_INTERACTIVE",
+      "exposedToolsets": [
+        "file",
+        "terminal",
+        "web"
+      ],
+      "exposedTools": [
+        "process",
+        "read_file",
+        "search_files",
+        "terminal",
+        "web_extract",
+        "web_search"
+      ],
+      "schemaCostTokens": 1300,
+      "contextBudgetTokens": 1000,
+      "costEvidenceClass": "FIXTURE_ESTIMATE_NOT_HERMES_MEASUREMENT"
+    },
+    {
+      "profileId": "desktop-interactive",
+      "surface": "DESKTOP",
+      "sourceTrust": "TRUSTED_INTERACTIVE",
+      "exposedToolsets": [
+        "desktop_ui",
+        "file",
+        "terminal",
+        "web"
+      ],
+      "exposedTools": [
+        "focus_pane",
+        "open_preview",
+        "process",
+        "read_file",
+        "read_terminal",
+        "search_files",
+        "terminal",
+        "web_extract",
+        "web_search"
+      ],
+      "schemaCostTokens": 880,
+      "contextBudgetTokens": 1400,
+      "costEvidenceClass": "FIXTURE_ESTIMATE_NOT_HERMES_MEASUREMENT"
+    },
+    {
+      "profileId": "webhook-untrusted-safe",
+      "surface": "WEBHOOK_UNTRUSTED",
+      "sourceTrust": "UNTRUSTED_THIRD_PARTY_CONTENT",
+      "exposedToolsets": [
+        "webhook_safe"
+      ],
+      "exposedTools": [
+        "clarify",
+        "vision_analyze",
+        "web_extract",
+        "web_search"
+      ],
+      "schemaCostTokens": 260,
+      "contextBudgetTokens": 800,
+      "costEvidenceClass": "FIXTURE_ESTIMATE_NOT_HERMES_MEASUREMENT"
+    }
+  ],
+  "cases": [
+    {
+      "caseId": "webhook-terminal-forbidden",
+      "surfaceProfileId": "webhook-untrusted-safe",
+      "toolName": "terminal",
+      "capabilityDeclared": true,
+      "capabilityInstalled": true,
+      "capabilityExposed": false,
+      "authorityPresent": false,
+      "actionRequested": true,
+      "expectedOutcome": "REFUSED",
+      "expectedReason": "SURFACE_EXPOSURE_FORBIDDEN"
+    },
+    {
+      "caseId": "cli-desktop-tool-not-exposed",
+      "surfaceProfileId": "cli-interactive",
+      "toolName": "open_preview",
+      "capabilityDeclared": true,
+      "capabilityInstalled": true,
+      "capabilityExposed": false,
+      "authorityPresent": false,
+      "actionRequested": true,
+      "expectedOutcome": "HOLD",
+      "expectedReason": "CAPABILITY_NOT_EXPOSED_ON_SURFACE"
+    },
+    {
+      "caseId": "desktop-tool-exposed-without-authority",
+      "surfaceProfileId": "desktop-interactive",
+      "toolName": "open_preview",
+      "capabilityDeclared": true,
+      "capabilityInstalled": true,
+      "capabilityExposed": true,
+      "authorityPresent": false,
+      "actionRequested": true,
+      "expectedOutcome": "HOLD",
+      "expectedReason": "AUTHORITY_ABSENT"
+    },
+    {
+      "caseId": "desktop-tool-authorized-not-executed",
+      "surfaceProfileId": "desktop-interactive",
+      "toolName": "open_preview",
+      "capabilityDeclared": true,
+      "capabilityInstalled": true,
+      "capabilityExposed": true,
+      "authorityPresent": true,
+      "actionRequested": true,
+      "expectedOutcome": "READY",
+      "expectedReason": "AUTHORIZED_NOT_EXECUTED"
+    },
+    {
+      "caseId": "context-budget-overflow",
+      "surfaceProfileId": "cli-overbudget",
+      "toolName": "web_search",
+      "capabilityDeclared": true,
+      "capabilityInstalled": true,
+      "capabilityExposed": true,
+      "authorityPresent": false,
+      "actionRequested": false,
+      "expectedOutcome": "HOLD",
+      "expectedReason": "CONTEXT_BUDGET_EXCEEDED"
+    }
+  ],
+  "refusalCases": [
+    {
+      "caseId": "surface-source-mismatch",
+      "expectedOutcome": "REFUSED",
+      "expectedReason": "SURFACE_SOURCE_MISMATCH"
+    },
+    {
+      "caseId": "exposure-grants-authority",
+      "expectedOutcome": "REFUSED",
+      "expectedReason": "EXPOSURE_CANNOT_GRANT_AUTHORITY"
+    },
+    {
+      "caseId": "silent-context-pruning",
+      "expectedOutcome": "REFUSED",
+      "expectedReason": "CONTEXT_PRUNING_WITHOUT_RECEIPT_FORBIDDEN"
+    },
+    {
+      "caseId": "webhook-safe-set-widening",
+      "expectedOutcome": "REFUSED",
+      "expectedReason": "WEBHOOK_SAFE_SET_WIDENING_FORBIDDEN"
+    }
+  ],
+  "truth": {
+    "installedDoesNotImplyExposed": true,
+    "exposedDoesNotImplyAuthorized": true,
+    "authorizedDoesNotImplyExecuted": true,
+    "webhookSafeSetPreserved": true,
+    "desktopOnlyToolsRemainSurfaceBound": true,
+    "contextBudgetOverflowReturnsHold": true,
+    "contextSilentlyPruned": false,
+    "surfaceExposureGrantsAuthority": false,
+    "waldoOwnsSurfaceExposure": false,
+    "historicalV020ReceiptRewritten": false
+  },
+  "authority": "NONE",
+  "receiptDigest": "sha256:e0bc916d45cdfd5702067984b69482de451e8843b1729351199aeb777e0f955c"
+}

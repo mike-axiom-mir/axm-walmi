@@ -1,0 +1,64 @@
+{
+  "schema": "axm.waldo-witness.verifier-registry/v0.1",
+  "registry_id": "waldo-clone-verifiers",
+  "generation": 1,
+  "kernel": {
+    "id": "axm.waldo-witness.verifier-invariant-kernel",
+    "version": "v0.1",
+    "min_peer_quorum": 2,
+    "min_independent_groups": 2,
+    "max_retained_generations": 3,
+    "protected_changes_require_merge_gate": true,
+    "contract_sha256": "883f911f8e1b985e3258312a6e3a5f83d73dc1988296a196957932daafe77d5b"
+  },
+  "verifiers": [
+    {
+      "id": "authority-peer",
+      "version": "v0.1",
+      "class": "AUTHORITY_PERMISSION",
+      "independence_group": "authority",
+      "definition_sha256": "7777777777777777777777777777777777777777777777777777777777777777",
+      "test_pack_sha256": "8888888888888888888888888888888888888888888888888888888888888888",
+      "implementation_sha256": "9999999999999999999999999999999999999999999999999999999999999999",
+      "protected": false
+    },
+    {
+      "id": "privacy-boundary",
+      "version": "v0.1",
+      "class": "PRIVACY_BOUNDARY",
+      "independence_group": "privacy",
+      "definition_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "test_pack_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "implementation_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "protected": false
+    },
+    {
+      "id": "provenance-peer",
+      "version": "v0.1",
+      "class": "PROVENANCE_BINDING",
+      "independence_group": "provenance",
+      "definition_sha256": "4444444444444444444444444444444444444444444444444444444444444444",
+      "test_pack_sha256": "5555555555555555555555555555555555555555555555555555555555555555",
+      "implementation_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+      "protected": false
+    },
+    {
+      "id": "schema-guard",
+      "version": "v0.1",
+      "class": "SCHEMA_INVARIANT",
+      "independence_group": "kernel",
+      "definition_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+      "test_pack_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+      "implementation_sha256": "3333333333333333333333333333333333333333333333333333333333333333",
+      "protected": true
+    }
+  ],
+  "authority": {
+    "tool_execution": false,
+    "training": false,
+    "promotion": false,
+    "canon": false,
+    "world_action": false
+  },
+  "registry_sha256": "6e689080591bdb6f07d2b644bffff27b7002fb33d73ee33cba0a041d2fdf446d"
+}

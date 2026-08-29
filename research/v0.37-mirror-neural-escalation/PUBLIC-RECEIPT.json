@@ -1,0 +1,70 @@
+{
+  "schema": "axm.waldo.mirror-neural-escalation-public-receipt/v0.37",
+  "status": "COMPLETED_WITH_NEGATIVE_QUALITY_RESULT_RETAINED",
+  "challenge": "CAPABILITY_GROWTH_MUST_NOT_BE_HIDDEN",
+  "authority": "NONE",
+  "parentCheckpoint": "5d85ff9e3cf49f7eb4f9a6085c341b50b81a4b81",
+  "runtime": {
+    "waldoBinarySha256": "9af0d086faa71ebc91b098830d2832096eba8ca3fad35cf0ab366a5487dc9baa",
+    "model": "pytorch-smoke",
+    "backend": "pytorch@builtin-pytorch-worker-schema-1-r7",
+    "framework": "PyTorch 2.8.0+cpu",
+    "simulated": false
+  },
+  "inputs": {
+    "contractSha256": "af7fbbbec349d67e81e1257d365b0cee77e7d33a34eca377f372a2b768f011e7",
+    "stableFixtureSha256": "5bfc02a824cac283b13f501abf6dbdff11d96f64b3fc25b6aab391b7c4ec4c45",
+    "uncertainFixtureSha256": "771fffe881813f019fc739b372f4863844617231f77c3feb96de9ad51e5cb010",
+    "identitySha256": "a4a48bd2fe11943cf95bca18fcf246778d248bf07dd085c2175ea6b26766a68c"
+  },
+  "branchesObserved": {
+    "stable": "DETERMINISTIC_RESOLVED",
+    "unresolvedWithoutOptIn": "HOLD_NEURAL_OPT_IN_REQUIRED",
+    "emptyNeuralCandidate": "HOLD_NEURAL_ESCALATION_FAILED",
+    "nonEmptyNeuralCandidate": "NEURAL_CANDIDATE"
+  },
+  "neuralEscalation": {
+    "requestSha256": "576ba0d1a120ab1a08d4966cea60597ad8e56004705a9f8944a5b0f3aa03442f",
+    "neuralPromptSha256": "682ccae7c9c7f737048890d3185d3ba4d5213712da8db71efcd66aa092df731e",
+    "groundingSha256": "93cb6d4435839113edeef0ff1b02296acff437e5f04b816296d3fac1e393ba91",
+    "candidateSha256": "ab4eb7bfc9f1cd7bee70939af0a801031c7a014f5d0c1593956aeba4f2fe63ad",
+    "candidateQuality": "UNUSABLE_TINY_MODEL_OUTPUT",
+    "learningState": "REVIEW_REQUIRED",
+    "learningRecordSha256": "3fdd053d83d9fa95d03a250e2387982eb1236d2d311a7e2a2d343ab0159257cd",
+    "traceFileSha256": "b9e8edb9670535b6dbd6dab6f5735da39ab14c0834aa08044e8f6d32f6e4514a",
+    "privateLearningFileSha256": "d4882aca05e04036e3888b60227df5770bd5e7580578b39998c328c3ee287567"
+  },
+  "approvedLearning": {
+    "sourceMode": "DETERMINISTIC",
+    "learningState": "APPROVED_FOR_TRAINING",
+    "learningRecordSha256": "d3ba7be6d66aba9674ad346d769531183cb94bc7ccfc87ea78a7fea4de51f9cd",
+    "traceFileSha256": "7b2a2371582ecbe8ba3353008cbf9703cb0b5dc45690dab1bbea27efea5878c5",
+    "privateLearningFileSha256": "654a75b9837258f2a722d77d5792e47f4028832c5f2b8cbdca72adb7d131c3d8",
+    "ingestPlanIdentity": "dc41b8466e73d568ce8c086e92d113bd14dd963e8f1cdff7f7e30236ea6216e2",
+    "sourceCategory": "user-data",
+    "records": 1,
+    "referenceTokens": 33,
+    "parquetShardSha256": "19940d63ea33fbecf93405b1a4215eb39e33a996c1e015482ad6c8d386c747a1"
+  },
+  "training": {
+    "runId": "7d1bda8f70a03178",
+    "runState": "complete",
+    "runBOMSha256": "cb64925f23f60579c12c9a69eba5a2ff6d1f0d5650a9e6d9bb7f989c84432b66",
+    "runBOMFileSha256": "d50c7b153013af240ff035b7f91acaf679aaff35f34076cea3476b80b2fd8c09",
+    "runFileSha256": "7fda7b24d5cf9f08a097e0fc0f1fbf6c4327ff5588ae23ddac4163dde6f38a0d",
+    "steps": 11,
+    "consumedTokens": 176,
+    "finalLoss": 5.4088873863220215,
+    "initialWeightsSha256": "6c5274a9ab8e90a4d3204326dc6d043894be3462076211693c5c1dad5c98df41",
+    "resultWeightsSha256": "22679bd2d5050181e14be2d951821505a4aa3a204fc03732fd2eb518bcd01eba"
+  },
+  "mutations": {
+    "learningLedger": true,
+    "modelMemoryDuringInference": false,
+    "weightsDuringExplicitTraining": true,
+    "identity": false,
+    "canon": false
+  },
+  "rawPromptsCandidatesOrLearningRecordsIncluded": false,
+  "qualityImprovementClaimAuthorized": false
+}

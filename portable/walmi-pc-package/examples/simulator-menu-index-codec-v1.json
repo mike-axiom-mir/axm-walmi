@@ -1,0 +1,8 @@
+{
+  "schema": "axm.walmi.simulator-menu-index-codec/v1",
+  "prompt": "WALMI_MENU_INDEX_V1\nworld=theme-park\nChoose one visible action. Return one digit only.\n0=Maintain ride\n1=Advance 60 minutes\n2=Maintain ride\n3=Advance 60 minutes\n4=Maintain ride\n5=Advance 60 minutes\n6=Maintain ride\n7=Advance 60 minutes",
+  "menuActionIds": ["maintain:ride-1", "advance:60", "maintain:ride-1", "advance:60", "maintain:ride-1", "advance:60", "maintain:ride-1", "advance:60"],
+  "maxTokens": 4,
+  "temperature": 0.0,
+  "topP": 1.0
+}

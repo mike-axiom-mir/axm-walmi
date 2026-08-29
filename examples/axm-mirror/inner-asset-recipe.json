@@ -1,0 +1,92 @@
+{
+  "schema": "axm.waldo-witness.inner-asset-recipe/v0.1",
+  "recipe_id": "witness-orb-v1",
+  "title": "WALDO Witness Orb",
+  "kind": "sprite",
+  "intended_use": "portable specialist-clone status sprite",
+  "profile": "pixel-16bit",
+  "seed": "witness-orb-branch-a",
+  "created_at": "2026-08-15T10:00:00Z",
+  "canvas": {
+    "grid_width": 16,
+    "grid_height": 16,
+    "output_scale": 2,
+    "preview_scale": 8,
+    "colour_space": "srgb",
+    "transparency": "required",
+    "frames_per_second": 6,
+    "loop": true,
+    "max_file_bytes": 2097152,
+    "max_texture_memory_bytes": 2097152
+  },
+  "palette": [
+    { "id": "transparent", "role": "transparent", "rgba": "#00000000" },
+    { "id": "outline", "role": "outline", "rgba": "#11182fff" },
+    { "id": "primary", "role": "primary", "rgba": "#2e7f95ff" },
+    { "id": "highlight", "role": "highlight", "rgba": "#d9fff5ff" },
+    { "id": "accent", "role": "accent", "rgba": "#f0b35aff" }
+  ],
+  "frames": [
+    {
+      "id": "pulse-a",
+      "layers": [
+        {
+          "id": "semantic-core",
+          "role": "witness-orb-silhouette",
+          "plane": "semantic",
+          "protected": true,
+          "editable": false,
+          "operations": [
+            { "id": "orb-outline", "kind": "ellipse", "colour": "outline", "x": 2, "y": 2, "width": 12, "height": 12, "filled": true },
+            { "id": "orb-body", "kind": "ellipse", "colour": "primary", "x": 3, "y": 3, "width": 10, "height": 10, "filled": true },
+            { "id": "witness-line", "kind": "line", "colour": "highlight", "x": 5, "y": 8, "x2": 10, "y2": 8 }
+          ]
+        },
+        {
+          "id": "presentation-signal",
+          "role": "signal-sparks",
+          "plane": "presentation",
+          "protected": false,
+          "editable": true,
+          "operations": [
+            { "id": "signal-scatter", "kind": "scatter", "colour": "accent", "x": 0, "y": 0, "width": 16, "height": 14, "count": 8 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pulse-b",
+      "layers": [
+        {
+          "id": "semantic-core",
+          "role": "witness-orb-silhouette",
+          "plane": "semantic",
+          "protected": true,
+          "editable": false,
+          "operations": [
+            { "id": "orb-outline", "kind": "ellipse", "colour": "outline", "x": 2, "y": 3, "width": 12, "height": 12, "filled": true },
+            { "id": "orb-body", "kind": "ellipse", "colour": "primary", "x": 3, "y": 4, "width": 10, "height": 10, "filled": true },
+            { "id": "witness-line", "kind": "line", "colour": "highlight", "x": 5, "y": 9, "x2": 10, "y2": 9 }
+          ]
+        },
+        {
+          "id": "presentation-signal",
+          "role": "signal-sparks",
+          "plane": "presentation",
+          "protected": false,
+          "editable": true,
+          "operations": [
+            { "id": "signal-scatter", "kind": "scatter", "colour": "accent", "x": 0, "y": 1, "width": 16, "height": 14, "count": 8 }
+          ]
+        }
+      ]
+    }
+  ],
+  "authority": {
+    "tool_execution": false,
+    "training": false,
+    "promotion": false,
+    "canon": false,
+    "world_action": false
+  }
+}

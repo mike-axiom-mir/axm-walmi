@@ -1,0 +1,50 @@
+{
+  "schema": "axm.hermes-donor-receipt/v0.21",
+  "repository": "NousResearch/hermes-agent",
+  "localAdapterDonorCommit": "739bc555b1932e66c169b20edec3a48368e2dd3f",
+  "reviewedCurrentCommit": "2ebb1cb41400660ccc3712157c18b3d39f278ab6",
+  "files": [
+    {
+      "path": "toolsets.py",
+      "localPinBlob": "23eacf088afcf72ca0bcd12e28ffdc8313c33d25",
+      "reviewedHeadBlob": "23eacf088afcf72ca0bcd12e28ffdc8313c33d25",
+      "unchanged": true,
+      "observedConcepts": [
+        "composable toolsets",
+        "source-bound desktop-only tool exposure",
+        "narrow-waist platform exposure",
+        "constrained webhook-safe tool set"
+      ]
+    },
+    {
+      "path": "agent/context_breakdown.py",
+      "localPinBlob": "4527c5dca220ac2e9e51ece5b766b203c70b579b",
+      "reviewedHeadBlob": "4527c5dca220ac2e9e51ece5b766b203c70b579b",
+      "unchanged": true,
+      "observedConcepts": [
+        "separate context-cost categories",
+        "toolset schema-cost attribution",
+        "skills index versus loaded-skill cost",
+        "estimated context usage is not exact tokenizer accounting"
+      ]
+    },
+    {
+      "path": "agent/shell_hooks.py",
+      "localPinBlob": "8751aeb6fd95421fa7293be0b68b75aebfbe3627",
+      "reviewedHeadBlob": "8751aeb6fd95421fa7293be0b68b75aebfbe3627",
+      "unchanged": true,
+      "observedConcepts": [
+        "typed pre/post tool event envelopes",
+        "session/turn/request identity fields",
+        "middleware trace evidence",
+        "explicit fail-open versus fail-closed hook semantics"
+      ]
+    }
+  ],
+  "intakeMode": "CONCEPT_AND_CONTRACT_EVIDENCE_ONLY",
+  "hermesRuntimeCopied": false,
+  "hermesRuntimeExecutedByWaldo": false,
+  "localAxmHermesAdapterRebuiltHere": false,
+  "automaticPromotion": false,
+  "canonChanged": false
+}

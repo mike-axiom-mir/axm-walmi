@@ -1,0 +1,40 @@
+{
+  "schema": "axm.waldo-witness.organ-map/v0.10",
+  "status": "EXPERIMENTAL",
+  "inherits": "research/axm-waldo-witness-organ-map.v0.9.json",
+  "newOrgans": [
+    {
+      "id": "platform-code-fabric-donor-anchor",
+      "role": "Pin the exact public platform commit, donor blobs, workflow run, artifact digest, and observed bridge receipts without copying executable Fabric bytes into WALDO."
+    },
+    {
+      "id": "multi-body-lineage-witness",
+      "role": "Preserve one ancestor concept digest across distinct deterministic blueprint bodies without claiming semantic equivalence between those bodies."
+    },
+    {
+      "id": "ai-proposal-boundary",
+      "role": "Keep AI optional and explicit at the proposal boundary; AI-proposed bodies pass through the same deterministic Fabric gates as native declarations."
+    },
+    {
+      "id": "private-organ-factory-absence-boundary",
+      "role": "Record that the private Organ Factory is absent from this public donor baseline so later capability growth can be measured rather than backfilled."
+    }
+  ],
+  "observedExperiment": {
+    "platformPullRequest": 45,
+    "workflowRun": 32622264684,
+    "conclusion": "success",
+    "conceptSha256": "sha256:9779b14236b2717ce1e8694adbacfd95c07d3afbacea10d3e4255cb52950856a",
+    "deterministicReceiptSha256": "sha256:1b54ba8a56945110becbcd7198d4c5988da5eea8724ff048e0c2f362844682c7",
+    "aiOptInReceiptSha256": "sha256:f88c2ca3da0774340cff484574d13980ab14d7004be9bfd386a00faab28eeb1c",
+    "deterministicBodyCount": 3,
+    "aiOptInBodyCount": 4
+  },
+  "authority": {
+    "toolExecution": false,
+    "training": false,
+    "promotion": false,
+    "canon": false,
+    "worldAction": false
+  }
+}

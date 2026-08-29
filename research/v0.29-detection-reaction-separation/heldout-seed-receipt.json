@@ -1,0 +1,9 @@
+{
+  "developmentSeedsDigest": "f65f225bc90c35f0ceda84e0db396980836f9071f96dafd34315a28983bcbebd",
+  "disjoint": true,
+  "heldoutSeedCount": 96,
+  "heldoutSeedsDigest": "0990ff24d7bca8d5301c3b1950d3fd79e14ac8d52632b110f9c066054a0b048c",
+  "policyDigest": "e128820127db37a044381f7a3d4a79a9d46a14a5a50c16a1e115b56eb7d9b3f3",
+  "schema": "axm.v0.29-heldout-seed-receipt/v1",
+  "status": "SEEDS_FIXED_BEFORE_HELDOUT_RUN"
+}

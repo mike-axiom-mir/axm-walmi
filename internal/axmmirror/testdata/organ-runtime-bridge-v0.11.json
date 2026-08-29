@@ -1,0 +1,144 @@
+{
+  "schema": "axm.waldo-mirror.organ-runtime-bridge-receipt/v0.1",
+  "status": "EXPERIMENTAL_OBSERVED",
+  "challenge": "ONE_CONCEPT_MANY_BODIES",
+  "sourcePacket": {
+    "sha256": "sha256:8f4688db3abcba988011f2a2f36f172a09c3d848e57a2da54db90abd2669e634",
+    "compositionState": "SEPARATE_UNMERGED_SOURCE_SETS"
+  },
+  "conceptRef": {
+    "id": "one-concept-many-bodies",
+    "schema": "axm.waldo-mirror.fabric-concept/v0.1",
+    "sha256": "sha256:9779b14236b2717ce1e8694adbacfd95c07d3afbacea10d3e4255cb52950856a"
+  },
+  "runtime": {
+    "factoryVersion": "1.0.0",
+    "version": "1.0.0",
+    "digest": "sha256:5bd480a2c3a0020b22cfaeb99003f02b918594011383e3db2fe47a970653ba09",
+    "strategies": [
+      "lean",
+      "balanced",
+      "guarded"
+    ]
+  },
+  "bodies": [
+    {
+      "bodyId": "evidence-trail-mini-game",
+      "sourceKind": "EXTERNAL",
+      "fieldPack": {
+        "id": "games-entertainment",
+        "version": "1.0.0",
+        "digest": "sha256:0fbcd17c7136f5b492629ccfff0028105c01c9e1908339501ad567bdd0fc2044"
+      },
+      "importedStatus": "NORMALIZED_UNTRUSTED_PROPOSAL",
+      "runStatus": "COMPLETE",
+      "runDigest": "sha256:cb05f97f6d70f0ab001214bb29f02bb52d07ae91b15d83ce0639b75b320db4c6",
+      "candidateCount": 3,
+      "failureCount": 0,
+      "candidates": [
+        {"strategy":"lean","packageDigest":"sha256:f5c561109ab0f4720088e8ef4b43cd5c451045686b6d624a230fa8e978c7aba0","definitionDigest":"sha256:8bb53715b2c7b8cda712f8910ee431da43dbcdb51f4135c93eb2fae3d6d1befd","evaluationDigest":"sha256:147de613cd77a482eab20e045d1726307a27e448acd6c2d2ef082b9d70c2e815","score":92,"packageVerified":true},
+        {"strategy":"balanced","packageDigest":"sha256:e39fce7922e50c1920e7a59588ae241793fb428683a7e3e84bf3ad509437c8ab","definitionDigest":"sha256:b58540ece07b2f2efaf481a9f65fa4292023873060cfd05f7c525272f9c02f05","evaluationDigest":"sha256:85e14f2e1fa6811beaef20a336b9e55b1683c329c6a78469b895110142386586","score":92,"packageVerified":true},
+        {"strategy":"guarded","packageDigest":"sha256:c01e459b910f44144791a7f1555ee65d7b023272c6e1a39adf479c677e1caef5","definitionDigest":"sha256:c9c0d6a647eb88b1405733ac470478f06e8edaafa700a27f2a591f0059d34e57","evaluationDigest":"sha256:4f107464094a0df997bd7ccbced888fa5e9181c5e10a1fd11f351c32ee6c80d1","score":92,"packageVerified":true}
+      ],
+      "comparisonDigest": "sha256:3f99b03c0097f92fef4902707581b9f0f371b7448c905d989067b76fc998cf27",
+      "rankingAdvisoryOnly": true,
+      "selectionPerformed": false
+    },
+    {
+      "bodyId": "continuity-diagnostic-tool",
+      "sourceKind": "EXTERNAL",
+      "fieldPack": {
+        "id": "software-workshop",
+        "version": "1.0.0",
+        "digest": "sha256:792824d07efea356bf0dc6f2832298dfc2c70a0e0c8bbf9f940c1225dc60bc8c"
+      },
+      "importedStatus": "NORMALIZED_UNTRUSTED_PROPOSAL",
+      "runStatus": "COMPLETE",
+      "runDigest": "sha256:11afb8c99fb8a8da6db54bf06942dea8d04693d7f39b857d98fa89857862fe97",
+      "candidateCount": 3,
+      "failureCount": 0,
+      "candidates": [
+        {"strategy":"lean","packageDigest":"sha256:62a143cc26f11f79fcaabd0b22499162541d6d57b0c3ded4e2b71ba2cae17135","definitionDigest":"sha256:620031a0410943b955eab4cfdb938e35c199b034d57861479ed7925e424d2da1","evaluationDigest":"sha256:5d1160d5a90760f2e2498a2416906630936e8d04d269c01883b7914c221ce7b1","score":91,"packageVerified":true},
+        {"strategy":"balanced","packageDigest":"sha256:c93a1a133d64cf10649a177d85c56e8f38e421c24faaac16dbdaa692565f530a","definitionDigest":"sha256:94b927f923571de5046d75adff77fb149adf6424221d054607b252d3c8af4a13","evaluationDigest":"sha256:58436da0fedf4bef3456250da2a5fa27d318e72b1c494edfadb80958f359669a","score":91,"packageVerified":true},
+        {"strategy":"guarded","packageDigest":"sha256:a6ef6d13e167b30f745d5ed876eb02ad854c77d8202f44b3c44c30dc6f7ca61c","definitionDigest":"sha256:08dfce0a97fceb593c47bd26ff91f635355fd32fd6d9b7ffd22e8bcff4c4feb9","evaluationDigest":"sha256:0d089c912f31b5e555996532191e1929f87f3e704bb30ed6fb6e615f180fc719","score":90,"packageVerified":true}
+      ],
+      "comparisonDigest": "sha256:024e1d1330ab8ffad0d68657fe87aefcea2c864a1296de5d3c1a1e86a5e71848",
+      "rankingAdvisoryOnly": true,
+      "selectionPerformed": false
+    },
+    {
+      "bodyId": "lineage-how-to-guide",
+      "sourceKind": "EXTERNAL",
+      "fieldPack": {
+        "id": "creative-production",
+        "version": "1.0.0",
+        "digest": "sha256:e8bf09f964b927e4d824bae2462fa05a08193dd1cc11d8b6df49803df740c06a"
+      },
+      "importedStatus": "NORMALIZED_UNTRUSTED_PROPOSAL",
+      "runStatus": "COMPLETE",
+      "runDigest": "sha256:196421e3691f5e47da265549e7e586342a98fe3cc3910b1f764681fba0c5af62",
+      "candidateCount": 3,
+      "failureCount": 0,
+      "candidates": [
+        {"strategy":"lean","packageDigest":"sha256:fffea0eff24a4d496d9d3d6bda1c37889c8349822ab69f868fd54778376c4af8","definitionDigest":"sha256:c380fab5f9abdf15f0d1d0d3d399dcb1b8be892ae95b821edaa31b17cf776aea","evaluationDigest":"sha256:8818b27356ae703d9bcafbd2930a72afa9b2f60f21629d03404e9ec8d48ba440","score":90,"packageVerified":true},
+        {"strategy":"balanced","packageDigest":"sha256:081493851acd753b669545f8f7587faacfd5fefc8b100bad79efbe5a36ce93e8","definitionDigest":"sha256:f859e61acc6b1274f5ff2bfa9728c0d06efe7228ca66c78d70b83e4384793255","evaluationDigest":"sha256:6ba2aa1b0ebdae628a1eb881acfbf8dfb6d3c4f1fd725df138c31c542fa9db06","score":93,"packageVerified":true},
+        {"strategy":"guarded","packageDigest":"sha256:03a3ea387abd17a38d3d68d619af5850defd8752eb411eeb20c3ab5b3d98ebd0","definitionDigest":"sha256:1c009619f092be78cdf9208f52b5bc6982fd2c5c0d94084d7f3650c9fd809c11","evaluationDigest":"sha256:2c52bc4a5fe94661c94c9d27883ea4325183897f9ee080e850068a25a98cd561","score":93,"packageVerified":true}
+      ],
+      "comparisonDigest": "sha256:8aa34d413597a7ce5c077489f99e1b9b651a9c52135f8ef854e90a3b072ec1db",
+      "rankingAdvisoryOnly": true,
+      "selectionPerformed": false
+    },
+    {
+      "bodyId": "tool-episode-quarantine-body",
+      "sourceKind": "AI",
+      "fieldPack": {
+        "id": "software-workshop",
+        "version": "1.0.0",
+        "digest": "sha256:792824d07efea356bf0dc6f2832298dfc2c70a0e0c8bbf9f940c1225dc60bc8c"
+      },
+      "importedStatus": "NORMALIZED_UNTRUSTED_PROPOSAL",
+      "runStatus": "COMPLETE",
+      "runDigest": "sha256:69de106b7b6ae1860bf4a29fe6209a1481212efae3a69a152ea1d28495c20761",
+      "candidateCount": 3,
+      "failureCount": 0,
+      "candidates": [
+        {"strategy":"lean","packageDigest":"sha256:fbebf51dcf7bc8cdb004e2897468546b1fb4df610759bb670ca0e3f5b08c84f8","definitionDigest":"sha256:f97a8d7414c87637e4198c0a043ca1476704098ae2fe37d044a5bb7089d848dd","evaluationDigest":"sha256:44a3df2d475360e885f3cf6aff24b43174bb0d96e120bf747074e436c3a747af","score":91,"packageVerified":true},
+        {"strategy":"balanced","packageDigest":"sha256:a44b515ced4f3ecd30840a708fdb3750f1b0af18d4868ee96116a014c4a84d2e","definitionDigest":"sha256:1917d93dfbedef33ce7a9fb093f88b792eee632cbd0b5880b78bf933e66bdfec","evaluationDigest":"sha256:2d5bb33b344387668399f3e59830f4536bc6995d062a5ad99009f611a60bdd3c","score":91,"packageVerified":true},
+        {"strategy":"guarded","packageDigest":"sha256:8ba18e26d39916930e8cd0c71e6015ae881d1459f0103bf22f31ae0a0ac78105","definitionDigest":"sha256:9cff445350b2244ed7cd5f7f507fe6e055303955c73a3745cc9c5c64c10bbda9","evaluationDigest":"sha256:995e9638111c634eab5d4e9639984a28c988e6d8cd5db14e690884897243c9c7","score":90,"packageVerified":true}
+      ],
+      "comparisonDigest": "sha256:7a477583dd2f04552e4c98357e1103520e193fc832460f8ecdef1145e453cf9f",
+      "rankingAdvisoryOnly": true,
+      "selectionPerformed": false
+    }
+  ],
+  "totals": {"proposalCount":4,"candidateCount":12,"failureCount":0},
+  "archive": {
+    "verificationBeforeDedup": {"schema":"axm.organ-archive-verification/v1","ok":true,"errors":[],"objectCount":12,"failureCount":0,"eventCount":12,"indexDigest":"sha256:7ec3c01d44aecf80d028c0f221b3bc3a1cede77c9e8a5baafd5ef237c74d2077"},
+    "duplicateReinsertDisposition": "DEDUPLICATED",
+    "verificationAfterDedup": {"schema":"axm.organ-archive-verification/v1","ok":true,"errors":[],"objectCount":12,"failureCount":0,"eventCount":12,"indexDigest":"sha256:7ec3c01d44aecf80d028c0f221b3bc3a1cede77c9e8a5baafd5ef237c74d2077"},
+    "exportedPackDigest": "sha256:b6908a33b49c4d9cc3617382f2609716ae4d4122c56438779ac3b5b202aad1ed",
+    "exportedObjectCount": 12,
+    "importResult": {"schema":"axm.organ-archive-import/v1","packDigest":"sha256:b6908a33b49c4d9cc3617382f2609716ae4d4122c56438779ac3b5b202aad1ed","resultCount":12,"registered":false,"installed":false},
+    "importedVerification": {"schema":"axm.organ-archive-verification/v1","ok":true,"errors":[],"objectCount":12,"failureCount":0,"eventCount":12,"indexDigest":"sha256:7ec3c01d44aecf80d028c0f221b3bc3a1cede77c9e8a5baafd5ef237c74d2077"}
+  },
+  "truth": {
+    "donorPacketChecksumVerified": true,
+    "donorSelftestsExecutedInThisRun": true,
+    "donorSelftestChecks": 151,
+    "packetRuntimeExecuted": true,
+    "liveAiProviderCalled": false,
+    "aiProposalSourcePresent": true,
+    "generatedCandidatesObserved": 12,
+    "archiveWritesDisposableOnly": true,
+    "duplicateArchiveWriteAddedEvent": false,
+    "archiveExportImportRoundTripVerified": true,
+    "selectionPerformed": false,
+    "installed": false,
+    "registered": false,
+    "staged": false,
+    "promoted": false,
+    "canonChanged": false
+  },
+  "authority": "NONE",
+  "receiptDigest": "sha256:0e110c9e0c56c72b52410db87a4ec019de140a31face79d7e7023f286d2283ec"
+}

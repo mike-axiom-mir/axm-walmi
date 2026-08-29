@@ -1,0 +1,152 @@
+name: AXM v0.35 live neural hybrid gate
+
+on:
+  push:
+    branches:
+      - axm/mirror-waldo-experiment-v0.35-live-neural-grounding-runtime
+
+permissions:
+  contents: read
+  statuses: write
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+
+      - name: Format
+        id: format
+        continue-on-error: true
+        run: test -z "$(gofmt -l .)"
+      - name: Publish format status
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          OUTCOME: ${{ steps.format.outcome }}
+        run: |
+          [ "$OUTCOME" = success ] && STATE=success || STATE=failure
+          curl -fsS -X POST -H "Authorization: Bearer $GH_TOKEN" -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" "${{ github.api_url }}/repos/${{ github.repository }}/statuses/${{ github.sha }}" -d "{\"state\":\"$STATE\",\"context\":\"axm/v0.35-format\",\"description\":\"gofmt: $OUTCOME\"}"
+
+      - name: Vet
+        id: vet
+        continue-on-error: true
+        run: go vet ./...
+      - name: Publish vet status
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          OUTCOME: ${{ steps.vet.outcome }}
+        run: |
+          [ "$OUTCOME" = success ] && STATE=success || STATE=failure
+          curl -fsS -X POST -H "Authorization: Bearer $GH_TOKEN" -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" "${{ github.api_url }}/repos/${{ github.repository }}/statuses/${{ github.sha }}" -d "{\"state\":\"$STATE\",\"context\":\"axm/v0.35-vet\",\"description\":\"go vet: $OUTCOME\"}"
+
+      - name: Test live grounding owner
+        id: grounding
+        continue-on-error: true
+        run: go test ./internal/axmmirror -run 'LiveNeuralGrounding' -count=1
+      - name: Publish grounding status
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          OUTCOME: ${{ steps.grounding.outcome }}
+        run: |
+          [ "$OUTCOME" = success ] && STATE=success || STATE=failure
+          curl -fsS -X POST -H "Authorization: Bearer $GH_TOKEN" -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" "${{ github.api_url }}/repos/${{ github.repository }}/statuses/${{ github.sha }}" -d "{\"state\":\"$STATE\",\"context\":\"axm/v0.35-grounding\",\"description\":\"grounding tests: $OUTCOME\"}"
+
+      - name: Test live neural hybrid session
+        id: inference
+        continue-on-error: true
+        run: go test ./internal/inference -run 'AXMHybrid' -count=1
+      - name: Publish inference status
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          OUTCOME: ${{ steps.inference.outcome }}
+        run: |
+          [ "$OUTCOME" = success ] && STATE=success || STATE=failure
+          curl -fsS -X POST -H "Authorization: Bearer $GH_TOKEN" -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" "${{ github.api_url }}/repos/${{ github.repository }}/statuses/${{ github.sha }}" -d "{\"state\":\"$STATE\",\"context\":\"axm/v0.35-inference\",\"description\":\"inference tests: $OUTCOME\"}"
+
+      - name: Test CLI model chat compatibility
+        id: cli
+        continue-on-error: true
+        run: go test ./internal/cli -run 'ModelChat' -count=1
+      - name: Publish CLI status
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          OUTCOME: ${{ steps.cli.outcome }}
+        run: |
+          [ "$OUTCOME" = success ] && STATE=success || STATE=failure
+          curl -fsS -X POST -H "Authorization: Bearer $GH_TOKEN" -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" "${{ github.api_url }}/repos/${{ github.repository }}/statuses/${{ github.sha }}" -d "{\"state\":\"$STATE\",\"context\":\"axm/v0.35-cli\",\"description\":\"CLI model-chat tests: $OUTCOME\"}"
+
+      - name: Full tests with failure localization
+        id: full
+        run: |
+          set +e
+          go test -json ./... | tee /tmp/v035-full-tests.jsonl
+          CODE=${PIPESTATUS[0]}
+          set -e
+          echo "code=$CODE" >> "$GITHUB_OUTPUT"
+          python3 - <<'PY' >> "$GITHUB_OUTPUT"
+          import json
+          packages=[]
+          tests=[]
+          with open('/tmp/v035-full-tests.jsonl', encoding='utf-8') as handle:
+              for line in handle:
+                  try:
+                      event=json.loads(line)
+                  except json.JSONDecodeError:
+                      continue
+                  if event.get('Action') != 'fail':
+                      continue
+                  package=event.get('Package','')
+                  test=event.get('Test','')
+                  if test:
+                      value=f'{package}:{test}'
+                      if value not in tests:
+                          tests.append(value)
+                  elif package and package not in packages:
+                      packages.append(package)
+          print('failpkg=' + (packages[0] if packages else 'none'))
+          print('failtest=' + (tests[0] if tests else 'none'))
+          PY
+      - name: Publish full-test status
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CODE: ${{ steps.full.outputs.code }}
+          FAILPKG: ${{ steps.full.outputs.failpkg }}
+          FAILTEST: ${{ steps.full.outputs.failtest }}
+        run: |
+          if [ "$CODE" = 0 ]; then
+            STATE=success
+            DESC="full Go tests: success"
+          else
+            STATE=failure
+            DESC="full fail: $FAILPKG $FAILTEST"
+            DESC="${DESC:0:130}"
+          fi
+          curl -fsS -X POST -H "Authorization: Bearer $GH_TOKEN" -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" "${{ github.api_url }}/repos/${{ github.repository }}/statuses/${{ github.sha }}" -d "{\"state\":\"$STATE\",\"context\":\"axm/v0.35-full\",\"description\":\"$DESC\"}"
+
+      - name: Final AXM v0.35 verdict
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          FORMAT: ${{ steps.format.outcome }}
+          VET: ${{ steps.vet.outcome }}
+          GROUNDING: ${{ steps.grounding.outcome }}
+          INFERENCE: ${{ steps.inference.outcome }}
+          CLI: ${{ steps.cli.outcome }}
+          FULLCODE: ${{ steps.full.outputs.code }}
+        run: |
+          STATE=success
+          for RESULT in "$FORMAT" "$VET" "$GROUNDING" "$INFERENCE" "$CLI"; do
+            [ "$RESULT" = success ] || STATE=failure
+          done
+          [ "$FULLCODE" = 0 ] || STATE=failure
+          curl -fsS -X POST -H "Authorization: Bearer $GH_TOKEN" -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" "${{ github.api_url }}/repos/${{ github.repository }}/statuses/${{ github.sha }}" -d "{\"state\":\"$STATE\",\"context\":\"axm/v0.35-live-neural-hybrid\",\"description\":\"AXM v0.35 full-repo verdict: $STATE\"}"
+          [ "$STATE" = success ]

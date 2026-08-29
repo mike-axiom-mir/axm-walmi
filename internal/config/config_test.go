@@ -1,0 +1,205 @@
+// Copyright (c) 2026 OpenWALDO Project contributors
+// Copyright (c) 2026 CtrlIQ, Inc.
+// Copyright (c) 2026 Gregory M. Kurtzer
+// SPDX-License-Identifier: Apache-2.0
+
+package config
+
+import (
+	"os"
+	"path/filepath"
+	"reflect"
+	"runtime"
+	"strings"
+	"testing"
+)
+
+func TestValidatePublishAcceptsNativeAbsoluteFileURL(t *testing.T) {
+	url := "file:///tmp/waldo-lookaside"
+	if runtime.GOOS == "windows" {
+		url = "file:///D:/waldo-lookaside"
+	}
+	publish := &Publish{URL: url}
+	if err := validatePublish(publish); err != nil {
+		t.Fatal(err)
+	}
+	if publish.URL != url {
+		t.Fatalf("publish URL = %q, want %q", publish.URL, url)
+	}
+}
+
+func TestSaveLoadAndEffectiveScratch(t *testing.T) {
+	path := filepath.Join(t.TempDir(), "config.json")
+	t.Setenv("WALDO_CONFIG", path)
+	want := Config{Lookaside: Lookaside{
+		Cache:   filepath.Join(t.TempDir(), "cache"),
+		Scratch: filepath.Join(t.TempDir(), "scratch"),
+		Mirrors: []string{"https://one.example/root/", "https://one.example/root", "s3://bucket/root"},
+		Publish: &Publish{URL: "s3://bucket/write/", Region: "us-west-2", Workers: 3},
+	}, Ingest: Ingest{Staging: filepath.Join(t.TempDir(), "ingest")}, Model: Model{Root: filepath.Join(t.TempDir(), "models"), Backend: "fake"}}
+	if err := Save(want); err != nil {
+		t.Fatal(err)
+	}
+	info, err := os.Stat(path)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if runtime.GOOS != "windows" && info.Mode().Perm() != 0o600 {
+		t.Fatalf("config mode = %o, want 600", info.Mode().Perm())
+	}
+	got, err := Load()
+	if err != nil {
+		t.Fatal(err)
+	}
+	want.Schema = 1
+	want.Lookaside.Mirrors = []string{"https://one.example/root", "s3://bucket/root"}
+	want.Lookaside.Publish.URL = "s3://bucket/write"
+	if !reflect.DeepEqual(got, want) {
+		t.Fatalf("Load() = %+v, want %+v", got, want)
+	}
+	root, err := EffectiveScratchRoot(got)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if root != want.Lookaside.Scratch {
+		t.Fatalf("EffectiveScratchRoot() = %q, want %q", root, want.Lookaside.Scratch)
+	}
+	cache, err := EffectiveCacheRoot(got)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if cache != want.Lookaside.Cache {
+		t.Fatalf("EffectiveCacheRoot() = %q, want %q", cache, want.Lookaside.Cache)
+	}
+}
+
+func TestSaveRejectsInvalidPublishConfiguration(t *testing.T) {
+	t.Setenv("WALDO_CONFIG", filepath.Join(t.TempDir(), "config.json"))
+	if err := Save(Config{Lookaside: Lookaside{Publish: &Publish{URL: "https://example.test", Workers: 4}}}); err == nil {
+		t.Fatal("expected non-S3 publisher rejection")
+	}
+	if err := Save(Config{Lookaside: Lookaside{Publish: &Publish{URL: "s3://bucket", Workers: 33}}}); err == nil {
+		t.Fatal("expected worker limit rejection")
+	}
+}
+
+func TestSaveAcceptsLocalPublishConfiguration(t *testing.T) {
+	path := filepath.Join(t.TempDir(), "config.json")
+	t.Setenv("WALDO_CONFIG", path)
+	root := filepath.Join(t.TempDir(), "published")
+	localURL := "file://" + filepath.ToSlash(root)
+	if runtime.GOOS == "windows" {
+		localURL = "file:///" + filepath.ToSlash(root)
+	}
+	configuration := Config{Lookaside: Lookaside{Publish: &Publish{URL: localURL, Workers: 2}}}
+	if err := Save(configuration); err != nil {
+		t.Fatal(err)
+	}
+	loaded, err := Load()
+	if err != nil {
+		t.Fatal(err)
+	}
+	if loaded.Lookaside.Publish == nil || loaded.Lookaside.Publish.URL != localURL {
+		t.Fatalf("local publisher = %+v", loaded.Lookaside.Publish)
+	}
+}
+
+func TestLoadMissingReturnsDefault(t *testing.T) {
+	t.Setenv("WALDO_CONFIG", filepath.Join(t.TempDir(), "missing.json"))
+	got, err := Load()
+	if err != nil {
+		t.Fatal(err)
+	}
+	if got.Schema != Schema {
+		t.Fatalf("Load() = %+v", got)
+	}
+}
+
+func TestModelBackendDefaultsToRealAutoAndRejectsUnknown(t *testing.T) {
+	t.Setenv("WALDO_CONFIG", filepath.Join(t.TempDir(), "config.json"))
+	if got := EffectiveModelBackend(Default()); got != "auto" {
+		t.Fatalf("default model backend = %q", got)
+	}
+	if err := Save(Config{Model: Model{Backend: "made-up"}}); err == nil {
+		t.Fatal("unknown model backend accepted")
+	}
+	for _, backend := range []string{"auto", "mlx", "torchtitan", "pytorch", "fake"} {
+		if err := Save(Config{Model: Model{Backend: backend}}); err != nil {
+			t.Fatalf("backend %q rejected: %v", backend, err)
+		}
+	}
+}
+
+func TestSigningConfigurationValidation(t *testing.T) {
+	t.Setenv("WALDO_CONFIG", filepath.Join(t.TempDir(), "config.json"))
+	for _, signing := range []Signing{{Method: "sigstore-keyless"}, {Method: "sigstore-key", Key: "/tmp/test.key"}} {
+		if err := Save(Config{Signing: signing}); err != nil {
+			t.Fatalf("signing %+v rejected: %v", signing, err)
+		}
+	}
+	for _, signing := range []Signing{{Method: "unknown"}, {Method: "sigstore-keyless", Key: "/tmp/test.key"}} {
+		if err := Save(Config{Signing: signing}); err == nil {
+			t.Fatalf("invalid signing %+v accepted", signing)
+		}
+	}
+}
+
+func TestEffectiveStagingRootIsPlanSpecific(t *testing.T) {
+	base := t.TempDir()
+	configuration := Config{Ingest: Ingest{Staging: base}}
+	got, err := EffectiveStagingRoot(configuration, "plan-identity")
+	if err != nil {
+		t.Fatal(err)
+	}
+	if got != filepath.Join(base, "plan-identity") {
+		t.Fatalf("EffectiveStagingRoot() = %q", got)
+	}
+}
+
+func TestDefaultLocationsSeparateDurableAndDisposableState(t *testing.T) {
+	home, err := os.UserHomeDir()
+	if err != nil {
+		t.Fatal(err)
+	}
+	configuration := Default()
+	models, err := EffectiveModelRoot(configuration)
+	if err != nil {
+		t.Fatal(err)
+	}
+	cache, err := EffectiveCacheRoot(configuration)
+	if err != nil {
+		t.Fatal(err)
+	}
+	scratch, err := EffectiveScratchRoot(configuration)
+	if err != nil {
+		t.Fatal(err)
+	}
+	staging, err := EffectiveStagingBase(configuration)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if models != filepath.Join(home, ".waldo", "models") {
+		t.Fatalf("model root = %q", models)
+	}
+	if cache != filepath.Join(temporaryRoot(), "cache") {
+		t.Fatalf("cache root = %q", cache)
+	}
+	index, managed, err := EffectiveIndexRoot(configuration)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if index != filepath.Join(home, ".waldo", "index") || !managed {
+		t.Fatalf("index root = %q managed=%v", index, managed)
+	}
+	if !within(temporaryRoot(), cache) || !within(temporaryRoot(), scratch) || !within(temporaryRoot(), staging) {
+		t.Fatalf("temporary defaults are cache=%q scratch=%q staging=%q, want beneath %q", cache, scratch, staging, temporaryRoot())
+	}
+	if cache == scratch || cache == staging || scratch == staging {
+		t.Fatal("cache, scratch, and ingestion staging defaults must differ")
+	}
+}
+
+func within(parent, child string) bool {
+	relative, err := filepath.Rel(parent, child)
+	return err == nil && relative != "." && relative != ".." && !strings.HasPrefix(relative, ".."+string(filepath.Separator))
+}

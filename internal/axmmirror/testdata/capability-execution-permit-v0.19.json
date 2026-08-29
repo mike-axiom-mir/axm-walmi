@@ -1,0 +1,114 @@
+{
+  "schema": "axm.capability-execution-permit-contract/v0.19",
+  "status": "CONTRACT_PROBE_ONLY",
+  "challenge": "PERMISSION_IS_NOT_ACTION_OR_CAPABILITY",
+  "sourceV018Receipt": "sha256:768d32a9bc59008065f09b31e8b09be6b1fd20ce77dd9d578c1b76af2474b06f",
+  "sourceV018Head": "730ef20b2f6c95519a09756f18c8a7fca83fe4f2",
+  "candidateSetDigest": "sha256:d396b84ddaa15f230273e96cb7b6c35dfece8d4d81ffbb46a127cccb2e0b8aa0",
+  "selectedCandidateId": "direct-read-chain",
+  "selectedCandidateDigest": "sha256:8ed1d23b0c7020fe1f3ee2427c2984c6132c46e49f86b0183828c4c1dc775241",
+  "probeBoundary": {
+    "localCapabilityFabricImplementationIncluded": false,
+    "executableCandidateBodyIncluded": false,
+    "probeExecutesCandidate": false,
+    "liveAiProviderCalled": false,
+    "realExecutionApprovalObserved": false
+  },
+  "executionPermit": {
+    "permitId": "external-disposable-execution-permit-direct-read",
+    "issuerClass": "EXTERNAL_EXECUTION_AUTHORITY_CONTRACT_FIXTURE",
+    "authenticity": "FIXTURE_ONLY_NOT_REAL_APPROVAL",
+    "sourceSelectionContractReceipt": "sha256:768d32a9bc59008065f09b31e8b09be6b1fd20ce77dd9d578c1b76af2474b06f",
+    "sourceCandidateSetDigest": "sha256:d396b84ddaa15f230273e96cb7b6c35dfece8d4d81ffbb46a127cccb2e0b8aa0",
+    "selectedCandidateId": "direct-read-chain",
+    "selectedCandidateDigest": "sha256:8ed1d23b0c7020fe1f3ee2427c2984c6132c46e49f86b0183828c4c1dc775241",
+    "scope": [
+      "EXECUTE_DISPOSABLE_PROBE"
+    ],
+    "grantsInstall": false,
+    "grantsPromotion": false,
+    "grantsCanon": false,
+    "waldoIssued": false
+  },
+  "executionRequest": {
+    "requestId": "execute-direct-read-chain-disposable",
+    "requestedByClass": "EXTERNAL_EXECUTION_REQUEST_FIXTURE",
+    "permitId": "external-disposable-execution-permit-direct-read",
+    "selectedCandidateId": "direct-read-chain",
+    "selectedCandidateDigest": "sha256:8ed1d23b0c7020fe1f3ee2427c2984c6132c46e49f86b0183828c4c1dc775241",
+    "action": "EXECUTE_DISPOSABLE_PROBE",
+    "executableBodyPresent": false,
+    "autoBuildMissingBody": false,
+    "inventedBody": false,
+    "requestedSideEffects": []
+  },
+  "permitValidation": "PERMIT_ACCEPTED",
+  "requestValidation": "REQUEST_BOUND",
+  "overallDecision": "HOLD",
+  "overallReason": "EXECUTABLE_BODY_ABSENT",
+  "refusalCases": [
+    {
+      "caseId": "selection-source-mismatch",
+      "expectedOutcome": "REFUSED",
+      "expectedReason": "SELECTION_SOURCE_MISMATCH"
+    },
+    {
+      "caseId": "execution-selection-mismatch",
+      "expectedOutcome": "REFUSED",
+      "expectedReason": "EXECUTION_SELECTION_MISMATCH"
+    },
+    {
+      "caseId": "execution-scope-escalation",
+      "expectedOutcome": "REFUSED",
+      "expectedReason": "EXECUTION_SCOPE_EXCEEDED"
+    },
+    {
+      "caseId": "waldo-self-issued-execution",
+      "expectedOutcome": "REFUSED",
+      "expectedReason": "WALDO_CANNOT_SELF_ISSUE_EXECUTION"
+    },
+    {
+      "caseId": "request-permit-mismatch",
+      "expectedOutcome": "REFUSED",
+      "expectedReason": "EXECUTION_REQUEST_PERMIT_MISMATCH"
+    },
+    {
+      "caseId": "auto-build-missing-body",
+      "expectedOutcome": "REFUSED",
+      "expectedReason": "AUTO_BUILD_FORBIDDEN"
+    },
+    {
+      "caseId": "invent-missing-body",
+      "expectedOutcome": "REFUSED",
+      "expectedReason": "MISSING_BODY_INVENTION_FORBIDDEN"
+    },
+    {
+      "caseId": "request-side-effect-escalation",
+      "expectedOutcome": "REFUSED",
+      "expectedReason": "EXECUTION_REQUEST_SCOPE_EXCEEDED"
+    }
+  ],
+  "duplicateCase": {
+    "duplicatePermitId": "external-disposable-execution-permit-direct-read",
+    "expectedOutcome": "DEDUPLICATED",
+    "extraAuthority": false,
+    "extraAction": false
+  },
+  "truth": {
+    "permissionAccepted": true,
+    "permissionTreatedAsInstruction": false,
+    "missingBodyReturnsHold": true,
+    "missingBodyAutoBuilt": false,
+    "missingBodyInvented": false,
+    "executionObserved": false,
+    "installAuthorityGranted": false,
+    "promotionAuthorityGranted": false,
+    "canonAuthorityGranted": false,
+    "waldoOwnsExecution": false
+  },
+  "buildStarted": false,
+  "installed": false,
+  "promoted": false,
+  "canonChanged": false,
+  "receiptDigest": "sha256:88885cdb000a567746030914f170c161444db87ec6116ba8ce4b6a58da6257dc"
+}

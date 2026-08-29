@@ -1,0 +1,18 @@
+{
+  "schema": "axm.research.capability-selection-receipt-summary/v0.18",
+  "status": "EXPERIMENTAL",
+  "sourceV017Receipt": "sha256:62d12d9ef02d3527878ba5e1c9baee6e79dc973d3617caf03796170fc5787dbe",
+  "sourceV017VerifiedHead": "6b5071cf7a632291e5d44c6d80909d0ae73ee937",
+  "candidateSetDigest": "sha256:d396b84ddaa15f230273e96cb7b6c35dfece8d4d81ffbb46a127cccb2e0b8aa0",
+  "selectedCandidateId": "direct-read-chain",
+  "selectionValidation": "CONTRACT_SELECTION_ACCEPTED",
+  "selectedProposalState": "SELECTED_PROPOSAL_ONLY",
+  "overallDecision": "HOLD",
+  "overallReason": "EXECUTION_AUTHORITY_ABSENT",
+  "conflictOutcome": "HOLD / CONFLICTING_SELECTION_RECEIPTS",
+  "waldoCanSelfIssueSelection": false,
+  "realGovernanceDecisionObserved": false,
+  "executionAuthority": "NONE",
+  "contractReceipt": "sha256:768d32a9bc59008065f09b31e8b09be6b1fd20ce77dd9d578c1b76af2474b06f",
+  "witnessDigest": "1bbb03715c787a397987d50fb0629c928bb4108f773e48cced8838ec1adcfe57"
+}

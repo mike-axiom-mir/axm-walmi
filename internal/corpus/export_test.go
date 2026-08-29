@@ -1,0 +1,126 @@
+// Copyright (c) 2026 OpenWALDO Project contributors
+// Copyright (c) 2026 CtrlIQ, Inc.
+// Copyright (c) 2026 Gregory M. Kurtzer
+// SPDX-License-Identifier: Apache-2.0
+
+package corpus
+
+import (
+	"bytes"
+	"crypto/sha256"
+	"encoding/hex"
+	"os"
+	"path/filepath"
+	"strings"
+	"testing"
+
+	"github.com/openwaldo/waldo/internal/lookaside"
+	"github.com/openwaldo/waldo/internal/record"
+	nativeshard "github.com/openwaldo/waldo/internal/shard"
+	"github.com/parquet-go/parquet-go"
+)
+
+func TestExportNativeCopiesAndResumesVerifiedFiles(t *testing.T) {
+	content := []byte("parquet-shaped fixture")
+	digestArray := sha256.Sum256(content)
+	digest := hex.EncodeToString(digestArray[:])
+	cacheObject := filepath.Join(t.TempDir(), "cached")
+	if err := os.WriteFile(cacheObject, content, 0o644); err != nil {
+		t.Fatal(err)
+	}
+	shard := ShardPin{
+		Manifest: "books/books.json", SHA256: digest, Format: "parquet",
+		License: "CC0-1.0", Docs: 1, Tokens: 2, Bytes: int64(len(content)),
+	}
+	materialized := Materialized{Objects: []MaterializedObject{{Shard: shard, Path: cacheObject}}}
+	destination := t.TempDir()
+	files, err := ExportNative(materialized, destination, false)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(files) != 1 || files[0].Existing {
+		t.Fatalf("ExportNative() = %+v", files)
+	}
+	exported := filepath.Join(destination, filepath.FromSlash(files[0].Path))
+	if err := lookaside.VerifyFile(exported, digest, int64(len(content))); err != nil {
+		t.Fatal(err)
+	}
+
+	files, err = ExportNative(materialized, destination, false)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !files[0].Existing {
+		t.Fatalf("resumed export did not identify existing file: %+v", files[0])
+	}
+
+	if err := os.WriteFile(exported, []byte("corrupt"), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	if _, err := ExportNative(materialized, destination, false); err == nil || !strings.Contains(err.Error(), "use --force") {
+		t.Fatalf("corrupt destination error = %v", err)
+	}
+	if _, err := ExportNative(materialized, destination, true); err != nil {
+		t.Fatal(err)
+	}
+	if err := lookaside.VerifyFile(exported, digest, int64(len(content))); err != nil {
+		t.Fatal(err)
+	}
+}
+
+func TestExportJSONLConvertsValidatesAndResumes(t *testing.T) {
+	text := "canonical export"
+	var native bytes.Buffer
+	writer := parquet.NewGenericWriter[nativeshard.Row](&native)
+	if _, err := writer.Write([]nativeshard.Row{{
+		SHA256: record.TextHash(text), Kind: record.KindPretrain, Text: text,
+		Source: "fixture", License: "CC0-1.0", Tokens: 2,
+	}}); err != nil {
+		t.Fatal(err)
+	}
+	if err := writer.Close(); err != nil {
+		t.Fatal(err)
+	}
+	digestArray := sha256.Sum256(native.Bytes())
+	objectDigest := hex.EncodeToString(digestArray[:])
+	cacheObject := filepath.Join(t.TempDir(), "cached")
+	if err := os.WriteFile(cacheObject, native.Bytes(), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	materialized := Materialized{Objects: []MaterializedObject{{
+		Shard: ShardPin{Manifest: "books/books.json", SHA256: objectDigest, Format: "parquet", License: "CC0-1.0", Docs: 1, Tokens: 2, Bytes: int64(native.Len())},
+		Path:  cacheObject,
+	}}}
+	destination := t.TempDir()
+	files, err := ExportJSONL(materialized, destination, false)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(files) != 1 || files[0].Existing || files[0].Format != "jsonl" || files[0].ObjectSHA256 != objectDigest || files[0].SHA256 == objectDigest {
+		t.Fatalf("ExportJSONL() = %+v", files)
+	}
+	exported := filepath.Join(destination, filepath.FromSlash(files[0].Path))
+	if err := lookaside.VerifyFile(exported, files[0].SHA256, files[0].Bytes); err != nil {
+		t.Fatal(err)
+	}
+	files, err = ExportJSONL(materialized, destination, false)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !files[0].Existing {
+		t.Fatalf("resumed conversion did not identify existing file: %+v", files[0])
+	}
+	if err := os.WriteFile(exported, []byte("corrupt"), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	if _, err := ExportJSONL(materialized, destination, false); err == nil || !strings.Contains(err.Error(), "use --force") {
+		t.Fatalf("corrupt destination error = %v", err)
+	}
+	if _, err := ExportJSONL(materialized, destination, true); err != nil {
+		t.Fatal(err)
+	}
+	materialized.Objects[0].Shard.Tokens++
+	if _, err := ExportJSONL(materialized, t.TempDir(), false); err == nil || !strings.Contains(err.Error(), "manifest declares") {
+		t.Fatalf("declared totals error = %v", err)
+	}
+}

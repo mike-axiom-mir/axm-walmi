@@ -1,0 +1,318 @@
+{
+  "note": "Zero values are preserved; coupled overhead and false contradictions are reportable evidence, not hidden failures.",
+  "rows": [
+    {
+      "events": 14,
+      "failureModes": {
+        "duplicateWorkSuppressed": 0,
+        "eventStorm": false,
+        "falseContradictions": 0,
+        "oscillation": 0,
+        "queueOverflow": false,
+        "staleStateRacesRejected": 0,
+        "starvation": false,
+        "timeout": false
+      },
+      "mode": "COUPLED_B",
+      "reasoningInvocations": 8,
+      "resourceObservation": {
+        "maxRSSDeltaKilobytes": 0,
+        "maxRSSKilobytesObserved": 23428,
+        "note": "Wall/CPU/allocation observations are environment-dependent and excluded from semantic repeatability digests. ru_maxrss is a process high-water mark.",
+        "processCPUNanoseconds": 2681439,
+        "tracemallocPeakBytes": 28873,
+        "wallClockNanoseconds": 2683943
+      },
+      "scenarioId": "stable-short"
+    },
+    {
+      "events": 27,
+      "failureModes": {
+        "duplicateWorkSuppressed": 0,
+        "eventStorm": false,
+        "falseContradictions": 0,
+        "oscillation": 0,
+        "queueOverflow": false,
+        "staleStateRacesRejected": 7,
+        "starvation": false,
+        "timeout": false
+      },
+      "mode": "COUPLED_B",
+      "reasoningInvocations": 13,
+      "resourceObservation": {
+        "maxRSSDeltaKilobytes": 0,
+        "maxRSSKilobytesObserved": 23556,
+        "note": "Wall/CPU/allocation observations are environment-dependent and excluded from semantic repeatability digests. ru_maxrss is a process high-water mark.",
+        "processCPUNanoseconds": 4816988,
+        "tracemallocPeakBytes": 53326,
+        "wallClockNanoseconds": 4820403
+      },
+      "scenarioId": "target-shift-early"
+    },
+    {
+      "events": 33,
+      "failureModes": {
+        "duplicateWorkSuppressed": 0,
+        "eventStorm": false,
+        "falseContradictions": 0,
+        "oscillation": 0,
+        "queueOverflow": false,
+        "staleStateRacesRejected": 3,
+        "starvation": false,
+        "timeout": false
+      },
+      "mode": "COUPLED_B",
+      "reasoningInvocations": 18,
+      "resourceObservation": {
+        "maxRSSDeltaKilobytes": 128,
+        "maxRSSKilobytesObserved": 23684,
+        "note": "Wall/CPU/allocation observations are environment-dependent and excluded from semantic repeatability digests. ru_maxrss is a process high-water mark.",
+        "processCPUNanoseconds": 5754890,
+        "tracemallocPeakBytes": 62825,
+        "wallClockNanoseconds": 5757354
+      },
+      "scenarioId": "target-shift-late"
+    },
+    {
+      "events": 34,
+      "failureModes": {
+        "duplicateWorkSuppressed": 0,
+        "eventStorm": false,
+        "falseContradictions": 1,
+        "oscillation": 0,
+        "queueOverflow": false,
+        "staleStateRacesRejected": 6,
+        "starvation": false,
+        "timeout": false
+      },
+      "mode": "COUPLED_B",
+      "reasoningInvocations": 17,
+      "resourceObservation": {
+        "maxRSSDeltaKilobytes": 0,
+        "maxRSSKilobytesObserved": 23684,
+        "note": "Wall/CPU/allocation observations are environment-dependent and excluded from semantic repeatability digests. ru_maxrss is a process high-water mark.",
+        "processCPUNanoseconds": 5806175,
+        "tracemallocPeakBytes": 66936,
+        "wallClockNanoseconds": 5808760
+      },
+      "scenarioId": "measurement-disagreement"
+    },
+    {
+      "events": 21,
+      "failureModes": {
+        "duplicateWorkSuppressed": 0,
+        "eventStorm": false,
+        "falseContradictions": 0,
+        "oscillation": 0,
+        "queueOverflow": false,
+        "staleStateRacesRejected": 6,
+        "starvation": true,
+        "timeout": false
+      },
+      "mode": "COUPLED_B",
+      "reasoningInvocations": 10,
+      "resourceObservation": {
+        "maxRSSDeltaKilobytes": 0,
+        "maxRSSKilobytesObserved": 23684,
+        "note": "Wall/CPU/allocation observations are environment-dependent and excluded from semantic repeatability digests. ru_maxrss is a process high-water mark.",
+        "processCPUNanoseconds": 3328768,
+        "tracemallocPeakBytes": 40201,
+        "wallClockNanoseconds": 3364863
+      },
+      "scenarioId": "missing-evidence"
+    },
+    {
+      "events": 35,
+      "failureModes": {
+        "duplicateWorkSuppressed": 0,
+        "eventStorm": false,
+        "falseContradictions": 0,
+        "oscillation": 0,
+        "queueOverflow": false,
+        "staleStateRacesRejected": 5,
+        "starvation": false,
+        "timeout": false
+      },
+      "mode": "COUPLED_B",
+      "reasoningInvocations": 18,
+      "resourceObservation": {
+        "maxRSSDeltaKilobytes": 0,
+        "maxRSSKilobytesObserved": 23812,
+        "note": "Wall/CPU/allocation observations are environment-dependent and excluded from semantic repeatability digests. ru_maxrss is a process high-water mark.",
+        "processCPUNanoseconds": 6007985,
+        "tracemallocPeakBytes": 68641,
+        "wallClockNanoseconds": 6010509
+      },
+      "scenarioId": "obstruction"
+    },
+    {
+      "events": 17,
+      "failureModes": {
+        "duplicateWorkSuppressed": 0,
+        "eventStorm": false,
+        "falseContradictions": 0,
+        "oscillation": 0,
+        "queueOverflow": false,
+        "staleStateRacesRejected": 7,
+        "starvation": false,
+        "timeout": false
+      },
+      "mode": "COUPLED_B",
+      "reasoningInvocations": 6,
+      "resourceObservation": {
+        "maxRSSDeltaKilobytes": 0,
+        "maxRSSKilobytesObserved": 23812,
+        "note": "Wall/CPU/allocation observations are environment-dependent and excluded from semantic repeatability digests. ru_maxrss is a process high-water mark.",
+        "processCPUNanoseconds": 3178947,
+        "tracemallocPeakBytes": 35747,
+        "wallClockNanoseconds": 3181331
+      },
+      "scenarioId": "permit-revoked"
+    },
+    {
+      "events": 6,
+      "failureModes": {
+        "duplicateWorkSuppressed": 0,
+        "eventStorm": false,
+        "falseContradictions": 0,
+        "oscillation": 0,
+        "queueOverflow": false,
+        "staleStateRacesRejected": 0,
+        "starvation": true,
+        "timeout": false
+      },
+      "mode": "SEQUENTIAL_A",
+      "reasoningInvocations": 6,
+      "resourceObservation": {
+        "maxRSSDeltaKilobytes": 0,
+        "maxRSSKilobytesObserved": 23940,
+        "note": "Wall/CPU/allocation observations are environment-dependent and excluded from semantic repeatability digests. ru_maxrss is a process high-water mark.",
+        "processCPUNanoseconds": 1061385,
+        "tracemallocPeakBytes": 10998,
+        "wallClockNanoseconds": 1063288
+      },
+      "scenarioId": "wrong-environment"
+    },
+    {
+      "events": 9,
+      "failureModes": {
+        "duplicateWorkSuppressed": 0,
+        "eventStorm": false,
+        "falseContradictions": 0,
+        "oscillation": 0,
+        "queueOverflow": false,
+        "staleStateRacesRejected": 3,
+        "starvation": true,
+        "timeout": false
+      },
+      "mode": "COUPLED_B",
+      "reasoningInvocations": 4,
+      "resourceObservation": {
+        "maxRSSDeltaKilobytes": 0,
+        "maxRSSKilobytesObserved": 23940,
+        "note": "Wall/CPU/allocation observations are environment-dependent and excluded from semantic repeatability digests. ru_maxrss is a process high-water mark.",
+        "processCPUNanoseconds": 1575899,
+        "tracemallocPeakBytes": 18615,
+        "wallClockNanoseconds": 1578062
+      },
+      "scenarioId": "wrong-environment"
+    },
+    {
+      "events": 6,
+      "failureModes": {
+        "duplicateWorkSuppressed": 0,
+        "eventStorm": false,
+        "falseContradictions": 0,
+        "oscillation": 0,
+        "queueOverflow": false,
+        "staleStateRacesRejected": 0,
+        "starvation": true,
+        "timeout": false
+      },
+      "mode": "SEQUENTIAL_A",
+      "reasoningInvocations": 6,
+      "resourceObservation": {
+        "maxRSSDeltaKilobytes": 0,
+        "maxRSSKilobytesObserved": 23940,
+        "note": "Wall/CPU/allocation observations are environment-dependent and excluded from semantic repeatability digests. ru_maxrss is a process high-water mark.",
+        "processCPUNanoseconds": 1058210,
+        "tracemallocPeakBytes": 10996,
+        "wallClockNanoseconds": 1060113
+      },
+      "scenarioId": "wrong-capability"
+    },
+    {
+      "events": 9,
+      "failureModes": {
+        "duplicateWorkSuppressed": 0,
+        "eventStorm": false,
+        "falseContradictions": 0,
+        "oscillation": 0,
+        "queueOverflow": false,
+        "staleStateRacesRejected": 3,
+        "starvation": true,
+        "timeout": false
+      },
+      "mode": "COUPLED_B",
+      "reasoningInvocations": 4,
+      "resourceObservation": {
+        "maxRSSDeltaKilobytes": 0,
+        "maxRSSKilobytesObserved": 23940,
+        "note": "Wall/CPU/allocation observations are environment-dependent and excluded from semantic repeatability digests. ru_maxrss is a process high-water mark.",
+        "processCPUNanoseconds": 1561607,
+        "tracemallocPeakBytes": 18733,
+        "wallClockNanoseconds": 1563670
+      },
+      "scenarioId": "wrong-capability"
+    },
+    {
+      "events": 9,
+      "failureModes": {
+        "duplicateWorkSuppressed": 0,
+        "eventStorm": false,
+        "falseContradictions": 0,
+        "oscillation": 0,
+        "queueOverflow": false,
+        "staleStateRacesRejected": 3,
+        "starvation": false,
+        "timeout": false
+      },
+      "mode": "COUPLED_B",
+      "reasoningInvocations": 4,
+      "resourceObservation": {
+        "maxRSSDeltaKilobytes": 0,
+        "maxRSSKilobytesObserved": 23940,
+        "note": "Wall/CPU/allocation observations are environment-dependent and excluded from semantic repeatability digests. ru_maxrss is a process high-water mark.",
+        "processCPUNanoseconds": 1750498,
+        "tracemallocPeakBytes": 14131,
+        "wallClockNanoseconds": 1753452
+      },
+      "scenarioId": "no-permit"
+    },
+    {
+      "events": 9,
+      "failureModes": {
+        "duplicateWorkSuppressed": 0,
+        "eventStorm": false,
+        "falseContradictions": 0,
+        "oscillation": 0,
+        "queueOverflow": false,
+        "staleStateRacesRejected": 3,
+        "starvation": false,
+        "timeout": false
+      },
+      "mode": "COUPLED_B",
+      "reasoningInvocations": 4,
+      "resourceObservation": {
+        "maxRSSDeltaKilobytes": 0,
+        "maxRSSKilobytesObserved": 23940,
+        "note": "Wall/CPU/allocation observations are environment-dependent and excluded from semantic repeatability digests. ru_maxrss is a process high-water mark.",
+        "processCPUNanoseconds": 1591631,
+        "tracemallocPeakBytes": 18719,
+        "wallClockNanoseconds": 1593855
+      },
+      "scenarioId": "no-actuator-route"
+    }
+  ],
+  "schema": "axm.coupled-failure-evidence/v0.25"
+}

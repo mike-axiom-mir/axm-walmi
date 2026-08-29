@@ -1,0 +1,8 @@
+{
+  "schema": "axm.waldo.workspace-loop-request/v0.2",
+  "prompt": "Inspect this project, identify the smallest grounded repair, apply it only when writing is enabled, run the declared verifier, and explain the observed result.",
+  "max_turns": 16,
+  "verify_commands": [
+    ["go", "test", "./..."]
+  ]
+}

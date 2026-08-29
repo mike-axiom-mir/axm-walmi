@@ -1,0 +1,20 @@
+{
+  "schema": "axm.waldo-witness.identity-wisdom-query/v0.1",
+  "query_id": "query-0001",
+  "target_answering_identity_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+  "tool_id": "image-render-hand",
+  "tool_version": "v1",
+  "task_class": "asset-render",
+  "use_tags": [
+    "pixel-art"
+  ],
+  "as_of": "2026-08-16T07:01:00Z",
+  "max_entries": 2,
+  "authority": {
+    "tool_execution": false,
+    "training": false,
+    "promotion": false,
+    "canon": false,
+    "world_action": false
+  }
+}

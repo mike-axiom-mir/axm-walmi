@@ -1,0 +1,88 @@
+{
+  "schema": "axm.waldo-witness.organ-map/v0.6",
+  "status": "EXPERIMENTAL_INHERITED_OVERLAY",
+  "clone_role": "WALDO-native provenance, situated evidence, evaluation, bounded pixel-asset, and portable capability-contract specialist; not a general Mirror or Workshop copy",
+  "authority_default": "closed",
+  "supersedes_map": "research/axm-waldo-witness-organ-map.v0.5.json",
+  "inheritance": {
+    "mode": "ALL_ORGANS_AND_BOUNDARIES_UNLESS_OVERRIDDEN",
+    "source": "research/axm-waldo-witness-organ-map.v0.5.json",
+    "source_sha256": "cb42dcc909c40f5bb02d423dd644fdd2c0050ca0f1ab1c3646e5920778fca20a",
+    "retained_organ_count": 31
+  },
+  "design_adrs": [
+    "docs/adr/9009-axm-waldo-current-upstream-body-alignment.md"
+  ],
+  "knowledge_sources": [
+    {
+      "kind": "merged-upstream-body-and-contract-delta",
+      "receipt": "research/openwaldo-upstream-alignment-2026-08-16.json",
+      "upstream_head": "451e029abd1f74fd77625984526a1980c48fb477",
+      "merge_commit": "d0f3e6ffae5974fec1c1aeb610a24618c1ac49ef",
+      "reuse": "current OpenWALDO implementation plus pinned record-filter, assessment, main-content, conversation-compose, artifact-precision, and privacy-redaction contracts"
+    }
+  ],
+  "organ_overrides": [
+    {
+      "id": "corpus-evidence-lens",
+      "wave": 1,
+      "status": "IMPLEMENTED_TESTED_GO_1_25_0",
+      "contract_version": "v0.2",
+      "legacy_receipt_version_accepted": "v0.1",
+      "purpose": "Project the complete current WALDO corpus BOM identity, including record-filter, content-assessment, and privacy-redaction evidence, while retaining explicit legacy and claim-limit states."
+    }
+  ],
+  "foundation_changes": [
+    {
+      "id": "openwaldo-current-body-alignment",
+      "classification": "BODY_UPDATE_NOT_A_NEW_SPECIALIST_MASK",
+      "status": "MERGED_AND_LOCALLY_VERIFIED",
+      "effect": "Preserve current upstream training, ingestion, compose, and privacy behavior underneath every inherited downstream witness organ."
+    }
+  ],
+  "continuity_assessment": {
+    "works_without_live_platform": [
+      "compiled self-capability census",
+      "closed-authority provenance and run receipts",
+      "skill current-versus-backup manifest comparison when both manifests are supplied",
+      "deterministic inner pixel-asset compilation and verification",
+      "append-only organ maps, ADRs, and source receipts"
+    ],
+    "still_requires_external_evidence_or_transport": [
+      "live sensory capture",
+      "Workshop execution or provider discovery",
+      "retrieval of returned capability artifact bytes",
+      "skill installation, restore, or repair",
+      "real model training hardware and runtime"
+    ]
+  },
+  "next_missing_specialist_growth_surfaces": [
+    {
+      "id": "portable-continuity-capsule",
+      "status": "PROPOSED",
+      "need": "A compact replayable state capsule that restores exact task, evidence, specialist catalog, open dissent, and freshness without a live platform."
+    },
+    {
+      "id": "specialist-need-classifier-and-mask-registry",
+      "status": "PROPOSED",
+      "need": "Categorize a gap as capability, schema, data, sense, skill, adapter, runtime, or authority before proposing a new specialist mask."
+    },
+    {
+      "id": "verified-specialist-experience-ledger",
+      "status": "PROPOSED",
+      "need": "Accumulate task receipts, independent verification, failures, dissent, scope, and freshness over time without treating repetition as competence."
+    },
+    {
+      "id": "specialist-revision-and-promotion-gate",
+      "status": "PROPOSED",
+      "need": "Produce candidate specialist revisions from verified evidence while leaving installation, promotion, retirement, and CANON to explicit human review."
+    }
+  ],
+  "non_claims": [
+    "the current upstream body is not a trained Mirror clone",
+    "privacy redaction is not anonymity or legal compliance",
+    "capability census and handoff contracts do not create or grow specialists",
+    "stored experience does not prove competence without task-bound verification",
+    "this overlay grants no provider, installation, promotion, or CANON authority"
+  ]
+}

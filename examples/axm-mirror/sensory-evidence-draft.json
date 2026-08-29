@@ -1,0 +1,30 @@
+{
+  "schema": "axm.waldo-witness.sensory-evidence-draft/v0.1",
+  "observation_id": "example-touch-observation-0001",
+  "claim_id": "example-situated-claim-0001",
+  "sense_id": "touch-environment-probe",
+  "capability": "sense.environment.touch/v1",
+  "subject": {
+    "id": "example-evaluation-case-0001",
+    "kind": "evaluation-case",
+    "sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+  },
+  "seat_id": "workshop-fixture-seat",
+  "backend_id": "synthetic-example",
+  "observed_at": "2026-08-15T10:00:00Z",
+  "sealed_at": "2026-08-15T10:00:00.100Z",
+  "assessed_at": "2026-08-15T10:00:00.200Z",
+  "ttl_millis": 60000,
+  "observation_state": "OBSERVED",
+  "verdict": "PASS",
+  "named_seams": [
+    "synthetic-fixture-only"
+  ],
+  "typed_observation_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "specific_receipt_schema": "axm.touch-environment-probe/v1",
+  "specific_receipt_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "authority_inherited": false,
+  "raw_retained_bytes_after_seal": 0,
+  "raw_retained_items_after_seal": 0,
+  "cleanup_complete": true
+}
