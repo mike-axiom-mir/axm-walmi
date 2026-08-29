@@ -87,6 +87,34 @@ def manifest_value(files: list[dict[str, object]]) -> dict[str, object]:
     }
 
 
+def difference_summary(
+    expected: dict[str, object], actual: dict[str, object]
+) -> dict[str, object]:
+    expected_files = {
+        str(item["path"]): item for item in expected.get("files", [])
+    }
+    actual_files = {
+        str(item["path"]): item for item in actual.get("files", [])
+    }
+    missing = sorted(set(expected_files) - set(actual_files))
+    unexpected = sorted(set(actual_files) - set(expected_files))
+    changed = sorted(
+        path
+        for path in set(expected_files) & set(actual_files)
+        if expected_files[path] != actual_files[path]
+    )
+    return {
+        "expectedTreeSha256": expected.get("treeSha256"),
+        "actualTreeSha256": actual["treeSha256"],
+        "expectedFileCount": expected.get("fileCount"),
+        "actualFileCount": actual["fileCount"],
+        "missingPaths": missing[:50],
+        "unexpectedPaths": unexpected[:50],
+        "changedPaths": changed[:50],
+        "differenceCount": len(missing) + len(unexpected) + len(changed),
+    }
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--verify", action="store_true")
@@ -97,8 +125,7 @@ def main() -> int:
         if actual != expected:
             print(json.dumps({
                 "status": "FAIL",
-                "expectedTreeSha256": expected.get("treeSha256"),
-                "actualTreeSha256": actual["treeSha256"],
+                **difference_summary(expected, actual),
             }, indent=2))
             return 1
     else:

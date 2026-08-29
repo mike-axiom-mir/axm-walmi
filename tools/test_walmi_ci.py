@@ -63,11 +63,15 @@ def check_go_format() -> None:
 
 
 def main() -> int:
+    run([sys.executable, "tools/seal_source_tree.py", "--verify"])
     check_go_format()
-    run(["go", "vet", *GO_PACKAGES])
-    run(["go", "test", *GO_PACKAGES])
+    go_environment = os.environ.copy()
+    existing_go_flags = go_environment.get("GOFLAGS", "").strip()
+    go_environment["GOFLAGS"] = f"{existing_go_flags} -mod=readonly".strip()
+    run(["go", "vet", *GO_PACKAGES], environment=go_environment)
+    run(["go", "test", *GO_PACKAGES], environment=go_environment)
     with tempfile.TemporaryDirectory(prefix="walmi-wasm-") as temporary:
-        environment = os.environ.copy()
+        environment = go_environment.copy()
         environment["GOOS"] = "js"
         environment["GOARCH"] = "wasm"
         output = str(Path(temporary) / "walmi-browser.wasm")

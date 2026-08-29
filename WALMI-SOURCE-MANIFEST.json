@@ -2,8 +2,8 @@
   "schema": "axm.walmi.standalone-source-manifest/v1",
   "copyMode": "FULL_FILES_NO_LINKS",
   "fileCount": 2245,
-  "totalBytes": 29711476,
-  "treeSha256": "f7756d0d19a0486a9306ce89e153df31490bbdd6eb7e30b5b5f42e06393e9c22",
+  "totalBytes": 29712727,
+  "treeSha256": "8311d24ae6d6d86d2cdeb2f211fad894686c1401afb15ffbdcf6f7e3715a9b7d",
   "files": [
     {
       "path": ".gitattributes",
@@ -11207,13 +11207,13 @@
     },
     {
       "path": "tools/seal_source_tree.py",
-      "bytes": 3387,
-      "sha256": "0002988d8e523a16fb6abe0ef49e506d2723a7b30856edd4d6faa9a027e05ffc"
+      "bytes": 4329,
+      "sha256": "6a96dc1a3f1648bcd399789c9ae1b44c4ec68efbac6e5494344b5f8bb7be7ad1"
     },
     {
       "path": "tools/test_walmi_ci.py",
-      "bytes": 2624,
-      "sha256": "f9891e58243a054ded23165de307324bf43667c0d7338cc553b6bea96aaff27e"
+      "bytes": 2933,
+      "sha256": "bd7b8f62b760c7990b4a89759a48066dc9f11f6c8561760215f34d29144f33a5"
     },
     {
       "path": "tools/test_walmi_windows.ps1",
