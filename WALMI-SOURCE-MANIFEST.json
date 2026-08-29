@@ -2,8 +2,8 @@
   "schema": "axm.walmi.standalone-source-manifest/v1",
   "copyMode": "FULL_FILES_NO_LINKS",
   "fileCount": 2245,
-  "totalBytes": 29711456,
-  "treeSha256": "330ab80ca0cc916e346e1ff4cc916f551c14d5508005fb43b4f21a7a5c741cda",
+  "totalBytes": 29711476,
+  "treeSha256": "f7756d0d19a0486a9306ce89e153df31490bbdd6eb7e30b5b5f42e06393e9c22",
   "files": [
     {
       "path": ".gitattributes",
@@ -9802,8 +9802,8 @@
     },
     {
       "path": "internal/training/walmi_windows_package_test.go",
-      "bytes": 2045,
-      "sha256": "22d83c44656727cb3fc54273c36a78dc68407fade760dd98021cbf9ec467340b"
+      "bytes": 2065,
+      "sha256": "664b9aa1a63cb80da6a7f96cdba88fc1e0470acafae93ea979a6deca78a1e6af"
     },
     {
       "path": "internal/training/worker_events_test.go",
