@@ -57,15 +57,15 @@ func arg(args []js.Value, index int) (string, error) {
 
 func runtimeInfo(this js.Value, args []js.Value) any {
 	return encoded(map[string]any{
-		"schema":             "walmi.axm-mirror-browser-runtime/v1",
-		"go_version":         runtime.Version(),
-		"goos":               runtime.GOOS,
-		"goarch":             runtime.GOARCH,
-		"source_commit":      "c6011afbb456b8fe1e6c7c6eda7857aec681cb8f",
-		"network_required":   false,
+		"schema":              "walmi.axm-mirror-browser-runtime/v1",
+		"go_version":          runtime.Version(),
+		"goos":                runtime.GOOS,
+		"goarch":              runtime.GOARCH,
+		"source_commit":       "c6011afbb456b8fe1e6c7c6eda7857aec681cb8f",
+		"network_required":    false,
 		"filesystem_required": false,
-		"neural_generation":  false,
-		"authority":          "NONE",
+		"neural_generation":   false,
+		"authority":           "NONE",
 	}, nil)
 }
 
@@ -78,61 +78,93 @@ func invoke(this js.Value, args []js.Value) any {
 	switch op {
 	case "census-capabilities":
 		raw, err := arg(args, 1)
-		if err != nil { return encoded(nil, err) }
+		if err != nil {
+			return encoded(nil, err)
+		}
 		var request axmmirror.SelfCapabilityCensusRequest
-		if err := strictJSON(raw, &request); err != nil { return encoded(nil, err) }
+		if err := strictJSON(raw, &request); err != nil {
+			return encoded(nil, err)
+		}
 		result, err := axmmirror.CensusSelfCapabilities(request)
 		return encoded(result, err)
 
 	case "seal-tool-experience":
 		raw, err := arg(args, 1)
-		if err != nil { return encoded(nil, err) }
+		if err != nil {
+			return encoded(nil, err)
+		}
 		var experience axmmirror.IdentityToolExperience
-		if err := strictJSON(raw, &experience); err != nil { return encoded(nil, err) }
+		if err := strictJSON(raw, &experience); err != nil {
+			return encoded(nil, err)
+		}
 		result, err := axmmirror.SealIdentityToolExperience(experience)
 		return encoded(result, err)
 
 	case "start-tool-memory":
 		raw, err := arg(args, 1)
-		if err != nil { return encoded(nil, err) }
+		if err != nil {
+			return encoded(nil, err)
+		}
 		var experience axmmirror.IdentityToolExperience
-		if err := strictJSON(raw, &experience); err != nil { return encoded(nil, err) }
+		if err := strictJSON(raw, &experience); err != nil {
+			return encoded(nil, err)
+		}
 		result, err := axmmirror.StartIdentityToolMemory(experience)
 		return encoded(result, err)
 
 	case "grow-tool-memory":
 		currentRaw, err := arg(args, 1)
-		if err != nil { return encoded(nil, err) }
+		if err != nil {
+			return encoded(nil, err)
+		}
 		experienceRaw, err := arg(args, 2)
-		if err != nil { return encoded(nil, err) }
+		if err != nil {
+			return encoded(nil, err)
+		}
 		var current axmmirror.IdentityToolMemoryShard
 		var experience axmmirror.IdentityToolExperience
-		if err := strictJSON(currentRaw, &current); err != nil { return encoded(nil, err) }
-		if err := strictJSON(experienceRaw, &experience); err != nil { return encoded(nil, err) }
+		if err := strictJSON(currentRaw, &current); err != nil {
+			return encoded(nil, err)
+		}
+		if err := strictJSON(experienceRaw, &experience); err != nil {
+			return encoded(nil, err)
+		}
 		result, err := axmmirror.GrowIdentityToolMemory(current, experience)
 		return encoded(result, err)
 
 	case "recall-tool-wisdom":
 		shardRaw, err := arg(args, 1)
-		if err != nil { return encoded(nil, err) }
+		if err != nil {
+			return encoded(nil, err)
+		}
 		queryRaw, err := arg(args, 2)
-		if err != nil { return encoded(nil, err) }
+		if err != nil {
+			return encoded(nil, err)
+		}
 		var shard axmmirror.IdentityToolMemoryShard
 		var query axmmirror.IdentityWisdomQuery
-		if err := strictJSON(shardRaw, &shard); err != nil { return encoded(nil, err) }
-		if err := strictJSON(queryRaw, &query); err != nil { return encoded(nil, err) }
+		if err := strictJSON(shardRaw, &shard); err != nil {
+			return encoded(nil, err)
+		}
+		if err := strictJSON(queryRaw, &query); err != nil {
+			return encoded(nil, err)
+		}
 		result, err := axmmirror.RecallIdentityToolWisdom(shard, query)
 		return encoded(result, err)
 
 	case "anchor-bom":
 		raw, err := arg(args, 1)
-		if err != nil { return encoded(nil, err) }
+		if err != nil {
+			return encoded(nil, err)
+		}
 		result, err := axmmirror.AnchorWALDOBOM([]byte(raw))
 		return encoded(result, err)
 
 	case "lens-corpus":
 		raw, err := arg(args, 1)
-		if err != nil { return encoded(nil, err) }
+		if err != nil {
+			return encoded(nil, err)
+		}
 		result, err := axmmirror.LensCorpusBOM([]byte(raw))
 		return encoded(result, err)
 

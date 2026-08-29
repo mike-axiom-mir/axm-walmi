@@ -15,8 +15,8 @@ import (
 const (
 	WorkspaceLoopRequestSchema = "axm.waldo.workspace-loop-request/v0.2"
 	WorkspaceLoopReceiptSchema = "axm.waldo.workspace-loop-receipt/v0.2"
-	WorkspaceLoopMaxTurns       = 32
-	WorkspaceVerifyMaxOutput    = 1024 * 1024
+	WorkspaceLoopMaxTurns      = 32
+	WorkspaceVerifyMaxOutput   = 1024 * 1024
 )
 
 type WorkspaceNeuralModel interface {
@@ -31,12 +31,12 @@ type WorkspaceLoopRequest struct {
 }
 
 type WorkspaceToolCall struct {
-	Tool          string                 `json:"tool,omitempty"`
-	Path          string                 `json:"path,omitempty"`
-	MaxBytes      int                    `json:"max_bytes,omitempty"`
-	CommandIndex  int                    `json:"command_index,omitempty"`
-	WriteRequest  *CandidateWriteRequest `json:"write_request,omitempty"`
-	Final         string                 `json:"final,omitempty"`
+	Tool         string                 `json:"tool,omitempty"`
+	Path         string                 `json:"path,omitempty"`
+	MaxBytes     int                    `json:"max_bytes,omitempty"`
+	CommandIndex int                    `json:"command_index,omitempty"`
+	WriteRequest *CandidateWriteRequest `json:"write_request,omitempty"`
+	Final        string                 `json:"final,omitempty"`
 }
 
 type WorkspaceVerification struct {
@@ -50,32 +50,32 @@ type WorkspaceVerification struct {
 }
 
 type WorkspaceLoopTurn struct {
-	Index         int                     `json:"index"`
-	ModelResponse string                  `json:"model_response"`
-	Call          WorkspaceToolCall       `json:"call"`
-	Observation   *WorkspaceObservation   `json:"observation,omitempty"`
-	Verification  *WorkspaceVerification  `json:"verification,omitempty"`
-	Error         string                  `json:"error,omitempty"`
+	Index         int                    `json:"index"`
+	ModelResponse string                 `json:"model_response"`
+	Call          WorkspaceToolCall      `json:"call"`
+	Observation   *WorkspaceObservation  `json:"observation,omitempty"`
+	Verification  *WorkspaceVerification `json:"verification,omitempty"`
+	Error         string                 `json:"error,omitempty"`
 }
 
 type WorkspaceLoopReceipt struct {
-	Schema              string              `json:"schema"`
-	State               string              `json:"state"`
-	RootSHA256          string              `json:"root_sha256"`
-	RequestSHA256       string              `json:"request_sha256"`
-	Turns               []WorkspaceLoopTurn `json:"turns"`
-	Final               string              `json:"final,omitempty"`
-	WorkspaceMutation   bool                `json:"workspace_mutation"`
-	VerificationRun     bool                `json:"verification_run"`
-	VerificationPassed  bool                `json:"verification_passed"`
-	NetworkUsedByHand   bool                `json:"network_used_by_hand"`
-	InstallAuthority    bool                `json:"install_authority"`
-	IntegrationAuthority bool               `json:"integration_authority"`
-	PromotionAuthority  bool                `json:"promotion_authority"`
-	LearningAuthority   bool                `json:"learning_authority"`
-	CanonAuthority      bool                `json:"canon_authority"`
-	Authority           string              `json:"authority"`
-	ReceiptSHA256       string              `json:"receipt_sha256"`
+	Schema               string              `json:"schema"`
+	State                string              `json:"state"`
+	RootSHA256           string              `json:"root_sha256"`
+	RequestSHA256        string              `json:"request_sha256"`
+	Turns                []WorkspaceLoopTurn `json:"turns"`
+	Final                string              `json:"final,omitempty"`
+	WorkspaceMutation    bool                `json:"workspace_mutation"`
+	VerificationRun      bool                `json:"verification_run"`
+	VerificationPassed   bool                `json:"verification_passed"`
+	NetworkUsedByHand    bool                `json:"network_used_by_hand"`
+	InstallAuthority     bool                `json:"install_authority"`
+	IntegrationAuthority bool                `json:"integration_authority"`
+	PromotionAuthority   bool                `json:"promotion_authority"`
+	LearningAuthority    bool                `json:"learning_authority"`
+	CanonAuthority       bool                `json:"canon_authority"`
+	Authority            string              `json:"authority"`
+	ReceiptSHA256        string              `json:"receipt_sha256"`
 }
 
 func LoadWorkspaceLoopRequest(data []byte) (WorkspaceLoopRequest, error) {
@@ -86,7 +86,9 @@ func LoadWorkspaceLoopRequest(data []byte) (WorkspaceLoopRequest, error) {
 		return WorkspaceLoopRequest{}, fmt.Errorf("decode workspace loop request: %w", err)
 	}
 	if err := decoder.Decode(&struct{}{}); !errors.Is(err, io.EOF) {
-		if err == nil { return WorkspaceLoopRequest{}, errors.New("workspace loop request contains more than one JSON value") }
+		if err == nil {
+			return WorkspaceLoopRequest{}, errors.New("workspace loop request contains more than one JSON value")
+		}
 		return WorkspaceLoopRequest{}, fmt.Errorf("decode trailing workspace loop request data: %w", err)
 	}
 	if err := request.Validate(); err != nil {
@@ -218,7 +220,9 @@ func executeWorkspaceTool(ctx context.Context, hand *WorkspaceHand, request Work
 		return observation, nil, err
 	case "READ_FILE":
 		maxBytes := call.MaxBytes
-		if maxBytes <= 0 || maxBytes > 64*1024 { maxBytes = 64 * 1024 }
+		if maxBytes <= 0 || maxBytes > 64*1024 {
+			maxBytes = 64 * 1024
+		}
 		observation, err := hand.Read(call.Path, maxBytes)
 		return observation, nil, err
 	case "STAT_FILE":
@@ -257,14 +261,16 @@ func runWorkspaceVerification(ctx context.Context, root string, allowed [][]stri
 	if err != nil {
 		receipt.ExitCode = -1
 		var exitError *exec.ExitError
-		if errors.As(err, &exitError) { receipt.ExitCode = exitError.ExitCode() }
+		if errors.As(err, &exitError) {
+			receipt.ExitCode = exitError.ExitCode()
+		}
 		return receipt, fmt.Errorf("verification command %d failed with exit code %d", index, receipt.ExitCode)
 	}
 	return receipt, nil
 }
 
 type boundedWorkspaceBuffer struct {
-	buffer bytes.Buffer
+	buffer    bytes.Buffer
 	truncated bool
 }
 
@@ -287,14 +293,18 @@ func (buffer *boundedWorkspaceBuffer) String() string { return buffer.buffer.Str
 
 func workspaceSystemPrompt(request WorkspaceLoopRequest, allowWrite bool) string {
 	writeRule := "APPLY_WRITES is disabled; return candidate edits in final text."
-	if allowWrite { writeRule = "APPLY_WRITES is enabled only through the bounded transactional writer and requires exact hashes." }
+	if allowWrite {
+		writeRule = "APPLY_WRITES is enabled only through the bounded transactional writer and requires exact hashes."
+	}
 	commands, _ := json.Marshal(request.VerifyCommands)
 	return "You are WALMI's bounded project workspace loop. Work only inside the selected root. Return exactly one JSON object and no markdown each turn. Available forms: {\"tool\":\"LIST_FILES\",\"path\":\".\"}, {\"tool\":\"READ_FILE\",\"path\":\"relative/path\",\"max_bytes\":65536}, {\"tool\":\"STAT_FILE\",\"path\":\"relative/path\"}, {\"tool\":\"HASH_FILE\",\"path\":\"relative/path\"}, {\"tool\":\"APPLY_WRITES\",\"write_request\":{...}}, {\"tool\":\"RUN_VERIFY\",\"command_index\":0}, or {\"final\":\"visible answer\"}. Never invent file content: list and read first. " + writeRule + " Explicit verification commands by index: " + string(commands) + "\nUSER REQUEST:\n" + request.Prompt
 }
 
 func appendWorkspaceTurn(transcript string, turn WorkspaceLoopTurn) string {
 	encoded, _ := json.Marshal(turn)
-	if len(encoded) > 128*1024 { encoded = append(encoded[:128*1024], []byte("...[truncated]")...) }
+	if len(encoded) > 128*1024 {
+		encoded = append(encoded[:128*1024], []byte("...[truncated]")...)
+	}
 	return transcript + "\nOBSERVATION:\n" + string(encoded)
 }
 
@@ -305,7 +315,9 @@ func sealWorkspaceLoopReceipt(receipt WorkspaceLoopReceipt, runErr error) (Works
 	}
 	receipt.ReceiptSHA256 = ""
 	digest, digestErr := digestJSON(receipt, "workspace loop receipt")
-	if digestErr != nil { return WorkspaceLoopReceipt{}, errors.Join(runErr, digestErr) }
+	if digestErr != nil {
+		return WorkspaceLoopReceipt{}, errors.Join(runErr, digestErr)
+	}
 	receipt.ReceiptSHA256 = digest
 	return receipt, runErr
 }

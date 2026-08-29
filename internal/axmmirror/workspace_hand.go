@@ -32,17 +32,17 @@ type WorkspaceEntry struct {
 }
 
 type WorkspaceObservation struct {
-	Schema            string           `json:"schema"`
-	Tool              string           `json:"tool"`
-	Path              string           `json:"path,omitempty"`
-	Entries           []WorkspaceEntry `json:"entries,omitempty"`
-	Content           string           `json:"content,omitempty"`
-	Entry             *WorkspaceEntry  `json:"entry,omitempty"`
+	Schema            string                 `json:"schema"`
+	Tool              string                 `json:"tool"`
+	Path              string                 `json:"path,omitempty"`
+	Entries           []WorkspaceEntry       `json:"entries,omitempty"`
+	Content           string                 `json:"content,omitempty"`
+	Entry             *WorkspaceEntry        `json:"entry,omitempty"`
 	WriteReceipt      *CandidateWriteReceipt `json:"write_receipt,omitempty"`
-	Truncated         bool             `json:"truncated"`
-	WorkspaceMutation bool             `json:"workspace_mutation"`
-	NetworkUsed       bool             `json:"network_used"`
-	Authority         string           `json:"authority"`
+	Truncated         bool                   `json:"truncated"`
+	WorkspaceMutation bool                   `json:"workspace_mutation"`
+	NetworkUsed       bool                   `json:"network_used"`
+	Authority         string                 `json:"authority"`
 }
 
 func NewWorkspaceHand(root string) (*WorkspaceHand, error) {
@@ -229,4 +229,3 @@ func workspaceEntry(path string, info os.FileInfo, digest string) WorkspaceEntry
 	}
 	return WorkspaceEntry{Path: path, Kind: kind, Bytes: info.Size(), Mode: info.Mode().String(), SHA256: digest, Executable: info.Mode().Perm()&0o111 != 0}
 }
-

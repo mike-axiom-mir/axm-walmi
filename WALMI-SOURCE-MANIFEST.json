@@ -1,9 +1,9 @@
 {
   "schema": "axm.walmi.standalone-source-manifest/v1",
   "copyMode": "FULL_FILES_NO_LINKS",
-  "fileCount": 2244,
-  "totalBytes": 29709541,
-  "treeSha256": "aac13e2218873022b3a05301e3a02e04482823d0f02fa15c3f13e122305aaa58",
+  "fileCount": 2245,
+  "totalBytes": 29711456,
+  "treeSha256": "330ab80ca0cc916e346e1ff4cc916f551c14d5508005fb43b4f21a7a5c741cda",
   "files": [
     {
       "path": ".gitattributes",
@@ -57,8 +57,8 @@
     },
     {
       "path": ".github/workflows/ci.yml",
-      "bytes": 553,
-      "sha256": "4aa3d7bee5e0bc3567cc9ceefca8e04702e7cc503f16a77dad57e4148190a4a5"
+      "bytes": 402,
+      "sha256": "ce5ba8cd11488a37952ac9bcc681e17b3e39f21c98eb8c864c3e2c74fb6ff00b"
     },
     {
       "path": ".github/workflows/dco.yml",
@@ -122,8 +122,8 @@
     },
     {
       "path": "cmd/walmi-browser-wasm/main.go",
-      "bytes": 5280,
-      "sha256": "9b6e03a7ca603b5a5808b839ca4fac4a33e915459a3dd81d02e28296ca5d12a3"
+      "bytes": 5198,
+      "sha256": "99e24e6d02d677de0d90b319eb4dc06cf21edf65060a0ecc8d5d6ea5f821a3db"
     },
     {
       "path": "cmd/workshop/install-autostart.ps1",
@@ -8567,23 +8567,23 @@
     },
     {
       "path": "internal/axmmirror/workspace_hand.go",
-      "bytes": 8350,
-      "sha256": "99f2ce4375507c6cf9a1abf3e59b6f48a178328a4e3bff08dd81d346f07b1391"
+      "bytes": 8177,
+      "sha256": "24ca708271f5e955b18a093372fd448463e80e6ceb8b0a38acca8342213808b0"
     },
     {
       "path": "internal/axmmirror/workspace_hand_test.go",
-      "bytes": 2192,
-      "sha256": "1ba3f70cae894ff28591e7c873b46c9b664ab2dd5258e325abb0e39e9140b6bb"
+      "bytes": 2194,
+      "sha256": "d25302eb7374c95ab3f4cdff77233ba6e62ba90bcf79d928382e060d614515cf"
     },
     {
       "path": "internal/axmmirror/workspace_loop.go",
-      "bytes": 13242,
-      "sha256": "7a7e2537f47d347f3f69c7b7dd2c3068226730981cab3dbff6e0d765f2d04419"
+      "bytes": 12961,
+      "sha256": "7c68dc6ec12742e9920ec724f10a33f86757522ba7b6751c8b12adba99d52353"
     },
     {
       "path": "internal/axmmirror/workspace_loop_test.go",
-      "bytes": 2864,
-      "sha256": "28b09c7d2d92dc8929340748312739d78dc6e458ae8d2fa568fddf4233e4978d"
+      "bytes": 2840,
+      "sha256": "0b72947eb9ded7491ba7ceefbbb03aef65084687173ee29a0cad1c0e1b1c579e"
     },
     {
       "path": "internal/calibration/calibration.go",
@@ -11209,6 +11209,11 @@
       "path": "tools/seal_source_tree.py",
       "bytes": 3387,
       "sha256": "0002988d8e523a16fb6abe0ef49e506d2723a7b30856edd4d6faa9a027e05ffc"
+    },
+    {
+      "path": "tools/test_walmi_ci.py",
+      "bytes": 2624,
+      "sha256": "f9891e58243a054ded23165de307324bf43667c0d7338cc553b6bea96aaff27e"
     },
     {
       "path": "tools/test_walmi_windows.ps1",
