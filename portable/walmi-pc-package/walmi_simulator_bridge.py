@@ -242,7 +242,24 @@ def default_data_home() -> Path:
     configured = os.environ.get("WALMI_DATA_HOME", "").strip()
     if configured:
         return Path(configured)
-    return Path(r"D:\WALMI_DATA") if Path("D:/").exists() else Path.cwd() / "WALMI_DATA"
+    configured_home = os.environ.get("WALMI_HOME", "").strip()
+    if configured_home:
+        return Path(configured_home)
+    bundled = bundled_data_home(Path(__file__))
+    if bundled is not None:
+        return bundled
+    raise RuntimeError(
+        "WALMI data home is ambiguous; use the packaged launcher or pass --data-home explicitly"
+    )
+
+
+def bundled_data_home(script_path: Path) -> Path | None:
+    resolved = script_path.resolve()
+    if resolved.parent.name.lower() != "tools" or len(resolved.parents) < 2:
+        return None
+    host = resolved.parents[1]
+    required = ("bin", "models", "state", "tools")
+    return host if all((host / name).is_dir() for name in required) else None
 
 
 def infer_waldo_bin(configured: Path | None, data_home: Path) -> Path | None:

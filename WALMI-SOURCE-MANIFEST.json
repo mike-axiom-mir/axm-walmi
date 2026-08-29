@@ -2,8 +2,8 @@
   "schema": "axm.walmi.standalone-source-manifest/v1",
   "copyMode": "FULL_FILES_NO_LINKS",
   "fileCount": 2245,
-  "totalBytes": 29712836,
-  "treeSha256": "bd22d7437552018c233d7720368c38009c00b2df87eca81fade26decd3f7d4ab",
+  "totalBytes": 29717998,
+  "treeSha256": "3316406f664b9d357589e03e12a35f17a778644ebc94b3cb032478ee1a6a78c9",
   "files": [
     {
       "path": ".gitattributes",
@@ -9907,8 +9907,8 @@
     },
     {
       "path": "portable/walmi-pc-package/test_walmi_autolearn.py",
-      "bytes": 9603,
-      "sha256": "343502da9b45d8dd534ab3c2747d9b655663d87bde2623b9e2ab8128a98ea3e6"
+      "bytes": 10048,
+      "sha256": "f90acd36a8249c2235fc2ef81e5326ee2ccaa83479aca63fe0f881a7e1a455e7"
     },
     {
       "path": "portable/walmi-pc-package/test_walmi_device_pack_builder.py",
@@ -9922,8 +9922,8 @@
     },
     {
       "path": "portable/walmi-pc-package/test_walmi_simulator_bridge.py",
-      "bytes": 12092,
-      "sha256": "796d5711ddef86f2730e29ee4ef55bb44db15789209fc0b650b7c2dfb3f2be81"
+      "bytes": 12815,
+      "sha256": "eee8f906ebe4c9bbea90ccc38661147c770983b606c0579caece789b303874dd"
     },
     {
       "path": "portable/walmi-pc-package/travel/BUILD_DEVICE_PACKAGE.cmd",
@@ -9962,8 +9962,8 @@
     },
     {
       "path": "portable/walmi-pc-package/walmi_autolearn.py",
-      "bytes": 24103,
-      "sha256": "fe63f0c2c0ebb9236954239a8f3f60427a483979d87fecec368a5ec4c25119c0"
+      "bytes": 27108,
+      "sha256": "313f15b6ddd6317c1b6e7518b99cb55192a66dbd7dc9a9e062970ca31957ac08"
     },
     {
       "path": "portable/walmi-pc-package/walmi_device_pack_builder.py",
@@ -9972,8 +9972,8 @@
     },
     {
       "path": "portable/walmi-pc-package/walmi_node_world_adapter.mjs",
-      "bytes": 15646,
-      "sha256": "c4c27af43b06199f01326561db55c6288018f86d33a479c33f427a29ed6608d4"
+      "bytes": 16021,
+      "sha256": "7aa3a7b2877227ea127b9a5e3ff2ec964d6a719fcb1e8ea762b0f139e2313cf7"
     },
     {
       "path": "portable/walmi-pc-package/walmi_portable_bootstrap.py",
@@ -9982,8 +9982,8 @@
     },
     {
       "path": "portable/walmi-pc-package/walmi_simulator_bridge.py",
-      "bytes": 49825,
-      "sha256": "584d1bbc61b9f377c4c2febd45779dc03bf4eb50f8d599a66711b01030221f69"
+      "bytes": 50439,
+      "sha256": "9630905d192035fb274c6b6c84ac7f9902426c68e075f76f04b384a0df824ae7"
     },
     {
       "path": "portable/walmi-pc-package/walmi_workspace_hand.py",

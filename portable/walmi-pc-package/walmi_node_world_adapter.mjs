@@ -77,8 +77,10 @@ async function openTheme(request) {
       result.push(compactAction(`ticket:${value}`, `Set ticket price to ${value}`, "Change the visible gate price.", { type: "setTicketPrice", value }));
     }
     for (const entity of state.world.entities.slice(0, 12)) {
-      result.push(compactAction(`maintain:${entity.id}`, `Maintain ${entity.catalogId}`, "Spend cash to restore condition while preserving history.", { type: "maintain", entityId: entity.id }));
-      result.push(compactAction(`toggle:${entity.id}`, `${entity.open ? "Close" : "Open"} ${entity.catalogId}`, "Change this element's operating state.", { type: "toggleEntity", entityId: entity.id }));
+      const label = CATALOG[entity.catalogId]?.label || entity.catalogId;
+      const identity = `${label} (${entity.id})`;
+      result.push(compactAction(`maintain:${entity.id}`, `Maintain ${identity}`, "Spend cash to restore condition while preserving history.", { type: "maintain", entityId: entity.id }));
+      result.push(compactAction(`toggle:${entity.id}`, `${entity.open ? "Close" : "Open"} ${identity}`, "Change this element's operating state.", { type: "toggleEntity", entityId: entity.id }));
     }
     let offeredBuilds = 0;
     for (const definition of Object.values(CATALOG)) {
@@ -116,6 +118,8 @@ async function openTheme(request) {
         visitorsPresent: summary.visitorsPresent,
         lifetimeVisitors: summary.lifetimeVisitors,
         entities: summary.entities,
+        entityStates: summary.entityStates,
+        entityStatesTruncated: summary.entityStatesTruncated,
         paths: summary.paths,
         ticketPrice: simulator.state.park.ticketPrice,
         parkOpen: simulator.state.park.open,
@@ -325,7 +329,14 @@ function openLiving(request) {
     } else if (selected.nativeAction.type === "travelFinish") {
       outcome = simulator.axm.Systems.finishPlayerTravelCompressed(simulator.world);
     } else {
-      outcome = simulator.axm.Systems.performActivity(simulator.world, selected.nativeAction.activityId);
+      outcome = simulator.performActivity(selected.nativeAction.activityId);
+    }
+    if (outcome.ok) {
+      outcome = {
+        ...outcome,
+        action: outcome.action || selected.label,
+        reason: outcome.reason || `${selected.label} completed.`
+      };
     }
     if (outcome.ok) simulator.validate();
   }

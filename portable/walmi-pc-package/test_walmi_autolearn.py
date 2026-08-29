@@ -10,6 +10,12 @@ import walmi_autolearn
 
 
 class NormalizeProjectionTests(unittest.TestCase):
+    def test_optimizer_skips_an_identical_derived_view_after_initial_training(self):
+        self.assertTrue(walmi_autolearn.optimizer_view_changed(0, "", "same", False))
+        self.assertTrue(walmi_autolearn.optimizer_view_changed(8, "same", "same", True))
+        self.assertTrue(walmi_autolearn.optimizer_view_changed(8, "before", "after", False))
+        self.assertFalse(walmi_autolearn.optimizer_view_changed(8, "same", "same", False))
+
     def test_positive_response_becomes_user_assistant_conversation(self) -> None:
         row = walmi_autolearn.normalize_projection(
             {

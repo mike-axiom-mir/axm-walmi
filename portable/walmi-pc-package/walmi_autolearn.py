@@ -336,6 +336,19 @@ def generation_corpus(generation: int) -> str:
     return f"experience/walmi-generation-{generation:06d}"
 
 
+def optimizer_view_changed(
+    prior_generation: int,
+    prior_snapshot_sha256: str,
+    current_snapshot_sha256: str,
+    training_view_revision_changed: bool,
+) -> bool:
+    if prior_generation < 1 or training_view_revision_changed:
+        return True
+    if not prior_snapshot_sha256:
+        return True
+    return prior_snapshot_sha256 != current_snapshot_sha256
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Train a clean local WALMI model when enough new experience projections accumulate."
@@ -446,7 +459,59 @@ def main() -> int:
         )
         if not training_rows:
             raise RuntimeError("derived training view contains no eligible learning rows")
+        prior_snapshot_sha256 = str(state.get("lastCorpusSnapshotSHA256", ""))
+        if (
+            not prior_snapshot_sha256
+            and prior_generation > 0
+            and snapshot_path.is_file()
+        ):
+            prior_snapshot_sha256 = hashlib.sha256(snapshot_path.read_bytes()).hexdigest()
         write_jsonl_atomic(snapshot_path, training_rows)
+        corpus_snapshot_sha256 = hashlib.sha256(snapshot_path.read_bytes()).hexdigest()
+        if not optimizer_view_changed(
+            prior_generation,
+            prior_snapshot_sha256,
+            corpus_snapshot_sha256,
+            training_view_changed,
+        ):
+            state.update(
+                {
+                    "schema": STATE_SCHEMA,
+                    "model": arguments.model,
+                    "trainedProjectionDigests": projection_digests,
+                    "lastProjectionRecords": len(rows),
+                    "lastDerivedTrainingRows": len(training_rows),
+                    "lastTrainingViewRevision": TRAINING_VIEW_REVISION,
+                    "lastNeutralSelfChoiceRowsExcluded": neutral_self_choices_excluded,
+                    "lastCorpusSnapshotSHA256": corpus_snapshot_sha256,
+                }
+            )
+            write_json_atomic(state_path, state)
+            unchanged_receipt: dict[str, object] = {
+                "schema": RECEIPT_SCHEMA,
+                "state": "DIRECT_EXPERIENCE_RECORDED_DERIVED_VIEW_UNCHANGED",
+                "model": arguments.model,
+                "generation": prior_generation,
+                "threshold": arguments.threshold,
+                "availableRecords": len(rows),
+                "newRecords": len(new_digests),
+                "trainingTrigger": "EXPERIENCE_THRESHOLD_WITH_UNCHANGED_DERIVED_VIEW",
+                "trainingViewRevision": TRAINING_VIEW_REVISION,
+                "uniqueProjectionRecords": len(rows),
+                "derivedTrainingRows": len(training_rows),
+                "curriculumReplayRows": curriculum_replays,
+                "neutralSelfChoiceRowsExcluded": neutral_self_choices_excluded,
+                "corpusSnapshotSHA256": corpus_snapshot_sha256,
+                "directExperienceRewritten": False,
+                "trainingInvoked": False,
+                "weightsChanged": False,
+                "qualityImproved": None,
+                "qualityState": "UNCHANGED_DERIVED_VIEW_NO_OPTIMIZER_CLAIM",
+            }
+            unchanged_receipt["receiptSha256"] = digest(unchanged_receipt)
+            append_receipt(receipts_path, unchanged_receipt)
+            print(json.dumps(unchanged_receipt, indent=2, sort_keys=True))
+            return 0
         profile_path.write_text(
             "format: jsonl\n"
             "type: chat-messages\n"
@@ -514,6 +579,7 @@ def main() -> int:
                 "lastRetainedTrainingRecords": retained_training_records,
                 "lastTrainingViewRevision": TRAINING_VIEW_REVISION,
                 "lastNeutralSelfChoiceRowsExcluded": neutral_self_choices_excluded,
+                "lastCorpusSnapshotSHA256": corpus_snapshot_sha256,
             }
         )
         write_json_atomic(state_path, state)
@@ -537,7 +603,7 @@ def main() -> int:
             "curriculumReplayRows": curriculum_replays,
             "neutralSelfChoiceRowsExcluded": neutral_self_choices_excluded,
             "corpus": corpus,
-            "corpusSnapshotSHA256": hashlib.sha256(snapshot_path.read_bytes()).hexdigest(),
+            "corpusSnapshotSHA256": corpus_snapshot_sha256,
             "previousWeightSHA256": before_weight,
             "currentWeightSHA256": after_weight,
             "directExperienceRewritten": False,

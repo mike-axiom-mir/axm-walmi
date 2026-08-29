@@ -3,9 +3,11 @@ from __future__ import annotations
 import importlib.util
 import argparse
 import json
+import os
 from pathlib import Path
 import tempfile
 import unittest
+from unittest import mock
 import zipfile
 
 
@@ -17,6 +19,21 @@ SPEC.loader.exec_module(bridge)
 
 
 class SimulatorBridgeContractTest(unittest.TestCase):
+    def test_data_home_never_silently_splits_inner_state(self):
+        with tempfile.TemporaryDirectory() as directory:
+            host = Path(directory) / "host"
+            for name in ("bin", "models", "state", "tools"):
+                (host / name).mkdir(parents=True, exist_ok=True)
+            self.assertEqual(
+                bridge.bundled_data_home(host / "tools" / "walmi_simulator_bridge.py"),
+                host.resolve(),
+            )
+        with mock.patch.dict(
+            os.environ, {"WALMI_DATA_HOME": "", "WALMI_HOME": ""}
+        ):
+            with self.assertRaisesRegex(RuntimeError, "data home is ambiguous"):
+                bridge.default_data_home()
+
     def observation(self):
         return {
             "schema": "axm.walmi.simulator-observation/v1",
