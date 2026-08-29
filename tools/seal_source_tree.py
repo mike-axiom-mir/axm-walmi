@@ -51,7 +51,11 @@ def sha256(path: Path) -> str:
 
 def inventory() -> list[dict[str, object]]:
     files = []
-    for path in sorted(ROOT.rglob("*")):
+    paths = sorted(
+        ROOT.rglob("*"),
+        key=lambda path: path.relative_to(ROOT).as_posix().encode("utf-8"),
+    )
+    for path in paths:
         if not path.is_file() or path == MANIFEST:
             continue
         relative = path.relative_to(ROOT)

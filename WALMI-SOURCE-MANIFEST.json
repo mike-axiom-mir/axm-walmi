@@ -2,8 +2,8 @@
   "schema": "axm.walmi.standalone-source-manifest/v1",
   "copyMode": "FULL_FILES_NO_LINKS",
   "fileCount": 2245,
-  "totalBytes": 29712727,
-  "treeSha256": "8311d24ae6d6d86d2cdeb2f211fad894686c1401afb15ffbdcf6f7e3715a9b7d",
+  "totalBytes": 29712836,
+  "treeSha256": "bd22d7437552018c233d7720368c38009c00b2df87eca81fade26decd3f7d4ab",
   "files": [
     {
       "path": ".gitattributes",
@@ -96,9 +96,29 @@
       "sha256": "a794fba67304e8938e762d99ceea5d92b87cc3cabbfc698b950a8f6875c226a2"
     },
     {
-      "path": "cmd/waldo/main.go",
-      "bytes": 493,
-      "sha256": "5411c462ed3e1c557d291e40a2b1152d18620ce80576ffc95fa0603a7b01bc24"
+      "path": "LICENSE",
+      "bytes": 11558,
+      "sha256": "1eb85fc97224598dad1852b5d6483bbcf0aa8608790dcc657a5a2a761ae9c8c6"
+    },
+    {
+      "path": "NOTICE",
+      "bytes": 132,
+      "sha256": "496461160a9eab3c4fc7efd7c7bdca5527f906a006e5c545019e0bc6f9290053"
+    },
+    {
+      "path": "README.md",
+      "bytes": 4863,
+      "sha256": "55a825f8323a196c789a03ef38da47539ca527742d13330b650dfa95edb55162"
+    },
+    {
+      "path": "WALMI-SOURCE-PROVENANCE.json",
+      "bytes": 545727,
+      "sha256": "a691df372b27c119adb6ae864ac929c8ae40ed9a61cbaed08dacd1d4aaf2cf9f"
+    },
+    {
+      "path": "WALMI-SOURCE-TRANSFORMATIONS.json",
+      "bytes": 922,
+      "sha256": "f6e660f5b2e29731070bf59fe49719e0f38115e40bc140cef1723ac194507ce7"
     },
     {
       "path": "cmd/waldo-axm-mirror/main.go",
@@ -121,9 +141,19 @@
       "sha256": "a826130419fe21904fef989be7ee2e5665976def260e717b8aae9a74f326fcbd"
     },
     {
+      "path": "cmd/waldo/main.go",
+      "bytes": 493,
+      "sha256": "5411c462ed3e1c557d291e40a2b1152d18620ce80576ffc95fa0603a7b01bc24"
+    },
+    {
       "path": "cmd/walmi-browser-wasm/main.go",
       "bytes": 5198,
       "sha256": "99e24e6d02d677de0d90b319eb4dc06cf21edf65060a0ecc8d5d6ea5f821a3db"
+    },
+    {
+      "path": "cmd/workshop/README.md",
+      "bytes": 7157,
+      "sha256": "edb43a6bb7d26545d0950f29521875d74f01772d1e1aed6179f54e6a795a4c78"
     },
     {
       "path": "cmd/workshop/install-autostart.ps1",
@@ -149,11 +179,6 @@
       "path": "cmd/workshop/native_bridge.go",
       "bytes": 5565,
       "sha256": "50e788a3b1e841c1e739623cd555ca30ba165aa71ed724f28fe969ad5516e414"
-    },
-    {
-      "path": "cmd/workshop/README.md",
-      "bytes": 7157,
-      "sha256": "edb43a6bb7d26545d0950f29521875d74f01772d1e1aed6179f54e6a795a4c78"
     },
     {
       "path": "cmd/workshop/ui.html",
@@ -201,14 +226,114 @@
       "sha256": "98d918a691b37e2aacf49e5c16d12a0c1d7e50a041916a355464c84e9a4005cc"
     },
     {
+      "path": "composes/README.md",
+      "bytes": 4647,
+      "sha256": "de15417da0992eaae84d3882fac72a73e693e4bea2d54fc8dfc0d6fd5d8ef5ed"
+    },
+    {
       "path": "composes/composes_test.go",
       "bytes": 13532,
       "sha256": "59f1e56010760662fa4e8983409b374994e5c269a17d2fc9078aa744db1bb2f7"
     },
     {
-      "path": "composes/README.md",
-      "bytes": 4647,
-      "sha256": "de15417da0992eaae84d3882fac72a73e693e4bea2d54fc8dfc0d6fd5d8ef5ed"
+      "path": "docs/ARCHITECTURE.md",
+      "bytes": 5205,
+      "sha256": "4ef600c2a65366dfca3d614188de0caf0a0659aa521e538d74bb68e41c860562"
+    },
+    {
+      "path": "docs/COMPATIBILITY.md",
+      "bytes": 3873,
+      "sha256": "c66e15d7c03bbd777195330f199e7f125fcd2cb81513c89069a84c6a19b07fed"
+    },
+    {
+      "path": "docs/CONTRIBUTING.md",
+      "bytes": 1432,
+      "sha256": "5af799249a136be356c27342d4b88743ecdf6372ba275831da847dadd1378175"
+    },
+    {
+      "path": "docs/EU-GPAI-DISCLOSURE.md",
+      "bytes": 16510,
+      "sha256": "015dfaaeedcb50fc2a3a8527d816e920250c885f9957a44902f0397b186d210a"
+    },
+    {
+      "path": "docs/FETCHER-CONTRACT.md",
+      "bytes": 3339,
+      "sha256": "9ecb67a5a138d6cc66cc1e9024522e99458b2037d988e64a9e76944277260c63"
+    },
+    {
+      "path": "docs/INGESTION-DESIGN.md",
+      "bytes": 33550,
+      "sha256": "03c96e6a0f5efd3f90abef385da80debea73b0924581fca2aead39778ae6014c"
+    },
+    {
+      "path": "docs/MODEL-COMPOSE.md",
+      "bytes": 29199,
+      "sha256": "39f17d25bc74376bac7968ed228cc7a7cf547daa9b2d08785930bfa8eebe7b5f"
+    },
+    {
+      "path": "docs/MODEL-EXPORTS.md",
+      "bytes": 20245,
+      "sha256": "63c1ad213e02803b9db38ecd92af2af56499a602b8d3d9ce8107036ce1b09e5b"
+    },
+    {
+      "path": "docs/MODEL-LIFECYCLE.md",
+      "bytes": 28819,
+      "sha256": "5b9c10490ce4af8bcde1e76e91758fa815894036ef738aefd6a99dabcee12fca"
+    },
+    {
+      "path": "docs/OPENWALDO-BOM.md",
+      "bytes": 4033,
+      "sha256": "947329c53204ae4acf97d9db64585d4d901472cf34fa2f5562c32e6a6c338c38"
+    },
+    {
+      "path": "docs/README.md",
+      "bytes": 1369,
+      "sha256": "55b6021fb2abd1fdb67b4d83d2a692afe23f6a517c5e126a5d59131fa6340552"
+    },
+    {
+      "path": "docs/RELEASING.md",
+      "bytes": 2862,
+      "sha256": "6c651604926dba99629cf3358a24508d3520bd633562079c28d5e3bde3a527ad"
+    },
+    {
+      "path": "docs/ROADMAP.md",
+      "bytes": 1960,
+      "sha256": "880b80cca601d83ccf431fa4dee1a12b81dc41864ede6de166bf478443b9aca5"
+    },
+    {
+      "path": "docs/SOURCE-DIRECTORY.md",
+      "bytes": 6401,
+      "sha256": "acf6cd8063822ae430d935b9a22a9f977098551ee0a59afec17f0d9ba47b2691"
+    },
+    {
+      "path": "docs/TESTING.md",
+      "bytes": 1556,
+      "sha256": "f874105421df47c38141618a882369c76cb3ab771efb29867015a077c83daa93"
+    },
+    {
+      "path": "docs/TRAINING-AND-CALIBRATION.md",
+      "bytes": 5798,
+      "sha256": "71d883bf62245f09d93c7e72934e1074e171e350acd9031b39bff9d1bb2724e6"
+    },
+    {
+      "path": "docs/UX.md",
+      "bytes": 10777,
+      "sha256": "50d2cf9a5612dc6563fecf27d18141a68acfb49e4d3a01e2dc24522d255b25e1"
+    },
+    {
+      "path": "docs/VISION.md",
+      "bytes": 1662,
+      "sha256": "5870adf73690e943b2a7d107a678ab84ffc7ba50bd5c6f8be7078559835f23a8"
+    },
+    {
+      "path": "docs/WALMI_STANDALONE.md",
+      "bytes": 3215,
+      "sha256": "720abc80879538c473ae7901088584dcda30d18095eb9b2b67b538e99aa50429"
+    },
+    {
+      "path": "docs/WALMI_V0_2_WORKSPACE_ASSETS.md",
+      "bytes": 3096,
+      "sha256": "e2b330b36328c9b756fc623cc6dd1f145bf018e8c1d95aa0d46b10b04e327708"
     },
     {
       "path": "docs/adr/0001-single-binary.md",
@@ -771,109 +896,14 @@
       "sha256": "83ff6ed08b5a9d64a6ae13548e163abfa23185814bd60f5624578b1969f3a1bb"
     },
     {
-      "path": "docs/ARCHITECTURE.md",
-      "bytes": 5205,
-      "sha256": "4ef600c2a65366dfca3d614188de0caf0a0659aa521e538d74bb68e41c860562"
-    },
-    {
-      "path": "docs/COMPATIBILITY.md",
-      "bytes": 3873,
-      "sha256": "c66e15d7c03bbd777195330f199e7f125fcd2cb81513c89069a84c6a19b07fed"
-    },
-    {
-      "path": "docs/CONTRIBUTING.md",
-      "bytes": 1432,
-      "sha256": "5af799249a136be356c27342d4b88743ecdf6372ba275831da847dadd1378175"
-    },
-    {
-      "path": "docs/EU-GPAI-DISCLOSURE.md",
-      "bytes": 16510,
-      "sha256": "015dfaaeedcb50fc2a3a8527d816e920250c885f9957a44902f0397b186d210a"
-    },
-    {
       "path": "docs/examples/eu-gpai-provider.json",
       "bytes": 746,
       "sha256": "025d4f383cf303c615f9b1dc18fe046895c9a121bdb93fe304403af837325796"
     },
     {
-      "path": "docs/FETCHER-CONTRACT.md",
-      "bytes": 3339,
-      "sha256": "9ecb67a5a138d6cc66cc1e9024522e99458b2037d988e64a9e76944277260c63"
-    },
-    {
-      "path": "docs/INGESTION-DESIGN.md",
-      "bytes": 33550,
-      "sha256": "03c96e6a0f5efd3f90abef385da80debea73b0924581fca2aead39778ae6014c"
-    },
-    {
-      "path": "docs/MODEL-COMPOSE.md",
-      "bytes": 29199,
-      "sha256": "39f17d25bc74376bac7968ed228cc7a7cf547daa9b2d08785930bfa8eebe7b5f"
-    },
-    {
-      "path": "docs/MODEL-EXPORTS.md",
-      "bytes": 20245,
-      "sha256": "63c1ad213e02803b9db38ecd92af2af56499a602b8d3d9ce8107036ce1b09e5b"
-    },
-    {
-      "path": "docs/MODEL-LIFECYCLE.md",
-      "bytes": 28819,
-      "sha256": "5b9c10490ce4af8bcde1e76e91758fa815894036ef738aefd6a99dabcee12fca"
-    },
-    {
-      "path": "docs/OPENWALDO-BOM.md",
-      "bytes": 4033,
-      "sha256": "947329c53204ae4acf97d9db64585d4d901472cf34fa2f5562c32e6a6c338c38"
-    },
-    {
-      "path": "docs/README.md",
-      "bytes": 1369,
-      "sha256": "55b6021fb2abd1fdb67b4d83d2a692afe23f6a517c5e126a5d59131fa6340552"
-    },
-    {
-      "path": "docs/RELEASING.md",
-      "bytes": 2862,
-      "sha256": "6c651604926dba99629cf3358a24508d3520bd633562079c28d5e3bde3a527ad"
-    },
-    {
-      "path": "docs/ROADMAP.md",
-      "bytes": 1960,
-      "sha256": "880b80cca601d83ccf431fa4dee1a12b81dc41864ede6de166bf478443b9aca5"
-    },
-    {
-      "path": "docs/SOURCE-DIRECTORY.md",
-      "bytes": 6401,
-      "sha256": "acf6cd8063822ae430d935b9a22a9f977098551ee0a59afec17f0d9ba47b2691"
-    },
-    {
-      "path": "docs/TESTING.md",
-      "bytes": 1556,
-      "sha256": "f874105421df47c38141618a882369c76cb3ab771efb29867015a077c83daa93"
-    },
-    {
-      "path": "docs/TRAINING-AND-CALIBRATION.md",
-      "bytes": 5798,
-      "sha256": "71d883bf62245f09d93c7e72934e1074e171e350acd9031b39bff9d1bb2724e6"
-    },
-    {
-      "path": "docs/UX.md",
-      "bytes": 10777,
-      "sha256": "50d2cf9a5612dc6563fecf27d18141a68acfb49e4d3a01e2dc24522d255b25e1"
-    },
-    {
-      "path": "docs/VISION.md",
-      "bytes": 1662,
-      "sha256": "5870adf73690e943b2a7d107a678ab84ffc7ba50bd5c6f8be7078559835f23a8"
-    },
-    {
-      "path": "docs/WALMI_STANDALONE.md",
-      "bytes": 3215,
-      "sha256": "720abc80879538c473ae7901088584dcda30d18095eb9b2b67b538e99aa50429"
-    },
-    {
-      "path": "docs/WALMI_V0_2_WORKSPACE_ASSETS.md",
-      "bytes": 3096,
-      "sha256": "e2b330b36328c9b756fc623cc6dd1f145bf018e8c1d95aa0d46b10b04e327708"
+      "path": "examples/axm-mirror/README.md",
+      "bytes": 4464,
+      "sha256": "330011a3f0a0c72b85e68b719d4b87610231086283aa05357a7ba2405118c1dd"
     },
     {
       "path": "examples/axm-mirror/capability-gap-request.json",
@@ -951,11 +981,6 @@
       "sha256": "3b0bd4060554f908a391d781b99249601f17d219ad57d629ec62753fc647456d"
     },
     {
-      "path": "examples/axm-mirror/README.md",
-      "bytes": 4464,
-      "sha256": "330011a3f0a0c72b85e68b719d4b87610231086283aa05357a7ba2405118c1dd"
-    },
-    {
       "path": "examples/axm-mirror/repair-buddy-request.json",
       "bytes": 521,
       "sha256": "3468ad969ed89ada167f6a63483e66e66c71adf61b6c7d8d592d7bb2084ef7b1"
@@ -1001,19 +1026,9 @@
       "sha256": "a7944b17eafeb51548a05a84fc574276647205a93fe4b038c84305332ab09a03"
     },
     {
-      "path": "experiments/capability-gap-v0.47/manifest.json",
-      "bytes": 553,
-      "sha256": "bf7e80fb7578c9459d22cc33cfcde899bc69d0bce33195994dc3190162511587"
-    },
-    {
       "path": "experiments/capability-gap-v0.47/README.md",
       "bytes": 708,
       "sha256": "8db991dd9e2b13d1b9f4b29348f88cb53e4721280061b3b13db90bc0095c688b"
-    },
-    {
-      "path": "experiments/capability-gap-v0.47/source-provenance.json",
-      "bytes": 314,
-      "sha256": "4832cedaa7dd3a9100124b7a5a4619a813682a05f5e297fd9c0799cc4002792e"
     },
     {
       "path": "experiments/capability-gap-v0.47/VERIFICATION.md",
@@ -1021,9 +1036,14 @@
       "sha256": "8bccca657a840ccfc86655b06bac09c09b9f2e98583c3dd893a888613d2ab723"
     },
     {
-      "path": "experiments/capability-growth-v2.12/manifest.json",
-      "bytes": 1326,
-      "sha256": "3b92c3ce907fab1f7d24a0ba10b42dfd7179763429b70be7737ea0f6565e2691"
+      "path": "experiments/capability-gap-v0.47/manifest.json",
+      "bytes": 553,
+      "sha256": "bf7e80fb7578c9459d22cc33cfcde899bc69d0bce33195994dc3190162511587"
+    },
+    {
+      "path": "experiments/capability-gap-v0.47/source-provenance.json",
+      "bytes": 314,
+      "sha256": "4832cedaa7dd3a9100124b7a5a4619a813682a05f5e297fd9c0799cc4002792e"
     },
     {
       "path": "experiments/capability-growth-v2.12/README.md",
@@ -1036,9 +1056,9 @@
       "sha256": "47121f75274a662d0645f819fbec0be5d6c1ead0df327e88bea3b94f01d8580f"
     },
     {
-      "path": "experiments/capability-intake-pr68-sidecar/manifest.json",
-      "bytes": 600,
-      "sha256": "c91c1e286b456778c0693b55bccda48aa84943597845a60f9b7993c7bc364499"
+      "path": "experiments/capability-growth-v2.12/manifest.json",
+      "bytes": 1326,
+      "sha256": "3b92c3ce907fab1f7d24a0ba10b42dfd7179763429b70be7737ea0f6565e2691"
     },
     {
       "path": "experiments/capability-intake-pr68-sidecar/README.md",
@@ -1046,9 +1066,9 @@
       "sha256": "2a607d3c7c9fcc91b253f6f004b3a399b24930f00359182d105b02b8fc55d5c2"
     },
     {
-      "path": "experiments/cognitive-evidence-v0.44/manifest.json",
-      "bytes": 740,
-      "sha256": "c9224e1444048c84410534358e80096495667e08c55a2adc38dbd8f7d2241519"
+      "path": "experiments/capability-intake-pr68-sidecar/manifest.json",
+      "bytes": 600,
+      "sha256": "c91c1e286b456778c0693b55bccda48aa84943597845a60f9b7993c7bc364499"
     },
     {
       "path": "experiments/cognitive-evidence-v0.44/README.md",
@@ -1056,24 +1076,29 @@
       "sha256": "ca343ea2e86beedc9ed89219ed90b8c77c2d49042f0c377036c228c60fd24a76"
     },
     {
-      "path": "experiments/cognitive-evidence-v0.44/source-provenance.json",
-      "bytes": 3400,
-      "sha256": "36e916c53f2cc697719d008f0273b340954da6721d9a98924a916173d666274f"
-    },
-    {
       "path": "experiments/cognitive-evidence-v0.44/VERIFICATION.md",
       "bytes": 514,
       "sha256": "30c426c5df29a67ecbdb2b3c124e3fa3d7989073c5f7ed5c2bafd25db3eb855e"
     },
     {
-      "path": "experiments/creation-fabric-v2.12/manifest.json",
-      "bytes": 1012,
-      "sha256": "657cf529b9b136a233f96260cbae7460e0f6ce4ef6a7032bc5cb6b2a9dd2f8e5"
+      "path": "experiments/cognitive-evidence-v0.44/manifest.json",
+      "bytes": 740,
+      "sha256": "c9224e1444048c84410534358e80096495667e08c55a2adc38dbd8f7d2241519"
+    },
+    {
+      "path": "experiments/cognitive-evidence-v0.44/source-provenance.json",
+      "bytes": 3400,
+      "sha256": "36e916c53f2cc697719d008f0273b340954da6721d9a98924a916173d666274f"
     },
     {
       "path": "experiments/creation-fabric-v2.12/README.md",
       "bytes": 1900,
       "sha256": "9cf761ef391773f5821595c96a60c4260a08b1b47a7ddd501287472628c84044"
+    },
+    {
+      "path": "experiments/creation-fabric-v2.12/manifest.json",
+      "bytes": 1012,
+      "sha256": "657cf529b9b136a233f96260cbae7460e0f6ce4ef6a7032bc5cb6b2a9dd2f8e5"
     },
     {
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/AGENTS.md",
@@ -1131,6 +1156,11 @@
       "sha256": "acb3da385e60cc8532a4aa82be7b1976753e6337003ae28c055f789246c762c2"
     },
     {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/capability-fabric/README.md",
+      "bytes": 5495,
+      "sha256": "5ed7edf24ac863b8fbf6c8fc37a86da232d2aac0fff6edecf89d40b4d2d29aa8"
+    },
+    {
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/capability-fabric/admission-core.js",
       "bytes": 14411,
       "sha256": "13669c04856be11701a0d479b348eb46c3dd11c567141e38ad88e7e521e69422"
@@ -1159,11 +1189,6 @@
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/capability-fabric/index.js",
       "bytes": 529,
       "sha256": "aa69096ef5815b7f5021a6c124c2976366f1bf747b15bb0fff258efbdd4b9d25"
-    },
-    {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/capability-fabric/README.md",
-      "bytes": 5495,
-      "sha256": "5ed7edf24ac863b8fbf6c8fc37a86da232d2aac0fff6edecf89d40b4d2d29aa8"
     },
     {
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/capability-fabric/recipes/catalog.json",
@@ -1284,6 +1309,136 @@
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/capability-fabric/selftest.js",
       "bytes": 30636,
       "sha256": "9439cb4ccdcbb6841a5fdbc31213777ec280214ffabcc9c9fd195f34fbb1b987"
+    },
+    {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/code-capability-fabric/README-blueprint-schema-compiler-v1.md",
+      "bytes": 2033,
+      "sha256": "9320c24fe438fbcca00b3b55a2d781dfaef8933e733cb3631fe72f84c31d94b0"
+    },
+    {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/code-capability-fabric/README-bounded-creation-program-planner-v1.md",
+      "bytes": 4092,
+      "sha256": "711afffca06a6d16d5fb5516765c9d3876069f5fb0601d3c7641ebbb23d598a6"
+    },
+    {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/code-capability-fabric/README-code-recipe-application-planner-v1.md",
+      "bytes": 1881,
+      "sha256": "f687284a78b073224b94534d6a282bb9f9e0609fbd4941ac32b1b90b856047d2"
+    },
+    {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/code-capability-fabric/README-code-recipe-discovery-v1.md",
+      "bytes": 1428,
+      "sha256": "a2095080d7a0f8ea64d10b554b27f88ae6f8f1d9490c013b120d3820e1f126a0"
+    },
+    {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/code-capability-fabric/README-code-recipe-fabric-bridge-v1.md",
+      "bytes": 1966,
+      "sha256": "e3361315638f757fb26cfcba5cf84ae6258740cd76a35db0dc450898e5145c12"
+    },
+    {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/code-capability-fabric/README-code-specialist-build-profile-registry-v1.md",
+      "bytes": 1989,
+      "sha256": "9c9ef14b26f9b1da9dc05a4785379d4577315d7ae0090ba22f8f43ac4515cc45"
+    },
+    {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/code-capability-fabric/README-code-specialist-capability-builder-v1.md",
+      "bytes": 3531,
+      "sha256": "e91b7ace477b85b460f11f4abf57e528eaf40f6dbb40d1fdf0d311c9c3a34106"
+    },
+    {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/code-capability-fabric/README-code-specialist-organ-intent-adapter-v1.md",
+      "bytes": 2082,
+      "sha256": "2ce419a434b673573b251e239fc4c36f03398fa79cc3f38d4bd4ce8f5c5d248e"
+    },
+    {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/code-capability-fabric/README-code-specialization-router-v1.md",
+      "bytes": 2266,
+      "sha256": "6ce3b9708ff410db0326772c23a4b372e8f688049c4c33aa0bd1ccdf3517075a"
+    },
+    {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/code-capability-fabric/README-declarative-blueprint-composer-v1.md",
+      "bytes": 2718,
+      "sha256": "42e191b8de70a3647a70e4b2fff9b5e0b3b0a7b2147993d1382452f8162b9586"
+    },
+    {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/code-capability-fabric/README-deterministic-adventure-content-generator-v1.md",
+      "bytes": 1123,
+      "sha256": "158a1e40dfe96919ae16ed6a648b327d93af49de62f378a8c131e4bbd8d84b1d"
+    },
+    {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/code-capability-fabric/README-deterministic-game-candidate-generator-v1.md",
+      "bytes": 1267,
+      "sha256": "ccec4edae308a5c2c26f4ab4f37dd73a556f379d7f50e50795928342728794a9"
+    },
+    {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/code-capability-fabric/README-deterministic-game-trailer-planner-v1.md",
+      "bytes": 1064,
+      "sha256": "9b7a83d7a30b6a6c48a1c2c52df508cfa6cae9af400e918679742ebe7aae1b23"
+    },
+    {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/code-capability-fabric/README-deterministic-gameplay-trailer-planner-v1.md",
+      "bytes": 720,
+      "sha256": "f5778cce26a323bd5b8ec2ffe83b159cbd905dd9303bc364829b1f093c2af259"
+    },
+    {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/code-capability-fabric/README-git-object-inventory-comparator-v1.md",
+      "bytes": 2840,
+      "sha256": "487d1147d4c87610642a7d7c7ffbc99b9a63a6384f83d48da0445ca7b03aeb14"
+    },
+    {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/code-capability-fabric/README-grounded-consent-scope-v1.md",
+      "bytes": 2588,
+      "sha256": "d6dad5f41ede1c9c730b6d4e467d1a957cf996d32fd2cdcc265dbace3d13db92"
+    },
+    {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/code-capability-fabric/README-independent-assurance-v1.md",
+      "bytes": 2719,
+      "sha256": "d8eafedd6502b05100401127ba79d0b3a9a412a1c24cb05da07ba788dab3dded"
+    },
+    {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/code-capability-fabric/README-native-game-rule-candidate-generator-v1.md",
+      "bytes": 1639,
+      "sha256": "247b4ddae768d59dcc73824cfb240131c9ec1d1bde43018d4d76b0c77bbc9554"
+    },
+    {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/code-capability-fabric/README-policy-bound-assurance-v1.md",
+      "bytes": 2278,
+      "sha256": "b7f1784d2427c97b13b115aea736fee9451acb7e0aba89d41af6d8e2f1e70c9d"
+    },
+    {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/code-capability-fabric/README-readiness-v1.md",
+      "bytes": 3039,
+      "sha256": "38b494f834bc141f07a6bc487fe8ca284f964b97b35c8a0c63bf16f113f589c4"
+    },
+    {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/code-capability-fabric/README-schema-packet-mirror-verifier-v1.md",
+      "bytes": 2453,
+      "sha256": "126c4cdcd9b1cbb26d9d79a1b5d8f40518d70e4d8eb752eceee7db61a122ac1c"
+    },
+    {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/code-capability-fabric/README-semantic-candidate-generator-v1.md",
+      "bytes": 5415,
+      "sha256": "ad551c9c25f097147ff24fa9dff073ea25494064ab9f3e429f56f3be7f5e262e"
+    },
+    {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/code-capability-fabric/README-semantic-candidate-materializer-v1.md",
+      "bytes": 4607,
+      "sha256": "6682bc10a8e9fefa9e88faf6c5ee9a3d2fef6d839472a6afab4c5e4b751b1b9c"
+    },
+    {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/code-capability-fabric/README-slow-creation-pilot-v1.md",
+      "bytes": 2961,
+      "sha256": "2be38e0a11741dde1c56e2c80ebe033898bba941ccc7ac78c0767a537c1f8ed4"
+    },
+    {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/code-capability-fabric/README-v2.md",
+      "bytes": 3744,
+      "sha256": "f0f768d8d42d4f91cf773c23ef100465a08a10a90adba21ea65223ac8856696c"
+    },
+    {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/code-capability-fabric/README.md",
+      "bytes": 21825,
+      "sha256": "64781578eff3d7f62f7f0f291d48a69ef2e68d5c92805e99f10f2162d63fe292"
     },
     {
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/code-capability-fabric/adventure-content-growth-request.schema.json",
@@ -1866,6 +2021,21 @@
       "sha256": "dafb6fc32afb22dc6bd452082f2cf2fd8d02937581b563c261fdf718bd1625f2"
     },
     {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/code-capability-fabric/language-organs/CODE_ROUTE_KNOWLEDGE_DESIGN.md",
+      "bytes": 3249,
+      "sha256": "a55cb44ef3bbd1d6a6ecba3ebc813869d096ab2f5565163b50e2248b01a8aee2"
+    },
+    {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/code-capability-fabric/language-organs/README.md",
+      "bytes": 7657,
+      "sha256": "d0862f16fcffc6a088412bdef6d43b3736d8aed7edaa20bc86e5a4bf5bedf9f2"
+    },
+    {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/code-capability-fabric/language-organs/STEWARD_RUN_01_DONOR_TRUTH.md",
+      "bytes": 1024,
+      "sha256": "044008f7beb64bd236119b7320840b096a369e0efa28e05719ef0272efe12325"
+    },
+    {
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/code-capability-fabric/language-organs/build-grammar-profiles.py",
       "bytes": 36726,
       "sha256": "19414e10daa85394c10eaa29b3731d4388f78c00c8ae0fa85f693f8fed2aae55"
@@ -2054,11 +2224,6 @@
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/code-capability-fabric/language-organs/code-work-context-local-store.js",
       "bytes": 10634,
       "sha256": "a824cd6565169214e526e8077981097462756706bfa4f433845bc0e12c59ea76"
-    },
-    {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/code-capability-fabric/language-organs/CODE_ROUTE_KNOWLEDGE_DESIGN.md",
-      "bytes": 3249,
-      "sha256": "a55cb44ef3bbd1d6a6ecba3ebc813869d096ab2f5565163b50e2248b01a8aee2"
     },
     {
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/code-capability-fabric/language-organs/developer-relationship-plane.contract.json",
@@ -5211,11 +5376,6 @@
       "sha256": "f5d667f312c384bfbbae5235215708afd294b72c3865a8f3165beba469dd55af"
     },
     {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/code-capability-fabric/language-organs/README.md",
-      "bytes": 7657,
-      "sha256": "d0862f16fcffc6a088412bdef6d43b3736d8aed7edaa20bc86e5a4bf5bedf9f2"
-    },
-    {
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/code-capability-fabric/language-organs/registry.js",
       "bytes": 9487,
       "sha256": "0f3c2c00d0e03313d99b9d2413ff151bc1703c190f3ec698c9beb7726d8e5159"
@@ -5334,11 +5494,6 @@
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/code-capability-fabric/language-organs/specialist-eye-registry.js",
       "bytes": 5029,
       "sha256": "126d3193db9bcba5bb44085364adbb30d25d6ba182089cae489b824f6060f8a9"
-    },
-    {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/code-capability-fabric/language-organs/STEWARD_RUN_01_DONOR_TRUTH.md",
-      "bytes": 1024,
-      "sha256": "044008f7beb64bd236119b7320840b096a369e0efa28e05719ef0272efe12325"
     },
     {
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/code-capability-fabric/language-organs/template-fabric.contract.json",
@@ -5524,136 +5679,6 @@
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/code-capability-fabric/native-recipe-library.schema.json",
       "bytes": 1256,
       "sha256": "ea5091924f9d8688afde93249f463ec4856a73685286e34c22317f24d41a2cbf"
-    },
-    {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/code-capability-fabric/README-blueprint-schema-compiler-v1.md",
-      "bytes": 2033,
-      "sha256": "9320c24fe438fbcca00b3b55a2d781dfaef8933e733cb3631fe72f84c31d94b0"
-    },
-    {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/code-capability-fabric/README-bounded-creation-program-planner-v1.md",
-      "bytes": 4092,
-      "sha256": "711afffca06a6d16d5fb5516765c9d3876069f5fb0601d3c7641ebbb23d598a6"
-    },
-    {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/code-capability-fabric/README-code-recipe-application-planner-v1.md",
-      "bytes": 1881,
-      "sha256": "f687284a78b073224b94534d6a282bb9f9e0609fbd4941ac32b1b90b856047d2"
-    },
-    {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/code-capability-fabric/README-code-recipe-discovery-v1.md",
-      "bytes": 1428,
-      "sha256": "a2095080d7a0f8ea64d10b554b27f88ae6f8f1d9490c013b120d3820e1f126a0"
-    },
-    {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/code-capability-fabric/README-code-recipe-fabric-bridge-v1.md",
-      "bytes": 1966,
-      "sha256": "e3361315638f757fb26cfcba5cf84ae6258740cd76a35db0dc450898e5145c12"
-    },
-    {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/code-capability-fabric/README-code-specialist-build-profile-registry-v1.md",
-      "bytes": 1989,
-      "sha256": "9c9ef14b26f9b1da9dc05a4785379d4577315d7ae0090ba22f8f43ac4515cc45"
-    },
-    {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/code-capability-fabric/README-code-specialist-capability-builder-v1.md",
-      "bytes": 3531,
-      "sha256": "e91b7ace477b85b460f11f4abf57e528eaf40f6dbb40d1fdf0d311c9c3a34106"
-    },
-    {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/code-capability-fabric/README-code-specialist-organ-intent-adapter-v1.md",
-      "bytes": 2082,
-      "sha256": "2ce419a434b673573b251e239fc4c36f03398fa79cc3f38d4bd4ce8f5c5d248e"
-    },
-    {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/code-capability-fabric/README-code-specialization-router-v1.md",
-      "bytes": 2266,
-      "sha256": "6ce3b9708ff410db0326772c23a4b372e8f688049c4c33aa0bd1ccdf3517075a"
-    },
-    {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/code-capability-fabric/README-declarative-blueprint-composer-v1.md",
-      "bytes": 2718,
-      "sha256": "42e191b8de70a3647a70e4b2fff9b5e0b3b0a7b2147993d1382452f8162b9586"
-    },
-    {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/code-capability-fabric/README-deterministic-adventure-content-generator-v1.md",
-      "bytes": 1123,
-      "sha256": "158a1e40dfe96919ae16ed6a648b327d93af49de62f378a8c131e4bbd8d84b1d"
-    },
-    {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/code-capability-fabric/README-deterministic-game-candidate-generator-v1.md",
-      "bytes": 1267,
-      "sha256": "ccec4edae308a5c2c26f4ab4f37dd73a556f379d7f50e50795928342728794a9"
-    },
-    {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/code-capability-fabric/README-deterministic-game-trailer-planner-v1.md",
-      "bytes": 1064,
-      "sha256": "9b7a83d7a30b6a6c48a1c2c52df508cfa6cae9af400e918679742ebe7aae1b23"
-    },
-    {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/code-capability-fabric/README-deterministic-gameplay-trailer-planner-v1.md",
-      "bytes": 720,
-      "sha256": "f5778cce26a323bd5b8ec2ffe83b159cbd905dd9303bc364829b1f093c2af259"
-    },
-    {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/code-capability-fabric/README-git-object-inventory-comparator-v1.md",
-      "bytes": 2840,
-      "sha256": "487d1147d4c87610642a7d7c7ffbc99b9a63a6384f83d48da0445ca7b03aeb14"
-    },
-    {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/code-capability-fabric/README-grounded-consent-scope-v1.md",
-      "bytes": 2588,
-      "sha256": "d6dad5f41ede1c9c730b6d4e467d1a957cf996d32fd2cdcc265dbace3d13db92"
-    },
-    {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/code-capability-fabric/README-independent-assurance-v1.md",
-      "bytes": 2719,
-      "sha256": "d8eafedd6502b05100401127ba79d0b3a9a412a1c24cb05da07ba788dab3dded"
-    },
-    {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/code-capability-fabric/README-native-game-rule-candidate-generator-v1.md",
-      "bytes": 1639,
-      "sha256": "247b4ddae768d59dcc73824cfb240131c9ec1d1bde43018d4d76b0c77bbc9554"
-    },
-    {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/code-capability-fabric/README-policy-bound-assurance-v1.md",
-      "bytes": 2278,
-      "sha256": "b7f1784d2427c97b13b115aea736fee9451acb7e0aba89d41af6d8e2f1e70c9d"
-    },
-    {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/code-capability-fabric/README-readiness-v1.md",
-      "bytes": 3039,
-      "sha256": "38b494f834bc141f07a6bc487fe8ca284f964b97b35c8a0c63bf16f113f589c4"
-    },
-    {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/code-capability-fabric/README-schema-packet-mirror-verifier-v1.md",
-      "bytes": 2453,
-      "sha256": "126c4cdcd9b1cbb26d9d79a1b5d8f40518d70e4d8eb752eceee7db61a122ac1c"
-    },
-    {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/code-capability-fabric/README-semantic-candidate-generator-v1.md",
-      "bytes": 5415,
-      "sha256": "ad551c9c25f097147ff24fa9dff073ea25494064ab9f3e429f56f3be7f5e262e"
-    },
-    {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/code-capability-fabric/README-semantic-candidate-materializer-v1.md",
-      "bytes": 4607,
-      "sha256": "6682bc10a8e9fefa9e88faf6c5ee9a3d2fef6d839472a6afab4c5e4b751b1b9c"
-    },
-    {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/code-capability-fabric/README-slow-creation-pilot-v1.md",
-      "bytes": 2961,
-      "sha256": "2be38e0a11741dde1c56e2c80ebe033898bba941ccc7ac78c0767a537c1f8ed4"
-    },
-    {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/code-capability-fabric/README-v2.md",
-      "bytes": 3744,
-      "sha256": "f0f768d8d42d4f91cf773c23ef100465a08a10a90adba21ea65223ac8856696c"
-    },
-    {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/code-capability-fabric/README.md",
-      "bytes": 21825,
-      "sha256": "64781578eff3d7f62f7f0f291d48a69ef2e68d5c92805e99f10f2162d63fe292"
     },
     {
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/code-capability-fabric/schema-packet-mirror-verifier-v1.js",
@@ -6026,6 +6051,11 @@
       "sha256": "4f03a1d9daf8bc29df003a587b5b353e07fc495be74e49a685ffb0b2cf0aa2e9"
     },
     {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/deterministic-organ-fabric/README.md",
+      "bytes": 2406,
+      "sha256": "ebc880ddd6da34a175673d1115f932c49f20070e8934059d027eff59fa7ae2a0"
+    },
+    {
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/deterministic-organ-fabric/archive-store.js",
       "bytes": 27679,
       "sha256": "6ff50350c07db9fb68acdd2792720f10c5611d97f89218d7b6e02b7c3f63a221"
@@ -6069,11 +6099,6 @@
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/deterministic-organ-fabric/module.contract.json",
       "bytes": 1891,
       "sha256": "9c11723229b31e656c27d0c6b55070e536b55bdb2d7f42015f423ffc343cc9ce"
-    },
-    {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/deterministic-organ-fabric/README.md",
-      "bytes": 2406,
-      "sha256": "ebc880ddd6da34a175673d1115f932c49f20070e8934059d027eff59fa7ae2a0"
     },
     {
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/deterministic-organ-fabric/runtime-contract.json",
@@ -6256,6 +6281,11 @@
       "sha256": "4251021aca3d1b488459ddeadb573a2a4686589b045f300b8a2b8be8e95188ed"
     },
     {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/determinization-steward/README.md",
+      "bytes": 2884,
+      "sha256": "5ee25fc4e1219b91323470898fc9bed557fd190b3963637922998113fb961ff6"
+    },
+    {
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/determinization-steward/determinization-steward.js",
       "bytes": 10336,
       "sha256": "f9523bbb264a97db6e53f34ec094b6e461e52eefa3ae7a0297f8f62687544fa4"
@@ -6264,11 +6294,6 @@
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/determinization-steward/manifest.json",
       "bytes": 1464,
       "sha256": "4d88226def34f36011977a516f3f23e7ba0678a03b76728e53e13b8a6e957453"
-    },
-    {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/determinization-steward/README.md",
-      "bytes": 2884,
-      "sha256": "5ee25fc4e1219b91323470898fc9bed557fd190b3963637922998113fb961ff6"
     },
     {
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/determinization-steward/selftest.js",
@@ -6281,14 +6306,14 @@
       "sha256": "082673a84bad83498f0d9cea5b6eb2623325088965020436e0dfab92273d204c"
     },
     {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/ephemeral-specialist-team/manifest.json",
-      "bytes": 1195,
-      "sha256": "4b455aa605a1cd3d6e85cb864428ff6bf35529198b6c2e4c41bb5ae964fc6412"
-    },
-    {
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/ephemeral-specialist-team/README.md",
       "bytes": 4524,
       "sha256": "49af506d8bb8cf3f535f69c2f4cc4ff75e3677647ed311e00fe2a42b019dd465"
+    },
+    {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/ephemeral-specialist-team/manifest.json",
+      "bytes": 1195,
+      "sha256": "4b455aa605a1cd3d6e85cb864428ff6bf35529198b6c2e4c41bb5ae964fc6412"
     },
     {
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/ephemeral-specialist-team/selftest.js",
@@ -6306,6 +6331,11 @@
       "sha256": "d3266fb5a3ff6d542b0dd0c8b03b01819cc3d66977251e076aef8863e1012611"
     },
     {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/identity-shell-fabric/README.md",
+      "bytes": 8691,
+      "sha256": "0397fa38b51b6d6592d43a53d38b49e52747ba802c60749d6244336d59a1568f"
+    },
+    {
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/identity-shell-fabric/adversarial-corpus-selftest.js",
       "bytes": 11436,
       "sha256": "2d43bcb0c1dd5fcfcc370f6a2434ef747dd510c8f137adaee5921ab12afda753"
@@ -6314,6 +6344,11 @@
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/identity-shell-fabric/compatibility/compatibility-proposal.json",
       "bytes": 2168,
       "sha256": "b374c823d6020e40d9b457bd4239eb3ef56e2e09abb3e15ac14046d00c8beaea"
+    },
+    {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/identity-shell-fabric/examples/keel-workshop-collaborator/README.md",
+      "bytes": 2592,
+      "sha256": "f4c09628bbc71f57a0fe7b479b9da1948ac88e0db3cc6706bdca05dde8a7c3a9"
     },
     {
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/identity-shell-fabric/examples/keel-workshop-collaborator/fresh-process-receipt-verifier.js",
@@ -6344,11 +6379,6 @@
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/identity-shell-fabric/examples/keel-workshop-collaborator/keel-workshop-collaborator.manifest.json",
       "bytes": 8959,
       "sha256": "e824091c6f9990bcdeb956b34cb212a86d74a07e2581afe6e211374b0562d1c5"
-    },
-    {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/identity-shell-fabric/examples/keel-workshop-collaborator/README.md",
-      "bytes": 2592,
-      "sha256": "f4c09628bbc71f57a0fe7b479b9da1948ac88e0db3cc6706bdca05dde8a7c3a9"
     },
     {
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/identity-shell-fabric/examples/keel-workshop-collaborator/trial-selftest.js",
@@ -6394,11 +6424,6 @@
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/identity-shell-fabric/module.contract.json",
       "bytes": 2894,
       "sha256": "a9218510e7e0e8a2bd3cee3630516a18da7c8da62b8125337de91e722151a2a9"
-    },
-    {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/identity-shell-fabric/README.md",
-      "bytes": 8691,
-      "sha256": "0397fa38b51b6d6592d43a53d38b49e52747ba802c60749d6244336d59a1568f"
     },
     {
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/identity-shell-fabric/receipt-boundary-selftest.js",
@@ -6476,6 +6501,11 @@
       "sha256": "280b91e599f22d3940542243fbbf0a3c0c276705787a13e38019c7a9dee4bf6f"
     },
     {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/neural-connection-sockets/README.md",
+      "bytes": 2179,
+      "sha256": "4c9c5136d1736ffc99ac684314512fc17de4d06b02b4abfd4d91ecfdf809765d"
+    },
+    {
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/neural-connection-sockets/manifest.json",
       "bytes": 872,
       "sha256": "f35b5892d74382efec3ca7a01a341f478b838b9005c546464ed162032f720731"
@@ -6484,11 +6514,6 @@
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/neural-connection-sockets/neural-connection-sockets.js",
       "bytes": 7537,
       "sha256": "c21f9e971a2114dfa77d542699f56599c548fe6e22eff23715be920459dba98e"
-    },
-    {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/neural-connection-sockets/README.md",
-      "bytes": 2179,
-      "sha256": "4c9c5136d1736ffc99ac684314512fc17de4d06b02b4abfd4d91ecfdf809765d"
     },
     {
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/neural-connection-sockets/selftest.js",
@@ -6516,6 +6541,11 @@
       "sha256": "382b6fbd4a8cab9cc7682d7e16574476a10913f26b5b5ea40ae657f2b0dcdb3c"
     },
     {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/specialists/README.md",
+      "bytes": 5391,
+      "sha256": "636df30ce5dd51662a1eba37f318c5d35baf4b6abd9cbddd1dc3c89b1133a2d2"
+    },
+    {
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/specialists/axm-specialist-library.js",
       "bytes": 25273,
       "sha256": "30e91ef5dd89772eee1fd4c4f42d7849cd29aac099d36e9234c1c3b41754cfa1"
@@ -6529,11 +6559,6 @@
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/specialists/discovery-seam-review.js",
       "bytes": 2198,
       "sha256": "ba0224aeaac4e8661709547cb63012fbea8bdf9db50daf57fe56a0d566cc9ea6"
-    },
-    {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/specialists/README.md",
-      "bytes": 5391,
-      "sha256": "636df30ce5dd51662a1eba37f318c5d35baf4b6abd9cbddd1dc3c89b1133a2d2"
     },
     {
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/shared/specialists/router-selftest.js",
@@ -6591,6 +6616,11 @@
       "sha256": "3d418031dfee8a28cfe7f708eb67bf8ab44fbbf6536b6db7eaa53a64d3d5067d"
     },
     {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/agent-tool-forge/README.md",
+      "bytes": 3880,
+      "sha256": "4da9ebf868e79da9b90cd1ca0d82ef90826631e9d1f320a5b8076abcaf6ced2b"
+    },
+    {
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/agent-tool-forge/axm-foundation.js",
       "bytes": 93410,
       "sha256": "608f306f16648defa448172587fa50dc31ef197e3d48c5b0edad1f7097208f30"
@@ -6631,11 +6661,6 @@
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/agent-tool-forge/README.md",
-      "bytes": 3880,
-      "sha256": "4da9ebf868e79da9b90cd1ca0d82ef90826631e9d1f320a5b8076abcaf6ced2b"
-    },
-    {
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/agent-tool-forge/selftest.js",
       "bytes": 3803,
       "sha256": "fea72a95233b44e300135456acfcaee898f1fe526938b30110b7342d0b6669d3"
@@ -6651,119 +6676,9 @@
       "sha256": "cbf2c13b3523eafa03818de7ede06436afcd949b2d3ee08993d66c2345b864fc"
     },
     {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/agent-tool-forge/skills/sensorium/bundle.manifest.json",
-      "bytes": 1560,
-      "sha256": "102790a53c8eeeee3c1b4ee8bac134f2f80f8707956f766d02342ecdd848187b"
-    },
-    {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/agent-tool-forge/skills/sensorium/compaction-steward.skill.json",
-      "bytes": 2407,
-      "sha256": "20e68c9797e5288c3925c833b69f9fc0635d8a373d2d077cf8bf0039c93d2242"
-    },
-    {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/agent-tool-forge/skills/sensorium/compaction-steward.SKILL.md",
-      "bytes": 1645,
-      "sha256": "c16198db98afa73045a9b47c0b3918835f853cc17ad11c66331c319ed7751951"
-    },
-    {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/agent-tool-forge/skills/sensorium/corroboration-triangulator.skill.json",
-      "bytes": 2830,
-      "sha256": "3497f13ccad37761119ac37f6171cb7085fd15979fdd7c6ca7861cef8b2133d4"
-    },
-    {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/agent-tool-forge/skills/sensorium/corroboration-triangulator.SKILL.md",
-      "bytes": 2018,
-      "sha256": "9c04bfe1717063e241086aea8999b1401df6faebaaaebe0845c88ae73913e776"
-    },
-    {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/agent-tool-forge/skills/sensorium/drift-detector-ambient.skill.json",
-      "bytes": 2385,
-      "sha256": "143dabf2375a56db27ffda21f8347a60e2e87ee177780e6e733209c443536031"
-    },
-    {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/agent-tool-forge/skills/sensorium/drift-detector-ambient.SKILL.md",
-      "bytes": 1662,
-      "sha256": "b403afd0e813ba5d3377671157e174ce87159d2d8b12a72f7302e5ecd055a8b6"
-    },
-    {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/agent-tool-forge/skills/sensorium/ears-stream-listener.skill.json",
-      "bytes": 2464,
-      "sha256": "74be66fd0834d88e8910d509e09ab2f5201a39d9e9a31d00410aae25f5aa862a"
-    },
-    {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/agent-tool-forge/skills/sensorium/ears-stream-listener.SKILL.md",
-      "bytes": 1685,
-      "sha256": "dfb9e403885b3c5bda53a2d951c6d1287a3b3abcfec3268954a6f49c1c680129"
-    },
-    {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/agent-tool-forge/skills/sensorium/eye-accessibility-inspector.skill.json",
-      "bytes": 3447,
-      "sha256": "113524b806db46a0e71beb4c17edb85efeca5ff1e8d0e0937007ea073f0be48f"
-    },
-    {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/agent-tool-forge/skills/sensorium/eye-accessibility-inspector.SKILL.md",
-      "bytes": 2502,
-      "sha256": "4d3cd737a61d53afb4113650c2a96f267e1062dc1f37be80f59fad04e54db000"
-    },
-    {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/agent-tool-forge/skills/sensorium/eye-change-differ.skill.json",
-      "bytes": 3075,
-      "sha256": "cb56a52b8dbe8e7d0f31c8b4de39bde668342c57e892885cd1eb2461d7f3035c"
-    },
-    {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/agent-tool-forge/skills/sensorium/eye-change-differ.SKILL.md",
-      "bytes": 2200,
-      "sha256": "a8aa57df42d7985ff79575c5c17556550a6bd2ce9e9b7e606e63a42ffbb1eee3"
-    },
-    {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/agent-tool-forge/skills/sensorium/eye-live-visual-verifier.skill.json",
-      "bytes": 2589,
-      "sha256": "ef348f4c584b35b46c03b2c9c2669da2584583ef4467462c0a006de03467d205"
-    },
-    {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/agent-tool-forge/skills/sensorium/eye-live-visual-verifier.SKILL.md",
-      "bytes": 1743,
-      "sha256": "2a4846083289b4a1009d1b0dda5ae3074034da77bb1541bbe42ca0b4e702f6e1"
-    },
-    {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/agent-tool-forge/skills/sensorium/eye-static-image-inspector.skill.json",
-      "bytes": 2540,
-      "sha256": "4b90873b22ce6676a53cfe40271c625c578ef05185608e65e79a814ca090758b"
-    },
-    {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/agent-tool-forge/skills/sensorium/eye-static-image-inspector.SKILL.md",
-      "bytes": 1772,
-      "sha256": "e35f4186568b04c17b8a4ab90f34ba45c970f8eb6834c661b0bed2795e40dd0a"
-    },
-    {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/agent-tool-forge/skills/sensorium/handoff-continuity-steward.skill.json",
-      "bytes": 2492,
-      "sha256": "8c436b0acb438b5d20b1df63df5b96a523bdb1b8c01cacfa96e4ca7819726d7a"
-    },
-    {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/agent-tool-forge/skills/sensorium/handoff-continuity-steward.SKILL.md",
-      "bytes": 1728,
-      "sha256": "16828b821f676d9f9843a32b2f346fbeefcc3ce4ea00867c99407473cb0c0fce"
-    },
-    {
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/agent-tool-forge/skills/sensorium/HANDOFF_TO_CODEX.md",
       "bytes": 1576,
       "sha256": "159a78ab24f28d73224370be235d628fff9b7639ff39f0b3ff7d425288fad163"
-    },
-    {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/agent-tool-forge/skills/sensorium/host-metadata.json",
-      "bytes": 5386,
-      "sha256": "b44188b4801fd560f773a5c38a070ebcb7ac3c5d7a7ca6c2eb2be2b91cb52423"
-    },
-    {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/agent-tool-forge/skills/sensorium/interoception-capacity-gauge.skill.json",
-      "bytes": 2937,
-      "sha256": "e0d2cc8769d887f7e2a0c0014f91ef3870247ce5e2956581d45c137af9785126"
-    },
-    {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/agent-tool-forge/skills/sensorium/interoception-capacity-gauge.SKILL.md",
-      "bytes": 2090,
-      "sha256": "186c74d9fb4e366973ae68714ca58c0def2f01c9dac316ef7d3fbc723af1d451"
     },
     {
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/agent-tool-forge/skills/sensorium/README.md",
@@ -6771,14 +6686,119 @@
       "sha256": "8382d283b5c4ba9349b2b9a8c50ed86c9dad361054a1bd6905b47e76b009f298"
     },
     {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/agent-tool-forge/skills/sensorium/bundle.manifest.json",
+      "bytes": 1560,
+      "sha256": "102790a53c8eeeee3c1b4ee8bac134f2f80f8707956f766d02342ecdd848187b"
+    },
+    {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/agent-tool-forge/skills/sensorium/compaction-steward.SKILL.md",
+      "bytes": 1645,
+      "sha256": "c16198db98afa73045a9b47c0b3918835f853cc17ad11c66331c319ed7751951"
+    },
+    {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/agent-tool-forge/skills/sensorium/compaction-steward.skill.json",
+      "bytes": 2407,
+      "sha256": "20e68c9797e5288c3925c833b69f9fc0635d8a373d2d077cf8bf0039c93d2242"
+    },
+    {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/agent-tool-forge/skills/sensorium/corroboration-triangulator.SKILL.md",
+      "bytes": 2018,
+      "sha256": "9c04bfe1717063e241086aea8999b1401df6faebaaaebe0845c88ae73913e776"
+    },
+    {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/agent-tool-forge/skills/sensorium/corroboration-triangulator.skill.json",
+      "bytes": 2830,
+      "sha256": "3497f13ccad37761119ac37f6171cb7085fd15979fdd7c6ca7861cef8b2133d4"
+    },
+    {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/agent-tool-forge/skills/sensorium/drift-detector-ambient.SKILL.md",
+      "bytes": 1662,
+      "sha256": "b403afd0e813ba5d3377671157e174ce87159d2d8b12a72f7302e5ecd055a8b6"
+    },
+    {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/agent-tool-forge/skills/sensorium/drift-detector-ambient.skill.json",
+      "bytes": 2385,
+      "sha256": "143dabf2375a56db27ffda21f8347a60e2e87ee177780e6e733209c443536031"
+    },
+    {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/agent-tool-forge/skills/sensorium/ears-stream-listener.SKILL.md",
+      "bytes": 1685,
+      "sha256": "dfb9e403885b3c5bda53a2d951c6d1287a3b3abcfec3268954a6f49c1c680129"
+    },
+    {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/agent-tool-forge/skills/sensorium/ears-stream-listener.skill.json",
+      "bytes": 2464,
+      "sha256": "74be66fd0834d88e8910d509e09ab2f5201a39d9e9a31d00410aae25f5aa862a"
+    },
+    {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/agent-tool-forge/skills/sensorium/eye-accessibility-inspector.SKILL.md",
+      "bytes": 2502,
+      "sha256": "4d3cd737a61d53afb4113650c2a96f267e1062dc1f37be80f59fad04e54db000"
+    },
+    {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/agent-tool-forge/skills/sensorium/eye-accessibility-inspector.skill.json",
+      "bytes": 3447,
+      "sha256": "113524b806db46a0e71beb4c17edb85efeca5ff1e8d0e0937007ea073f0be48f"
+    },
+    {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/agent-tool-forge/skills/sensorium/eye-change-differ.SKILL.md",
+      "bytes": 2200,
+      "sha256": "a8aa57df42d7985ff79575c5c17556550a6bd2ce9e9b7e606e63a42ffbb1eee3"
+    },
+    {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/agent-tool-forge/skills/sensorium/eye-change-differ.skill.json",
+      "bytes": 3075,
+      "sha256": "cb56a52b8dbe8e7d0f31c8b4de39bde668342c57e892885cd1eb2461d7f3035c"
+    },
+    {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/agent-tool-forge/skills/sensorium/eye-live-visual-verifier.SKILL.md",
+      "bytes": 1743,
+      "sha256": "2a4846083289b4a1009d1b0dda5ae3074034da77bb1541bbe42ca0b4e702f6e1"
+    },
+    {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/agent-tool-forge/skills/sensorium/eye-live-visual-verifier.skill.json",
+      "bytes": 2589,
+      "sha256": "ef348f4c584b35b46c03b2c9c2669da2584583ef4467462c0a006de03467d205"
+    },
+    {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/agent-tool-forge/skills/sensorium/eye-static-image-inspector.SKILL.md",
+      "bytes": 1772,
+      "sha256": "e35f4186568b04c17b8a4ab90f34ba45c970f8eb6834c661b0bed2795e40dd0a"
+    },
+    {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/agent-tool-forge/skills/sensorium/eye-static-image-inspector.skill.json",
+      "bytes": 2540,
+      "sha256": "4b90873b22ce6676a53cfe40271c625c578ef05185608e65e79a814ca090758b"
+    },
+    {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/agent-tool-forge/skills/sensorium/handoff-continuity-steward.SKILL.md",
+      "bytes": 1728,
+      "sha256": "16828b821f676d9f9843a32b2f346fbeefcc3ce4ea00867c99407473cb0c0fce"
+    },
+    {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/agent-tool-forge/skills/sensorium/handoff-continuity-steward.skill.json",
+      "bytes": 2492,
+      "sha256": "8c436b0acb438b5d20b1df63df5b96a523bdb1b8c01cacfa96e4ca7819726d7a"
+    },
+    {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/agent-tool-forge/skills/sensorium/host-metadata.json",
+      "bytes": 5386,
+      "sha256": "b44188b4801fd560f773a5c38a070ebcb7ac3c5d7a7ca6c2eb2be2b91cb52423"
+    },
+    {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/agent-tool-forge/skills/sensorium/interoception-capacity-gauge.SKILL.md",
+      "bytes": 2090,
+      "sha256": "186c74d9fb4e366973ae68714ca58c0def2f01c9dac316ef7d3fbc723af1d451"
+    },
+    {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/agent-tool-forge/skills/sensorium/interoception-capacity-gauge.skill.json",
+      "bytes": 2937,
+      "sha256": "e0d2cc8769d887f7e2a0c0014f91ef3870247ce5e2956581d45c137af9785126"
+    },
+    {
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/agent-tool-forge/skills/sensorium/sensorium.index.json",
       "bytes": 5604,
       "sha256": "a48c25f6d89d1fb6b22040c78ca10699fe73b88540b37fab5c71405c0cf41078"
-    },
-    {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/agent-tool-forge/skills/sensorium/taint-sniffer.skill.json",
-      "bytes": 3186,
-      "sha256": "e0587f277e03efd34564dbee866071909dd8eab48ae97e26f19252188b991a4b"
     },
     {
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/agent-tool-forge/skills/sensorium/taint-sniffer.SKILL.md",
@@ -6786,9 +6806,9 @@
       "sha256": "bf6506b1b5bbd56af40cec3bbb7dfa9a430f1cd4cd6d8df5362b3cae0298b748"
     },
     {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/agent-tool-forge/skills/sensorium/time-sense-ttl-verifier.skill.json",
-      "bytes": 2377,
-      "sha256": "c487a21b9e716641974d3f6d58bbdd50139c32e8ab813da34d6d66ab01686ffd"
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/agent-tool-forge/skills/sensorium/taint-sniffer.skill.json",
+      "bytes": 3186,
+      "sha256": "e0587f277e03efd34564dbee866071909dd8eab48ae97e26f19252188b991a4b"
     },
     {
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/agent-tool-forge/skills/sensorium/time-sense-ttl-verifier.SKILL.md",
@@ -6796,14 +6816,19 @@
       "sha256": "cdaf27a2064267076c3734ca7c072b5703d458f0195b3942954392918007520d"
     },
     {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/agent-tool-forge/skills/sensorium/touch-environment-probe.skill.json",
-      "bytes": 2374,
-      "sha256": "a07975eb45a318351f91f7c4841862ffbf537dddad48060d8313ee3bd94083ff"
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/agent-tool-forge/skills/sensorium/time-sense-ttl-verifier.skill.json",
+      "bytes": 2377,
+      "sha256": "c487a21b9e716641974d3f6d58bbdd50139c32e8ab813da34d6d66ab01686ffd"
     },
     {
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/agent-tool-forge/skills/sensorium/touch-environment-probe.SKILL.md",
       "bytes": 1629,
       "sha256": "642d3269c055f968e2c990494fa7fbc3a943e008a64b990d129add867d1e5b07"
+    },
+    {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/agent-tool-forge/skills/sensorium/touch-environment-probe.skill.json",
+      "bytes": 2374,
+      "sha256": "a07975eb45a318351f91f7c4841862ffbf537dddad48060d8313ee3bd94083ff"
     },
     {
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/agent-tool-forge/specialist-masks/.gitkeep",
@@ -6841,6 +6866,11 @@
       "sha256": "7b971a333c68006b94d27ccffc8f533243e731e8c81f160965e3f377d741aa95"
     },
     {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/capability-fabric/README.md",
+      "bytes": 3481,
+      "sha256": "d921588057a865fdeb958d63ef407d3cf6785d385f112b73788ee443f44fd13f"
+    },
+    {
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/capability-fabric/app.js",
       "bytes": 6512,
       "sha256": "c0deb7d2e1bcf5ae1441cbb159fdb4a951791259dbc84ae98f3ef5fbc4eb8816"
@@ -6871,11 +6901,6 @@
       "sha256": "b3e090d9e90a04377e9aa597e4ac54ec5bc556380016a3d7af14cc0737d72d0c"
     },
     {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/capability-fabric/README.md",
-      "bytes": 3481,
-      "sha256": "d921588057a865fdeb958d63ef407d3cf6785d385f112b73788ee443f44fd13f"
-    },
-    {
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/capability-fabric/responsive.css",
       "bytes": 179,
       "sha256": "8b6c7faaf7675286bb006129465f53dc884c75fd1e8e84c529661ee6b6153393"
@@ -6889,6 +6914,11 @@
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/capability-fabric/styles.css",
       "bytes": 5058,
       "sha256": "a54277327fa03f1d663e9291bce6e3fc3a03ee40faa13cd73dc303f809a5668a"
+    },
+    {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/capability-recipe-admission-gate/README.md",
+      "bytes": 1986,
+      "sha256": "c4b885d3fb9f3970619a426c3ff4f04c2b7a5fc52cfa75ac76f4d3513017c324"
     },
     {
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/capability-recipe-admission-gate/admission-cli.cmd",
@@ -6916,14 +6946,14 @@
       "sha256": "1855b17a59c9fab93ae05bca436b897d0123cb2f75ec78c8f3428077d4babb79"
     },
     {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/capability-recipe-admission-gate/README.md",
-      "bytes": 1986,
-      "sha256": "c4b885d3fb9f3970619a426c3ff4f04c2b7a5fc52cfa75ac76f4d3513017c324"
-    },
-    {
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/capability-recipe-admission-gate/selftest.js",
       "bytes": 9340,
       "sha256": "602fcbeac3527f2e2ed0c421b88d8e7bffee290712dd39992426f313cc9dd6f1"
+    },
+    {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/capability-recipe-foundry/README.md",
+      "bytes": 2701,
+      "sha256": "862bb8dbf8af3ad7b903a24fd044e91aa7779ba41cc40bc06a5c8f7b51aafde8"
     },
     {
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/capability-recipe-foundry/app.js",
@@ -6961,6 +6991,16 @@
       "sha256": "ca8471e01b2632dc091e3f0b7b01c1ac6cee8daf6f5e049910c9d2eeacd230cf"
     },
     {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/capability-recipe-foundry/pilots/README.md",
+      "bytes": 1000,
+      "sha256": "3e52c3fd36e2993180fd9129dca85182837306f94b60fd7799c8a5e8254afe36"
+    },
+    {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/capability-recipe-foundry/pilots/axm-capability-recipe-review-closed-capability-review-skill-recipe-pilot-7586a96b8fe0/README.md",
+      "bytes": 1088,
+      "sha256": "a81a9818f20ef1070f0067e1902ad919c2020e204aa22d904c99f5e3e337d623"
+    },
+    {
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/capability-recipe-foundry/pilots/axm-capability-recipe-review-closed-capability-review-skill-recipe-pilot-7586a96b8fe0/builder-contribution.js",
       "bytes": 4202,
       "sha256": "659040c4b8cb45b07e60f53581864b7e4e317a59d7b31defadae16c38ccc4c61"
@@ -6991,11 +7031,6 @@
       "sha256": "d5d6dfae151bc460279c6b58bd3fd4a50eb1ca0f358b280323017daedd2b646c"
     },
     {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/capability-recipe-foundry/pilots/axm-capability-recipe-review-closed-capability-review-skill-recipe-pilot-7586a96b8fe0/README.md",
-      "bytes": 1088,
-      "sha256": "a81a9818f20ef1070f0067e1902ad919c2020e204aa22d904c99f5e3e337d623"
-    },
-    {
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/capability-recipe-foundry/pilots/axm-capability-recipe-review-closed-capability-review-skill-recipe-pilot-7586a96b8fe0/recipe-proposal.json",
       "bytes": 4769,
       "sha256": "82104e425ed52610b0279d7fa2b510158d1d77b3723d300375454da7ba9ce514"
@@ -7009,6 +7044,11 @@
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/capability-recipe-foundry/pilots/axm-capability-recipe-review-closed-capability-review-skill-recipe-pilot-7586a96b8fe0/verification-plan.json",
       "bytes": 8582,
       "sha256": "01426a748c694b1a044584223234f27978b7fd48bc53debee3029cb005487d0c"
+    },
+    {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/capability-recipe-foundry/pilots/axm-capability-recipe-review-closed-json-schema-validator-recipe-pilot-6f0ccc698d7c/README.md",
+      "bytes": 1089,
+      "sha256": "b733739a3f4154d76284b415040f0b96d70328dd8fd144913856c601ca1d82fb"
     },
     {
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/capability-recipe-foundry/pilots/axm-capability-recipe-review-closed-json-schema-validator-recipe-pilot-6f0ccc698d7c/builder-contribution.js",
@@ -7041,11 +7081,6 @@
       "sha256": "33fdc6994f9d3a10c4579b632f5d6a1a1670b0ed19d3cab1fdee1eb57eea0bcf"
     },
     {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/capability-recipe-foundry/pilots/axm-capability-recipe-review-closed-json-schema-validator-recipe-pilot-6f0ccc698d7c/README.md",
-      "bytes": 1089,
-      "sha256": "b733739a3f4154d76284b415040f0b96d70328dd8fd144913856c601ca1d82fb"
-    },
-    {
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/capability-recipe-foundry/pilots/axm-capability-recipe-review-closed-json-schema-validator-recipe-pilot-6f0ccc698d7c/recipe-proposal.json",
       "bytes": 4150,
       "sha256": "b019acc5a51a90b920f0ebe653a397953ef13cc25fa20a99892b9d5f9f68726c"
@@ -7059,6 +7094,11 @@
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/capability-recipe-foundry/pilots/axm-capability-recipe-review-closed-json-schema-validator-recipe-pilot-6f0ccc698d7c/verification-plan.json",
       "bytes": 8782,
       "sha256": "088ac30e330daf6f1b7e9c6ffa68b22c0119fb8d4303521ca6432d43fc82d194"
+    },
+    {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/capability-recipe-foundry/pilots/axm-capability-recipe-review-closed-object-contract-adapter-recipe-pilot-35d55de7fc30/README.md",
+      "bytes": 1147,
+      "sha256": "c20d107127dcc87eb1e9387a7fff22a6b5978b294d999229cb3f926b0d813176"
     },
     {
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/capability-recipe-foundry/pilots/axm-capability-recipe-review-closed-object-contract-adapter-recipe-pilot-35d55de7fc30/builder-contribution.js",
@@ -7091,11 +7131,6 @@
       "sha256": "ca31e5604313819941f9010a59ba8262a86321217c3141f9dc62d76045dfa77d"
     },
     {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/capability-recipe-foundry/pilots/axm-capability-recipe-review-closed-object-contract-adapter-recipe-pilot-35d55de7fc30/README.md",
-      "bytes": 1147,
-      "sha256": "c20d107127dcc87eb1e9387a7fff22a6b5978b294d999229cb3f926b0d813176"
-    },
-    {
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/capability-recipe-foundry/pilots/axm-capability-recipe-review-closed-object-contract-adapter-recipe-pilot-35d55de7fc30/recipe-proposal.json",
       "bytes": 6715,
       "sha256": "17194eb6367ceeb5c415bcfe0dff7681394e79d17385be21f19c9d9ca411fef7"
@@ -7109,16 +7144,6 @@
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/capability-recipe-foundry/pilots/axm-capability-recipe-review-closed-object-contract-adapter-recipe-pilot-35d55de7fc30/verification-plan.json",
       "bytes": 9013,
       "sha256": "f821a266a62f42b2d5e9260f92be069f8acdfec1f020289eb85c09df25020348"
-    },
-    {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/capability-recipe-foundry/pilots/README.md",
-      "bytes": 1000,
-      "sha256": "3e52c3fd36e2993180fd9129dca85182837306f94b60fd7799c8a5e8254afe36"
-    },
-    {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/capability-recipe-foundry/README.md",
-      "bytes": 2701,
-      "sha256": "862bb8dbf8af3ad7b903a24fd044e91aa7779ba41cc40bc06a5c8f7b51aafde8"
     },
     {
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/capability-recipe-foundry/schemas/authoring-intent.schema.json",
@@ -7151,6 +7176,16 @@
       "sha256": "215147f7f9c14c9f606904bc59a548fb56695ff6c3c2b4f8b5a98058d439055a"
     },
     {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/code-recipe-foundry/README.md",
+      "bytes": 4712,
+      "sha256": "a55a03f58eb617b380412f472c2b6a42cfd20471abf94aeb9f3b8973e195ec52"
+    },
+    {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/code-recipe-foundry/WORKSHOP_INTAKE_RECEIPT.md",
+      "bytes": 1808,
+      "sha256": "53521a386c49acdd0f00ac7f5c44cd62687c0d1ff1ae7e10108de965d495c479"
+    },
+    {
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/code-recipe-foundry/app.js",
       "bytes": 16317,
       "sha256": "5b114e61f6387f5f603d93f997d9981f3d7ff3b72676341b9c841a08c29cc85d"
@@ -7159,6 +7194,11 @@
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/code-recipe-foundry/bundle-ingest.js",
       "bytes": 11882,
       "sha256": "7b80f5ec776434856910abe2e6951baa98a16e295ab76ac410f7468c7103ecab"
+    },
+    {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/code-recipe-foundry/catalog/SOURCE_README.md",
+      "bytes": 4177,
+      "sha256": "84ac2017d7f3021eb296caa9330557e7f62624f9140f1120af18a86ceb02bf6e"
     },
     {
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/code-recipe-foundry/catalog/code-cheats-1000.code-recipes.json",
@@ -7179,11 +7219,6 @@
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/code-recipe-foundry/catalog/source-quality-report.json",
       "bytes": 859,
       "sha256": "bcb54266387ef55b8638a23b423c2e084754f29d60998296af72a3ad6db4e038"
-    },
-    {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/code-recipe-foundry/catalog/SOURCE_README.md",
-      "bytes": 4177,
-      "sha256": "84ac2017d7f3021eb296caa9330557e7f62624f9140f1120af18a86ceb02bf6e"
     },
     {
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/code-recipe-foundry/design/capabilities.json",
@@ -7231,11 +7266,6 @@
       "sha256": "213802d1ab641eb5ec29302eef0848c377a503e4baa3ade6aaf2f23d872f6b75"
     },
     {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/code-recipe-foundry/README.md",
-      "bytes": 4712,
-      "sha256": "a55a03f58eb617b380412f472c2b6a42cfd20471abf94aeb9f3b8973e195ec52"
-    },
-    {
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/code-recipe-foundry/recipe-core.js",
       "bytes": 20973,
       "sha256": "4f356eff19fd76be2f01419ea2646806a4cabd9bf62cfa5fb4ad82320827a0e8"
@@ -7271,9 +7301,9 @@
       "sha256": "3240134e97a70486fe276077f865f0cdf2bf8bcdff36e6d23c143c62c8f97756"
     },
     {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/code-recipe-foundry/WORKSHOP_INTAKE_RECEIPT.md",
-      "bytes": 1808,
-      "sha256": "53521a386c49acdd0f00ac7f5c44cd62687c0d1ff1ae7e10108de965d495c479"
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/detached-candidate-nursery/README.md",
+      "bytes": 2972,
+      "sha256": "6eefd726134d103a707c0543bf7e974e375e109aa2237d60c2d10c795e69d913"
     },
     {
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/detached-candidate-nursery/app.js",
@@ -7324,11 +7354,6 @@
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/detached-candidate-nursery/nursery-cli.js",
       "bytes": 2881,
       "sha256": "1cc0bc5c4c9de755727343b14fa096b2d8ddbd538846e36418cbfadf36dd871f"
-    },
-    {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/detached-candidate-nursery/README.md",
-      "bytes": 2972,
-      "sha256": "6eefd726134d103a707c0543bf7e974e375e109aa2237d60c2d10c795e69d913"
     },
     {
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/detached-candidate-nursery/selftest.js",
@@ -7386,6 +7411,11 @@
       "sha256": "238eab7b9da1cafbd80e68e4d154d7e9a58f16e851bee6d8bada065bb4088d84"
     },
     {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/deterministic-organ-fabric/README.md",
+      "bytes": 5646,
+      "sha256": "b914a9835973621ef584a836ce7ae9c91fa4713e5bd58d46225dd58cec03eada"
+    },
+    {
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/deterministic-organ-fabric/app.js",
       "bytes": 20962,
       "sha256": "631b8013cd84cfe232e91f0270e50242284c008ef89a2244b4a7003c82e7b3fa"
@@ -7421,11 +7451,6 @@
       "sha256": "f742b5125b7160b4bb2e18a71ec5a343896704a1bbfeee5ccdf877360072a710"
     },
     {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/deterministic-organ-fabric/README.md",
-      "bytes": 5646,
-      "sha256": "b914a9835973621ef584a836ce7ae9c91fa4713e5bd58d46225dd58cec03eada"
-    },
-    {
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/deterministic-organ-fabric/responsive.css",
       "bytes": 540,
       "sha256": "0eafc52ce70c6aa61c718e281bca423337ed5e9989dd640736ea7e6a289e0768"
@@ -7449,6 +7474,16 @@
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/discovery-engine/review-packs.js",
       "bytes": 51200,
       "sha256": "6551852b41e1d4455225fb690e0a29f23a22bbf3cc8e7caba76dc42d198c606e"
+    },
+    {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/evidence-desk/README.md",
+      "bytes": 3097,
+      "sha256": "0b50b6cd71a6c6de8e92ef5f3954e1363dbd1f91ca0306810858c13e1d897bdc"
+    },
+    {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/evidence-desk/README.txt",
+      "bytes": 1648,
+      "sha256": "5281431774463e5ddbb9d7afd3857df4c9e90996c9c03f4b6fb74ff244e2ec6d"
     },
     {
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/evidence-desk/app.js",
@@ -7506,19 +7541,14 @@
       "sha256": "c80da827e8aee16f51ac2061a1dbc31cb51ecaa2069749643ebc72ac8cc8b727"
     },
     {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/evidence-desk/README.md",
-      "bytes": 3097,
-      "sha256": "0b50b6cd71a6c6de8e92ef5f3954e1363dbd1f91ca0306810858c13e1d897bdc"
-    },
-    {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/evidence-desk/README.txt",
-      "bytes": 1648,
-      "sha256": "5281431774463e5ddbb9d7afd3857df4c9e90996c9c03f4b6fb74ff244e2ec6d"
-    },
-    {
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/evidence-desk/selftest.js",
       "bytes": 10496,
       "sha256": "e0999af0d9595bbdbd809628a89aa4cda8c8330d1d228a4a44a01d173edc5eb2"
+    },
+    {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/hand-specification-foundry/README.md",
+      "bytes": 1211,
+      "sha256": "71dcf370da54a9572930dae2ea2fa70c341593da27bcf1c8a122864050479f8a"
     },
     {
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/hand-specification-foundry/app.js",
@@ -7551,11 +7581,6 @@
       "sha256": "2c6c9af6b554f7a7c4e865b01f851a01005914f5427a2eda35f67f60d11f1113"
     },
     {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/hand-specification-foundry/README.md",
-      "bytes": 1211,
-      "sha256": "71dcf370da54a9572930dae2ea2fa70c341593da27bcf1c8a122864050479f8a"
-    },
-    {
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/hand-specification-foundry/selftest.js",
       "bytes": 3951,
       "sha256": "9b863ef4d252830974715dc08b1488d987cf2ba93202bf1f7d87122aefd48301"
@@ -7564,6 +7589,11 @@
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/hand-specification-foundry/styles.css",
       "bytes": 5585,
       "sha256": "1c7469ff9f4c5c5ea9d2d5ddd41dd11ffd5cd081914209042ceace34f12d8076"
+    },
+    {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/hand-verification-lab/README.md",
+      "bytes": 1665,
+      "sha256": "252e269605de46feeb666f48bd88bc21a65b9f95306470a5742341e5a57c30e0"
     },
     {
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/hand-verification-lab/app.js",
@@ -7596,11 +7626,6 @@
       "sha256": "82dc14452acb5e1abb75217c4faf0fc795def1607426012dc08c3aabe54be027"
     },
     {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/hand-verification-lab/README.md",
-      "bytes": 1665,
-      "sha256": "252e269605de46feeb666f48bd88bc21a65b9f95306470a5742341e5a57c30e0"
-    },
-    {
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/hand-verification-lab/selftest.js",
       "bytes": 5834,
       "sha256": "2d2adc3b8eae9985d3c5f9701e664550b9ef31440544e5b76fb5cb467313450f"
@@ -7624,6 +7649,11 @@
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/memory-continuity-garden/runtime/modules/071_session-handoff-packet/compiled_contract.json",
       "bytes": 4780,
       "sha256": "6ed6caa393bcb4dc6248c57c8de42d09c68f79f673a181e6b1f75769a98f4e1c"
+    },
+    {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/module-lineage-comparator/README.md",
+      "bytes": 2130,
+      "sha256": "1609ea919a7c1b84f29f85b49fe55b96fa8797cde7617c4790309e9206651fcc"
     },
     {
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/module-lineage-comparator/app.js",
@@ -7686,11 +7716,6 @@
       "sha256": "42282160d29fb43e669d8da7e5f3d1afc8a371e04e667fc56d21189cc95af4f3"
     },
     {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/module-lineage-comparator/README.md",
-      "bytes": 2130,
-      "sha256": "1609ea919a7c1b84f29f85b49fe55b96fa8797cde7617c4790309e9206651fcc"
-    },
-    {
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/module-lineage-comparator/selftest.js",
       "bytes": 12904,
       "sha256": "699458d0d5f553b753cbb0aecb3d61cc5f8b2dbedfe0922ff9afcdc3c92fa0c0"
@@ -7699,6 +7724,11 @@
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/module-lineage-comparator/styles.css",
       "bytes": 6051,
       "sha256": "70eadb7e720b26017ba9a7f0f816cf29f0565c9f402fe743a8c0154d31bd8bf1"
+    },
+    {
+      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/review-inbox/README.md",
+      "bytes": 16411,
+      "sha256": "d8ecad5ab0a573b153b79870c0c53603ae004949a752a20088363f2d42f2c857"
     },
     {
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/review-inbox/app.js",
@@ -7736,11 +7766,6 @@
       "sha256": "62ae08da5055600f6aefc3d000b1e3a5eccfa546f1034992a0a13a823c577bc9"
     },
     {
-      "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/review-inbox/README.md",
-      "bytes": 16411,
-      "sha256": "d8ecad5ab0a573b153b79870c0c53603ae004949a752a20088363f2d42f2c857"
-    },
-    {
       "path": "experiments/creation-fabric-v2.12/vendor/AXM-Code-Creation-Fabric-v2.12-TEST/tools/review-inbox/retention-audit-review-view-selftest.js",
       "bytes": 13411,
       "sha256": "bc7190db2b99e0c3d264514ea274dd7d522e7d19429c92eb8a047ea198bc18cd"
@@ -7761,19 +7786,9 @@
       "sha256": "daca94235f8736cba979d4c483fa82b1d3743e5e00cbe8ddd43775b7ca0e5bc7"
     },
     {
-      "path": "experiments/ephemeral-vision-v0.49/manifest.json",
-      "bytes": 556,
-      "sha256": "5ebf7d7d34f6070cc780191219436d8bf0c3a4d4054a46b99a0976ec909ca3e2"
-    },
-    {
       "path": "experiments/ephemeral-vision-v0.49/README.md",
       "bytes": 882,
       "sha256": "1f4391452d96087034c3f07ac24299f3fddc82f57f47ae86779eb72eb73de3fb"
-    },
-    {
-      "path": "experiments/ephemeral-vision-v0.49/source-provenance.json",
-      "bytes": 289,
-      "sha256": "a8c767fcaa237b560aa6a8bda124e595a0add7752691fe728501bdc3fdfc5137"
     },
     {
       "path": "experiments/ephemeral-vision-v0.49/VERIFICATION.md",
@@ -7781,9 +7796,14 @@
       "sha256": "6276cfac1540fdc67e72a4a0bc01b186ffa5bc0190b660520dd924f81a32d601"
     },
     {
-      "path": "experiments/evidence-routing-v0.48/manifest.json",
-      "bytes": 493,
-      "sha256": "03baee24cccb277bd9e077db2876684fc537c7f420785e67957b954de37d8f94"
+      "path": "experiments/ephemeral-vision-v0.49/manifest.json",
+      "bytes": 556,
+      "sha256": "5ebf7d7d34f6070cc780191219436d8bf0c3a4d4054a46b99a0976ec909ca3e2"
+    },
+    {
+      "path": "experiments/ephemeral-vision-v0.49/source-provenance.json",
+      "bytes": 289,
+      "sha256": "a8c767fcaa237b560aa6a8bda124e595a0add7752691fe728501bdc3fdfc5137"
     },
     {
       "path": "experiments/evidence-routing-v0.48/README.md",
@@ -7791,19 +7811,19 @@
       "sha256": "3247e69ad3d8d857ec063da8ca805aca9cd27d6ebf5da660b9cb5af3c344b981"
     },
     {
-      "path": "experiments/evidence-routing-v0.48/source-provenance.json",
-      "bytes": 288,
-      "sha256": "cc5e064b63398efed1dd234ba1487f16d394c53d7cd2e88a94cd5dce920a55fb"
-    },
-    {
       "path": "experiments/evidence-routing-v0.48/VERIFICATION.md",
       "bytes": 365,
       "sha256": "bdfba72096bf1dadb35199da34f52eaaa2b670522a6a7866e3e7899455336d38"
     },
     {
-      "path": "experiments/planning-roadmap-v0.50/manifest.json",
-      "bytes": 989,
-      "sha256": "284f16267581d5a7dbb65569b5b9302bad2ac5f9ccb57c96f66684de8b63dc61"
+      "path": "experiments/evidence-routing-v0.48/manifest.json",
+      "bytes": 493,
+      "sha256": "03baee24cccb277bd9e077db2876684fc537c7f420785e67957b954de37d8f94"
+    },
+    {
+      "path": "experiments/evidence-routing-v0.48/source-provenance.json",
+      "bytes": 288,
+      "sha256": "cc5e064b63398efed1dd234ba1487f16d394c53d7cd2e88a94cd5dce920a55fb"
     },
     {
       "path": "experiments/planning-roadmap-v0.50/README.md",
@@ -7816,14 +7836,24 @@
       "sha256": "0625df7eb68a172d188b48c35cbeef8df9f1a49526e8cbfe34e34187186c9af6"
     },
     {
-      "path": "experiments/portable-continuation-v0.46/manifest.json",
-      "bytes": 728,
-      "sha256": "d705a0828c81b90b9097e77216620a747fd7fe8d4afcb7a542e32810504d4648"
+      "path": "experiments/planning-roadmap-v0.50/manifest.json",
+      "bytes": 989,
+      "sha256": "284f16267581d5a7dbb65569b5b9302bad2ac5f9ccb57c96f66684de8b63dc61"
     },
     {
       "path": "experiments/portable-continuation-v0.46/README.md",
       "bytes": 1470,
       "sha256": "4d4b21b934ca912e880e48e9450f278eb0da7876ec85fd27b6d4d5366e44e8f8"
+    },
+    {
+      "path": "experiments/portable-continuation-v0.46/VERIFICATION.md",
+      "bytes": 496,
+      "sha256": "59626e5af263fd96ceb9b294d202d20958070f05203f3bb467c5b94c1ba4a49e"
+    },
+    {
+      "path": "experiments/portable-continuation-v0.46/manifest.json",
+      "bytes": 728,
+      "sha256": "d705a0828c81b90b9097e77216620a747fd7fe8d4afcb7a542e32810504d4648"
     },
     {
       "path": "experiments/portable-continuation-v0.46/source-provenance.json",
@@ -7836,9 +7866,9 @@
       "sha256": "1e8a4aaece62da15708bdf8cb886f9f3ce65f5943d7fb98619462ce15d84ebba"
     },
     {
-      "path": "experiments/portable-continuation-v0.46/VERIFICATION.md",
-      "bytes": 496,
-      "sha256": "59626e5af263fd96ceb9b294d202d20958070f05203f3bb467c5b94c1ba4a49e"
+      "path": "experiments/service-modes-sidecar-v0.54/README.md",
+      "bytes": 2745,
+      "sha256": "c4859043fcc09f46afd87e7066a665e7c50e4c1693879827074a0ed2fe4aa02b"
     },
     {
       "path": "experiments/service-modes-sidecar-v0.54/manifest.json",
@@ -7846,9 +7876,14 @@
       "sha256": "33fc084f7567363f459e5d107321324ad7f29a596ff95f4290a9a2b558e8d6ce"
     },
     {
-      "path": "experiments/service-modes-sidecar-v0.54/README.md",
-      "bytes": 2745,
-      "sha256": "c4859043fcc09f46afd87e7066a665e7c50e4c1693879827074a0ed2fe4aa02b"
+      "path": "experiments/specialist-substrate-v0.45/README.md",
+      "bytes": 920,
+      "sha256": "c805a0768ff0d24cbef0ef18d11ce794ea3d43e5c373f6a813108b9e8b62e70b"
+    },
+    {
+      "path": "experiments/specialist-substrate-v0.45/VERIFICATION.md",
+      "bytes": 513,
+      "sha256": "986d7938522fa02afcd40ffe613a0eb3a7022dd3bba3408d0b11b33c0d467494"
     },
     {
       "path": "experiments/specialist-substrate-v0.45/manifest.json",
@@ -7856,19 +7891,19 @@
       "sha256": "d9647fc6820b78655bc03f5154e2a5a99a7ea50196693141d481160980edacdc"
     },
     {
-      "path": "experiments/specialist-substrate-v0.45/README.md",
-      "bytes": 920,
-      "sha256": "c805a0768ff0d24cbef0ef18d11ce794ea3d43e5c373f6a813108b9e8b62e70b"
-    },
-    {
       "path": "experiments/specialist-substrate-v0.45/source-provenance.json",
       "bytes": 1564,
       "sha256": "ef10fd785eb0aa5c03b58daa3420bdbdb39e3489d1a03910a4177234aef15b11"
     },
     {
-      "path": "experiments/specialist-substrate-v0.45/VERIFICATION.md",
-      "bytes": 513,
-      "sha256": "986d7938522fa02afcd40ffe613a0eb3a7022dd3bba3408d0b11b33c0d467494"
+      "path": "experiments/website-creation-v0.51/README.md",
+      "bytes": 2468,
+      "sha256": "1c1fd7aa8a0e9722d65f24e250dae4a3a00581542a7febc7c69e26e2a118728e"
+    },
+    {
+      "path": "experiments/website-creation-v0.51/VERIFICATION.md",
+      "bytes": 4514,
+      "sha256": "873f4bc8d441aaa731a432fba03afc5cadd3a72c2b25d2a86bf84a2bc910cafd"
     },
     {
       "path": "experiments/website-creation-v0.51/failure-training-projection.jsonl",
@@ -7901,19 +7936,9 @@
       "sha256": "dc0b610e896f844a73b6af19a8795b72c05fc319c7ce2cf5e4dc392906a984bc"
     },
     {
-      "path": "experiments/website-creation-v0.51/README.md",
-      "bytes": 2468,
-      "sha256": "1c1fd7aa8a0e9722d65f24e250dae4a3a00581542a7febc7c69e26e2a118728e"
-    },
-    {
       "path": "experiments/website-creation-v0.51/selftest.js",
       "bytes": 3278,
       "sha256": "c901e42fe3ca0f528953ed5484597747fcb382e8e64ff5b22584693265c532fd"
-    },
-    {
-      "path": "experiments/website-creation-v0.51/VERIFICATION.md",
-      "bytes": 4514,
-      "sha256": "873f4bc8d441aaa731a432fba03afc5cadd3a72c2b25d2a86bf84a2bc910cafd"
     },
     {
       "path": "experiments/website-creation-v0.51/website-creation-probe.js",
@@ -7921,14 +7946,14 @@
       "sha256": "0b0d9af6050e34df7ef8912433512461aba62abc4c120acf6b299d6f70feb0df"
     },
     {
-      "path": "experiments/workshop-capability-intake-v0.54/manifest.json",
-      "bytes": 793,
-      "sha256": "5fd580edaa4ca1b9db14a416f2603ec94270c8ad9384b0a8413226ac1de9e2a0"
-    },
-    {
       "path": "experiments/workshop-capability-intake-v0.54/README.md",
       "bytes": 1476,
       "sha256": "d5cdb83a5ec9f8b4c4cb110e53d77b46441414f91e80fa777db6fee09c847830"
+    },
+    {
+      "path": "experiments/workshop-capability-intake-v0.54/manifest.json",
+      "bytes": 793,
+      "sha256": "5fd580edaa4ca1b9db14a416f2603ec94270c8ad9384b0a8413226ac1de9e2a0"
     },
     {
       "path": "go.mod",
@@ -9821,16 +9846,6 @@
       "sha256": "90afcfcf10c539504d9ac4c7903c3291cec6ca61ab7c46fe2caefbf62335161d"
     },
     {
-      "path": "LICENSE",
-      "bytes": 11558,
-      "sha256": "1eb85fc97224598dad1852b5d6483bbcf0aa8608790dcc657a5a2a761ae9c8c6"
-    },
-    {
-      "path": "NOTICE",
-      "bytes": 132,
-      "sha256": "496461160a9eab3c4fc7efd7c7bdca5527f906a006e5c545019e0bc6f9290053"
-    },
-    {
       "path": "portable/walmi-browser-cartridge/README.md",
       "bytes": 1729,
       "sha256": "91a874720d8dd60f200f82da7895db076effbcd43d0a9359b32f9bfc87122d99"
@@ -9839,6 +9854,11 @@
       "path": "portable/walmi-browser-cartridge/runtime/browser-entry.js",
       "bytes": 5777,
       "sha256": "f1fdeb1dc0a6587b65e03d7ac58fa38399154fd359a6e188ddd7179d46677abf"
+    },
+    {
+      "path": "portable/walmi-pc-package/WALMI_WORKSPACE_REQUEST_EXAMPLE.json",
+      "bytes": 314,
+      "sha256": "6348b4b6b88c58bc6732419ce208b6568238e644c9446bd68343eb8e59534189"
     },
     {
       "path": "portable/walmi-pc-package/build_travel_cartridge_v03.py",
@@ -9971,11 +9991,6 @@
       "sha256": "59a153b93c73409f0c7d657131e897b67b9a6277e1c714ec76956d4964ed4a55"
     },
     {
-      "path": "portable/walmi-pc-package/WALMI_WORKSPACE_REQUEST_EXAMPLE.json",
-      "bytes": 314,
-      "sha256": "6348b4b6b88c58bc6732419ce208b6568238e644c9446bd68343eb8e59534189"
-    },
-    {
       "path": "portable/walmi-pc-package/write_host_layout.py",
       "bytes": 8624,
       "sha256": "7226bbed2394827b4ca01a09570fe54eba7095da75f8826bf205cf01945c7c80"
@@ -9984,11 +9999,6 @@
       "path": "portable/walmi-pc-package/write_host_layout_v02.py",
       "bytes": 4116,
       "sha256": "f954c56ed3d5d9ba810a4b867d0282067b1991cb0a5a7c6a30deb514f0622589"
-    },
-    {
-      "path": "README.md",
-      "bytes": 4863,
-      "sha256": "55a825f8323a196c789a03ef38da47539ca527742d13330b650dfa95edb55162"
     },
     {
       "path": "research/asset-foundry-knowledge-sources-2026-08-15.json",
@@ -10101,14 +10111,24 @@
       "sha256": "c1b4749d74154f5c5674db8a72847fe9f080a3e2f16ec2834ff33973e708b726"
     },
     {
+      "path": "research/v0.11-organ-fabric/source-packet/SOURCE_PACKET_CHUNKS.json",
+      "bytes": 746,
+      "sha256": "c584de641268b822fbbd278f45d43eadc44bb5b619248926e1121190e8476369"
+    },
+    {
       "path": "research/v0.11-organ-fabric/source-packet/reassemble_source_packet.py",
       "bytes": 750,
       "sha256": "9a0f2947c82cdff5cb62e19b1b5ccdb62faae27277c3494d9d6cd77b5e0b7f9e"
     },
     {
-      "path": "research/v0.11-organ-fabric/source-packet/SOURCE_PACKET_CHUNKS.json",
-      "bytes": 746,
-      "sha256": "c584de641268b822fbbd278f45d43eadc44bb5b619248926e1121190e8476369"
+      "path": "research/v0.12-organ-execution-parity/README.md",
+      "bytes": 3436,
+      "sha256": "10e7727085e6137a2dd0ba6fc7e2b517775b2a6d42749cc614ca7517ffdc8ddc"
+    },
+    {
+      "path": "research/v0.12-organ-execution-parity/SHA256SUMS",
+      "bytes": 481,
+      "sha256": "c1b86784c50ceb2655576cece9a48ce06ce2dcff4bf1cea4ed995054b2c888e7"
     },
     {
       "path": "research/v0.12-organ-execution-parity/baseline-candidate-execution-parity.json",
@@ -10126,14 +10146,14 @@
       "sha256": "afb1babafe1d8df4fc87b0d1737ab94daf5dc068a42428d15415e62289b8c302"
     },
     {
-      "path": "research/v0.12-organ-execution-parity/README.md",
-      "bytes": 3436,
-      "sha256": "10e7727085e6137a2dd0ba6fc7e2b517775b2a6d42749cc614ca7517ffdc8ddc"
+      "path": "research/v0.13-peer-audit/README.md",
+      "bytes": 4016,
+      "sha256": "1458fd8ba4d4128d749f5bbab4a58d0a1be49c46411a378248a5635e9bcc3b1f"
     },
     {
-      "path": "research/v0.12-organ-execution-parity/SHA256SUMS",
-      "bytes": 481,
-      "sha256": "c1b86784c50ceb2655576cece9a48ce06ce2dcff4bf1cea4ed995054b2c888e7"
+      "path": "research/v0.13-peer-audit/REPLAY_PROTOCOL.md",
+      "bytes": 2286,
+      "sha256": "490912a0ad27fc057ea4b9699835783b875f45b5a404e25ee9257cda573009a4"
     },
     {
       "path": "research/v0.13-peer-audit/peer-audit-pack-public-projection.json",
@@ -10141,19 +10161,14 @@
       "sha256": "3624d7cbbbcf03d5f3672796616167e5b3be4f3996514ba528e8f85bb7e9ad51"
     },
     {
-      "path": "research/v0.13-peer-audit/README.md",
-      "bytes": 4016,
-      "sha256": "1458fd8ba4d4128d749f5bbab4a58d0a1be49c46411a378248a5635e9bcc3b1f"
-    },
-    {
       "path": "research/v0.13-peer-audit/replay-summary.json",
       "bytes": 987,
       "sha256": "a6af7cd46688d46170b993fad82b26d5de4256cdc8d8a8e81791cbcf221ab8cb"
     },
     {
-      "path": "research/v0.13-peer-audit/REPLAY_PROTOCOL.md",
-      "bytes": 2286,
-      "sha256": "490912a0ad27fc057ea4b9699835783b875f45b5a404e25ee9257cda573009a4"
+      "path": "research/v0.14-witness-dissent/README.md",
+      "bytes": 3308,
+      "sha256": "7ba0f0a14997b0b4e252def489ee564c580fe99bbe8769d594e674301a566886"
     },
     {
       "path": "research/v0.14-witness-dissent/build_ledger.py",
@@ -10164,11 +10179,6 @@
       "path": "research/v0.14-witness-dissent/creation-fabric-return-packet-v0.14.json",
       "bytes": 2963,
       "sha256": "8dbfefd881aef1c056cf0b385be180a2132979af129161d4421bff34565638cd"
-    },
-    {
-      "path": "research/v0.14-witness-dissent/README.md",
-      "bytes": 3308,
-      "sha256": "7ba0f0a14997b0b4e252def489ee564c580fe99bbe8769d594e674301a566886"
     },
     {
       "path": "research/v0.14-witness-dissent/replay-summary.json",
@@ -10216,19 +10226,14 @@
       "sha256": "640e6836ec8e9672337604058dbd9393c918d14fcdc0605c71b40326a2101efe"
     },
     {
-      "path": "research/v0.15-capability-fabric-contract/probe-summary.json",
-      "bytes": 1051,
-      "sha256": "dc56f0aa3493b00c52d335dc88b4908862b14121ec4fcae7c81ab8b3c5c482a8"
-    },
-    {
       "path": "research/v0.15-capability-fabric-contract/README.md",
       "bytes": 5391,
       "sha256": "056f2f4e610ed4dec208ba3c908b63a8e2544be02b6ae45dcfb5859b7b948229"
     },
     {
-      "path": "research/v0.16-capability-composition-contract/probe-summary.json",
-      "bytes": 929,
-      "sha256": "491a76dd263ee08c09397cbc186c0cd11efc042a22330fc37772cbea997495c5"
+      "path": "research/v0.15-capability-fabric-contract/probe-summary.json",
+      "bytes": 1051,
+      "sha256": "dc56f0aa3493b00c52d335dc88b4908862b14121ec4fcae7c81ab8b3c5c482a8"
     },
     {
       "path": "research/v0.16-capability-composition-contract/README.md",
@@ -10236,9 +10241,9 @@
       "sha256": "488174a15f2a6e174cc08f578fcb0b8caee7f49805aa9ce5cbd6a4fbda40b884"
     },
     {
-      "path": "research/v0.17-capability-choice-contract/probe-summary.json",
-      "bytes": 961,
-      "sha256": "26e09de2f80bd4b84ac6c5f82905bdc1795c646d4e2a4c0534db51a1a382c723"
+      "path": "research/v0.16-capability-composition-contract/probe-summary.json",
+      "bytes": 929,
+      "sha256": "491a76dd263ee08c09397cbc186c0cd11efc042a22330fc37772cbea997495c5"
     },
     {
       "path": "research/v0.17-capability-choice-contract/README.md",
@@ -10246,9 +10251,9 @@
       "sha256": "d9631d3a3b71887250c889280d8103bbb8019bb56a01e4daf1fa3f7ba3637fcb"
     },
     {
-      "path": "research/v0.18-selection-receipt-contract/probe-summary.json",
-      "bytes": 981,
-      "sha256": "0e0f4854d9b9768e74a338326a8609f580f7c5e4bf5103b42cd17d6b9a58004d"
+      "path": "research/v0.17-capability-choice-contract/probe-summary.json",
+      "bytes": 961,
+      "sha256": "26e09de2f80bd4b84ac6c5f82905bdc1795c646d4e2a4c0534db51a1a382c723"
     },
     {
       "path": "research/v0.18-selection-receipt-contract/README.md",
@@ -10256,9 +10261,9 @@
       "sha256": "52588e9102ba9920a0bcf92ddbafa136b3a4c5a305605833cb3c01f0108b650b"
     },
     {
-      "path": "research/v0.19-execution-permit-contract/probe-summary.json",
-      "bytes": 843,
-      "sha256": "503b141dd148dbaf9900b7044b363467584a0981cba1022b5adac9abcbfbe61f"
+      "path": "research/v0.18-selection-receipt-contract/probe-summary.json",
+      "bytes": 981,
+      "sha256": "0e0f4854d9b9768e74a338326a8609f580f7c5e4bf5103b42cd17d6b9a58004d"
     },
     {
       "path": "research/v0.19-execution-permit-contract/README.md",
@@ -10266,14 +10271,24 @@
       "sha256": "3b182119e25fda11c3932e0d417d767afae258640cd1427ffd6cc836f94e1989"
     },
     {
-      "path": "research/v0.20-execution-revocation-contract/probe-summary.json",
-      "bytes": 846,
-      "sha256": "f99c2fc56f13de645b417cc7f83d3efce68c85740b4b393575c1f62db3ae607a"
+      "path": "research/v0.19-execution-permit-contract/probe-summary.json",
+      "bytes": 843,
+      "sha256": "503b141dd148dbaf9900b7044b363467584a0981cba1022b5adac9abcbfbe61f"
     },
     {
       "path": "research/v0.20-execution-revocation-contract/README.md",
       "bytes": 3773,
       "sha256": "83876196898204791e424647a2fe3ab91423cc47dcb3f08ece8f6107c9221022"
+    },
+    {
+      "path": "research/v0.20-execution-revocation-contract/probe-summary.json",
+      "bytes": 846,
+      "sha256": "f99c2fc56f13de645b417cc7f83d3efce68c85740b4b393575c1f62db3ae607a"
+    },
+    {
+      "path": "research/v0.21-hermes-surface-exposure/README.md",
+      "bytes": 3358,
+      "sha256": "f979252f6c8b41e294ab26c1672e9567147f69d191d07ec8dcb768ecb7861b6c"
     },
     {
       "path": "research/v0.21-hermes-surface-exposure/hermes-donor-receipt-v0.21.json",
@@ -10286,9 +10301,9 @@
       "sha256": "5d16effdaf71766394ced759ab2b9c8e593d193caffdefa5058bd3e7ee905419"
     },
     {
-      "path": "research/v0.21-hermes-surface-exposure/README.md",
-      "bytes": 3358,
-      "sha256": "f979252f6c8b41e294ab26c1672e9567147f69d191d07ec8dcb768ecb7861b6c"
+      "path": "research/v0.22-platform-hermes-run-capsule/README.md",
+      "bytes": 2484,
+      "sha256": "2b0b79506814565a6ef17f1d3081a227a5fc51d8966849d6f07391256b5c2e1f"
     },
     {
       "path": "research/v0.22-platform-hermes-run-capsule/platform-hermes-donor-receipt-v0.22.json",
@@ -10301,9 +10316,9 @@
       "sha256": "950e4d31690d2210322985737e788ff5e5fa36b544d6350a20310b1f157db42b"
     },
     {
-      "path": "research/v0.22-platform-hermes-run-capsule/README.md",
-      "bytes": 2484,
-      "sha256": "2b0b79506814565a6ef17f1d3081a227a5fc51d8966849d6f07391256b5c2e1f"
+      "path": "research/v0.23-opinion-artifact/README.md",
+      "bytes": 3098,
+      "sha256": "084a7bc94faf9da1dd172aaa398eaab117cd057f38ff9a6671850ff7c9581cd0"
     },
     {
       "path": "research/v0.23-opinion-artifact/design-seed.md",
@@ -10316,9 +10331,9 @@
       "sha256": "dc7279bf4ebb656adea46fcc47af62135da8f09dfc01138731fb81d591b2cc0e"
     },
     {
-      "path": "research/v0.23-opinion-artifact/README.md",
-      "bytes": 3098,
-      "sha256": "084a7bc94faf9da1dd172aaa398eaab117cd057f38ff9a6671850ff7c9581cd0"
+      "path": "research/v0.24-coupled-reasoning/README.md",
+      "bytes": 3760,
+      "sha256": "1bf7b5836382876a14c35e2e7144dafa87e5b9b25604a851540b7fd2fe0c824b"
     },
     {
       "path": "research/v0.24-coupled-reasoning/probe-summary.json",
@@ -10326,24 +10341,24 @@
       "sha256": "da73b0e6414e7e80e77e4afa8fd334743dc7e9c81998829493a23d52fd46011f"
     },
     {
-      "path": "research/v0.24-coupled-reasoning/README.md",
-      "bytes": 3760,
-      "sha256": "1bf7b5836382876a14c35e2e7144dafa87e5b9b25604a851540b7fd2fe0c824b"
-    },
-    {
       "path": "research/v0.25-live-coupled-ab/ARCHITECTURE.md",
       "bytes": 4078,
       "sha256": "12daf5f694304f0a464f97248e7cb77b39be5889b1469658af72a89b4e1c7737"
     },
     {
-      "path": "research/v0.25-live-coupled-ab/artifacts/artifact-manifest.json",
-      "bytes": 6406,
-      "sha256": "bbbf738e1b4c7ccf108a25757d0251cc4426d80ab641c5f57109255212b39898"
+      "path": "research/v0.25-live-coupled-ab/README.md",
+      "bytes": 5537,
+      "sha256": "a43178ab454b319c5e26ba2d735a024f39f7f62507f016ea15def075516569d7"
     },
     {
       "path": "research/v0.25-live-coupled-ab/artifacts/BENCHMARK-SUMMARY.md",
       "bytes": 2245,
       "sha256": "ae85ab2b8fd1bbc616e17bc790a70f33171d6d6559899c6e1775923445062ce5"
+    },
+    {
+      "path": "research/v0.25-live-coupled-ab/artifacts/artifact-manifest.json",
+      "bytes": 6406,
+      "sha256": "bbbf738e1b4c7ccf108a25757d0251cc4426d80ab641c5f57109255212b39898"
     },
     {
       "path": "research/v0.25-live-coupled-ab/artifacts/causal-ledgers/measurement-disagreement--coupled_b.jsonl",
@@ -10486,11 +10501,6 @@
       "sha256": "62b45563e525523477c0ce7f38264a3fc8c6f8fe462a55cecafda76034da0386"
     },
     {
-      "path": "research/v0.25-live-coupled-ab/README.md",
-      "bytes": 5537,
-      "sha256": "a43178ab454b319c5e26ba2d735a024f39f7f62507f016ea15def075516569d7"
-    },
-    {
       "path": "research/v0.25-live-coupled-ab/run_probe.sh",
       "bytes": 187,
       "sha256": "4c8d57e6af3cf72b628c81acd5a22062a52fbf31fdb49d14aaffdb036060c4ca"
@@ -10509,6 +10519,11 @@
       "path": "research/v0.26-hybrid-reasoning/ARCHITECTURE.md",
       "bytes": 2610,
       "sha256": "3941d289aa3ff0d9b00032171e8f62812e46cc5e91d549e922e39da78d1aaa7c"
+    },
+    {
+      "path": "research/v0.26-hybrid-reasoning/README.md",
+      "bytes": 4680,
+      "sha256": "63ba5067d7c8a28163fb00f09d903cb231de98a4652e0bc08d0b837e94a95e59"
     },
     {
       "path": "research/v0.26-hybrid-reasoning/artifacts/BENCHMARK-SUMMARY.md",
@@ -10546,11 +10561,6 @@
       "sha256": "c614c69908a806918a4679c37ce8e08a536a7d8328cdb5627b9bb84c965ab91f"
     },
     {
-      "path": "research/v0.26-hybrid-reasoning/README.md",
-      "bytes": 4680,
-      "sha256": "63ba5067d7c8a28163fb00f09d903cb231de98a4652e0bc08d0b837e94a95e59"
-    },
-    {
       "path": "research/v0.26-hybrid-reasoning/scenarios.json",
       "bytes": 5452,
       "sha256": "f286bb8c0dd20adec246bf885f86bdb8324f1038d26ec682fbe1b0646b3b558d"
@@ -10569,6 +10579,11 @@
       "path": "research/v0.27-calibrated-situational-reasoning/BENCHMARK-SUMMARY.md",
       "bytes": 1327,
       "sha256": "b817e55bf57c6ab3d662feff4c9752232dc43bc8dc83cb830467dd1bed5ccc99"
+    },
+    {
+      "path": "research/v0.27-calibrated-situational-reasoning/README.md",
+      "bytes": 4017,
+      "sha256": "073567ceff4eb214ee492a1a77523a24dacec20e805389217c02045839c36b1f"
     },
     {
       "path": "research/v0.27-calibrated-situational-reasoning/ledger-root.json",
@@ -10591,11 +10606,6 @@
       "sha256": "2b6c565395986594205debefdf5a9b1488ee3e2c092d19a7feffd620c51fb478"
     },
     {
-      "path": "research/v0.27-calibrated-situational-reasoning/README.md",
-      "bytes": 4017,
-      "sha256": "073567ceff4eb214ee492a1a77523a24dacec20e805389217c02045839c36b1f"
-    },
-    {
       "path": "research/v0.27-calibrated-situational-reasoning/scenarios.json",
       "bytes": 7229,
       "sha256": "f1fc6aa95aa7b48127de1d445b0c7596695472d11c78e64a6797c4d3df3dcf39"
@@ -10614,6 +10624,11 @@
       "path": "research/v0.28-change-point-evidence-invalidation/BENCHMARK-SUMMARY.md",
       "bytes": 2138,
       "sha256": "e3f15ad06cf47febde726c034e2799ddf5a2d65b63a5af74f15ba570f945ad2f"
+    },
+    {
+      "path": "research/v0.28-change-point-evidence-invalidation/README.md",
+      "bytes": 5915,
+      "sha256": "db2107acf264cb339b231c851445c0832a5518bd6907b59b1f3acce70c8f4d9c"
     },
     {
       "path": "research/v0.28-change-point-evidence-invalidation/ledger-root.json",
@@ -10639,11 +10654,6 @@
       "path": "research/v0.28-change-point-evidence-invalidation/publication-manifest.json",
       "bytes": 2229,
       "sha256": "22c9c3495c964d8ee124875a7ab0d960e07dea3c4ee9af6a03c732decdc60b6c"
-    },
-    {
-      "path": "research/v0.28-change-point-evidence-invalidation/README.md",
-      "bytes": 5915,
-      "sha256": "db2107acf264cb339b231c851445c0832a5518bd6907b59b1f3acce70c8f4d9c"
     },
     {
       "path": "research/v0.28-change-point-evidence-invalidation/repeatability.json",
@@ -10674,6 +10684,11 @@
       "path": "research/v0.29-detection-reaction-separation/BENCHMARK-SUMMARY.md",
       "bytes": 1988,
       "sha256": "c24b90c661f236d88910a6572bd74909d07e6c33e5d322bccc812289ad27665c"
+    },
+    {
+      "path": "research/v0.29-detection-reaction-separation/README.md",
+      "bytes": 5384,
+      "sha256": "a3dba00f49b18f56564897e5e1ef49b80dca5513c4b494f8199bbf0618b83476"
     },
     {
       "path": "research/v0.29-detection-reaction-separation/heldout-seed-receipt.json",
@@ -10711,11 +10726,6 @@
       "sha256": "900ce7298ff1d2a047c802c6ba1ad21fa866720857c04a6c617a85f1ce80da3d"
     },
     {
-      "path": "research/v0.29-detection-reaction-separation/README.md",
-      "bytes": 5384,
-      "sha256": "a3dba00f49b18f56564897e5e1ef49b80dca5513c4b494f8199bbf0618b83476"
-    },
-    {
       "path": "research/v0.29-detection-reaction-separation/repeatability.json",
       "bytes": 64,
       "sha256": "590a2ad01691ab0809e2f28e78cd28f5064c4d6a671926a67610196b192f62ef"
@@ -10744,6 +10754,11 @@
       "path": "research/v0.31-grounding-membrane-coupled-default/BENCHMARK-SUMMARY.md",
       "bytes": 2284,
       "sha256": "6c847efc0ce7dc5c5d71fa462d33b26042c94cc2ccf254e3961f259c5ad30b98"
+    },
+    {
+      "path": "research/v0.31-grounding-membrane-coupled-default/README.md",
+      "bytes": 7313,
+      "sha256": "6b8a80409f36159a3dcf3e6886c91ac651f021690b312b7463e087212a34d8c7"
     },
     {
       "path": "research/v0.31-grounding-membrane-coupled-default/heldout-seed-receipt.json",
@@ -10781,11 +10796,6 @@
       "sha256": "121db24caab61a86c4c6077b8eec8a580930368a0d9c90225c88dc5534aaa3ca"
     },
     {
-      "path": "research/v0.31-grounding-membrane-coupled-default/README.md",
-      "bytes": 7313,
-      "sha256": "6b8a80409f36159a3dcf3e6886c91ac651f021690b312b7463e087212a34d8c7"
-    },
-    {
       "path": "research/v0.31-grounding-membrane-coupled-default/repeatability.json",
       "bytes": 46,
       "sha256": "01f216e027fba170580c5f64c4f2d0ad208a155b0f5f58fc4b8e642714d674ca"
@@ -10806,6 +10816,11 @@
       "sha256": "2214ff973529b5a4cd98623fde6597ba6bd0b5474d13fcb0550c0df2d45b62c9"
     },
     {
+      "path": "research/v0.32-code-fabric-grounding-binding/README.md",
+      "bytes": 2689,
+      "sha256": "a675554bd027138aeb42543dcbec1d31ad90aafe3d74775387ac446c050ff6f5"
+    },
+    {
       "path": "research/v0.32-code-fabric-grounding-binding/donor-receipt.json",
       "bytes": 2554,
       "sha256": "32f0a0ae9e51a1dedb4662e431ac3a25bd79f0600bdc1f3a258dc90dbd7a9a30"
@@ -10814,11 +10829,6 @@
       "path": "research/v0.32-code-fabric-grounding-binding/probe.py",
       "bytes": 6691,
       "sha256": "12f5d9375716e639ad308295d8b7248e175348113f16bac1b53165ce6e2d9824"
-    },
-    {
-      "path": "research/v0.32-code-fabric-grounding-binding/README.md",
-      "bytes": 2689,
-      "sha256": "a675554bd027138aeb42543dcbec1d31ad90aafe3d74775387ac446c050ff6f5"
     },
     {
       "path": "research/v0.32-code-fabric-grounding-binding/result.json",
@@ -10834,6 +10844,11 @@
       "path": "research/v0.33-specialist-corroboration-independence/BENCHMARK-SUMMARY.md",
       "bytes": 1070,
       "sha256": "39a05663c232dad2eac3c1161c8dc872e5380d6b090d3110f6695b4f241b5bdf"
+    },
+    {
+      "path": "research/v0.33-specialist-corroboration-independence/README.md",
+      "bytes": 3681,
+      "sha256": "16888881a2e825acfea11e26e8d33df6e05fcfe12b6ba2ca78572d7a033d7a15"
     },
     {
       "path": "research/v0.33-specialist-corroboration-independence/donor-receipt.json",
@@ -10856,11 +10871,6 @@
       "sha256": "cfd40ead6f1250d32ff14d0137a00d4fe96d17de83da20f3b1e03e8209aedf46"
     },
     {
-      "path": "research/v0.33-specialist-corroboration-independence/README.md",
-      "bytes": 3681,
-      "sha256": "16888881a2e825acfea11e26e8d33df6e05fcfe12b6ba2ca78572d7a033d7a15"
-    },
-    {
       "path": "research/v0.33-specialist-corroboration-independence/result.json",
       "bytes": 1637,
       "sha256": "54bafdca11d0947f4a99603651cb4f076559d334cb0c1a462c1d739d6ce9ade0"
@@ -10874,6 +10884,11 @@
       "path": "research/v0.34-causal-consequence-gate/BENCHMARK-SUMMARY.md",
       "bytes": 1770,
       "sha256": "beab2e2e98930f1c55d5932d9c8085d11c6509fd5a5ba12794ee056e9abd9eec"
+    },
+    {
+      "path": "research/v0.34-causal-consequence-gate/README.md",
+      "bytes": 5512,
+      "sha256": "446181876d2d0186fdcb274c108bdf00a985c923ff116f3b26c9fc571f518062"
     },
     {
       "path": "research/v0.34-causal-consequence-gate/heldout-seed-receipt.json",
@@ -10901,11 +10916,6 @@
       "sha256": "961b57cad4ed77408fe151b313a3d35c664c9a628b8e6859b35df476368dffde"
     },
     {
-      "path": "research/v0.34-causal-consequence-gate/README.md",
-      "bytes": 5512,
-      "sha256": "446181876d2d0186fdcb274c108bdf00a985c923ff116f3b26c9fc571f518062"
-    },
-    {
       "path": "research/v0.34-causal-consequence-gate/result.json",
       "bytes": 3526,
       "sha256": "a05babc3bcb72b9c1100c75e00274480a6eb495aa73acc7d601f25200fbf5742"
@@ -10924,6 +10934,11 @@
       "path": "research/v0.35-live-neural-grounding-runtime/runtime-binding.json",
       "bytes": 1057,
       "sha256": "0ca85c107b8adc10a4387f9f07c373a8f83f2f703ffc854957a674ef553753aa"
+    },
+    {
+      "path": "research/v0.36-real-model-ab/README.md",
+      "bytes": 6434,
+      "sha256": "e09c474e6e1ceb80f830b70d13467cf36f35f76455dcc9612ee8005f954fbe1c"
     },
     {
       "path": "research/v0.36-real-model-ab/contract.json",
@@ -10946,14 +10961,14 @@
       "sha256": "e678787ab781bc1e17673ff5748e5a4b9da4b2dd95ab1e9372c73c936ebc4b51"
     },
     {
-      "path": "research/v0.36-real-model-ab/README.md",
-      "bytes": 6434,
-      "sha256": "e09c474e6e1ceb80f830b70d13467cf36f35f76455dcc9612ee8005f954fbe1c"
-    },
-    {
       "path": "research/v0.36-real-model-ab/results/DEVELOPMENT-RESULT.md",
       "bytes": 2376,
       "sha256": "553193474aab31f8a3bfc8a305126694fb99cdc5eb0a568e78bb4ed67316fb04"
+    },
+    {
+      "path": "research/v0.36-real-model-ab/results/PUBLIC-SUMMARY.json",
+      "bytes": 1894,
+      "sha256": "ae7e7123a0a6ef759fae7c95de13e6b8f724a050ab758e0a5921ff1cca25f38b"
     },
     {
       "path": "research/v0.36-real-model-ab/results/development-run.json",
@@ -10964,11 +10979,6 @@
       "path": "research/v0.36-real-model-ab/results/preheldout-freeze.json",
       "bytes": 1896,
       "sha256": "c3e9472230c118e10d36eddf9c660eebde3ac6755b3653085f76011d7b03230d"
-    },
-    {
-      "path": "research/v0.36-real-model-ab/results/PUBLIC-SUMMARY.json",
-      "bytes": 1894,
-      "sha256": "ae7e7123a0a6ef759fae7c95de13e6b8f724a050ab758e0a5921ff1cca25f38b"
     },
     {
       "path": "research/v0.36-real-model-ab/run_ab.py",
@@ -10986,6 +10996,21 @@
       "sha256": "ee39043c07adc9629bc0c759714306dee9deda7956e438554869c3f384d9b80d"
     },
     {
+      "path": "research/v0.37-mirror-neural-escalation/PUBLIC-RECEIPT.json",
+      "bytes": 3590,
+      "sha256": "13819041d547e7d53528a3d7b4c60fa67e6440efc9fcaeccf554689111b8dc58"
+    },
+    {
+      "path": "research/v0.37-mirror-neural-escalation/README.md",
+      "bytes": 4252,
+      "sha256": "28fea4848b1b484a8e5c34cccc95fb7ce51fc1323c42b713a4ba83055b8d34e4"
+    },
+    {
+      "path": "research/v0.37-mirror-neural-escalation/REAL-RUNTIME-RESULT.md",
+      "bytes": 3490,
+      "sha256": "33adb6c0fec58619843229ddf06fc2ca1376f119a86baf8b2014ff45599dca3c"
+    },
+    {
       "path": "research/v0.37-mirror-neural-escalation/contract.json",
       "bytes": 943,
       "sha256": "74216b8327c3312f4817783fbc3825ec51d64f3cb66a7b9d623edefbcf0f843f"
@@ -11001,19 +11026,19 @@
       "sha256": "8ae9e117aa9c05812a1c626b001a1fff339027732a8ea6c473e9a83a4e7e9a18"
     },
     {
-      "path": "research/v0.37-mirror-neural-escalation/PUBLIC-RECEIPT.json",
-      "bytes": 3590,
-      "sha256": "13819041d547e7d53528a3d7b4c60fa67e6440efc9fcaeccf554689111b8dc58"
+      "path": "research/v0.38-visible-experience-spine/PUBLIC-RECEIPT.json",
+      "bytes": 3676,
+      "sha256": "e7fd07b44f828802e9ae4f78b5269a73a760edfe287f1efaf295170971d5a108"
     },
     {
-      "path": "research/v0.37-mirror-neural-escalation/README.md",
-      "bytes": 4252,
-      "sha256": "28fea4848b1b484a8e5c34cccc95fb7ce51fc1323c42b713a4ba83055b8d34e4"
+      "path": "research/v0.38-visible-experience-spine/README.md",
+      "bytes": 4049,
+      "sha256": "32b1ebc85a58a7515ea68d9e5bb8a1fa5e0c651752b5572a37916304a7a31730"
     },
     {
-      "path": "research/v0.37-mirror-neural-escalation/REAL-RUNTIME-RESULT.md",
-      "bytes": 3490,
-      "sha256": "33adb6c0fec58619843229ddf06fc2ca1376f119a86baf8b2014ff45599dca3c"
+      "path": "research/v0.38-visible-experience-spine/REAL-RUNTIME-RESULT.md",
+      "bytes": 3596,
+      "sha256": "c8dca8b18fd3fa348aa23d070b7a023c7cd016090350527e79d1f4dbe252e1fc"
     },
     {
       "path": "research/v0.38-visible-experience-spine/contract.json",
@@ -11036,19 +11061,19 @@
       "sha256": "2d38efd283f288ccf1e1c43c7ad0e9254462203888bc50d2a628a89176018827"
     },
     {
-      "path": "research/v0.38-visible-experience-spine/PUBLIC-RECEIPT.json",
-      "bytes": 3676,
-      "sha256": "e7fd07b44f828802e9ae4f78b5269a73a760edfe287f1efaf295170971d5a108"
+      "path": "research/v0.39-honest-positive-ground/PUBLIC-RECEIPT.json",
+      "bytes": 3319,
+      "sha256": "78e781eb0c0f9aca697d6ace81d85d28c4620832a372ee569388d8a24a55a4d9"
     },
     {
-      "path": "research/v0.38-visible-experience-spine/README.md",
-      "bytes": 4049,
-      "sha256": "32b1ebc85a58a7515ea68d9e5bb8a1fa5e0c651752b5572a37916304a7a31730"
+      "path": "research/v0.39-honest-positive-ground/README.md",
+      "bytes": 5878,
+      "sha256": "5f5a8ac91a34734d7b3bd49174ce89068c2dd33f90dcbefaa55fac723ca9d900"
     },
     {
-      "path": "research/v0.38-visible-experience-spine/REAL-RUNTIME-RESULT.md",
-      "bytes": 3596,
-      "sha256": "c8dca8b18fd3fa348aa23d070b7a023c7cd016090350527e79d1f4dbe252e1fc"
+      "path": "research/v0.39-honest-positive-ground/REAL-RUNTIME-RESULT.md",
+      "bytes": 4357,
+      "sha256": "dd953f307e034148c4d02a006364954b1d3dd2468d283be47518c77904f2da2e"
     },
     {
       "path": "research/v0.39-honest-positive-ground/contract.json",
@@ -11079,21 +11104,6 @@
       "path": "research/v0.39-honest-positive-ground/positive-ground.jsonl",
       "bytes": 45767,
       "sha256": "3cddf30625db8880eb578f76d88db4f67cae797edcc6fefaaa9e027304866590"
-    },
-    {
-      "path": "research/v0.39-honest-positive-ground/PUBLIC-RECEIPT.json",
-      "bytes": 3319,
-      "sha256": "78e781eb0c0f9aca697d6ace81d85d28c4620832a372ee569388d8a24a55a4d9"
-    },
-    {
-      "path": "research/v0.39-honest-positive-ground/README.md",
-      "bytes": 5878,
-      "sha256": "5f5a8ac91a34734d7b3bd49174ce89068c2dd33f90dcbefaa55fac723ca9d900"
-    },
-    {
-      "path": "research/v0.39-honest-positive-ground/REAL-RUNTIME-RESULT.md",
-      "bytes": 4357,
-      "sha256": "dd953f307e034148c4d02a006364954b1d3dd2468d283be47518c77904f2da2e"
     },
     {
       "path": "research/v0.40-evidence-reviewed-experience/README.md",
@@ -11207,8 +11217,8 @@
     },
     {
       "path": "tools/seal_source_tree.py",
-      "bytes": 4329,
-      "sha256": "6a96dc1a3f1648bcd399789c9ae1b44c4ec68efbac6e5494344b5f8bb7be7ad1"
+      "bytes": 4438,
+      "sha256": "e7ed8179e42b84e54fb75c29ccb0dd27715fa5af4f02f90caa61e693a7581880"
     },
     {
       "path": "tools/test_walmi_ci.py",
@@ -11219,16 +11229,6 @@
       "path": "tools/test_walmi_windows.ps1",
       "bytes": 2130,
       "sha256": "dc20360d2f95b474780db1f9658a03d909d36ce007c80416158340f34d225827"
-    },
-    {
-      "path": "WALMI-SOURCE-PROVENANCE.json",
-      "bytes": 545727,
-      "sha256": "a691df372b27c119adb6ae864ac929c8ae40ed9a61cbaed08dacd1d4aaf2cf9f"
-    },
-    {
-      "path": "WALMI-SOURCE-TRANSFORMATIONS.json",
-      "bytes": 922,
-      "sha256": "f6e660f5b2e29731070bf59fe49719e0f38115e40bc140cef1723ac194507ce7"
     }
   ]
 }
