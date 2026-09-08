@@ -74,3 +74,19 @@ Quality is often the accumulated result of many small correct details, not one l
 - Do not fragment working systems merely for ideology. Add granularity where it creates useful control, reuse, diagnosis, repair, or quality.
 
 **Working rule:** thousands of small good details and capabilities in the right places can improve a result more than one simple big upgrade.
+
+## Canonical state and adaptive realization principle
+
+When useful, separate **what exists** from **how it is expressed on a particular machine**.
+
+- Canonical state/identity is authoritative. Rendering, UI, meshes, previews, audio paths, device skins, caches, and other realizations are replaceable expressions unless explicitly defined otherwise.
+- Preserve expression intent separately where needed so meaning, detail semantics, motion, material character, readability, atmosphere, hierarchy, or sound intent can survive changes in render cost.
+- Prefer one truthful body with multiple realization contracts over divergent `mobile`, `lite`, `desktop`, `ultra`, or platform editions when the same canonical state can support them.
+- Choose realization from canonical state + expression intent + measured machine capabilities + user policy; adaptation may happen at launch or dynamically.
+- A weak device should usually get a cheaper expression, **not weaker truth**.
+- Define non-degradable invariants explicitly: data integrity, core function, privacy, identity, causal/timing meaning, authoritative state, fairness/rules where applicable.
+- Never let a lossy realization overwrite richer canonical state. A projection/cache is not authority.
+- Upgrading expression must not invent canonical facts; downgrading expression must not erase them.
+- Build alternative realization paths where useful, but do not force this split where representation itself is canonical truth.
+
+**Working rule:** degrade expression, never truth; upgrade expression, never invent truth. One body may wake up differently on different machines while remaining the same thing.
