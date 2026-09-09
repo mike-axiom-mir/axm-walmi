@@ -1,9 +1,9 @@
 {
   "schema": "axm.walmi.standalone-source-manifest/v1",
   "copyMode": "FULL_FILES_NO_LINKS",
-  "fileCount": 2245,
-  "totalBytes": 29717998,
-  "treeSha256": "3316406f664b9d357589e03e12a35f17a778644ebc94b3cb032478ee1a6a78c9",
+  "fileCount": 2251,
+  "totalBytes": 30049631,
+  "treeSha256": "e5857cce440970d7cf3e5d5a7ad79a0fd7dfb90be45e959608e6dcb3bdae5e2e",
   "files": [
     {
       "path": ".gitattributes",
@@ -81,14 +81,19 @@
       "sha256": "094f24631cbfc420df1c821681226cfd058f4b710a0e114793f15e474ab30e86"
     },
     {
+      "path": ".github/workflows/workshop-ui-experience.yml",
+      "bytes": 2089,
+      "sha256": "1979ec0fbc4605dbde4a3e017b140def1538c575c60d55d9eda5dcb3b31874bc"
+    },
+    {
       "path": ".gitignore",
       "bytes": 461,
       "sha256": "b0c7ce3bfb4d98ed648357e238c846af3051b26f4e5105788ec0c3f3ae2bdbf1"
     },
     {
       "path": "AGENTS.md",
-      "bytes": 2706,
-      "sha256": "92f971ce23db63b13211bc71d4b611db36fd675f6191687a5ec8e31c87583762"
+      "bytes": 6055,
+      "sha256": "5868fcec166cb14085d70b336897ab891120d59c16db6365119658402c63407e"
     },
     {
       "path": "AXM_MIRROR_EXPERIMENT.md",
@@ -109,6 +114,11 @@
       "path": "README.md",
       "bytes": 4863,
       "sha256": "55a825f8323a196c789a03ef38da47539ca527742d13330b650dfa95edb55162"
+    },
+    {
+      "path": "THIRD_PARTY.json",
+      "bytes": 552,
+      "sha256": "1617eceeb9757cc01d8ca013db1dcdb3ee8a419bd10e1806b21c61196b190cad"
     },
     {
       "path": "WALMI-SOURCE-PROVENANCE.json",
@@ -182,8 +192,8 @@
     },
     {
       "path": "cmd/workshop/ui.html",
-      "bytes": 15609,
-      "sha256": "5d4ba18e141d5ddf3c2db7a89acb7e224a6c50c7b986a48ede1d4b796f340f84"
+      "bytes": 16656,
+      "sha256": "c3c087deb99dd3b2f08f82ec4d46ce31d94404d298a29e98d7455eb014420d36"
     },
     {
       "path": "cmd/workshop/uninstall-autostart.ps1",
@@ -11126,6 +11136,21 @@
       "sha256": "5de73c0be7edf0e46e0274cb07c8f8c89307a79ffaac9e7036f9936970638ec3"
     },
     {
+      "path": "test-results/.last-run.json",
+      "bytes": 45,
+      "sha256": "91d1c43004802cd49950d78eb11c8fa7d05da8ffffe219a8b13b2f561bc00903"
+    },
+    {
+      "path": "test-results/workshop-goal-draft-desktop.png",
+      "bytes": 234545,
+      "sha256": "9742a6a7899e6080f93bee249fc5e05b03fa5f399b6225f10364412550cd23c2"
+    },
+    {
+      "path": "test-results/workshop-goal-draft-mobile.png",
+      "bytes": 85635,
+      "sha256": "1e217eb50adf671fc2206473d6970dbbcaeb78f03622493c2e96888c9ac542ea"
+    },
+    {
       "path": "testing/all.sh",
       "bytes": 650,
       "sha256": "3574113e2e8dda239d3639306d07dbde9b1133d1dd7c26cc73e1364ee7594060"
@@ -11209,6 +11234,11 @@
       "path": "testing/vet.sh",
       "bytes": 378,
       "sha256": "6a2192f01c1dd4bc3c3ea1f7ab3dec8ab03716661b05541a521775b09503a9b3"
+    },
+    {
+      "path": "testing/workshop-ui-goal-draft.spec.js",
+      "bytes": 4371,
+      "sha256": "defc23c7aaf2ffbf1b4df9954481fcc600d2d2d1dcbd050f908a7daa9bbbafcc"
     },
     {
       "path": "tools/build_source_bundle.py",
