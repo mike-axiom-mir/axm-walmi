@@ -49,24 +49,30 @@ def sha256(path: Path) -> str:
     return value.hexdigest()
 
 
-def inventory() -> list[dict[str, object]]:
+def inventory(
+    root: Path = ROOT, manifest: Path | None = None
+) -> list[dict[str, object]]:
+    root = Path(root)
+    manifest = Path(manifest) if manifest is not None else root / MANIFEST.name
     files = []
     paths = sorted(
-        ROOT.rglob("*"),
-        key=lambda path: path.relative_to(ROOT).as_posix().encode("utf-8"),
+        root.rglob("*"),
+        key=lambda path: path.relative_to(root).as_posix().encode("utf-8"),
     )
     for path in paths:
-        if not path.is_file() or path == MANIFEST:
-            continue
-        relative = path.relative_to(ROOT)
+        relative = path.relative_to(root)
         if relative.parts[0] in EXCLUDED_ROOTS:
             continue
         if any(part in EXCLUDED_DIRECTORY_NAMES for part in relative.parts[:-1]):
             continue
         if path.suffix.lower() in EXCLUDED_SUFFIXES:
             continue
+        if path == manifest:
+            continue
         if path.is_symlink():
             raise RuntimeError(f"linked path is forbidden: {relative.as_posix()}")
+        if not path.is_file():
+            continue
         files.append({
             "path": relative.as_posix(),
             "bytes": path.stat().st_size,
