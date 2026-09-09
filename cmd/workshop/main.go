@@ -29,6 +29,7 @@ type Identity struct{ ID, Name, Model string }
 
 type Message struct {
 	ID, Role, Text, CreatedAt string
+	Delivery, DeliveryError   string
 	MediaIDs                  []string `json:"media_ids,omitempty"`
 }
 
@@ -90,6 +91,15 @@ func heartbeatInterval(seconds int) int {
 		return 86400
 	}
 	return seconds
+}
+
+func visibleDeliveryError(err error) string {
+	message := strings.TrimSpace(err.Error())
+	runes := []rune(message)
+	if len(runes) > 360 {
+		message = string(runes[:360]) + "…"
+	}
+	return message
 }
 
 func newApp() (*App, error) {
@@ -164,6 +174,14 @@ func (a *App) normalizeState() bool {
 		if s.Heartbeat == "" || (s.RuntimeMode == "paused" && s.Heartbeat == "idle") {
 			s.Heartbeat = s.RuntimeMode
 			changed = true
+		}
+		for j := range s.Messages {
+			m := &s.Messages[j]
+			if m.Role == "user" && m.Delivery == "pending" {
+				m.Delivery = "failed"
+				m.DeliveryError = "The Workshop stopped before this response finished. Retry when the local model is ready."
+				changed = true
+			}
 		}
 	}
 	return changed
@@ -485,14 +503,14 @@ func (a *App) media(w http.ResponseWriter, r *http.Request) {
 
 func (a *App) chat(w http.ResponseWriter, r *http.Request) {
 	var x struct {
-		SessionID, Text string
-		MediaIDs        []string `json:"media_ids"`
+		SessionID, Text, RetryMessageID string
+		MediaIDs                        []string `json:"media_ids"`
 	}
 	if err := readJSON(r, &x); err != nil {
 		fail(w, 400, err)
 		return
 	}
-	if strings.TrimSpace(x.Text) == "" && len(x.MediaIDs) == 0 {
+	if x.RetryMessageID == "" && strings.TrimSpace(x.Text) == "" && len(x.MediaIDs) == 0 {
 		fail(w, 400, errors.New("message is empty"))
 		return
 	}
@@ -503,8 +521,28 @@ func (a *App) chat(w http.ResponseWriter, r *http.Request) {
 		fail(w, 404, errors.New("session not found"))
 		return
 	}
-	u := Message{ID: id("msg"), Role: "user", Text: strings.TrimSpace(x.Text), MediaIDs: x.MediaIDs, CreatedAt: timestamp()}
-	a.state.Sessions[si].Messages = append(a.state.Sessions[si].Messages, u)
+	messageID := x.RetryMessageID
+	if messageID == "" {
+		u := Message{ID: id("msg"), Role: "user", Text: strings.TrimSpace(x.Text), MediaIDs: x.MediaIDs, CreatedAt: timestamp(), Delivery: "pending"}
+		messageID = u.ID
+		a.state.Sessions[si].Messages = append(a.state.Sessions[si].Messages, u)
+	} else {
+		found := false
+		for i := range a.state.Sessions[si].Messages {
+			m := &a.state.Sessions[si].Messages[i]
+			if m.ID == messageID && m.Role == "user" && m.Delivery == "failed" {
+				m.Delivery = "pending"
+				m.DeliveryError = ""
+				found = true
+				break
+			}
+		}
+		if !found {
+			a.mu.Unlock()
+			fail(w, 409, errors.New("failed message is no longer retryable"))
+			return
+		}
+	}
 	if err := a.save(); err != nil {
 		a.mu.Unlock()
 		fail(w, 500, err)
@@ -521,6 +559,19 @@ func (a *App) chat(w http.ResponseWriter, r *http.Request) {
 	}
 	reply, err := a.generate(r.Context(), ident, s, memories, media)
 	if err != nil {
+		a.mu.Lock()
+		if si := a.sessionIndex(x.SessionID); si >= 0 {
+			for i := range a.state.Sessions[si].Messages {
+				m := &a.state.Sessions[si].Messages[i]
+				if m.ID == messageID && m.Role == "user" {
+					m.Delivery = "failed"
+					m.DeliveryError = visibleDeliveryError(err)
+					break
+				}
+			}
+			_ = a.save()
+		}
+		a.mu.Unlock()
 		fail(w, 502, err)
 		return
 	}
@@ -531,6 +582,14 @@ func (a *App) chat(w http.ResponseWriter, r *http.Request) {
 		a.mu.Unlock()
 		fail(w, 409, errors.New("session disappeared"))
 		return
+	}
+	for i := range a.state.Sessions[si].Messages {
+		m := &a.state.Sessions[si].Messages[i]
+		if m.ID == messageID && m.Role == "user" {
+			m.Delivery = "answered"
+			m.DeliveryError = ""
+			break
+		}
 	}
 	a.state.Sessions[si].Messages = append(a.state.Sessions[si].Messages, m)
 	err = a.save()

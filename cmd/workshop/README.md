@@ -13,6 +13,8 @@ A deliberately small local workspace for Waldo first and additional AI identitie
 - Start / pause controls and selectable heartbeat interval.
 - Background heartbeats write visible progress notes into the session.
 - No overlapping heartbeat calls for the same session.
+- Foreground messages retain visible pending, failed, and answered delivery state.
+- Failed foreground messages can be retried without duplicating the user turn.
 - Runtime state survives process restarts; active sessions resume when the workshop is running again.
 - Windows and Linux user auto-start installers.
 - Explicit consent requests with approve/reject history.
@@ -113,6 +115,8 @@ The auto-start scripts do not delete `~/.axm-workshop` or WALDO model data.
 6. Press **Pause** to prevent future heartbeats.
 
 The scheduler runs one heartbeat at a time per session. If a model response takes longer than the configured interval, another request is not stacked on top of it. A failed model call is recorded visibly and retried on the next normal interval while the session remains active.
+
+Foreground chat failures stay attached to the exact user message with the model-endpoint error and a **Retry** action. Retrying reuses that retained turn rather than adding a duplicate. If the Workshop stops while a foreground response is pending, the next start marks that turn as interrupted and retryable instead of leaving an ambiguous permanent loading state.
 
 ## Creative Room and native Waldo
 

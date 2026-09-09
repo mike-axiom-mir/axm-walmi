@@ -4,6 +4,9 @@ on:
   pull_request:
     paths:
       - cmd/workshop/ui.html
+      - cmd/workshop/main.go
+      - cmd/workshop/main_test.go
+      - testing/workshop-ui-delivery.spec.js
       - testing/workshop-ui-goal-draft.spec.js
       - .github/workflows/workshop-ui-experience.yml
   workflow_dispatch:
@@ -30,8 +33,8 @@ jobs:
         run: npm install --no-save --no-package-lock @playwright/test@1.55.0
       - name: Install Chromium
         run: npx playwright install --with-deps chromium
-      - name: Exercise live-refresh goal draft loop
-        run: npx playwright test testing/workshop-ui-goal-draft.spec.js --reporter=line
+      - name: Exercise Workshop interaction loops
+        run: npx playwright test testing/workshop-ui-goal-draft.spec.js testing/workshop-ui-delivery.spec.js --reporter=line
       - name: Rebuild source seal
         if: success()
         run: |
