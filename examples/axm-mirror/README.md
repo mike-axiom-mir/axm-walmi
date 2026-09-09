@@ -34,6 +34,7 @@ waldo-axm-mirror discover
 waldo-axm-mirror situated-context
 waldo-axm-mirror forge-asset
 waldo-axm-mirror verify-asset
+waldo-axm-mirror materialize-asset
 waldo-axm-mirror census-capabilities
 waldo-axm-mirror intake-capabilities
 waldo-axm-mirror plan-handoff
@@ -67,6 +68,13 @@ foundry compiles it into separate editable recipe/grid, primary PNG, preview
 PNG, and sprite-atlas artifacts inside one deterministic `.axmasset` candidate.
 The fixture pins the complete portable bundle digest, but remains visually
 UNREVIEWED and carries no install, approval, promotion, or CANON authority.
+
+After verification, `materialize-asset <candidate.axmasset> <new-directory>`
+creates a consumer-ready directory containing the exact PNG, atlas, editable
+recipe/grid, candidate metadata, and validation receipt. It refuses existing
+destinations and removes its own incomplete destination on handled failure.
+Materialization makes verified bytes usable; it does not visually approve,
+install, promote, or grant CANON authority to the candidate.
 
 The portable capability fixtures intentionally demonstrate a held real-source
 path:

@@ -1,9 +1,12 @@
 package main
 
 import (
+	"archive/zip"
+	"bytes"
 	"encoding/json"
 	"errors"
 	"fmt"
+	"io"
 	"os"
 	"path/filepath"
 
@@ -108,6 +111,12 @@ func main() {
 			os.Exit(2)
 		}
 		err = verifyInnerAssetFile(os.Args[2])
+	case "materialize-asset":
+		if len(os.Args) != 4 {
+			usage()
+			os.Exit(2)
+		}
+		err = materializeInnerAssetFile(os.Args[2], os.Args[3])
 	case "apply-candidate":
 		if len(os.Args) != 5 {
 			usage()
@@ -255,6 +264,7 @@ func usage() {
 	fmt.Fprintln(os.Stderr, "  waldo-axm-mirror situated-context <context-packet.json> <situated-request.json> <situated-envelope.json>")
 	fmt.Fprintln(os.Stderr, "  waldo-axm-mirror forge-asset <inner-asset-recipe.json> <candidate.axmasset>")
 	fmt.Fprintln(os.Stderr, "  waldo-axm-mirror verify-asset <candidate.axmasset>")
+	fmt.Fprintln(os.Stderr, "  waldo-axm-mirror materialize-asset <candidate.axmasset> <new-directory>")
 	fmt.Fprintln(os.Stderr, "  waldo-axm-mirror apply-candidate <request.json> <workspace-root> <receipt.json>")
 	fmt.Fprintln(os.Stderr, "  waldo-axm-mirror verify-experience-trajectory <record.json>")
 	fmt.Fprintln(os.Stderr, "  waldo-axm-mirror census-capabilities <census-request.json> <self-snapshot.json>")
@@ -581,6 +591,94 @@ func verifyInnerAssetFile(path string) error {
 		return err
 	}
 	fmt.Println("OK", candidate.State, candidate.CandidateSHA256)
+	return nil
+}
+
+// materializeInnerAssetFile is the consumer boundary for a portable candidate.
+// It verifies and deterministically recompiles the complete in-memory bundle
+// before creating the destination. The destination must not already exist, so
+// this operation cannot overwrite an adopted asset or another candidate.
+func materializeInnerAssetFile(bundlePath, destinationPath string) (err error) {
+	data, err := os.ReadFile(bundlePath)
+	if err != nil {
+		return fmt.Errorf("read %s: %w", bundlePath, err)
+	}
+	candidate, err := axmmirror.VerifyInnerAssetBundle(data)
+	if err != nil {
+		return fmt.Errorf("verify inner asset before materialization: %w", err)
+	}
+	if candidate.State != axmmirror.InnerAssetStateReady {
+		return fmt.Errorf("inner asset candidate is %s; held candidates cannot be materialized", candidate.State)
+	}
+	if _, err := os.Lstat(destinationPath); err == nil {
+		return fmt.Errorf("destination %s already exists", destinationPath)
+	} else if !errors.Is(err, os.ErrNotExist) {
+		return fmt.Errorf("inspect destination %s: %w", destinationPath, err)
+	}
+	parent := filepath.Dir(destinationPath)
+	if info, err := os.Stat(parent); err != nil {
+		return fmt.Errorf("inspect destination parent %s: %w", parent, err)
+	} else if !info.IsDir() {
+		return fmt.Errorf("destination parent %s is not a directory", parent)
+	}
+	if err := os.Mkdir(destinationPath, 0o700); err != nil {
+		return fmt.Errorf("create destination %s: %w", destinationPath, err)
+	}
+	complete := false
+	defer func() {
+		if !complete {
+			if cleanupErr := os.RemoveAll(destinationPath); err == nil && cleanupErr != nil {
+				err = fmt.Errorf("clean incomplete destination %s: %w", destinationPath, cleanupErr)
+			}
+		}
+	}()
+
+	reader, err := zip.NewReader(bytes.NewReader(data), int64(len(data)))
+	if err != nil {
+		return fmt.Errorf("reopen verified inner asset: %w", err)
+	}
+	for _, entry := range reader.File {
+		// VerifyInnerAssetBundle has already rejected directories, unsafe names,
+		// duplicate entries, compression, size drift, and undeclared bytes.
+		target := filepath.Join(destinationPath, entry.Name)
+		stream, err := entry.Open()
+		if err != nil {
+			return fmt.Errorf("open verified entry %s: %w", entry.Name, err)
+		}
+		output, err := os.OpenFile(target, os.O_WRONLY|os.O_CREATE|os.O_EXCL, 0o600)
+		if err != nil {
+			_ = stream.Close()
+			return fmt.Errorf("create materialized entry %s: %w", entry.Name, err)
+		}
+		_, copyErr := io.Copy(output, stream)
+		syncErr := output.Sync()
+		closeOutputErr := output.Close()
+		closeStreamErr := stream.Close()
+		if combined := errors.Join(copyErr, syncErr, closeOutputErr, closeStreamErr); combined != nil {
+			return fmt.Errorf("materialize entry %s: %w", entry.Name, combined)
+		}
+		written, err := os.ReadFile(target)
+		if err != nil {
+			return fmt.Errorf("read back materialized entry %s: %w", entry.Name, err)
+		}
+		original, err := entry.Open()
+		if err != nil {
+			return fmt.Errorf("reopen verified entry %s: %w", entry.Name, err)
+		}
+		expected, readErr := io.ReadAll(original)
+		closeErr := original.Close()
+		if joined := errors.Join(readErr, closeErr); joined != nil {
+			return fmt.Errorf("read verified entry %s: %w", entry.Name, joined)
+		}
+		if !bytes.Equal(written, expected) {
+			return fmt.Errorf("materialized entry %s differs from verified bundle bytes", entry.Name)
+		}
+	}
+	if err := os.Chmod(destinationPath, 0o755); err != nil {
+		return fmt.Errorf("finalize destination %s: %w", destinationPath, err)
+	}
+	complete = true
+	fmt.Println("OK", "MATERIALIZED", candidate.CandidateSHA256, destinationPath)
 	return nil
 }
 

@@ -185,6 +185,7 @@ strict pixel recipe
 ```bash
 ./waldo-axm-mirror forge-asset examples/axm-mirror/inner-asset-recipe.json /tmp/witness-orb.axmasset
 ./waldo-axm-mirror verify-asset /tmp/witness-orb.axmasset
+./waldo-axm-mirror materialize-asset /tmp/witness-orb.axmasset /tmp/witness-orb-files
 ```
 
 Recipes contain only bounded pixel primitives, explicit palettes, frames,
@@ -192,6 +193,10 @@ semantic/presentation layers, canvas constraints, and a deterministic seed.
 They contain no code, prompt, path, URL, external generator, or Asset Hand. A
 READY candidate still has `visual_status: UNREVIEWED`; technical PASS is not
 visual approval, usefulness, shared-vocabulary admission, promotion, or CANON.
+The materialization command first performs the same full digest verification
+and deterministic recompilation, then writes the exact declared files into a
+new destination. It never overwrites an existing directory and does not turn
+candidate bytes into an adopted or visually approved asset.
 
 The exact public Asset Factory and visual-contract knowledge sources are pinned
 in `research/asset-foundry-knowledge-sources-2026-08-15.json`. ADR 9007 defines

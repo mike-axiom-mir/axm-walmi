@@ -2,8 +2,8 @@
   "schema": "axm.walmi.standalone-source-manifest/v1",
   "copyMode": "FULL_FILES_NO_LINKS",
   "fileCount": 2247,
-  "totalBytes": 29729088,
-  "treeSha256": "749c7bcb1fbd30d7eb20d3ca168108e61e4e395626caa68f43bc97f39f7cbe37",
+  "totalBytes": 29736403,
+  "treeSha256": "9f78f12fbefae3feffbb75649da86c6c5b43c6e7f93ae8213c56ae763325d602",
   "files": [
     {
       "path": ".gitattributes",
@@ -92,8 +92,8 @@
     },
     {
       "path": "AXM_MIRROR_EXPERIMENT.md",
-      "bytes": 17773,
-      "sha256": "a794fba67304e8938e762d99ceea5d92b87cc3cabbfc698b950a8f6875c226a2"
+      "bytes": 18146,
+      "sha256": "5f929a718169616f28c35dfe4cf178bc780d9699c44a8f463620c90eb674b943"
     },
     {
       "path": "LICENSE",
@@ -127,13 +127,13 @@
     },
     {
       "path": "cmd/waldo-axm-mirror/main.go",
-      "bytes": 34593,
-      "sha256": "715785c3cbed15374c361cf89cf64de4c5f96a791d4d04afbb4e7c821349bd34"
+      "bytes": 38421,
+      "sha256": "bcec0accec715db64f8749c85867a4a60d41bc17991ec16a901ca50a049159b0"
     },
     {
       "path": "cmd/waldo-axm-mirror/main_test.go",
-      "bytes": 30665,
-      "sha256": "670a135c8db57de69a91919075f8562e4842119b0c5eefd67d91a34b5931269b"
+      "bytes": 33307,
+      "sha256": "1409ae1346803dee50463c1368702a7b665252c2bbe356e4682ee1c13edeb48e"
     },
     {
       "path": "cmd/waldo-mirror-review/main.go",
@@ -907,8 +907,8 @@
     },
     {
       "path": "examples/axm-mirror/README.md",
-      "bytes": 4464,
-      "sha256": "330011a3f0a0c72b85e68b719d4b87610231086283aa05357a7ba2405118c1dd"
+      "bytes": 4936,
+      "sha256": "9446f0a30adf1e257364c1fbfc91bf3983af0c88105605e342c818bfbbf60d33"
     },
     {
       "path": "examples/axm-mirror/capability-gap-request.json",
