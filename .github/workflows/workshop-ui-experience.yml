@@ -32,7 +32,10 @@ jobs:
       - name: Install browser test runner
         run: npm install --no-save --no-package-lock @playwright/test@1.55.0
       - name: Install Chromium
-        run: npx playwright install --with-deps chromium
+        # ubuntu-latest already carries the browser runtime libraries. Avoid an
+        # unrelated apt repository refresh here: a stale third-party package
+        # index must not prevent the checked-in interaction tests from running.
+        run: npx playwright install chromium
       - name: Exercise Workshop interaction loops
         run: npx playwright test testing/workshop-ui-goal-draft.spec.js testing/workshop-ui-delivery.spec.js --reporter=line
       - name: Rebuild source seal
