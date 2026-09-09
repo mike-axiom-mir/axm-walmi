@@ -2,8 +2,8 @@
   "schema": "axm.walmi.standalone-source-manifest/v1",
   "copyMode": "FULL_FILES_NO_LINKS",
   "fileCount": 2254,
-  "totalBytes": 30345721,
-  "treeSha256": "20fa11b21d5aff20bc799882b6bd1bd7f29f971e54bfaf446fcc0725892c5eb5",
+  "totalBytes": 30345731,
+  "treeSha256": "e41ac137734536ac6004ac3b828a4d8504e89237bb22bf107aab3729a56120c9",
   "files": [
     {
       "path": ".gitattributes",
@@ -11157,8 +11157,8 @@
     },
     {
       "path": "test-results/workshop-goal-draft-mobile.png",
-      "bytes": 85625,
-      "sha256": "634aa5b0c8ba71dff3dde344924d0772902ba19b0055469431dfc2c9757561bb"
+      "bytes": 85635,
+      "sha256": "1e217eb50adf671fc2206473d6970dbbcaeb78f03622493c2e96888c9ac542ea"
     },
     {
       "path": "testing/all.sh",
