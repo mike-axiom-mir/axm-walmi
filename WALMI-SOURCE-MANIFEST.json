@@ -1,9 +1,9 @@
 {
   "schema": "axm.walmi.standalone-source-manifest/v1",
   "copyMode": "FULL_FILES_NO_LINKS",
-  "fileCount": 2254,
-  "totalBytes": 30345731,
-  "treeSha256": "e41ac137734536ac6004ac3b828a4d8504e89237bb22bf107aab3729a56120c9",
+  "fileCount": 2249,
+  "totalBytes": 29742550,
+  "treeSha256": "2b2a4ca1b69635ab6b7f08f4a4b6157443af75d861fc92064186eefccee14670",
   "files": [
     {
       "path": ".gitattributes",
@@ -82,8 +82,8 @@
     },
     {
       "path": ".github/workflows/workshop-ui-experience.yml",
-      "bytes": 2457,
-      "sha256": "92f9f6020f8bde303e3a1137b7f922806377e5c36d45e0d0b8a0d788ec251d2a"
+      "bytes": 2800,
+      "sha256": "f60f5c73f75148b1fa80ba2cba2c66f573c1a1d7e1c4e2488e230987d4fb3320"
     },
     {
       "path": ".gitignore",
@@ -11134,31 +11134,6 @@
       "path": "starter-state/shared/SHARED-STATE.json",
       "bytes": 298,
       "sha256": "5de73c0be7edf0e46e0274cb07c8f8c89307a79ffaac9e7036f9936970638ec3"
-    },
-    {
-      "path": "test-results/.last-run.json",
-      "bytes": 45,
-      "sha256": "91d1c43004802cd49950d78eb11c8fa7d05da8ffffe219a8b13b2f561bc00903"
-    },
-    {
-      "path": "test-results/workshop-failed-delivery-desktop.png",
-      "bytes": 213827,
-      "sha256": "5919a8433d9dfb22d6b4161ee8ff66fda8579ab88f76c38c6c48c1c2234d84e8"
-    },
-    {
-      "path": "test-results/workshop-failed-delivery-mobile.png",
-      "bytes": 69472,
-      "sha256": "69a00cbdce719dfd524d7d05ff8d6547220f8c8ea0a486ec1a1cf3c244ff5312"
-    },
-    {
-      "path": "test-results/workshop-goal-draft-desktop.png",
-      "bytes": 234545,
-      "sha256": "9742a6a7899e6080f93bee249fc5e05b03fa5f399b6225f10364412550cd23c2"
-    },
-    {
-      "path": "test-results/workshop-goal-draft-mobile.png",
-      "bytes": 85635,
-      "sha256": "1e217eb50adf671fc2206473d6970dbbcaeb78f03622493c2e96888c9ac542ea"
     },
     {
       "path": "testing/all.sh",
