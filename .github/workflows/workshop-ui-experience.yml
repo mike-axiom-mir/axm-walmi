@@ -1,0 +1,39 @@
+name: Workshop UI experience
+
+on:
+  pull_request:
+    paths:
+      - cmd/workshop/ui.html
+      - testing/workshop-ui-goal-draft.spec.js
+      - .github/workflows/workshop-ui-experience.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  goal-draft:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+      - name: Workshop Go tests
+        run: go test ./cmd/workshop
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install browser test runner
+        run: npm install --no-save --no-package-lock @playwright/test@1.55.0
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Exercise live-refresh goal draft loop
+        run: npx playwright test testing/workshop-ui-goal-draft.spec.js --reporter=line
+      - name: Preserve render evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: workshop-goal-draft-renders
+          path: test-results/*.png
+          if-no-files-found: ignore
