@@ -127,8 +127,19 @@ By default the workshop writes only to:
 ```text
 ~/.axm-workshop/
   state.json
+  state.json.backup
+  recovery/
   media/
 ```
+
+`state.json` is a versioned, SHA-256-bound checkpoint. Before each commit, the
+previous verified checkpoint becomes `state.json.backup`. On startup the
+Workshop verifies current state and its references. If current state is
+missing or damaged but the backup verifies, it restores that backup; rejected
+bytes are preserved exactly in `recovery/` under their SHA-256 identity. If
+neither checkpoint verifies, startup fails closed instead of seeding a new
+identity over existing evidence. Legacy direct state files migrate on first
+successful startup and remain as the first backup.
 
 Conversation history stays with its session. Explicit identity memory is visible to sessions for that identity. Vault memory is visible across identities. Chat content is not silently promoted into durable memory.
 

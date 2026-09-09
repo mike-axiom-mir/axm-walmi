@@ -105,16 +105,25 @@ func newApp() (*App, error) {
 		return nil, err
 	}
 	a := &App{dir: dir, client: &http.Client{Timeout: 120 * time.Second}, running: map[string]bool{}}
-	if b, err := os.ReadFile(filepath.Join(dir, "state.json")); err == nil {
-		if err := json.Unmarshal(b, &a.state); err != nil {
-			return nil, err
-		}
-		if a.normalizeState() {
+	loaded, err := loadWorkshopState(dir)
+	if err != nil {
+		return nil, err
+	}
+	if loaded.Found {
+		a.state = loaded.State
+		if a.normalizeState() || loaded.NeedsCheckpoint {
 			if err := a.save(); err != nil {
 				return nil, err
 			}
 		}
-	} else if errors.Is(err, os.ErrNotExist) {
+		if loaded.RecoveredBackup {
+			if loaded.RejectedStateRef != "" {
+				log.Printf("workshop state recovered from verified backup; rejected bytes preserved at %s", loaded.RejectedStateRef)
+			} else {
+				log.Printf("workshop state recovered from verified backup after the current checkpoint was missing")
+			}
+		}
+	} else {
 		identity := Identity{ID: "waldo", Name: "Waldo", Model: env("AXM_AI_MODEL", "waldo")}
 		a.state = State{
 			Version:    2,
@@ -134,20 +143,22 @@ func newApp() (*App, error) {
 		if err := a.save(); err != nil {
 			return nil, err
 		}
-	} else {
-		return nil, err
 	}
 	return a, nil
 }
 
 func (a *App) normalizeState() bool {
+	return normalizeWorkshopState(&a.state)
+}
+
+func normalizeWorkshopState(state *State) bool {
 	changed := false
-	if a.state.Version < 2 {
-		a.state.Version = 2
+	if state.Version < 2 {
+		state.Version = 2
 		changed = true
 	}
-	for i := range a.state.Sessions {
-		s := &a.state.Sessions[i]
+	for i := range state.Sessions {
+		s := &state.Sessions[i]
 		if s.RuntimeMode != "active" && s.RuntimeMode != "paused" {
 			s.RuntimeMode = "paused"
 			changed = true
@@ -170,15 +181,7 @@ func (a *App) normalizeState() bool {
 }
 
 func (a *App) save() error {
-	b, err := json.MarshalIndent(a.state, "", "  ")
-	if err != nil {
-		return err
-	}
-	tmp := filepath.Join(a.dir, "state.json.tmp")
-	if err := os.WriteFile(tmp, b, 0o600); err != nil {
-		return err
-	}
-	return os.Rename(tmp, filepath.Join(a.dir, "state.json"))
+	return saveWorkshopState(a.dir, a.state)
 }
 
 func out(w http.ResponseWriter, status int, v any) {
@@ -333,9 +336,17 @@ func (a *App) handleOp(w http.ResponseWriter, r *http.Request) {
 		}
 		m := Memory{ID: id("memory"), Scope: x.Scope, Text: strings.TrimSpace(x.Text), CreatedAt: timestamp()}
 		if x.Scope == "session" {
+			if si < 0 {
+				fail(w, 404, errors.New("session not found"))
+				return
+			}
 			m.SessionID = x.SessionID
 		}
 		if x.Scope == "identity" {
+			if _, ok := a.identity(x.IdentityID); !ok {
+				fail(w, 400, errors.New("unknown identity"))
+				return
+			}
 			m.IdentityID = x.IdentityID
 		}
 		a.state.Memories = append(a.state.Memories, m)

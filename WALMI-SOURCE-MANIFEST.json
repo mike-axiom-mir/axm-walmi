@@ -1,9 +1,9 @@
 {
   "schema": "axm.walmi.standalone-source-manifest/v1",
   "copyMode": "FULL_FILES_NO_LINKS",
-  "fileCount": 2245,
-  "totalBytes": 29717998,
-  "treeSha256": "3316406f664b9d357589e03e12a35f17a778644ebc94b3cb032478ee1a6a78c9",
+  "fileCount": 2249,
+  "totalBytes": 29742786,
+  "treeSha256": "67e7482bb44068217434c49f7aa7c7c70fe3092bf86676aca7d344b92f75be8d",
   "files": [
     {
       "path": ".gitattributes",
@@ -87,8 +87,8 @@
     },
     {
       "path": "AGENTS.md",
-      "bytes": 2706,
-      "sha256": "92f971ce23db63b13211bc71d4b611db36fd675f6191687a5ec8e31c87583762"
+      "bytes": 6055,
+      "sha256": "5868fcec166cb14085d70b336897ab891120d59c16db6365119658402c63407e"
     },
     {
       "path": "AXM_MIRROR_EXPERIMENT.md",
@@ -109,6 +109,11 @@
       "path": "README.md",
       "bytes": 4863,
       "sha256": "55a825f8323a196c789a03ef38da47539ca527742d13330b650dfa95edb55162"
+    },
+    {
+      "path": "THIRD_PARTY.json",
+      "bytes": 552,
+      "sha256": "1617eceeb9757cc01d8ca013db1dcdb3ee8a419bd10e1806b21c61196b190cad"
     },
     {
       "path": "WALMI-SOURCE-PROVENANCE.json",
@@ -152,8 +157,8 @@
     },
     {
       "path": "cmd/workshop/README.md",
-      "bytes": 7157,
-      "sha256": "edb43a6bb7d26545d0950f29521875d74f01772d1e1aed6179f54e6a795a4c78"
+      "bytes": 7767,
+      "sha256": "dfc5e5769aff76211a7e77e11a1dde648a7414045128b7b23feeced36772cd91"
     },
     {
       "path": "cmd/workshop/install-autostart.ps1",
@@ -167,8 +172,8 @@
     },
     {
       "path": "cmd/workshop/main.go",
-      "bytes": 21616,
-      "sha256": "7968957108d900f7174b8c23fda6551f8b9cf5f06c591865d5b5475da51c9c20"
+      "bytes": 21896,
+      "sha256": "475b959d81e5ccb668fb3464a230347a0400927f671e16549682ca1fbe2c3312"
     },
     {
       "path": "cmd/workshop/main_test.go",
@@ -179,6 +184,16 @@
       "path": "cmd/workshop/native_bridge.go",
       "bytes": 5565,
       "sha256": "50e788a3b1e841c1e739623cd555ca30ba165aa71ed724f28fe969ad5516e414"
+    },
+    {
+      "path": "cmd/workshop/state_store.go",
+      "bytes": 10998,
+      "sha256": "889d4fb956729681fe3dc995d17a0a4b02487d39f15b2d1c4bbbd916ef21171c"
+    },
+    {
+      "path": "cmd/workshop/state_store_test.go",
+      "bytes": 6329,
+      "sha256": "358000971be8f8db5f56c2c0d59095eebfac9d2ffff95cc6d49170cec5d4f5dd"
     },
     {
       "path": "cmd/workshop/ui.html",
@@ -656,6 +671,11 @@
       "sha256": "d6cef54d243567e95b5442a3694ee69573754f8ff16d8ca8ec48da59f49f3413"
     },
     {
+      "path": "docs/adr/0064-workshop-state-checkpoints.md",
+      "bytes": 2574,
+      "sha256": "08c488a25c1d96447a9516f6601ed993069feea25d5f6a40d45893211e47e819"
+    },
+    {
       "path": "docs/adr/9001-axm-mirror-behavior-evidence.md",
       "bytes": 2027,
       "sha256": "c8206ee640ec273e64efd891d5b1b3bfbbc4ff27a8cddc2e627d83f52f6e1323"
@@ -892,8 +912,8 @@
     },
     {
       "path": "docs/adr/README.md",
-      "bytes": 9325,
-      "sha256": "83ff6ed08b5a9d64a6ae13548e163abfa23185814bd60f5624578b1969f3a1bb"
+      "bytes": 9421,
+      "sha256": "d4a514b67a476de02f7219c50382389184680e3c9b9e578ba4155d49880a34ce"
     },
     {
       "path": "docs/examples/eu-gpai-provider.json",
