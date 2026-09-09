@@ -38,10 +38,17 @@ jobs:
         run: npx playwright install chromium
       - name: Exercise Workshop interaction loops
         run: npx playwright test testing/workshop-ui-goal-draft.spec.js testing/workshop-ui-delivery.spec.js --reporter=line
+      - name: Stage browser evidence outside the source tree
+        if: success()
+        run: |
+          rm -rf "${RUNNER_TEMP}/workshop-goal-draft-evidence"
+          mv test-results "${RUNNER_TEMP}/workshop-goal-draft-evidence"
       - name: Rebuild source seal
         if: success()
         run: |
           python3 tools/seal_source_tree.py
+          mkdir -p test-results
+          cp -R "${RUNNER_TEMP}/workshop-goal-draft-evidence/." test-results/
           cp WALMI-SOURCE-MANIFEST.json test-results/WALMI-SOURCE-MANIFEST.json
       - name: Commit exact source seal to this PR lane
         if: success() && github.event_name == 'pull_request'
