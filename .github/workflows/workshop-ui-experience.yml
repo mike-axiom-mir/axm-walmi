@@ -30,10 +30,15 @@ jobs:
         run: npx playwright install --with-deps chromium
       - name: Exercise live-refresh goal draft loop
         run: npx playwright test testing/workshop-ui-goal-draft.spec.js --reporter=line
-      - name: Preserve render evidence
+      - name: Rebuild source-seal candidate
+        if: success()
+        run: |
+          python3 tools/seal_source_tree.py
+          cp WALMI-SOURCE-MANIFEST.json test-results/WALMI-SOURCE-MANIFEST.json
+      - name: Preserve render and seal evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: workshop-goal-draft-renders
-          path: test-results/*.png
+          name: workshop-goal-draft-evidence
+          path: test-results/*
           if-no-files-found: ignore
