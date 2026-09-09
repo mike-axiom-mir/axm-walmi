@@ -9,13 +9,15 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   goal-draft:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
       - uses: actions/setup-go@v5
         with:
           go-version-file: go.mod
@@ -30,11 +32,25 @@ jobs:
         run: npx playwright install --with-deps chromium
       - name: Exercise live-refresh goal draft loop
         run: npx playwright test testing/workshop-ui-goal-draft.spec.js --reporter=line
-      - name: Rebuild source-seal candidate
+      - name: Rebuild source seal
         if: success()
         run: |
           python3 tools/seal_source_tree.py
           cp WALMI-SOURCE-MANIFEST.json test-results/WALMI-SOURCE-MANIFEST.json
+      - name: Commit exact source seal to this PR lane
+        if: success() && github.event_name == 'pull_request'
+        env:
+          HEAD_REF: ${{ github.head_ref }}
+        run: |
+          if git diff --quiet -- WALMI-SOURCE-MANIFEST.json; then
+            echo "Source seal already matches this head."
+            exit 0
+          fi
+          git config user.name "AXM Experience Automation"
+          git config user.email "axm-experience-automation@users.noreply.github.com"
+          git add WALMI-SOURCE-MANIFEST.json
+          git commit -s -m "Refresh WALMI source seal for Workshop experience lane"
+          git push origin "HEAD:${HEAD_REF}"
       - name: Preserve render and seal evidence
         if: always()
         uses: actions/upload-artifact@v4
