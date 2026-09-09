@@ -261,8 +261,9 @@ func (a *App) handleOp(w http.ResponseWriter, r *http.Request) {
 			title = "New session"
 		}
 		s := Session{ID: id("session"), IdentityID: x.IdentityID, Title: title, Heartbeat: "paused", RuntimeMode: "paused", HeartbeatEverySec: 300, CreatedAt: timestamp(), Messages: []Message{}}
-		a.state.Sessions = append(a.state.Sessions, s)
-		if err := a.save(); err != nil {
+		if err := a.commitStateMutation(func(state *State) {
+			state.Sessions = append(state.Sessions, s)
+		}); err != nil {
 			fail(w, 500, err)
 			return
 		}
@@ -272,8 +273,9 @@ func (a *App) handleOp(w http.ResponseWriter, r *http.Request) {
 			fail(w, 404, errors.New("session not found"))
 			return
 		}
-		a.state.Sessions[si].Goal = strings.TrimSpace(x.Goal)
-		if err := a.save(); err != nil {
+		if err := a.commitStateMutation(func(state *State) {
+			state.Sessions[si].Goal = strings.TrimSpace(x.Goal)
+		}); err != nil {
 			fail(w, 500, err)
 			return
 		}
@@ -286,8 +288,9 @@ func (a *App) handleOp(w http.ResponseWriter, r *http.Request) {
 		if strings.TrimSpace(x.Status) == "" {
 			x.Status = "pulse"
 		}
-		a.state.Sessions[si].Heartbeat, a.state.Sessions[si].LastHeartbeat = x.Status, timestamp()
-		if err := a.save(); err != nil {
+		if err := a.commitStateMutation(func(state *State) {
+			state.Sessions[si].Heartbeat, state.Sessions[si].LastHeartbeat = x.Status, timestamp()
+		}); err != nil {
 			fail(w, 500, err)
 			return
 		}
@@ -301,30 +304,31 @@ func (a *App) handleOp(w http.ResponseWriter, r *http.Request) {
 			fail(w, 400, errors.New("runtime status must be active or paused"))
 			return
 		}
-		s := &a.state.Sessions[si]
-		if x.Status == "active" && strings.TrimSpace(s.Goal) == "" {
+		if x.Status == "active" && strings.TrimSpace(a.state.Sessions[si].Goal) == "" {
 			fail(w, 400, errors.New("set a goal before starting background runtime"))
 			return
 		}
-		if x.EverySeconds > 0 {
-			s.HeartbeatEverySec = heartbeatInterval(x.EverySeconds)
-		} else if s.HeartbeatEverySec <= 0 {
-			s.HeartbeatEverySec = 300
-		}
-		s.RuntimeMode = x.Status
-		s.LastRuntimeError = ""
-		if x.Status == "active" {
-			s.Heartbeat = "active"
-			s.NextHeartbeat = time.Now().UTC().Add(2 * time.Second).Format(time.RFC3339)
-		} else {
-			s.Heartbeat = "paused"
-			s.NextHeartbeat = ""
-		}
-		if err := a.save(); err != nil {
+		if err := a.commitStateMutation(func(state *State) {
+			s := &state.Sessions[si]
+			if x.EverySeconds > 0 {
+				s.HeartbeatEverySec = heartbeatInterval(x.EverySeconds)
+			} else if s.HeartbeatEverySec <= 0 {
+				s.HeartbeatEverySec = 300
+			}
+			s.RuntimeMode = x.Status
+			s.LastRuntimeError = ""
+			if x.Status == "active" {
+				s.Heartbeat = "active"
+				s.NextHeartbeat = time.Now().UTC().Add(2 * time.Second).Format(time.RFC3339)
+			} else {
+				s.Heartbeat = "paused"
+				s.NextHeartbeat = ""
+			}
+		}); err != nil {
 			fail(w, 500, err)
 			return
 		}
-		out(w, 200, *s)
+		out(w, 200, a.state.Sessions[si])
 	case "memory_add":
 		if x.Scope != "session" && x.Scope != "identity" && x.Scope != "vault" {
 			fail(w, 400, errors.New("bad memory scope"))
@@ -349,8 +353,9 @@ func (a *App) handleOp(w http.ResponseWriter, r *http.Request) {
 			}
 			m.IdentityID = x.IdentityID
 		}
-		a.state.Memories = append(a.state.Memories, m)
-		if err := a.save(); err != nil {
+		if err := a.commitStateMutation(func(state *State) {
+			state.Memories = append(state.Memories, m)
+		}); err != nil {
 			fail(w, 500, err)
 			return
 		}
@@ -358,8 +363,9 @@ func (a *App) handleOp(w http.ResponseWriter, r *http.Request) {
 	case "memory_delete":
 		for i, m := range a.state.Memories {
 			if m.ID == x.ID {
-				a.state.Memories = append(a.state.Memories[:i], a.state.Memories[i+1:]...)
-				if err := a.save(); err != nil {
+				if err := a.commitStateMutation(func(state *State) {
+					state.Memories = append(state.Memories[:i], state.Memories[i+1:]...)
+				}); err != nil {
 					fail(w, 500, err)
 					return
 				}
@@ -378,8 +384,9 @@ func (a *App) handleOp(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		c := Consent{ID: id("consent"), SessionID: x.SessionID, Action: strings.TrimSpace(x.Action), Reason: strings.TrimSpace(x.Reason), Status: "pending", CreatedAt: timestamp()}
-		a.state.Consents = append(a.state.Consents, c)
-		if err := a.save(); err != nil {
+		if err := a.commitStateMutation(func(state *State) {
+			state.Consents = append(state.Consents, c)
+		}); err != nil {
 			fail(w, 500, err)
 			return
 		}
@@ -391,8 +398,9 @@ func (a *App) handleOp(w http.ResponseWriter, r *http.Request) {
 		}
 		for i := range a.state.Consents {
 			if a.state.Consents[i].ID == x.ID {
-				a.state.Consents[i].Status, a.state.Consents[i].DecidedAt = x.Decision, timestamp()
-				if err := a.save(); err != nil {
+				if err := a.commitStateMutation(func(state *State) {
+					state.Consents[i].Status, state.Consents[i].DecidedAt = x.Decision, timestamp()
+				}); err != nil {
 					fail(w, 500, err)
 					return
 				}
@@ -464,10 +472,12 @@ func (a *App) upload(w http.ResponseWriter, r *http.Request) {
 	}
 	m := Media{ID: mid, SessionID: sid, IdentityID: iid, Name: filepath.Base(h.Filename), MIME: mime, FileName: name, URL: "/media/" + mid, CreatedAt: timestamp()}
 	a.mu.Lock()
-	a.state.Media = append(a.state.Media, m)
-	err = a.save()
+	err = a.commitStateMutation(func(state *State) {
+		state.Media = append(state.Media, m)
+	})
 	a.mu.Unlock()
 	if err != nil {
+		_ = os.Remove(p)
 		fail(w, 500, err)
 		return
 	}
@@ -515,8 +525,9 @@ func (a *App) chat(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	u := Message{ID: id("msg"), Role: "user", Text: strings.TrimSpace(x.Text), MediaIDs: x.MediaIDs, CreatedAt: timestamp()}
-	a.state.Sessions[si].Messages = append(a.state.Sessions[si].Messages, u)
-	if err := a.save(); err != nil {
+	if err := a.commitStateMutation(func(state *State) {
+		state.Sessions[si].Messages = append(state.Sessions[si].Messages, u)
+	}); err != nil {
 		a.mu.Unlock()
 		fail(w, 500, err)
 		return
@@ -543,8 +554,9 @@ func (a *App) chat(w http.ResponseWriter, r *http.Request) {
 		fail(w, 409, errors.New("session disappeared"))
 		return
 	}
-	a.state.Sessions[si].Messages = append(a.state.Sessions[si].Messages, m)
-	err = a.save()
+	err = a.commitStateMutation(func(state *State) {
+		state.Sessions[si].Messages = append(state.Sessions[si].Messages, m)
+	})
 	a.mu.Unlock()
 	if err != nil {
 		fail(w, 500, err)
@@ -655,9 +667,14 @@ func (a *App) startDueHeartbeats(ctx context.Context) {
 	due := []string{}
 	changed := false
 	a.mu.Lock()
-	for i := range a.state.Sessions {
-		s := &a.state.Sessions[i]
-		if s.RuntimeMode != "active" || strings.TrimSpace(s.Goal) == "" || a.running[s.ID] {
+	candidate := cloneWorkshopState(a.state)
+	nextRunning := make(map[string]bool, len(a.running))
+	for id, running := range a.running {
+		nextRunning[id] = running
+	}
+	for i := range candidate.Sessions {
+		s := &candidate.Sessions[i]
+		if s.RuntimeMode != "active" || strings.TrimSpace(s.Goal) == "" || nextRunning[s.ID] {
 			continue
 		}
 		if s.NextHeartbeat == "" {
@@ -674,14 +691,20 @@ func (a *App) startDueHeartbeats(ctx context.Context) {
 		if next.After(now) {
 			continue
 		}
-		a.running[s.ID] = true
+		nextRunning[s.ID] = true
 		s.Heartbeat = "working"
 		s.LastHeartbeat = timestamp()
 		due = append(due, s.ID)
 		changed = true
 	}
 	if changed {
-		_ = a.save()
+		if err := saveWorkshopState(a.dir, candidate); err != nil {
+			log.Printf("workshop heartbeat state was not committed: %v", err)
+			due = nil
+		} else {
+			a.state = candidate
+			a.running = nextRunning
+		}
 	}
 	a.mu.Unlock()
 	for _, sid := range due {
@@ -719,31 +742,34 @@ func (a *App) finishHeartbeat(sessionID, reply string, runErr error) {
 	if si < 0 {
 		return
 	}
-	s := &a.state.Sessions[si]
-	s.LastHeartbeat = timestamp()
-	if runErr != nil {
-		s.LastRuntimeError = runErr.Error()
+	err := a.commitStateMutation(func(state *State) {
+		s := &state.Sessions[si]
+		s.LastHeartbeat = timestamp()
+		if runErr != nil {
+			s.LastRuntimeError = runErr.Error()
+			if s.RuntimeMode == "active" {
+				s.Heartbeat = "error"
+				s.NextHeartbeat = time.Now().UTC().Add(time.Duration(heartbeatInterval(s.HeartbeatEverySec)) * time.Second).Format(time.RFC3339)
+			} else {
+				s.Heartbeat = "paused"
+				s.NextHeartbeat = ""
+			}
+			return
+		}
+		s.PulseCount++
+		s.LastRuntimeError = ""
+		s.Messages = append(s.Messages, Message{ID: id("msg"), Role: "assistant", Text: "⏱ Goal heartbeat\n" + strings.TrimSpace(reply), CreatedAt: timestamp()})
 		if s.RuntimeMode == "active" {
-			s.Heartbeat = "error"
+			s.Heartbeat = "active"
 			s.NextHeartbeat = time.Now().UTC().Add(time.Duration(heartbeatInterval(s.HeartbeatEverySec)) * time.Second).Format(time.RFC3339)
 		} else {
 			s.Heartbeat = "paused"
 			s.NextHeartbeat = ""
 		}
-		_ = a.save()
-		return
+	})
+	if err != nil {
+		log.Printf("workshop heartbeat result was not committed: %v", err)
 	}
-	s.PulseCount++
-	s.LastRuntimeError = ""
-	s.Messages = append(s.Messages, Message{ID: id("msg"), Role: "assistant", Text: "⏱ Goal heartbeat\n" + strings.TrimSpace(reply), CreatedAt: timestamp()})
-	if s.RuntimeMode == "active" {
-		s.Heartbeat = "active"
-		s.NextHeartbeat = time.Now().UTC().Add(time.Duration(heartbeatInterval(s.HeartbeatEverySec)) * time.Second).Format(time.RFC3339)
-	} else {
-		s.Heartbeat = "paused"
-		s.NextHeartbeat = ""
-	}
-	_ = a.save()
 }
 
 func main() {

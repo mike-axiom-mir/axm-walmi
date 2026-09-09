@@ -2,8 +2,8 @@
   "schema": "axm.walmi.standalone-source-manifest/v1",
   "copyMode": "FULL_FILES_NO_LINKS",
   "fileCount": 2250,
-  "totalBytes": 29744351,
-  "treeSha256": "142a8d84bda98a18b6953b75480a3c7900c3ee0c70528e3e3bd0fae0bc462ad6",
+  "totalBytes": 29746248,
+  "treeSha256": "2db311c61bc7ce19349a68a33c86b23169af0752d10ba07c6a35b0795859f571",
   "files": [
     {
       "path": ".gitattributes",
@@ -172,8 +172,8 @@
     },
     {
       "path": "cmd/workshop/main.go",
-      "bytes": 21896,
-      "sha256": "475b959d81e5ccb668fb3464a230347a0400927f671e16549682ca1fbe2c3312"
+      "bytes": 22738,
+      "sha256": "89d89ad8311c87559019b40eb23b947210078a6bd2ddbcfb02a3098e4a66a87e"
     },
     {
       "path": "cmd/workshop/main_test.go",
@@ -187,8 +187,8 @@
     },
     {
       "path": "cmd/workshop/state_store.go",
-      "bytes": 10998,
-      "sha256": "889d4fb956729681fe3dc995d17a0a4b02487d39f15b2d1c4bbbd916ef21171c"
+      "bytes": 12054,
+      "sha256": "db374f74e1005674ba575f7b4d7685e3ac42616b7866f7af61d9b9a4eccd385e"
     },
     {
       "path": "cmd/workshop/state_store_test.go",
@@ -197,8 +197,8 @@
     },
     {
       "path": "cmd/workshop/state_transaction_test.go",
-      "bytes": 1565,
-      "sha256": "66009b3ae565330e8d32e5de44cf0c2cc225205727c4a25b3cb362e59f32a400"
+      "bytes": 1564,
+      "sha256": "4927367eb0d5bbbeb7b2916171450342250584a6c225fb581433d579a2b4215a"
     },
     {
       "path": "cmd/workshop/ui.html",

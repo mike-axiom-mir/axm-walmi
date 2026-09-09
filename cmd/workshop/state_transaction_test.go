@@ -26,7 +26,7 @@ func TestGoalMutationRollsBackWhenCheckpointCommitFails(t *testing.T) {
 	a := appWithBlockedPersistence(t)
 	request := httptest.NewRequest("POST", "/api/op", strings.NewReader(`{
 		"op":"goal",
-		"session_id":"session-1",
+		"SessionID":"session-1",
 		"goal":"must not remain live"
 	}`))
 	response := httptest.NewRecorder()

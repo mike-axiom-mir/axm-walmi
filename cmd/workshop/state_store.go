@@ -36,6 +36,34 @@ type workshopStateLoad struct {
 	RejectedStateRef string
 }
 
+func cloneWorkshopState(state State) State {
+	cloned := state
+	cloned.Identities = append([]Identity(nil), state.Identities...)
+	cloned.Sessions = append([]Session(nil), state.Sessions...)
+	for i := range cloned.Sessions {
+		cloned.Sessions[i].Messages = append([]Message(nil), state.Sessions[i].Messages...)
+		for j := range cloned.Sessions[i].Messages {
+			cloned.Sessions[i].Messages[j].MediaIDs = append([]string(nil), state.Sessions[i].Messages[j].MediaIDs...)
+		}
+	}
+	cloned.Memories = append([]Memory(nil), state.Memories...)
+	cloned.Consents = append([]Consent(nil), state.Consents...)
+	cloned.Media = append([]Media(nil), state.Media...)
+	return cloned
+}
+
+// commitStateMutation must be called while a.mu is held. The candidate is
+// persisted and verified before it becomes the live state served by the app.
+func (a *App) commitStateMutation(mutate func(*State)) error {
+	candidate := cloneWorkshopState(a.state)
+	mutate(&candidate)
+	if err := saveWorkshopState(a.dir, candidate); err != nil {
+		return err
+	}
+	a.state = candidate
+	return nil
+}
+
 func loadWorkshopState(dir string) (workshopStateLoad, error) {
 	currentPath := filepath.Join(dir, workshopStateFile)
 	current, err := os.ReadFile(currentPath)
