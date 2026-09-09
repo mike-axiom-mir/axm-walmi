@@ -99,7 +99,7 @@ test('goal draft state remains readable on a phone-sized viewport', async ({ pag
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('http://workshop.test/');
 
-  await page.locator('#toggle').click();
+  await expect(page.locator('#right')).toBeVisible();
   await page.locator('#goal').fill('Phone-sized draft');
   await expect(page.locator('#goalState')).toHaveText('Unsaved draft');
   await expect(page.locator('#savegoal')).toBeEnabled();
