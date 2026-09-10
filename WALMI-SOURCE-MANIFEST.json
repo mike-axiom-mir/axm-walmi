@@ -1,9 +1,9 @@
 {
   "schema": "axm.walmi.standalone-source-manifest/v1",
   "copyMode": "FULL_FILES_NO_LINKS",
-  "fileCount": 2247,
-  "totalBytes": 29736403,
-  "treeSha256": "9f78f12fbefae3feffbb75649da86c6c5b43c6e7f93ae8213c56ae763325d602",
+  "fileCount": 2251,
+  "totalBytes": 29766520,
+  "treeSha256": "411e3073f5da22bba153b9155cf3cb4b65a036f61ae4e9654bfdebfba16163e8",
   "files": [
     {
       "path": ".gitattributes",
@@ -64,6 +64,11 @@
       "path": ".github/workflows/dco.yml",
       "bytes": 804,
       "sha256": "1ad8b7f0cc685e200bf11854f36ddb21d168dc3ba734972419345b5f4236a952"
+    },
+    {
+      "path": ".github/workflows/inner-asset-review-experience.yml",
+      "bytes": 3057,
+      "sha256": "8456fb0c4e0afa1b3607f01fa10003f68859b6757282905c05fc1414e54f9a14"
     },
     {
       "path": ".github/workflows/walmi-pc-full-stack-v0.2.yml",
@@ -11219,6 +11224,21 @@
       "path": "tools/build_source_bundle.py",
       "bytes": 5295,
       "sha256": "f3a297d19216816717137d1ed499adbdec2491fd8bc93f2dd8bbb066025a2dc9"
+    },
+    {
+      "path": "tools/inner-asset-review/browser-check.mjs",
+      "bytes": 4960,
+      "sha256": "9b0db19cfbd739909b0baa4c970e11309bd3d7211de9ff410891e5b38f7c4119"
+    },
+    {
+      "path": "tools/inner-asset-review/main.go",
+      "bytes": 18834,
+      "sha256": "42e08e07be4346c1fda125b0781eacc3fb072af2cc03f8e9cc8bec9041d0f001"
+    },
+    {
+      "path": "tools/inner-asset-review/main_test.go",
+      "bytes": 3266,
+      "sha256": "648b4521600a5544c1b9e7ea3d06aad74a109af87f35a4e855b9acefae564a0a"
     },
     {
       "path": "tools/seal_source_tree.py",
