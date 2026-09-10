@@ -26,6 +26,7 @@ jobs:
         run: |
           python3 - <<'PY'
           from pathlib import Path
+          import difflib
           import subprocess
 
           files = (
@@ -41,6 +42,12 @@ jobs:
               ).stdout
               if source != formatted:
                   failed.append(relative)
+                  print("".join(difflib.unified_diff(
+                      source.decode().splitlines(keepends=True),
+                      formatted.decode().splitlines(keepends=True),
+                      fromfile=relative,
+                      tofile=relative + " (gofmt)",
+                  )))
           if failed:
               raise SystemExit("gofmt required: " + ", ".join(failed))
           PY
