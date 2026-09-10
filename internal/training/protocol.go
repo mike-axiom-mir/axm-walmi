@@ -128,6 +128,7 @@ func ReadWorkerOutputWithSkipped(input io.Reader, skipped io.Writer, consume fun
 	scanner := bufio.NewScanner(input)
 	buffer := make([]byte, 64*1024)
 	scanner.Buffer(buffer, 16*1024*1024)
+	terminalKind := ""
 	for scanner.Scan() {
 		line := bytes.TrimSpace(scanner.Bytes())
 		if start := bytes.IndexByte(line, '{'); start < 0 {
@@ -146,11 +147,23 @@ func ReadWorkerOutputWithSkipped(input io.Reader, skipped io.Writer, consume fun
 		if err := frame.Validate(); err != nil {
 			return err
 		}
+		if terminalKind != "" {
+			return fmt.Errorf("worker output frame %q appears after terminal %s frame", frame.Kind, terminalKind)
+		}
+		if frame.Kind == "complete" || frame.Kind == "error" {
+			terminalKind = frame.Kind
+		}
 		if err := consume(frame); err != nil {
 			return err
 		}
 	}
-	return scanner.Err()
+	if err := scanner.Err(); err != nil {
+		return err
+	}
+	if terminalKind == "" {
+		return fmt.Errorf("worker output ended without a terminal complete or error frame")
+	}
+	return nil
 }
 
 func (frame WorkerOutputFrame) Validate() error {
