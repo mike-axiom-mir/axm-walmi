@@ -1,0 +1,135 @@
+name: Apply WALMI artifact-file boundary
+
+on:
+  push:
+    branches:
+      - automation/walmi-artifact-file-boundary-20260910
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: automation/walmi-artifact-file-boundary-20260910
+          fetch-depth: 0
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+      - name: Patch exact artifact admission boundary
+        shell: python
+        run: |
+          from pathlib import Path
+
+          path = Path("internal/model/observation.go")
+          data = path.read_bytes()
+          newline = b"\r\n" if b"\r\n" in data else b"\n"
+          old = newline.join([
+              b"func VerifyArtifactFile(path string, artifact training.Artifact) error {",
+              b"\tfile, err := os.Open(path)",
+              b"\tif err != nil {",
+              b"\t\treturn fmt.Errorf(\"artifact %s: %w\", artifact.Path, err)",
+              b"\t}",
+          ])
+          new = newline.join([
+              b"func VerifyArtifactFile(path string, artifact training.Artifact) error {",
+              b"\tinfo, err := os.Lstat(path)",
+              b"\tif err != nil {",
+              b"\t\treturn fmt.Errorf(\"artifact %s: %w\", artifact.Path, err)",
+              b"\t}",
+              b"\tif !info.Mode().IsRegular() {",
+              b"\t\treturn fmt.Errorf(\"artifact %s is not a regular file\", artifact.Path)",
+              b"\t}",
+              b"\tfile, err := os.Open(path)",
+              b"\tif err != nil {",
+              b"\t\treturn fmt.Errorf(\"artifact %s: %w\", artifact.Path, err)",
+              b"\t}",
+          ])
+          if data.count(old) != 1:
+              raise SystemExit(f"expected one VerifyArtifactFile admission block, found {data.count(old)}")
+          path.write_bytes(data.replace(old, new, 1))
+
+          test = Path("internal/model/artifact_file_identity_test.go")
+          test.write_text('''package model
+
+import (
+    "crypto/sha256"
+    "encoding/hex"
+    "os"
+    "path/filepath"
+    "runtime"
+    "strings"
+    "testing"
+
+    "github.com/openwaldo/waldo/internal/training"
+)
+
+func TestVerifyArtifactFileRejectsSymlinkEvenWhenTargetBytesMatch(t *testing.T) {
+    if runtime.GOOS == "windows" {
+        t.Skip("ordinary Windows CI may not permit unprivileged symlink creation")
+    }
+    root := t.TempDir()
+    outside := filepath.Join(root, "outside-weights.safetensors")
+    data := []byte("external-weight-bytes")
+    if err := os.WriteFile(outside, data, 0o644); err != nil {
+        t.Fatal(err)
+    }
+    runDirectory := filepath.Join(root, "run")
+    artifacts := filepath.Join(runDirectory, "artifacts")
+    if err := os.MkdirAll(artifacts, 0o755); err != nil {
+        t.Fatal(err)
+    }
+    path := filepath.Join(artifacts, "weights.safetensors")
+    if err := os.Symlink(outside, path); err != nil {
+        t.Fatal(err)
+    }
+    sum := sha256.Sum256(data)
+    artifact := training.Artifact{
+        Path: "artifacts/weights.safetensors",
+        SHA256: hex.EncodeToString(sum[:]),
+        Bytes: int64(len(data)),
+    }
+    err := VerifyArtifactFile(path, artifact)
+    if err == nil || !strings.Contains(err.Error(), "not a regular file") {
+        t.Fatalf("expected symlink rejection, got %v", err)
+    }
+}
+
+func TestVerifyArtifactFileStillAcceptsMatchingRegularFile(t *testing.T) {
+    root := t.TempDir()
+    path := filepath.Join(root, "weights.safetensors")
+    data := []byte("owned-weight-bytes")
+    if err := os.WriteFile(path, data, 0o644); err != nil {
+        t.Fatal(err)
+    }
+    sum := sha256.Sum256(data)
+    artifact := training.Artifact{
+        Path: "artifacts/weights.safetensors",
+        SHA256: hex.EncodeToString(sum[:]),
+        Bytes: int64(len(data)),
+    }
+    if err := VerifyArtifactFile(path, artifact); err != nil {
+        t.Fatal(err)
+    }
+}
+''', encoding="utf-8")
+      - name: Format and focused regression
+        run: |
+          gofmt -w internal/model/artifact_file_identity_test.go
+          go test ./internal/model -run 'TestVerifyArtifactFile|TestValidateBackendObservationVerifiesBoundsAndArtifacts' -count=1
+      - name: Remove helper and reseal exact source tree
+        run: |
+          rm .github/workflows/_automation_walmi_artifact_boundary.yml
+          python3 tools/seal_source_tree.py
+          python3 tools/seal_source_tree.py --verify
+      - name: Commit bounded delta
+        run: |
+          git config user.name 'Codex'
+          git config user.email 'codex@openai.com'
+          git add internal/model/observation.go internal/model/artifact_file_identity_test.go WALMI-SOURCE-MANIFEST.json .github/workflows/_automation_walmi_artifact_boundary.yml
+          git diff --cached --check
+          git commit -s -m 'Reject non-regular training artifacts'
+          git push origin HEAD:automation/walmi-artifact-file-boundary-20260910
