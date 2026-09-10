@@ -64,11 +64,11 @@ jobs:
           rm .github/workflows/_automation_walmi_artifact_boundary.yml
           python3 tools/seal_source_tree.py
           python3 tools/seal_source_tree.py --verify
-      - name: Publish isolated one-commit review branch
+      - name: Create isolated signed-off review commit
         run: |
           git config user.name 'Codex'
           git config user.email 'codex@openai.com'
-          review="$(mktemp -d)"
+          review="${RUNNER_TEMP}/walmi-review-${GITHUB_RUN_ID}"
           git worktree add --detach "$review" 6684089542569aadaa0324f56bf024d9dc190f06
           mkdir -p "$review/internal/model"
           cp internal/model/observation.go "$review/internal/model/observation.go"
@@ -79,4 +79,7 @@ jobs:
           git add internal/model/observation.go internal/model/artifact_file_identity_test.go WALMI-SOURCE-MANIFEST.json
           git diff --cached --check
           git commit -s -m 'Reject non-regular training artifacts before admission'
-          git push origin HEAD:automation/walmi-artifact-file-admission-20260910
+      - name: Push isolated review branch
+        run: |
+          review="${RUNNER_TEMP}/walmi-review-${GITHUB_RUN_ID}"
+          git -C "$review" push origin HEAD:automation/walmi-artifact-file-admission-20260910
