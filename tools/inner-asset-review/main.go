@@ -24,7 +24,7 @@ type reviewArtifact struct {
 	Height    int
 	SizeBytes int
 	SHA256    string
-	DataURL   string
+	DataURL   template.URL
 }
 
 type reviewPage struct {
@@ -56,7 +56,7 @@ func writeReviewFile(bundlePath, outputPath string) (axmmirror.InnerAssetCandida
 	if err != nil {
 		return axmmirror.InnerAssetCandidate{}, fmt.Errorf("read candidate %s: %w", bundlePath, err)
 	}
-	html, candidate, err := buildReviewHTML(data)
+	page, candidate, err := buildReviewHTML(data)
 	if err != nil {
 		return axmmirror.InnerAssetCandidate{}, fmt.Errorf("verify candidate before review: %w", err)
 	}
@@ -71,7 +71,7 @@ func writeReviewFile(bundlePath, outputPath string) (axmmirror.InnerAssetCandida
 			_ = os.Remove(outputPath)
 		}
 	}()
-	if _, err := file.Write(html); err != nil {
+	if _, err := file.Write(page); err != nil {
 		return axmmirror.InnerAssetCandidate{}, fmt.Errorf("write review %s: %w", outputPath, err)
 	}
 	if err := file.Sync(); err != nil {
@@ -93,7 +93,6 @@ func buildReviewHTML(bundle []byte) ([]byte, axmmirror.InnerAssetCandidate, erro
 	if err != nil {
 		return nil, axmmirror.InnerAssetCandidate{}, err
 	}
-
 	recipeArtifact, err := requireArtifact(candidate, "normalized-recipe")
 	if err != nil {
 		return nil, axmmirror.InnerAssetCandidate{}, err
@@ -102,7 +101,6 @@ func buildReviewHTML(bundle []byte) ([]byte, axmmirror.InnerAssetCandidate, erro
 	if err := axmmirror.DecodeStrictJSON(entries[recipeArtifact.Filename], &recipe); err != nil {
 		return nil, axmmirror.InnerAssetCandidate{}, fmt.Errorf("decode verified recipe %s: %w", recipeArtifact.Filename, err)
 	}
-
 	var validation axmmirror.InnerAssetValidationReceipt
 	if err := axmmirror.DecodeStrictJSON(entries[candidate.ValidationFilename], &validation); err != nil {
 		return nil, axmmirror.InnerAssetCandidate{}, fmt.Errorf("decode verified validation %s: %w", candidate.ValidationFilename, err)
@@ -123,17 +121,13 @@ func buildReviewHTML(bundle []byte) ([]byte, axmmirror.InnerAssetCandidate, erro
 	if err != nil {
 		return nil, axmmirror.InnerAssetCandidate{}, err
 	}
-
 	nextAction := "Visually inspect both verified realizations. If you choose to consume this READY candidate locally, use the separate materialize-asset command; this review cannot materialize, install, approve, promote, publish, or make CANON."
 	if candidate.State != axmmirror.InnerAssetStateReady {
 		nextAction = "Technical HOLD. Inspect the retained hold reasons and recipe before any consumer step; this review cannot clear the hold or materialize the candidate."
 	}
 	page := reviewPage{
-		Candidate:   candidate,
-		Recipe:      recipe,
-		Validation:  validation,
-		Primary:     primary,
-		Preview:     preview,
+		Candidate: candidate, Recipe: recipe, Validation: validation,
+		Primary: primary, Preview: preview,
 		Artifacts:   append([]axmmirror.InnerAssetArtifact(nil), candidate.Artifacts...),
 		NextAction:  nextAction,
 		LicenseNote: "Not declared by the inner-asset recipe/candidate v0.1 contract; do not infer license fitness from technical verification.",
@@ -189,7 +183,7 @@ func makeReviewArtifact(artifact axmmirror.InnerAssetArtifact, data []byte) (rev
 		ID: artifact.ID, Role: artifact.Role, Filename: artifact.Filename, MIME: artifact.MIME,
 		Format: artifact.Format, Editable: artifact.Editable, Width: artifact.Width, Height: artifact.Height,
 		SizeBytes: artifact.SizeBytes, SHA256: artifact.SHA256,
-		DataURL: "data:image/png;base64," + base64.StdEncoding.EncodeToString(data),
+		DataURL: template.URL("data:image/png;base64," + base64.StdEncoding.EncodeToString(data)),
 	}, nil
 }
 
