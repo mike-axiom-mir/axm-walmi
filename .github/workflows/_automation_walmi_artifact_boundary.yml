@@ -64,7 +64,7 @@ jobs:
           rm .github/workflows/_automation_walmi_artifact_boundary.yml
           python3 tools/seal_source_tree.py
           python3 tools/seal_source_tree.py --verify
-      - name: Publish clean signed-off review branch
+      - name: Publish one-commit review branch
         run: |
           git config user.name 'Codex'
           git config user.email 'codex@openai.com'
@@ -72,7 +72,6 @@ jobs:
           git diff --cached --check
           git commit -s -m 'Reject non-regular training artifacts'
           implementation_sha="$(git rev-parse HEAD)"
-          git push origin HEAD:automation/walmi-artifact-file-boundary-20260910
           git switch -c automation/walmi-artifact-file-admission-20260910 6684089542569aadaa0324f56bf024d9dc190f06
           git checkout "$implementation_sha" -- internal/model/observation.go internal/model/artifact_file_identity_test.go WALMI-SOURCE-MANIFEST.json
           git add internal/model/observation.go internal/model/artifact_file_identity_test.go WALMI-SOURCE-MANIFEST.json
