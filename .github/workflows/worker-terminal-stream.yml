@@ -51,5 +51,5 @@ jobs:
           if failed:
               raise SystemExit("gofmt required: " + ", ".join(failed))
           PY
-      - name: Verify terminal stream transitions
-        run: go test ./internal/training -run 'Test(ReadWorkerOutputEnforcesTerminalFrameOrder|WorkerCompleteObservationValidation|ReadWorkerOutputRejectsInvalidCompletionObservation)$' -count=1
+      - name: Verify training protocol and adapters
+        run: go test ./internal/training -count=1
