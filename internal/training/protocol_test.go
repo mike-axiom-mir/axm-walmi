@@ -70,3 +70,44 @@ func TestReadWorkerOutputRejectsInvalidCompletionObservation(t *testing.T) {
 		t.Fatal("invalid completion frame reached consumer")
 	}
 }
+
+func TestReadWorkerOutputEnforcesTerminalFrameOrder(t *testing.T) {
+	event := `{"kind":"event","schema":1,"event":{"kind":"progress","step":1,"tokens":8}}`
+	complete := `{"kind":"complete","schema":1,"observation":{"steps":1,"consumed_tokens":8}}`
+	workerError := `{"kind":"error","schema":1,"error":"worker failed"}`
+
+	tests := []struct {
+		name       string
+		input      string
+		wantKinds  []string
+		wantErr    string
+	}{
+		{name: "event then complete", input: event + "\n" + complete + "\n", wantKinds: []string{"event", "complete"}},
+		{name: "error is terminal", input: workerError + "\n", wantKinds: []string{"error"}},
+		{name: "missing terminal", input: event + "\n", wantKinds: []string{"event"}, wantErr: "without a terminal"},
+		{name: "event after complete", input: complete + "\n" + event + "\n", wantKinds: []string{"complete"}, wantErr: "after terminal complete"},
+		{name: "error after complete", input: complete + "\n" + workerError + "\n", wantKinds: []string{"complete"}, wantErr: "after terminal complete"},
+		{name: "complete after error", input: workerError + "\n" + complete + "\n", wantKinds: []string{"error"}, wantErr: "after terminal error"},
+		{name: "duplicate completion", input: complete + "\n" + complete + "\n", wantKinds: []string{"complete"}, wantErr: "after terminal complete"},
+	}
+
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			var kinds []string
+			err := ReadWorkerOutput(strings.NewReader(test.input), func(frame WorkerOutputFrame) error {
+				kinds = append(kinds, frame.Kind)
+				return nil
+			})
+			if test.wantErr == "" {
+				if err != nil {
+					t.Fatalf("ReadWorkerOutput() error = %v", err)
+				}
+			} else if err == nil || !strings.Contains(err.Error(), test.wantErr) {
+				t.Fatalf("ReadWorkerOutput() error = %v, want substring %q", err, test.wantErr)
+			}
+			if strings.Join(kinds, ",") != strings.Join(test.wantKinds, ",") {
+				t.Fatalf("consumer kinds = %v, want %v", kinds, test.wantKinds)
+			}
+		})
+	}
+}
