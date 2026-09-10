@@ -1,0 +1,25 @@
+name: Worker terminal stream contract
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/worker-terminal-stream.yml"
+      - "internal/training/protocol.go"
+      - "internal/training/protocol_test.go"
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+      - name: Verify terminal stream transitions
+        run: go test ./internal/training -run 'Test(ReadWorkerOutputEnforcesTerminalFrameOrder|WorkerCompleteObservationValidation|ReadWorkerOutputRejectsInvalidCompletionObservation)$' -count=1
