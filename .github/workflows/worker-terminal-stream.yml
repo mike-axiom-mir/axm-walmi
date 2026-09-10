@@ -21,5 +21,28 @@ jobs:
       - uses: actions/setup-go@v5
         with:
           go-version-file: go.mod
+      - name: Verify changed Go formatting
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import subprocess
+
+          files = (
+              "internal/training/protocol.go",
+              "internal/training/protocol_test.go",
+              "internal/training/python_worker.go",
+          )
+          failed = []
+          for relative in files:
+              source = Path(relative).read_bytes().replace(b"\r\n", b"\n")
+              formatted = subprocess.run(
+                  ["gofmt"], input=source, check=True, stdout=subprocess.PIPE
+              ).stdout
+              if source != formatted:
+                  failed.append(relative)
+          if failed:
+              raise SystemExit("gofmt required: " + ", ".join(failed))
+          PY
       - name: Verify terminal stream transitions
         run: go test ./internal/training -run 'Test(ReadWorkerOutputEnforcesTerminalFrameOrder|WorkerCompleteObservationValidation|ReadWorkerOutputRejectsInvalidCompletionObservation)$' -count=1
