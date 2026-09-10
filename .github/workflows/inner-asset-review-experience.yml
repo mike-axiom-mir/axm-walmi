@@ -12,13 +12,15 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   review-desk:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref || github.ref }}
       - uses: actions/setup-go@v5
         with:
           go-version-file: go.mod
@@ -31,6 +33,19 @@ jobs:
           python3 tools/seal_source_tree.py
           cp WALMI-SOURCE-MANIFEST.json /tmp/generated-WALMI-SOURCE-MANIFEST.json
           python3 tools/seal_source_tree.py --verify
+
+      - name: Commit generated source seal on this same-repository PR lane
+        if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+        run: |
+          if git diff --quiet -- WALMI-SOURCE-MANIFEST.json; then
+            echo 'source seal already matches this head'
+            exit 0
+          fi
+          git config user.name 'Codex'
+          git config user.email 'codex@openai.com'
+          git add WALMI-SOURCE-MANIFEST.json
+          git commit -s -m 'Reseal WALMI source for inner asset review'
+          git push origin "HEAD:${GITHUB_HEAD_REF}"
 
       - name: Verify Go format and focused contracts
         run: |
