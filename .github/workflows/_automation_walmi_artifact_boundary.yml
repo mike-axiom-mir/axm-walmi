@@ -22,6 +22,7 @@ jobs:
       - name: Patch exact artifact admission boundary
         shell: python
         run: |
+          import base64
           from pathlib import Path
 
           path = Path("internal/model/observation.go")
@@ -52,70 +53,8 @@ jobs:
               raise SystemExit(f"expected one VerifyArtifactFile admission block, found {data.count(old)}")
           path.write_bytes(data.replace(old, new, 1))
 
-          test = Path("internal/model/artifact_file_identity_test.go")
-          test.write_text('''package model
-
-import (
-    "crypto/sha256"
-    "encoding/hex"
-    "os"
-    "path/filepath"
-    "runtime"
-    "strings"
-    "testing"
-
-    "github.com/openwaldo/waldo/internal/training"
-)
-
-func TestVerifyArtifactFileRejectsSymlinkEvenWhenTargetBytesMatch(t *testing.T) {
-    if runtime.GOOS == "windows" {
-        t.Skip("ordinary Windows CI may not permit unprivileged symlink creation")
-    }
-    root := t.TempDir()
-    outside := filepath.Join(root, "outside-weights.safetensors")
-    data := []byte("external-weight-bytes")
-    if err := os.WriteFile(outside, data, 0o644); err != nil {
-        t.Fatal(err)
-    }
-    runDirectory := filepath.Join(root, "run")
-    artifacts := filepath.Join(runDirectory, "artifacts")
-    if err := os.MkdirAll(artifacts, 0o755); err != nil {
-        t.Fatal(err)
-    }
-    path := filepath.Join(artifacts, "weights.safetensors")
-    if err := os.Symlink(outside, path); err != nil {
-        t.Fatal(err)
-    }
-    sum := sha256.Sum256(data)
-    artifact := training.Artifact{
-        Path: "artifacts/weights.safetensors",
-        SHA256: hex.EncodeToString(sum[:]),
-        Bytes: int64(len(data)),
-    }
-    err := VerifyArtifactFile(path, artifact)
-    if err == nil || !strings.Contains(err.Error(), "not a regular file") {
-        t.Fatalf("expected symlink rejection, got %v", err)
-    }
-}
-
-func TestVerifyArtifactFileStillAcceptsMatchingRegularFile(t *testing.T) {
-    root := t.TempDir()
-    path := filepath.Join(root, "weights.safetensors")
-    data := []byte("owned-weight-bytes")
-    if err := os.WriteFile(path, data, 0o644); err != nil {
-        t.Fatal(err)
-    }
-    sum := sha256.Sum256(data)
-    artifact := training.Artifact{
-        Path: "artifacts/weights.safetensors",
-        SHA256: hex.EncodeToString(sum[:]),
-        Bytes: int64(len(data)),
-    }
-    if err := VerifyArtifactFile(path, artifact); err != nil {
-        t.Fatal(err)
-    }
-}
-''', encoding="utf-8")
+          encoded = "cGFja2FnZSBtb2RlbAoKaW1wb3J0ICgKICAgICJjcnlwdG8vc2hhMjU2IgogICAgImVuY29kaW5nL2hleCIKICAgICJvcyIKICAgICJwYXRoL2ZpbGVwYXRoIgogICAgInJ1bnRpbWUiCiAgICAic3RyaW5ncyIKICAgICJ0ZXN0aW5nIgoKICAgICJnaXRodWIuY29tL29wZW53YWxkby93YWxkby9pbnRlcm5hbC90cmFpbmluZyIKKQoKZnVuYyBUZXN0VmVyaWZ5QXJ0aWZhY3RGaWxlUmVqZWN0c1N5bWxpbmtFdmVuV2hlblRhcmdldEJ5dGVzTWF0Y2godCAqdGVzdGluZy5UKSB7CiAgICBpZiBydW50aW1lLkdPT1MgPT0gIndpbmRvd3MiIHsKICAgICAgICB0LlNraXAoIm9yZGluYXJ5IFdpbmRvd3MgQ0kgbWF5IG5vdCBwZXJtaXQgdW5wcml2aWxlZ2VkIHN5bWxpbmsgY3JlYXRpb24iKQogICAgfQogICAgcm9vdCA6PSB0LlRlbXBEaXIoKQogICAgb3V0c2lkZSA6PSBmaWxlcGF0aC5Kb2luKHJvb3QsICJvdXRzaWRlLXdlaWdodHMuc2FmZXRlbnNvcnMiKQogICAgZGF0YSA6PSBbXWJ5dGUoImV4dGVybmFsLXdlaWdodC1ieXRlcyIpCiAgICBpZiBlcnIgOj0gb3MuV3JpdGVGaWxlKG91dHNpZGUsIGRhdGEsIDBvNjQ0KTsgZXJyICE9IG5pbCB7CiAgICAgICAgdC5GYXRhbChlcnIpCiAgICB9CiAgICBydW5EaXJlY3RvcnkgOj0gZmlsZXBhdGguSm9pbihyb290LCAicnVuIikKICAgIGFydGlmYWN0cyA6PSBmaWxlcGF0aC5Kb2luKHJ1bkRpcmVjdG9yeSwgImFydGlmYWN0cyIpCiAgICBpZiBlcnIgOj0gb3MuTWtkaXJBbGwoYXJ0aWZhY3RzLCAwbzc1NSk7IGVyciAhPSBuaWwgewogICAgICAgIHQuRmF0YWwoZXJyKQogICAgfQogICAgcGF0aCA6PSBmaWxlcGF0aC5Kb2luKGFydGlmYWN0cywgIndlaWdodHMuc2FmZXRlbnNvcnMiKQogICAgaWYgZXJyIDo9IG9zLlN5bWxpbmsob3V0c2lkZSwgcGF0aCk7IGVyciAhPSBuaWwgewogICAgICAgIHQuRmF0YWwoZXJyKQogICAgfQogICAgc3VtIDo9IHNoYTI1Ni5TdW0yNTYoZGF0YSkKICAgIGFydGlmYWN0IDo9IHRyYWluaW5nLkFydGlmYWN0ewogICAgICAgIFBhdGg6ICJhcnRpZmFjdHMvd2VpZ2h0cy5zYWZldGVuc29ycyIsCiAgICAgICAgU0hBMjU2OiBoZXguRW5jb2RlVG9TdHJpbmcoc3VtWzpdKSwKICAgICAgICBCeXRlczogaW50NjQobGVuKGRhdGEpKSwKICAgIH0KICAgIGVyciA6PSBWZXJpZnlBcnRpZmFjdEZpbGUocGF0aCwgYXJ0aWZhY3QpCiAgICBpZiBlcnIgPT0gbmlsIHx8ICFzdHJpbmdzLkNvbnRhaW5zKGVyci5FcnJvcigpLCAibm90IGEgcmVndWxhciBmaWxlIikgewogICAgICAgIHQuRmF0YWxmKCJleHBlY3RlZCBzeW1saW5rIHJlamVjdGlvbiwgZ290ICV2IiwgZXJyKQogICAgfQp9CgpmdW5jIFRlc3RWZXJpZnlBcnRpZmFjdEZpbGVTdGlsbEFjY2VwdHNNYXRjaGluZ1JlZ3VsYXJGaWxlKHQgKnRlc3RpbmcuVCkgewogICAgcm9vdCA6PSB0LlRlbXBEaXIoKQogICAgcGF0aCA6PSBmaWxlcGF0aC5Kb2luKHJvb3QsICJ3ZWlnaHRzLnNhZmV0ZW5zb3JzIikKICAgIGRhdGEgOj0gW11ieXRlKCJvd25lZC13ZWlnaHQtYnl0ZXMiKQogICAgaWYgZXJyIDo9IG9zLldyaXRlRmlsZShwYXRoLCBkYXRhLCAwbzY0NCk7IGVyciAhPSBuaWwgewogICAgICAgIHQuRmF0YWwoZXJyKQogICAgfQogICAgc3VtIDo9IHNoYTI1Ni5TdW0yNTYoZGF0YSkKICAgIGFydGlmYWN0IDo9IHRyYWluaW5nLkFydGlmYWN0ewogICAgICAgIFBhdGg6ICJhcnRpZmFjdHMvd2VpZ2h0cy5zYWZldGVuc29ycyIsCiAgICAgICAgU0hBMjU2OiBoZXguRW5jb2RlVG9TdHJpbmcoc3VtWzpdKSwKICAgICAgICBCeXRlczogaW50NjQobGVuKGRhdGEpKSwKICAgIH0KICAgIGlmIGVyciA6PSBWZXJpZnlBcnRpZmFjdEZpbGUocGF0aCwgYXJ0aWZhY3QpOyBlcnIgIT0gbmlsIHsKICAgICAgICB0LkZhdGFsKGVycikKICAgIH0KfQo="
+          Path("internal/model/artifact_file_identity_test.go").write_bytes(base64.b64decode(encoded))
       - name: Format and focused regression
         run: |
           gofmt -w internal/model/artifact_file_identity_test.go
@@ -125,11 +64,18 @@ func TestVerifyArtifactFileStillAcceptsMatchingRegularFile(t *testing.T) {
           rm .github/workflows/_automation_walmi_artifact_boundary.yml
           python3 tools/seal_source_tree.py
           python3 tools/seal_source_tree.py --verify
-      - name: Commit bounded delta
+      - name: Publish clean signed-off review branch
         run: |
           git config user.name 'Codex'
           git config user.email 'codex@openai.com'
           git add internal/model/observation.go internal/model/artifact_file_identity_test.go WALMI-SOURCE-MANIFEST.json .github/workflows/_automation_walmi_artifact_boundary.yml
           git diff --cached --check
           git commit -s -m 'Reject non-regular training artifacts'
+          implementation_sha="$(git rev-parse HEAD)"
           git push origin HEAD:automation/walmi-artifact-file-boundary-20260910
+          git switch -c automation/walmi-artifact-file-admission-20260910 6684089542569aadaa0324f56bf024d9dc190f06
+          git checkout "$implementation_sha" -- internal/model/observation.go internal/model/artifact_file_identity_test.go WALMI-SOURCE-MANIFEST.json
+          git add internal/model/observation.go internal/model/artifact_file_identity_test.go WALMI-SOURCE-MANIFEST.json
+          git diff --cached --check
+          git commit -s -m 'Reject non-regular training artifacts before admission'
+          git push origin HEAD:automation/walmi-artifact-file-admission-20260910
