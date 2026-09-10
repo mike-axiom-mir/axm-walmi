@@ -64,16 +64,18 @@ jobs:
           rm .github/workflows/_automation_walmi_artifact_boundary.yml
           python3 tools/seal_source_tree.py
           python3 tools/seal_source_tree.py --verify
-      - name: Publish one-commit review branch
+      - name: Publish isolated one-commit review branch
         run: |
           git config user.name 'Codex'
           git config user.email 'codex@openai.com'
-          git add internal/model/observation.go internal/model/artifact_file_identity_test.go WALMI-SOURCE-MANIFEST.json .github/workflows/_automation_walmi_artifact_boundary.yml
-          git diff --cached --check
-          git commit -s -m 'Reject non-regular training artifacts'
-          implementation_sha="$(git rev-parse HEAD)"
-          git switch -c automation/walmi-artifact-file-admission-20260910 6684089542569aadaa0324f56bf024d9dc190f06
-          git checkout "$implementation_sha" -- internal/model/observation.go internal/model/artifact_file_identity_test.go WALMI-SOURCE-MANIFEST.json
+          review="$(mktemp -d)"
+          git worktree add --detach "$review" 6684089542569aadaa0324f56bf024d9dc190f06
+          mkdir -p "$review/internal/model"
+          cp internal/model/observation.go "$review/internal/model/observation.go"
+          cp internal/model/artifact_file_identity_test.go "$review/internal/model/artifact_file_identity_test.go"
+          cp WALMI-SOURCE-MANIFEST.json "$review/WALMI-SOURCE-MANIFEST.json"
+          cd "$review"
+          git switch -c automation/walmi-artifact-file-admission-20260910
           git add internal/model/observation.go internal/model/artifact_file_identity_test.go WALMI-SOURCE-MANIFEST.json
           git diff --cached --check
           git commit -s -m 'Reject non-regular training artifacts before admission'
