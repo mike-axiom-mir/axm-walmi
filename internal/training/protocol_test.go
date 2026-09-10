@@ -77,10 +77,10 @@ func TestReadWorkerOutputEnforcesTerminalFrameOrder(t *testing.T) {
 	workerError := `{"kind":"error","schema":1,"error":"worker failed"}`
 
 	tests := []struct {
-		name       string
-		input      string
-		wantKinds  []string
-		wantErr    string
+		name        string
+		input       string
+		wantKinds   []string
+		wantErr     string
 	}{
 		{name: "event then complete", input: event + "\n" + complete + "\n", wantKinds: []string{"event", "complete"}},
 		{name: "error is terminal", input: workerError + "\n", wantKinds: []string{"error"}},
