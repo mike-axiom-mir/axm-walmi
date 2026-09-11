@@ -34,7 +34,7 @@ jobs:
       - name: Format
         shell: bash
         run: |
-          files="$(gofmt -l cmd/workshop/state_store.go cmd/workshop/state_store_test.go cmd/workshop/state_concurrency_test.go cmd/workshop/state_lock_nonwindows.go cmd/workshop/state_lock_windows.go)"
+          files="$(gofmt -l cmd/workshop/state_store.go cmd/workshop/state_store_test.go cmd/workshop/state_concurrency_test.go cmd/workshop/state_http_process_test.go cmd/workshop/state_lock_nonwindows.go cmd/workshop/state_lock_windows.go)"
           if [ -n "$files" ]; then
             echo "gofmt required for:"
             echo "$files"
@@ -43,7 +43,7 @@ jobs:
       - name: Vet
         run: go vet ./cmd/workshop
       - name: Focused stale-writer regression
-        run: go test ./cmd/workshop -run "TestWorkshopState(RejectsStaleWriter|RejectsStaleWriterAcrossProcesses|ReleasesLockAfterHolderProcessDeath)$" -count=1
+        run: go test ./cmd/workshop -run "TestWorkshop(State(RejectsStaleWriter|RejectsStaleWriterAcrossProcesses|ReleasesLockAfterHolderProcessDeath)|HTTPServersRejectStaleWriterAcrossProcesses)$" -count=1
       - name: Verify sealed source
         run: python tools/seal_source_tree.py --verify
       - name: Complete Workshop tests
