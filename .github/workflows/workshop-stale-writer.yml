@@ -4,9 +4,11 @@ on:
   push:
     branches:
       - automation/state-architect-workshop-stale-writer-20260911
+      - automation/truth-sentinel-workshop-process-evidence-20260911
   pull_request:
     branches:
       - automation/truth-sentinel-workshop-transaction-20260909
+      - automation/state-architect-workshop-stale-writer-20260911
     paths:
       - cmd/workshop/**
       - docs/adr/0066-workshop-stale-writer-admission.md
@@ -41,7 +43,7 @@ jobs:
       - name: Vet
         run: go vet ./cmd/workshop
       - name: Focused stale-writer regression
-        run: go test ./cmd/workshop -run TestWorkshopStateRejectsStaleWriter -count=1
+        run: go test ./cmd/workshop -run "TestWorkshopState(RejectsStaleWriter|RejectsStaleWriterAcrossProcesses|ReleasesLockAfterHolderProcessDeath)$" -count=1
       - name: Verify sealed source
         run: python tools/seal_source_tree.py --verify
       - name: Complete Workshop tests

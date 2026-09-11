@@ -35,6 +35,24 @@ held by the operating system and releases when the file descriptor closes or
 the process exits. A stale process is not automatically merged or refreshed;
 the operator must retry after a busy result or restart after a token mismatch.
 
+## Executable process evidence
+
+The concurrency suite also exercises this boundary across independent OS
+processes rather than only multiple state values in one test process:
+
+- two child processes load the same checkpoint token, the first commits a
+  successor, and the second must receive the stale-checkpoint conflict without
+  replacing the first process's state; and
+- a child process acquires the real Workshop lock, the parent confirms the lock
+  is busy, the child is forcibly terminated without an explicit unlock, and
+  the parent must reacquire the lock within a bounded retry window.
+
+These checks demonstrate process-level checkpoint admission and kernel-owned
+lock release on the tested runner filesystems. They do not turn the lock into a
+distributed lease and do not prove long-lived HTTP server behavior, sudden
+power-loss durability, or filesystems whose lock/rename semantics differ from
+the tested local runners.
+
 ## Consequences
 
 - Two cooperating processes cannot both admit different successors to the
