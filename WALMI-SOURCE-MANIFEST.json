@@ -2,8 +2,8 @@
   "schema": "axm.walmi.standalone-source-manifest/v1",
   "copyMode": "FULL_FILES_NO_LINKS",
   "fileCount": 2251,
-  "totalBytes": 29747037,
-  "treeSha256": "8060d9efde4a04e986f957bdfab75b8e65246f5fd35121c7e4b1a254bb69b86a",
+  "totalBytes": 29747151,
+  "treeSha256": "9b9938779637a51bbca4b64b344a919870bf7b30941c56d9966770695747cd78",
   "files": [
     {
       "path": ".axm/discovery-public.json",
@@ -72,8 +72,8 @@
     },
     {
       "path": ".github/workflows/public-inner-asset-discovery.yml",
-      "bytes": 7449,
-      "sha256": "d9ac56c13ac9362cec04d475a6b196a8e1d858b4b51cd688dd240c5383c2d4a1"
+      "bytes": 7563,
+      "sha256": "1d7a42cd468deb9a4b78d2ad6d5c8922ad92a65dee5edb4945506e323ed557f0"
     },
     {
       "path": ".github/workflows/walmi-pc-full-stack-v0.2.yml",
