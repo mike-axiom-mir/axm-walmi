@@ -2,8 +2,8 @@
   "schema": "axm.walmi.standalone-source-manifest/v1",
   "copyMode": "FULL_FILES_NO_LINKS",
   "fileCount": 2251,
-  "totalBytes": 29746351,
-  "treeSha256": "dca81d6f679db435be3330e708d32e5f3313e67542898603d763ef8a6f39c01c",
+  "totalBytes": 29747037,
+  "treeSha256": "8060d9efde4a04e986f957bdfab75b8e65246f5fd35121c7e4b1a254bb69b86a",
   "files": [
     {
       "path": ".axm/discovery-public.json",
@@ -11257,8 +11257,8 @@
     },
     {
       "path": "tools/verify_public_capability.py",
-      "bytes": 8641,
-      "sha256": "6155fed1e710097fa27aa723215f383a42d85b2c0c2a488bfa5dc6db53a87dbf"
+      "bytes": 9327,
+      "sha256": "581f18c7fb87b334aeccc38dd8464912e675d80491bb18064cfb32e89a9f98af"
     }
   ]
 }
