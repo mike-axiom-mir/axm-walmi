@@ -26,11 +26,13 @@ state projection so the browser contract does not change.
 
 Every successful save:
 
-1. validates identity, session, memory, consent, and media references;
-2. preserves the previous verified checkpoint as `state.json.backup`;
-3. writes and syncs a same-directory temporary file;
-4. atomically renames it to `state.json`; and
-5. syncs the containing directory where the operating system supports it.
+1. enters ADR 0066's local single-writer and observed-checkpoint admission
+   boundary;
+2. validates identity, session, memory, consent, and media references;
+3. preserves the previous verified checkpoint as `state.json.backup`;
+4. writes and syncs a same-directory temporary file;
+5. atomically renames it to `state.json`; and
+6. syncs the containing directory where the operating system supports it.
 
 On startup, the Workshop verifies the current envelope before using it. If the
 current checkpoint is missing or rejected and the backup verifies, the backup

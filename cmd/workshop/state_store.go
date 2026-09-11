@@ -19,7 +19,10 @@ const (
 	workshopStateSchema     = 1
 	workshopStateFile       = "state.json"
 	workshopStateBackupFile = "state.json.backup"
+	workshopStateLockFile   = "state.json.lock"
 )
+
+var errWorkshopStateConflict = errors.New("workshop state changed since it was loaded; restart Workshop to load the current checkpoint")
 
 type workshopStateEnvelope struct {
 	Kind        string `json:"kind"`
@@ -30,10 +33,16 @@ type workshopStateEnvelope struct {
 
 type workshopStateLoad struct {
 	State            State
+	Checkpoint       workshopCheckpointToken
 	Found            bool
 	NeedsCheckpoint  bool
 	RecoveredBackup  bool
 	RejectedStateRef string
+}
+
+type workshopCheckpointToken struct {
+	Exists bool
+	SHA256 string
 }
 
 func cloneWorkshopState(state State) State {
@@ -57,10 +66,12 @@ func cloneWorkshopState(state State) State {
 func (a *App) commitStateMutation(mutate func(*State)) error {
 	candidate := cloneWorkshopState(a.state)
 	mutate(&candidate)
-	if err := saveWorkshopState(a.dir, candidate); err != nil {
+	nextCheckpoint, err := saveWorkshopState(a.dir, candidate, a.checkpoint)
+	if err != nil {
 		return err
 	}
 	a.state = candidate
+	a.checkpoint = nextCheckpoint
 	return nil
 }
 
@@ -68,11 +79,12 @@ func loadWorkshopState(dir string) (workshopStateLoad, error) {
 	currentPath := filepath.Join(dir, workshopStateFile)
 	current, err := os.ReadFile(currentPath)
 	if err == nil {
+		checkpoint := workshopCheckpointToken{Exists: true, SHA256: sha256Hex(current)}
 		state, legacy, decodeErr := decodeWorkshopState(current)
 		if decodeErr == nil {
-			return workshopStateLoad{State: state, Found: true, NeedsCheckpoint: legacy}, nil
+			return workshopStateLoad{State: state, Checkpoint: checkpoint, Found: true, NeedsCheckpoint: legacy}, nil
 		}
-		return recoverWorkshopState(dir, current, fmt.Errorf("verify %s: %w", currentPath, decodeErr))
+		return recoverWorkshopState(dir, checkpoint, current, fmt.Errorf("verify %s: %w", currentPath, decodeErr))
 	}
 	if !errors.Is(err, os.ErrNotExist) {
 		return workshopStateLoad{}, fmt.Errorf("read %s: %w", currentPath, err)
@@ -84,10 +96,10 @@ func loadWorkshopState(dir string) (workshopStateLoad, error) {
 	} else if backupErr != nil {
 		return workshopStateLoad{}, fmt.Errorf("inspect %s: %w", backupPath, backupErr)
 	}
-	return recoverWorkshopState(dir, nil, fmt.Errorf("%s is missing", currentPath))
+	return recoverWorkshopState(dir, workshopCheckpointToken{}, nil, fmt.Errorf("%s is missing", currentPath))
 }
 
-func recoverWorkshopState(dir string, rejected []byte, currentErr error) (workshopStateLoad, error) {
+func recoverWorkshopState(dir string, checkpoint workshopCheckpointToken, rejected []byte, currentErr error) (workshopStateLoad, error) {
 	backupPath := filepath.Join(dir, workshopStateBackupFile)
 	backup, err := os.ReadFile(backupPath)
 	if err != nil {
@@ -107,6 +119,7 @@ func recoverWorkshopState(dir string, rejected []byte, currentErr error) (worksh
 	}
 	return workshopStateLoad{
 		State:            state,
+		Checkpoint:       checkpoint,
 		Found:            true,
 		NeedsCheckpoint:  true,
 		RecoveredBackup:  true,
@@ -179,25 +192,75 @@ func encodeWorkshopState(state State) ([]byte, error) {
 	return append(encoded, '\n'), nil
 }
 
-func saveWorkshopState(dir string, state State) error {
+func saveWorkshopState(dir string, state State, expected workshopCheckpointToken) (workshopCheckpointToken, error) {
 	encoded, err := encodeWorkshopState(state)
 	if err != nil {
-		return err
+		return workshopCheckpointToken{}, err
 	}
+	lock, err := lockWorkshopState(dir)
+	if err != nil {
+		return workshopCheckpointToken{}, err
+	}
+	defer unlockWorkshopState(lock)
+
 	currentPath := filepath.Join(dir, workshopStateFile)
-	if current, readErr := os.ReadFile(currentPath); readErr == nil {
+	current, actual, readErr := readWorkshopCheckpoint(currentPath)
+	if readErr != nil {
+		return workshopCheckpointToken{}, readErr
+	}
+	if actual != expected {
+		return workshopCheckpointToken{}, fmt.Errorf("%w (expected %s, found %s)", errWorkshopStateConflict, formatWorkshopCheckpointToken(expected), formatWorkshopCheckpointToken(actual))
+	}
+	if actual.Exists {
 		if _, _, verifyErr := decodeWorkshopState(current); verifyErr == nil {
 			if err := writeAtomicFile(filepath.Join(dir, workshopStateBackupFile), current); err != nil {
-				return fmt.Errorf("checkpoint previous workshop state: %w", err)
+				return workshopCheckpointToken{}, fmt.Errorf("checkpoint previous workshop state: %w", err)
 			}
 		}
-	} else if !errors.Is(readErr, os.ErrNotExist) {
-		return fmt.Errorf("read previous workshop state: %w", readErr)
 	}
 	if err := writeAtomicFile(currentPath, encoded); err != nil {
-		return fmt.Errorf("commit workshop state: %w", err)
+		return workshopCheckpointToken{}, fmt.Errorf("commit workshop state: %w", err)
 	}
-	return nil
+	return workshopCheckpointToken{Exists: true, SHA256: sha256Hex(encoded)}, nil
+}
+
+func readWorkshopCheckpoint(path string) ([]byte, workshopCheckpointToken, error) {
+	data, err := os.ReadFile(path)
+	if errors.Is(err, os.ErrNotExist) {
+		return nil, workshopCheckpointToken{}, nil
+	}
+	if err != nil {
+		return nil, workshopCheckpointToken{}, fmt.Errorf("read previous workshop state: %w", err)
+	}
+	return data, workshopCheckpointToken{Exists: true, SHA256: sha256Hex(data)}, nil
+}
+
+func formatWorkshopCheckpointToken(token workshopCheckpointToken) string {
+	if !token.Exists {
+		return "missing"
+	}
+	return "sha256:" + token.SHA256
+}
+
+func lockWorkshopState(dir string) (*os.File, error) {
+	path := filepath.Join(dir, workshopStateLockFile)
+	file, err := os.OpenFile(path, os.O_CREATE|os.O_RDWR, 0o600)
+	if err != nil {
+		return nil, fmt.Errorf("open Workshop state lock %s: %w", path, err)
+	}
+	if err := lockWorkshopFile(file); err != nil {
+		_ = file.Close()
+		return nil, fmt.Errorf("Workshop state is busy in another process; retry after that mutation finishes: %w", err)
+	}
+	return file, nil
+}
+
+func unlockWorkshopState(file *os.File) {
+	if file == nil {
+		return
+	}
+	_ = unlockWorkshopFile(file)
+	_ = file.Close()
 }
 
 func quarantineRejectedState(dir string, rejected []byte) (string, error) {

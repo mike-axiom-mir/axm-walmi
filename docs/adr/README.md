@@ -68,6 +68,7 @@ logs.
 - [0062: Purge verified cache objects after successful use](0062-purge-successful-lookaside-cache.md)
 - [0063: Forecast the current host by default](0063-current-host-forecast.md)
 - [0064: Bind Workshop state to verified local checkpoints](0064-workshop-state-checkpoints.md)
+- [0066: Reject stale Workshop checkpoint writers](0066-workshop-stale-writer-admission.md)
 - [9001: Add downstream AXM Mirror behavior evidence](9001-axm-mirror-behavior-evidence.md)
 - [9002: Make the WALDO-bound Mirror clone a provenance witness](9002-axm-waldo-witness-organ-architecture.md)
 - [9003: Add bounded Wave 1 provenance organs](9003-axm-waldo-wave-one-provenance-organs.md)

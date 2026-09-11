@@ -86,7 +86,7 @@ func TestLegacyStateMigratesIntoCheckpointEnvelope(t *testing.T) {
 	if !loaded.Found || !loaded.NeedsCheckpoint || loaded.State.Version != 2 {
 		t.Fatalf("unexpected legacy load: %+v", loaded)
 	}
-	if err := saveWorkshopState(dir, loaded.State); err != nil {
+	if _, err := saveWorkshopState(dir, loaded.State, loaded.Checkpoint); err != nil {
 		t.Fatal(err)
 	}
 	current, err := os.ReadFile(filepath.Join(dir, workshopStateFile))
@@ -109,10 +109,11 @@ func TestWorkshopStateRecoversVerifiedBackupAndQuarantinesRejectedBytes(t *testi
 	dir := t.TempDir()
 	first := validWorkshopState("first")
 	second := validWorkshopState("second")
-	if err := saveWorkshopState(dir, first); err != nil {
+	checkpoint, err := saveWorkshopState(dir, first, workshopCheckpointToken{})
+	if err != nil {
 		t.Fatal(err)
 	}
-	if err := saveWorkshopState(dir, second); err != nil {
+	if _, err := saveWorkshopState(dir, second, checkpoint); err != nil {
 		t.Fatal(err)
 	}
 	rejected := []byte(`{"kind":"axm.workshop.state","schema":1,"state_sha256":"cut off"`)
@@ -137,7 +138,7 @@ func TestWorkshopStateRecoversVerifiedBackupAndQuarantinesRejectedBytes(t *testi
 	if !bytes.Equal(preserved, rejected) {
 		t.Fatal("quarantine did not preserve the exact rejected bytes")
 	}
-	if err := saveWorkshopState(dir, loaded.State); err != nil {
+	if _, err := saveWorkshopState(dir, loaded.State, loaded.Checkpoint); err != nil {
 		t.Fatal(err)
 	}
 	reloaded, err := loadWorkshopState(dir)

@@ -141,6 +141,14 @@ neither checkpoint verifies, startup fails closed instead of seeding a new
 identity over existing evidence. Legacy direct state files migrate on first
 successful startup and remain as the first backup.
 
+Each process also retains the exact bytes it loaded as a local checkpoint
+token. State commits take a non-blocking operating-system advisory lock and
+compare that token with the current `state.json` bytes before writing. A busy
+or stale process fails closed without changing the current checkpoint and must
+retry or restart to load the newer state. The lock file is coordination only;
+it is not canonical state and kernel ownership is released when a process
+exits.
+
 Conversation history stays with its session. Explicit identity memory is visible to sessions for that identity. Vault memory is visible across identities. Chat content is not silently promoted into durable memory.
 
 ## Consent boundary
@@ -161,4 +169,7 @@ The native bridge adds focused prompt/Creative-Room tests under `waldo_native_br
 - Current native WALDO inference is text-only; image pixels require a vision-capable adapter/model.
 - App connectors are not wired yet. They should enter through the existing explicit adapter/consent boundary.
 - Auto-start is user-level: Windows Scheduled Task at logon or Linux `systemd --user`. It does not force machine-wide boot privileges.
+- Workshop checkpoint coordination is local to cooperating processes on one
+  filesystem. It is not distributed consensus, hostile-writer protection, or
+  a network-filesystem guarantee.
 - No merge is performed by this branch.

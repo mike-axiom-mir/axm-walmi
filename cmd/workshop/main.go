@@ -53,11 +53,12 @@ type State struct {
 }
 
 type App struct {
-	mu      sync.Mutex
-	state   State
-	dir     string
-	client  *http.Client
-	running map[string]bool
+	mu         sync.Mutex
+	state      State
+	checkpoint workshopCheckpointToken
+	dir        string
+	client     *http.Client
+	running    map[string]bool
 }
 
 type Op struct {
@@ -111,6 +112,7 @@ func newApp() (*App, error) {
 	}
 	if loaded.Found {
 		a.state = loaded.State
+		a.checkpoint = loaded.Checkpoint
 		if a.normalizeState() || loaded.NeedsCheckpoint {
 			if err := a.save(); err != nil {
 				return nil, err
@@ -181,7 +183,12 @@ func normalizeWorkshopState(state *State) bool {
 }
 
 func (a *App) save() error {
-	return saveWorkshopState(a.dir, a.state)
+	next, err := saveWorkshopState(a.dir, a.state, a.checkpoint)
+	if err != nil {
+		return err
+	}
+	a.checkpoint = next
+	return nil
 }
 
 func out(w http.ResponseWriter, status int, v any) {
@@ -698,11 +705,13 @@ func (a *App) startDueHeartbeats(ctx context.Context) {
 		changed = true
 	}
 	if changed {
-		if err := saveWorkshopState(a.dir, candidate); err != nil {
+		nextCheckpoint, err := saveWorkshopState(a.dir, candidate, a.checkpoint)
+		if err != nil {
 			log.Printf("workshop heartbeat state was not committed: %v", err)
 			due = nil
 		} else {
 			a.state = candidate
+			a.checkpoint = nextCheckpoint
 			a.running = nextRunning
 		}
 	}
