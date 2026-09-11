@@ -37,21 +37,29 @@ the operator must retry after a busy result or restart after a token mismatch.
 
 ## Executable process evidence
 
-The concurrency suite also exercises this boundary across independent OS
-processes rather than only multiple state values in one test process:
+The concurrency suite exercises this boundary across independent OS processes
+rather than only multiple state values in one test process:
 
 - two child processes load the same checkpoint token, the first commits a
   successor, and the second must receive the stale-checkpoint conflict without
-  replacing the first process's state; and
+  replacing the first process's state;
 - a child process acquires the real Workshop lock, the parent confirms the lock
   is busy, the child is forcibly terminated without an explicit unlock, and
-  the parent must reacquire the lock within a bounded retry window.
+  the parent must reacquire the lock within a bounded retry window; and
+- two long-lived child processes each start the production Workshop `App` and
+  `routes()` behind a real loopback HTTP server while sharing one data
+  directory. A mutation sent through `/api/op` to the first server must commit;
+  the second server's stale `/api/op` mutation must return the production
+  conflict as HTTP 500 without changing either durable state or its stale live
+  view. After that stale server is stopped and restarted, `/api/state` must
+  expose the first server's checkpoint and a new `/api/op` mutation may commit
+  from that refreshed token.
 
-These checks demonstrate process-level checkpoint admission and kernel-owned
-lock release on the tested runner filesystems. They do not turn the lock into a
-distributed lease and do not prove long-lived HTTP server behavior, sudden
-power-loss durability, or filesystems whose lock/rename semantics differ from
-the tested local runners.
+These checks demonstrate process-level checkpoint admission, kernel-owned lock
+release, and the same stale-writer boundary through the tested Workshop HTTP
+surface on the tested runner filesystems. They do not turn the lock into a
+distributed lease and do not prove sudden power-loss durability or filesystems
+whose lock/rename semantics differ from the tested local runners.
 
 ## Consequences
 
