@@ -85,7 +85,8 @@ jobs:
           python walmi/tools/verify_public_capability.py --root walmi --receipt "$RUNNER_TEMP/walmi-public-capability.json"
           (cd walmi && python3 tools/seal_source_tree.py --verify)
       - name: Exercise the real deterministic inner-asset forge
-        run: go test ./walmi/internal/axmmirror -run 'TestInnerAssetForgeBuildsDeterministicPortableCandidate' -count=1
+        shell: bash
+        run: (cd walmi && go test ./internal/axmmirror -run 'TestInnerAssetForgeBuildsDeterministicPortableCandidate' -count=1)
       - name: Check out exact portable Discovery Buddy provider
         uses: actions/checkout@v4
         with:
