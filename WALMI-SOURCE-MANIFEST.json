@@ -1,9 +1,9 @@
 {
   "schema": "axm.walmi.standalone-source-manifest/v1",
   "copyMode": "FULL_FILES_NO_LINKS",
-  "fileCount": 2255,
-  "totalBytes": 29763450,
-  "treeSha256": "b8cf2f5898b1ceb4c6f33df38615820450ee21e1351ae0444babf34cdfa1a23d",
+  "fileCount": 2256,
+  "totalBytes": 29771383,
+  "treeSha256": "cfcbe9d63f2b21ac74c45cb9f7901457b0788ee003c276dff14162528dcf0622",
   "files": [
     {
       "path": ".gitattributes",
@@ -82,8 +82,8 @@
     },
     {
       "path": ".github/workflows/workshop-stale-writer.yml",
-      "bytes": 1691,
-      "sha256": "54225eb5806718c13a029a53a22cb7947f6bf192c86946bd84533642c243e9eb"
+      "bytes": 1777,
+      "sha256": "260bcafb09169e7bd9d64d3772ab7452648172dfeb101092dae03873270bffcc"
     },
     {
       "path": ".gitignore",
@@ -194,6 +194,11 @@
       "path": "cmd/workshop/state_concurrency_test.go",
       "bytes": 8145,
       "sha256": "41b4c4d63f5e52e683056de57055f93429e4dff6757c07126880b26e8c7fdca2"
+    },
+    {
+      "path": "cmd/workshop/state_http_process_test.go",
+      "bytes": 7246,
+      "sha256": "50981b8b49b95bb522cc618aabbccb9fde9114eb04cba2e580ad2fa5cde52755"
     },
     {
       "path": "cmd/workshop/state_lock_nonwindows.go",
@@ -702,8 +707,8 @@
     },
     {
       "path": "docs/adr/0066-workshop-stale-writer-admission.md",
-      "bytes": 3204,
-      "sha256": "a67f1ea9eb32fc86d9635b5e1d220a7c9647e2443a089963e0497864e7b97e05"
+      "bytes": 3805,
+      "sha256": "8affb375eaf5a53e79de2ba48c2cf129324c7eb5c873c987251843919eda3205"
     },
     {
       "path": "docs/adr/9001-axm-mirror-behavior-evidence.md",
