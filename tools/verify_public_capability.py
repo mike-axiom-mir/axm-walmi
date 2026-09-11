@@ -143,10 +143,11 @@ def verify(root: Path) -> dict[str, object]:
         'InnerAssetRecipeSchema     = "axm.waldo-witness.inner-asset-recipe/v0.1"',
         'InnerAssetCandidateSchema  = "axm.waldo-witness.inner-asset-candidate/v0.1"',
         'InnerAssetValidationSchema = "axm.waldo-witness.inner-asset-validation/v0.1"',
-        'CandidateOnly           bool',
-        'HumanApproved           bool',
-        'Canonical               bool',
-        'AutomaticPromotion      bool',
+        'type InnerAssetCandidate struct {',
+        'CandidateOnly',
+        'HumanApproved',
+        'Canonical',
+        'AutomaticPromotion',
         'inner asset recipe must carry closed authority',
     ):
         _require(inner_asset, needle, "inner-asset source")
@@ -154,10 +155,11 @@ def verify(root: Path) -> dict[str, object]:
     bundle = raw["internal/axmmirror/innerasset_bundle.go"].decode("utf-8", errors="strict")
     for needle in (
         "EncodeInnerAssetBundle",
+        "VerifyInnerAssetBundle",
         "verifyInnerAssetBuildFiles",
         "verifyInnerAssetDeterminism",
-        "candidate.json",
-        "validation.json",
+        'entries["candidate.json"]',
+        'entries["validation.json"]',
     ):
         _require(bundle, needle, "portable bundle source")
 
@@ -211,20 +213,42 @@ def _parser() -> argparse.ArgumentParser:
     return parser
 
 
+def _write_receipt(path: str | None, payload: dict[str, object]) -> None:
+    if not path:
+        return
+    output = Path(path)
+    if output.exists() and (output.is_symlink() or not output.is_file()):
+        raise ValueError("receipt destination must be absent or a regular non-symlink file")
+    output.parent.mkdir(parents=True, exist_ok=True)
+    output.write_text(json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8", newline="\n")
+
+
 def main(argv: list[str] | None = None) -> int:
     args = _parser().parse_args(argv)
     try:
         receipt = verify(Path(args.root))
-        rendered = json.dumps(receipt, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
-        if args.receipt:
-            output = Path(args.receipt)
-            if output.exists() and (output.is_symlink() or not output.is_file()):
-                raise ValueError("receipt destination must be absent or a regular non-symlink file")
-            output.parent.mkdir(parents=True, exist_ok=True)
-            output.write_text(rendered, encoding="utf-8", newline="\n")
-        print(rendered, end="")
+        _write_receipt(args.receipt, receipt)
+        print(json.dumps(receipt, ensure_ascii=False, indent=2, sort_keys=True))
         return 0
     except (OSError, ValueError) as exc:
+        hold = {
+            "schema": SCHEMA,
+            "state": "HOLD",
+            "error": str(exc),
+            "authority": {
+                "automatic_install": False,
+                "automatic_selection": False,
+                "canon": False,
+                "execution": False,
+                "merge": False,
+                "promotion": False,
+                "source_mutation": False,
+            },
+        }
+        try:
+            _write_receipt(args.receipt, hold)
+        except (OSError, ValueError):
+            pass
         print(f"walmi-public-capability: HOLD: {exc}", file=sys.stderr)
         return 2
 
