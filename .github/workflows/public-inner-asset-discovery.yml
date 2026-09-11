@@ -1,0 +1,152 @@
+name: WALMI public inner-asset discovery
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  walmi-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact pull-request head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+      - name: Assert exact head
+        shell: bash
+        run: test "$(git rev-parse HEAD)" = "${{ github.event.pull_request.head.sha }}"
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+      - name: Verify public declaration against WALMI source
+        run: python3 tools/verify_public_capability.py --receipt "$RUNNER_TEMP/walmi-public-capability.json"
+      - name: Reject authority widening in an isolated fixture
+        shell: bash
+        run: |
+          fixture="$RUNNER_TEMP/walmi-capability-fixture"
+          mkdir -p "$fixture/.axm" "$fixture/registry" "$fixture/cmd/waldo-axm-mirror" "$fixture/internal/axmmirror"
+          cp .axm/discovery-public.json "$fixture/.axm/"
+          cp registry/capabilities.jsonl "$fixture/registry/"
+          cp cmd/waldo-axm-mirror/main.go "$fixture/cmd/waldo-axm-mirror/"
+          cp internal/axmmirror/innerasset.go internal/axmmirror/innerasset_bundle.go "$fixture/internal/axmmirror/"
+          cp LICENSE go.mod "$fixture/"
+          python3 tools/verify_public_capability.py --root "$fixture" > /dev/null
+          python3 - "$fixture/registry/capabilities.jsonl" <<'PY'
+          import json, pathlib, sys
+          path = pathlib.Path(sys.argv[1])
+          row = json.loads(path.read_text())
+          row["authority"]["execution"] = True
+          path.write_text(json.dumps(row, separators=(",", ":")) + "\n")
+          PY
+          if python3 tools/verify_public_capability.py --root "$fixture" > /dev/null 2>&1; then
+            echo "authority-widened registry was accepted" >&2
+            exit 1
+          fi
+      - name: Verify deterministic standalone source seal
+        run: python3 tools/seal_source_tree.py --verify
+      - name: Exercise real inner-asset provider contract
+        run: go test ./internal/axmmirror -run 'TestInnerAssetForgeBuildsDeterministicPortableCandidate|TestInnerAssetBundleDetectsArtifactAndSelfDigestedCandidateTamper' -count=1
+      - name: Run WALMI standalone acceptance
+        run: python3 tools/test_walmi_ci.py
+      - name: Check stacked-base diff whitespace
+        shell: bash
+        run: git diff --check "${{ github.event.pull_request.base.sha }}...${{ github.event.pull_request.head.sha }}"
+      - name: Preserve declaration receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: walmi-public-capability-contract-${{ github.event.pull_request.head.sha }}
+          path: ${{ runner.temp }}/walmi-public-capability.json
+
+  discovery-buddy-bridge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact WALMI pull-request head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          path: walmi
+      - name: Assert exact WALMI head
+        shell: bash
+        run: test "$(git -C walmi rev-parse HEAD)" = "${{ github.event.pull_request.head.sha }}"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: walmi/go.mod
+      - name: Verify WALMI declaration and source seal
+        shell: bash
+        run: |
+          python walmi/tools/verify_public_capability.py --root walmi --receipt "$RUNNER_TEMP/walmi-public-capability.json"
+          (cd walmi && python3 tools/seal_source_tree.py --verify)
+      - name: Exercise the real deterministic inner-asset forge
+        run: go test ./walmi/internal/axmmirror -run 'TestInnerAssetForgeBuildsDeterministicPortableCandidate' -count=1
+      - name: Check out exact portable Discovery Buddy provider
+        uses: actions/checkout@v4
+        with:
+          repository: mike-axiom-mir/axm-discovery-buddy
+          ref: 565c38ecf93a9d563b02211258d8d36fcb1162b5
+          path: discovery-buddy
+      - name: Assert exact Discovery Buddy provider head
+        shell: bash
+        run: test "$(git -C discovery-buddy rev-parse HEAD)" = "565c38ecf93a9d563b02211258d8d36fcb1162b5"
+      - name: Build and independently verify portable Discovery Buddy
+        shell: bash
+        run: |
+          python discovery-buddy/tools/build_portable_discovery.py build --output "$RUNNER_TEMP/discovery-buddy.pyz" --receipt "$RUNNER_TEMP/discovery-buddy.pyz.receipt.json"
+          python discovery-buddy/tools/build_portable_discovery.py verify --output "$RUNNER_TEMP/discovery-buddy.pyz" --receipt "$RUNNER_TEMP/discovery-buddy.pyz.receipt.json"
+          rm -rf discovery-buddy
+      - name: Scan, verify, and exactly query WALMI through only the portable consumer
+        shell: bash
+        run: |
+          mkdir -p "$RUNNER_TEMP/discovery"
+          python "$RUNNER_TEMP/discovery-buddy.pyz" scan walmi --output-dir "$RUNNER_TEMP/discovery" --public
+          python "$RUNNER_TEMP/discovery-buddy.pyz" verify walmi --output-dir "$RUNNER_TEMP/discovery" --public
+          python "$RUNNER_TEMP/discovery-buddy.pyz" query "$RUNNER_TEMP/discovery/public-discovery.json" \
+            --repo mike-axiom-mir/axm-walmi \
+            --capability-id axm.walmi.deterministic-inner-asset-forge \
+            > "$RUNNER_TEMP/query.json"
+      - name: Independently assert discovery evidence and closed authority
+        shell: bash
+        run: |
+          python - "$RUNNER_TEMP/discovery/public-discovery.json" "$RUNNER_TEMP/query.json" <<'PY'
+          import json, pathlib, sys
+          index = json.loads(pathlib.Path(sys.argv[1]).read_text())
+          query = json.loads(pathlib.Path(sys.argv[2]).read_text())
+          assert index["visibility"] == "PUBLIC_SAFE_DECLARED_ONLY"
+          assert index["summary"]["repositories"] == 1
+          assert index["summary"]["capability_records"] == 1
+          assert query["summary"]["matches"] == 1
+          candidate = query["candidates"][0]
+          assert candidate["repository"] == "mike-axiom-mir/axm-walmi"
+          assert candidate["capability"]["id"] == "axm.walmi.deterministic-inner-asset-forge"
+          assert candidate["capability"]["status"] == "EXPERIMENTAL"
+          assert candidate["capability"]["providers"] == ["mike-axiom-mir/axm-walmi"]
+          assert query["authority"] == {
+              "classification": "DISCOVERY_EVIDENCE_ONLY",
+              "execute": False,
+              "install": False,
+              "select": False,
+              "merge": False,
+              "canon": False,
+          }
+          print(json.dumps({
+              "status": "PASS",
+              "index_sha256": index["content_sha256"],
+              "query_sha256": query["query_sha256"],
+              "matches": query["summary"]["matches"],
+          }, sort_keys=True))
+          PY
+      - name: Preserve cross-repo evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: walmi-discovery-bridge-${{ github.event.pull_request.head.sha }}
+          path: |
+            ${{ runner.temp }}/walmi-public-capability.json
+            ${{ runner.temp }}/discovery-buddy.pyz.receipt.json
+            ${{ runner.temp }}/discovery/public-discovery.json
+            ${{ runner.temp }}/discovery/public-discovery.md
+            ${{ runner.temp }}/query.json
