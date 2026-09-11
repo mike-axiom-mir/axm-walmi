@@ -165,7 +165,8 @@ def verify(root: Path) -> dict[str, object]:
 
     go_mod = raw["go.mod"].decode("utf-8", errors="strict")
     _require(go_mod, "module github.com/openwaldo/waldo", "go.mod")
-    _require(go_mod, "\ngo 1.25.0\n", "go.mod")
+    if not any(line.strip() == "go 1.25.0" for line in go_mod.splitlines()):
+        raise ValueError("go.mod no longer declares Go 1.25.0")
 
     license_text = raw["LICENSE"].decode("utf-8", errors="strict")
     _require(license_text, "Apache License", "LICENSE")
