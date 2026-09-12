@@ -1,10 +1,15 @@
 {
   "schema": "axm.walmi.standalone-source-manifest/v1",
   "copyMode": "FULL_FILES_NO_LINKS",
-  "fileCount": 2245,
-  "totalBytes": 29717998,
-  "treeSha256": "3316406f664b9d357589e03e12a35f17a778644ebc94b3cb032478ee1a6a78c9",
+  "fileCount": 2251,
+  "totalBytes": 29747272,
+  "treeSha256": "549b67f9b37859d2e164385afb8dbcb6b501b5daf09c256c88ea11654995b661",
   "files": [
+    {
+      "path": ".axm/discovery-public.json",
+      "bytes": 129,
+      "sha256": "87a3d812b9bb366c40a9d756764f66f0e0258002a6b72880c45d4db5bbf7872e"
+    },
     {
       "path": ".gitattributes",
       "bytes": 160,
@@ -66,6 +71,11 @@
       "sha256": "1ad8b7f0cc685e200bf11854f36ddb21d168dc3ba734972419345b5f4236a952"
     },
     {
+      "path": ".github/workflows/public-inner-asset-discovery.yml",
+      "bytes": 7591,
+      "sha256": "d8233e46d1d98836afecca39ce95da19f5f2654736e6d2c14f06e2f83ad6f930"
+    },
+    {
       "path": ".github/workflows/walmi-pc-full-stack-v0.2.yml",
       "bytes": 17681,
       "sha256": "afec9855a6a148269453738ebb858a669a7621a43b7dc40393820039260070f3"
@@ -87,8 +97,8 @@
     },
     {
       "path": "AGENTS.md",
-      "bytes": 2706,
-      "sha256": "92f971ce23db63b13211bc71d4b611db36fd675f6191687a5ec8e31c87583762"
+      "bytes": 6055,
+      "sha256": "5868fcec166cb14085d70b336897ab891120d59c16db6365119658402c63407e"
     },
     {
       "path": "AXM_MIRROR_EXPERIMENT.md",
@@ -109,6 +119,11 @@
       "path": "README.md",
       "bytes": 4863,
       "sha256": "55a825f8323a196c789a03ef38da47539ca527742d13330b650dfa95edb55162"
+    },
+    {
+      "path": "THIRD_PARTY.json",
+      "bytes": 552,
+      "sha256": "1617eceeb9757cc01d8ca013db1dcdb3ee8a419bd10e1806b21c61196b190cad"
     },
     {
       "path": "WALMI-SOURCE-PROVENANCE.json",
@@ -10001,6 +10016,11 @@
       "sha256": "f954c56ed3d5d9ba810a4b867d0282067b1991cb0a5a7c6a30deb514f0622589"
     },
     {
+      "path": "registry/capabilities.jsonl",
+      "bytes": 1044,
+      "sha256": "075330e0dd7ccd27870ee5adbbf3614b272536a254680d7817d3d5c1a5a122f1"
+    },
+    {
       "path": "research/asset-foundry-knowledge-sources-2026-08-15.json",
       "bytes": 3621,
       "sha256": "d242a9efe99bfac3376d631a7fe00b69f7126797a508f9d74a3435c4420565df"
@@ -11212,23 +11232,33 @@
     },
     {
       "path": "tools/build_source_bundle.py",
-      "bytes": 2131,
-      "sha256": "1612b8e611a1c61b89442dcf5537dcbc2aeb0724b3cae0624c0936e60268d6ac"
+      "bytes": 5295,
+      "sha256": "f3a297d19216816717137d1ed499adbdec2491fd8bc93f2dd8bbb066025a2dc9"
     },
     {
       "path": "tools/seal_source_tree.py",
-      "bytes": 4438,
-      "sha256": "e7ed8179e42b84e54fb75c29ccb0dd27715fa5af4f02f90caa61e693a7581880"
+      "bytes": 4623,
+      "sha256": "01c9e246ff7f4ee1ab9da36106b6b1d7eb03b9cdf795b3dc9135e4df001be46b"
+    },
+    {
+      "path": "tools/test_source_packaging.py",
+      "bytes": 3802,
+      "sha256": "d9bc663ffaa0b73b9bc8cd35a8a21792fbd0bb7caaf7d0de613dec352ffc75af"
     },
     {
       "path": "tools/test_walmi_ci.py",
-      "bytes": 2933,
-      "sha256": "bd7b8f62b760c7990b4a89759a48066dc9f11f6c8561760215f34d29144f33a5"
+      "bytes": 2971,
+      "sha256": "27bf89e7130afa9448190936982db575ffb78414056e3d087886c2598312e7e8"
     },
     {
       "path": "tools/test_walmi_windows.ps1",
       "bytes": 2130,
       "sha256": "dc20360d2f95b474780db1f9658a03d909d36ce007c80416158340f34d225827"
+    },
+    {
+      "path": "tools/verify_public_capability.py",
+      "bytes": 9420,
+      "sha256": "db57c160773b85f099c9c4ae67123835d805d87e0579cf232e45cff36fac6c2e"
     }
   ]
 }
