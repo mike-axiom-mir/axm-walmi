@@ -1,9 +1,9 @@
 {
   "schema": "axm.walmi.standalone-source-manifest/v1",
   "copyMode": "FULL_FILES_NO_LINKS",
-  "fileCount": 2251,
-  "totalBytes": 29766520,
-  "treeSha256": "411e3073f5da22bba153b9155cf3cb4b65a036f61ae4e9654bfdebfba16163e8",
+  "fileCount": 2245,
+  "totalBytes": 29717998,
+  "treeSha256": "3316406f664b9d357589e03e12a35f17a778644ebc94b3cb032478ee1a6a78c9",
   "files": [
     {
       "path": ".gitattributes",
@@ -66,11 +66,6 @@
       "sha256": "1ad8b7f0cc685e200bf11854f36ddb21d168dc3ba734972419345b5f4236a952"
     },
     {
-      "path": ".github/workflows/inner-asset-review-experience.yml",
-      "bytes": 3057,
-      "sha256": "8456fb0c4e0afa1b3607f01fa10003f68859b6757282905c05fc1414e54f9a14"
-    },
-    {
       "path": ".github/workflows/walmi-pc-full-stack-v0.2.yml",
       "bytes": 17681,
       "sha256": "afec9855a6a148269453738ebb858a669a7621a43b7dc40393820039260070f3"
@@ -92,13 +87,13 @@
     },
     {
       "path": "AGENTS.md",
-      "bytes": 6055,
-      "sha256": "5868fcec166cb14085d70b336897ab891120d59c16db6365119658402c63407e"
+      "bytes": 2706,
+      "sha256": "92f971ce23db63b13211bc71d4b611db36fd675f6191687a5ec8e31c87583762"
     },
     {
       "path": "AXM_MIRROR_EXPERIMENT.md",
-      "bytes": 18146,
-      "sha256": "5f929a718169616f28c35dfe4cf178bc780d9699c44a8f463620c90eb674b943"
+      "bytes": 17773,
+      "sha256": "a794fba67304e8938e762d99ceea5d92b87cc3cabbfc698b950a8f6875c226a2"
     },
     {
       "path": "LICENSE",
@@ -116,11 +111,6 @@
       "sha256": "55a825f8323a196c789a03ef38da47539ca527742d13330b650dfa95edb55162"
     },
     {
-      "path": "THIRD_PARTY.json",
-      "bytes": 552,
-      "sha256": "1617eceeb9757cc01d8ca013db1dcdb3ee8a419bd10e1806b21c61196b190cad"
-    },
-    {
       "path": "WALMI-SOURCE-PROVENANCE.json",
       "bytes": 545727,
       "sha256": "a691df372b27c119adb6ae864ac929c8ae40ed9a61cbaed08dacd1d4aaf2cf9f"
@@ -132,13 +122,13 @@
     },
     {
       "path": "cmd/waldo-axm-mirror/main.go",
-      "bytes": 38421,
-      "sha256": "bcec0accec715db64f8749c85867a4a60d41bc17991ec16a901ca50a049159b0"
+      "bytes": 34593,
+      "sha256": "715785c3cbed15374c361cf89cf64de4c5f96a791d4d04afbb4e7c821349bd34"
     },
     {
       "path": "cmd/waldo-axm-mirror/main_test.go",
-      "bytes": 33307,
-      "sha256": "1409ae1346803dee50463c1368702a7b665252c2bbe356e4682ee1c13edeb48e"
+      "bytes": 30665,
+      "sha256": "670a135c8db57de69a91919075f8562e4842119b0c5eefd67d91a34b5931269b"
     },
     {
       "path": "cmd/waldo-mirror-review/main.go",
@@ -912,8 +902,8 @@
     },
     {
       "path": "examples/axm-mirror/README.md",
-      "bytes": 4936,
-      "sha256": "9446f0a30adf1e257364c1fbfc91bf3983af0c88105605e342c818bfbbf60d33"
+      "bytes": 4464,
+      "sha256": "330011a3f0a0c72b85e68b719d4b87610231086283aa05357a7ba2405118c1dd"
     },
     {
       "path": "examples/axm-mirror/capability-gap-request.json",
@@ -11222,38 +11212,18 @@
     },
     {
       "path": "tools/build_source_bundle.py",
-      "bytes": 5295,
-      "sha256": "f3a297d19216816717137d1ed499adbdec2491fd8bc93f2dd8bbb066025a2dc9"
-    },
-    {
-      "path": "tools/inner-asset-review/browser-check.mjs",
-      "bytes": 4960,
-      "sha256": "9b0db19cfbd739909b0baa4c970e11309bd3d7211de9ff410891e5b38f7c4119"
-    },
-    {
-      "path": "tools/inner-asset-review/main.go",
-      "bytes": 18834,
-      "sha256": "42e08e07be4346c1fda125b0781eacc3fb072af2cc03f8e9cc8bec9041d0f001"
-    },
-    {
-      "path": "tools/inner-asset-review/main_test.go",
-      "bytes": 3266,
-      "sha256": "648b4521600a5544c1b9e7ea3d06aad74a109af87f35a4e855b9acefae564a0a"
+      "bytes": 2131,
+      "sha256": "1612b8e611a1c61b89442dcf5537dcbc2aeb0724b3cae0624c0936e60268d6ac"
     },
     {
       "path": "tools/seal_source_tree.py",
-      "bytes": 4623,
-      "sha256": "01c9e246ff7f4ee1ab9da36106b6b1d7eb03b9cdf795b3dc9135e4df001be46b"
-    },
-    {
-      "path": "tools/test_source_packaging.py",
-      "bytes": 3802,
-      "sha256": "d9bc663ffaa0b73b9bc8cd35a8a21792fbd0bb7caaf7d0de613dec352ffc75af"
+      "bytes": 4438,
+      "sha256": "e7ed8179e42b84e54fb75c29ccb0dd27715fa5af4f02f90caa61e693a7581880"
     },
     {
       "path": "tools/test_walmi_ci.py",
-      "bytes": 2971,
-      "sha256": "27bf89e7130afa9448190936982db575ffb78414056e3d087886c2598312e7e8"
+      "bytes": 2933,
+      "sha256": "bd7b8f62b760c7990b4a89759a48066dc9f11f6c8561760215f34d29144f33a5"
     },
     {
       "path": "tools/test_walmi_windows.ps1",
