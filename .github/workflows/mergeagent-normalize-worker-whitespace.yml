@@ -1,0 +1,54 @@
+name: MergeAgent normalize worker whitespace
+
+on:
+  push:
+    branches:
+      - automation/mergeagent-walmi-consolidation-20260912
+
+permissions:
+  contents: write
+
+jobs:
+  normalize:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout consolidation branch
+        uses: actions/checkout@v4
+        with:
+          ref: automation/mergeagent-walmi-consolidation-20260912
+          fetch-depth: 0
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+      - name: Normalize inherited worker files
+        shell: bash
+        run: |
+          set -euo pipefail
+          gofmt -w internal/training/protocol.go
+          python3 - <<'PY'
+          from pathlib import Path
+          path = Path('docs/MODEL-LIFECYCLE.md')
+          text = path.read_text(encoding='utf-8')
+          lines = [line.rstrip(' \t') for line in text.splitlines()]
+          path.write_text('\n'.join(lines) + '\n', encoding='utf-8', newline='\n')
+          PY
+      - name: Remove one-shot workflow before sealing
+        run: rm .github/workflows/mergeagent-normalize-worker-whitespace.yml
+      - name: Reseal exact source tree
+        run: |
+          python3 tools/seal_source_tree.py
+          python3 tools/seal_source_tree.py --verify
+      - name: Run complete WALMI acceptance
+        run: python3 tools/test_walmi_ci.py
+      - name: Verify final diff against main is whitespace-clean
+        run: git diff --check origin/main --
+      - name: Commit verified normalization
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "AXM MergeAgent"
+          git config user.email "noreply@openai.com"
+          git add -A
+          git commit -s -m "Normalize worker protocol line endings after WALMI consolidation"
+          git push origin HEAD:automation/mergeagent-walmi-consolidation-20260912
