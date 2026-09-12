@@ -1,9 +1,13 @@
 package main
 
 import (
+	"archive/zip"
+	"bytes"
 	"crypto/sha256"
 	"encoding/json"
+	"errors"
 	"fmt"
+	"io"
 	"os"
 	"path/filepath"
 	"testing"
@@ -103,8 +107,9 @@ func TestLensCorpusFileWritesReadyReceipt(t *testing.T) {
 }
 
 func TestInnerAssetCLIFlow(t *testing.T) {
+	directory := t.TempDir()
 	input := filepath.Join("..", "..", "examples", "axm-mirror", "inner-asset-recipe.json")
-	output := filepath.Join(t.TempDir(), "witness-orb.axmasset")
+	output := filepath.Join(directory, "witness-orb.axmasset")
 	if err := forgeInnerAssetFile(input, output); err != nil {
 		t.Fatalf("forgeInnerAssetFile() error = %v", err)
 	}
@@ -125,6 +130,86 @@ func TestInnerAssetCLIFlow(t *testing.T) {
 	if candidate.State != axmmirror.InnerAssetStateReady || !candidate.CandidateOnly || candidate.VisualStatus != axmmirror.InnerAssetVisualPending {
 		t.Fatalf("inner asset candidate = %+v", candidate)
 	}
+
+	materialized := filepath.Join(directory, "consumer-ready")
+	if err := materializeInnerAssetFile(output, materialized); err != nil {
+		t.Fatalf("materializeInnerAssetFile() error = %v", err)
+	}
+	for _, artifact := range candidate.Artifacts {
+		content, err := os.ReadFile(filepath.Join(materialized, artifact.Filename))
+		if err != nil {
+			t.Fatalf("read materialized %s: %v", artifact.Filename, err)
+		}
+		digest := sha256.Sum256(content)
+		if fmt.Sprintf("%x", digest[:]) != artifact.SHA256 {
+			t.Fatalf("materialized %s digest mismatch", artifact.Filename)
+		}
+	}
+	if _, err := os.Stat(filepath.Join(materialized, "candidate.json")); err != nil {
+		t.Fatalf("materialized candidate metadata: %v", err)
+	}
+	if _, err := os.Stat(filepath.Join(materialized, "validation.json")); err != nil {
+		t.Fatalf("materialized validation receipt: %v", err)
+	}
+	if err := materializeInnerAssetFile(output, materialized); err == nil {
+		t.Fatal("materializeInnerAssetFile() overwrote an existing destination")
+	}
+
+	tampered := filepath.Join(directory, "tampered.axmasset")
+	if err := writeTamperedAssetBundle(output, tampered); err != nil {
+		t.Fatal(err)
+	}
+	tamperedDestination := filepath.Join(directory, "tampered-output")
+	if err := materializeInnerAssetFile(tampered, tamperedDestination); err == nil {
+		t.Fatal("materializeInnerAssetFile() accepted a tampered bundle")
+	}
+	if _, err := os.Lstat(tamperedDestination); !errors.Is(err, os.ErrNotExist) {
+		t.Fatalf("failed materialization left destination behind: %v", err)
+	}
+}
+
+func writeTamperedAssetBundle(sourcePath, destinationPath string) error {
+	data, err := os.ReadFile(sourcePath)
+	if err != nil {
+		return err
+	}
+	reader, err := zip.NewReader(bytes.NewReader(data), int64(len(data)))
+	if err != nil {
+		return err
+	}
+	var output bytes.Buffer
+	writer := zip.NewWriter(&output)
+	for _, entry := range reader.File {
+		stream, err := entry.Open()
+		if err != nil {
+			return err
+		}
+		content, readErr := io.ReadAll(stream)
+		closeErr := stream.Close()
+		if err := errors.Join(readErr, closeErr); err != nil {
+			return err
+		}
+		if entry.Name == "asset.png" {
+			content[len(content)/2] ^= 1
+		}
+		header := entry.FileHeader
+		header.CRC32 = 0
+		header.CompressedSize = 0
+		header.CompressedSize64 = 0
+		header.UncompressedSize = 0
+		header.UncompressedSize64 = 0
+		target, err := writer.CreateHeader(&header)
+		if err != nil {
+			return err
+		}
+		if _, err := target.Write(content); err != nil {
+			return err
+		}
+	}
+	if err := writer.Close(); err != nil {
+		return err
+	}
+	return os.WriteFile(destinationPath, output.Bytes(), 0o600)
 }
 
 func TestPortableCapabilitySpineCLIFlow(t *testing.T) {

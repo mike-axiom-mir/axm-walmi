@@ -13,6 +13,8 @@ A deliberately small local workspace for Waldo first and additional AI identitie
 - Start / pause controls and selectable heartbeat interval.
 - Background heartbeats write visible progress notes into the session.
 - No overlapping heartbeat calls for the same session.
+- Foreground messages retain visible pending, failed, and answered delivery state.
+- Failed foreground messages can be retried without duplicating the user turn.
 - Runtime state survives process restarts; active sessions resume when the workshop is running again.
 - Windows and Linux user auto-start installers.
 - Explicit consent requests with approve/reject history.
@@ -114,6 +116,8 @@ The auto-start scripts do not delete `~/.axm-workshop` or WALDO model data.
 
 The scheduler runs one heartbeat at a time per session. If a model response takes longer than the configured interval, another request is not stacked on top of it. A failed model call is recorded visibly and retried on the next normal interval while the session remains active.
 
+Foreground chat failures stay attached to the exact user message with the model-endpoint error and a **Retry** action. Retrying reuses that retained turn rather than adding a duplicate. If the Workshop stops while a foreground response is pending, the next start marks that turn as interrupted and retryable instead of leaving an ambiguous permanent loading state.
+
 ## Creative Room and native Waldo
 
 The Creative Room still stores and shares images with the session. The current native WALDO inference path is text generation, so it does **not** pretend to inspect image pixels. In native mode an attached image is represented to Waldo by an explicit text marker saying that the image exists but its pixels were not inspected.
@@ -127,8 +131,27 @@ By default the workshop writes only to:
 ```text
 ~/.axm-workshop/
   state.json
+  state.json.backup
+  recovery/
   media/
 ```
+
+`state.json` is a versioned, SHA-256-bound checkpoint. Before each commit, the
+previous verified checkpoint becomes `state.json.backup`. On startup the
+Workshop verifies current state and its references. If current state is
+missing or damaged but the backup verifies, it restores that backup; rejected
+bytes are preserved exactly in `recovery/` under their SHA-256 identity. If
+neither checkpoint verifies, startup fails closed instead of seeding a new
+identity over existing evidence. Legacy direct state files migrate on first
+successful startup and remain as the first backup.
+
+Each process also retains the exact bytes it loaded as a local checkpoint
+token. State commits take a non-blocking operating-system advisory lock and
+compare that token with the current `state.json` bytes before writing. A busy
+or stale process fails closed without changing the current checkpoint and must
+retry or restart to load the newer state. The lock file is coordination only;
+it is not canonical state and kernel ownership is released when a process
+exits.
 
 Conversation history stays with its session. Explicit identity memory is visible to sessions for that identity. Vault memory is visible across identities. Chat content is not silently promoted into durable memory.
 
@@ -150,4 +173,7 @@ The native bridge adds focused prompt/Creative-Room tests under `waldo_native_br
 - Current native WALDO inference is text-only; image pixels require a vision-capable adapter/model.
 - App connectors are not wired yet. They should enter through the existing explicit adapter/consent boundary.
 - Auto-start is user-level: Windows Scheduled Task at logon or Linux `systemd --user`. It does not force machine-wide boot privileges.
+- Workshop checkpoint coordination is local to cooperating processes on one
+  filesystem. It is not distributed consensus, hostile-writer protection, or
+  a network-filesystem guarantee.
 - No merge is performed by this branch.

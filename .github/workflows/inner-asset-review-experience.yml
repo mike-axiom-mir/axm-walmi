@@ -1,0 +1,79 @@
+name: Inner asset review experience
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/inner-asset-review-experience.yml'
+      - 'tools/inner-asset-review/**'
+      - 'internal/axmmirror/**'
+      - 'cmd/waldo-axm-mirror/**'
+      - 'examples/axm-mirror/inner-asset-recipe.json'
+      - 'WALMI-SOURCE-MANIFEST.json'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  review-desk:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref || github.ref }}
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Generate exact source seal candidate
+        run: |
+          python3 tools/seal_source_tree.py
+          cp WALMI-SOURCE-MANIFEST.json /tmp/generated-WALMI-SOURCE-MANIFEST.json
+          python3 tools/seal_source_tree.py --verify
+
+      - name: Commit generated source seal on this same-repository PR lane
+        if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+        run: |
+          if git diff --quiet -- WALMI-SOURCE-MANIFEST.json; then
+            echo 'source seal already matches this head'
+            exit 0
+          fi
+          git config user.name 'Codex'
+          git config user.email 'codex@openai.com'
+          git add WALMI-SOURCE-MANIFEST.json
+          git commit -s -m 'Reseal WALMI source for inner asset review'
+          git push origin "HEAD:${GITHUB_HEAD_REF}"
+
+      - name: Verify Go format and focused contracts
+        run: |
+          test -z "$(gofmt -l tools/inner-asset-review/*.go)"
+          go test ./internal/axmmirror ./cmd/waldo-axm-mirror ./tools/inner-asset-review
+
+      - name: Forge and verify the real synthetic candidate
+        run: |
+          go run ./cmd/waldo-axm-mirror forge-asset examples/axm-mirror/inner-asset-recipe.json /tmp/review-candidate.axmasset
+          go run ./cmd/waldo-axm-mirror verify-asset /tmp/review-candidate.axmasset
+          go run ./tools/inner-asset-review /tmp/review-candidate.axmasset /tmp/inner-asset-review.html
+
+      - name: Exercise the generated local review in Chromium
+        run: |
+          mkdir -p /tmp/asset-review-browser evidence/inner-asset-review
+          cd /tmp/asset-review-browser
+          npm init -y >/dev/null
+          npm install --ignore-scripts --no-audit --no-fund playwright-core@1.55.0
+          cp "$GITHUB_WORKSPACE/tools/inner-asset-review/browser-check.mjs" ./browser-check.mjs
+          node ./browser-check.mjs /tmp/inner-asset-review.html "$GITHUB_WORKSPACE/evidence/inner-asset-review"
+
+      - name: Retain exact-head experience evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: inner-asset-review-evidence
+          if-no-files-found: error
+          path: |
+            /tmp/generated-WALMI-SOURCE-MANIFEST.json
+            /tmp/inner-asset-review.html
+            evidence/inner-asset-review/**
