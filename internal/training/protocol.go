@@ -128,6 +128,7 @@ func ReadWorkerOutputWithSkipped(input io.Reader, skipped io.Writer, consume fun
 	scanner := bufio.NewScanner(input)
 	buffer := make([]byte, 64*1024)
 	scanner.Buffer(buffer, 16*1024*1024)
+	terminalKind := ""
 	for scanner.Scan() {
 		line := bytes.TrimSpace(scanner.Bytes())
 		if start := bytes.IndexByte(line, '{'); start < 0 {
@@ -146,11 +147,23 @@ func ReadWorkerOutputWithSkipped(input io.Reader, skipped io.Writer, consume fun
 		if err := frame.Validate(); err != nil {
 			return err
 		}
+		if terminalKind != "" {
+			return fmt.Errorf("worker output frame %q appears after terminal %s frame", frame.Kind, terminalKind)
+		}
+		if frame.Kind == "complete" || frame.Kind == "error" {
+			terminalKind = frame.Kind
+		}
 		if err := consume(frame); err != nil {
 			return err
 		}
 	}
-	return scanner.Err()
+	if err := scanner.Err(); err != nil {
+		return err
+	}
+	if terminalKind == "" {
+		return fmt.Errorf("worker output ended without a terminal complete or error frame")
+	}
+	return nil
 }
 
 func (frame WorkerOutputFrame) Validate() error {
@@ -181,6 +194,9 @@ func (frame WorkerOutputFrame) Validate() error {
 	case "complete":
 		if frame.Observation == nil {
 			return fmt.Errorf("worker complete frame is missing observation")
+		}
+		if err := frame.Observation.Validate(); err != nil {
+			return fmt.Errorf("worker complete frame: %w", err)
 		}
 	case "error":
 		if frame.Error == "" {
@@ -217,6 +233,68 @@ func (event Event) Validate() error {
 		}
 	default:
 		return fmt.Errorf("unsupported worker event kind %q", event.Kind)
+	}
+	return nil
+}
+
+// Validate checks the framework-neutral shape of a completed worker result at
+// the protocol boundary. Model-specific checks such as planned totals and
+// artifact file verification remain with the durable model lifecycle.
+func (observation Observation) Validate() error {
+	if observation.Steps < 0 || observation.ConsumedTokens < 0 {
+		return fmt.Errorf("observation contains negative progress")
+	}
+	if observation.FinalLoss != nil && (*observation.FinalLoss < 0 || math.IsNaN(*observation.FinalLoss) || math.IsInf(*observation.FinalLoss, 0)) {
+		return fmt.Errorf("observation contains invalid final loss")
+	}
+	for index, checkpoint := range observation.Checkpoints {
+		if checkpoint.Step < 0 || checkpoint.Tokens < 0 {
+			return fmt.Errorf("observation checkpoint %d contains negative progress", index+1)
+		}
+		for artifactIndex, artifact := range checkpoint.Artifacts {
+			if err := validateWorkerArtifact(artifact); err != nil {
+				return fmt.Errorf("observation checkpoint %d artifact %d: %w", index+1, artifactIndex+1, err)
+			}
+		}
+	}
+	for index, evaluation := range observation.Evaluations {
+		if evaluation.Step < 0 || evaluation.Tokens < 0 {
+			return fmt.Errorf("observation evaluation %d contains negative progress", index+1)
+		}
+		for name, value := range evaluation.Metrics {
+			if name == "" {
+				return fmt.Errorf("observation evaluation %d contains an unnamed metric", index+1)
+			}
+			if math.IsNaN(value) || math.IsInf(value, 0) {
+				return fmt.Errorf("observation evaluation %d metric %q is not finite", index+1, name)
+			}
+		}
+	}
+	for index, artifact := range observation.Artifacts {
+		if err := validateWorkerArtifact(artifact); err != nil {
+			return fmt.Errorf("observation artifact %d: %w", index+1, err)
+		}
+	}
+	for index, consumption := range observation.Consumption {
+		if consumption.Corpus == "" {
+			return fmt.Errorf("observation consumption %d has no corpus", index+1)
+		}
+		if consumption.TokenTargets < 0 {
+			return fmt.Errorf("observation consumption %d contains negative token targets", index+1)
+		}
+	}
+	return nil
+}
+
+func validateWorkerArtifact(artifact Artifact) error {
+	if artifact.Path == "" {
+		return fmt.Errorf("artifact path is required")
+	}
+	if artifact.SHA256 == "" {
+		return fmt.Errorf("artifact SHA-256 is required")
+	}
+	if artifact.Bytes < 0 {
+		return fmt.Errorf("artifact size cannot be negative")
 	}
 	return nil
 }

@@ -29,6 +29,7 @@ type Identity struct{ ID, Name, Model string }
 
 type Message struct {
 	ID, Role, Text, CreatedAt string
+	Delivery, DeliveryError   string
 	MediaIDs                  []string `json:"media_ids,omitempty"`
 }
 
@@ -53,11 +54,12 @@ type State struct {
 }
 
 type App struct {
-	mu      sync.Mutex
-	state   State
-	dir     string
-	client  *http.Client
-	running map[string]bool
+	mu         sync.Mutex
+	state      State
+	checkpoint workshopCheckpointToken
+	dir        string
+	client     *http.Client
+	running    map[string]bool
 }
 
 type Op struct {
@@ -92,6 +94,15 @@ func heartbeatInterval(seconds int) int {
 	return seconds
 }
 
+func visibleDeliveryError(err error) string {
+	message := strings.TrimSpace(err.Error())
+	runes := []rune(message)
+	if len(runes) > 360 {
+		message = string(runes[:360]) + "…"
+	}
+	return message
+}
+
 func newApp() (*App, error) {
 	dir := os.Getenv("AXM_WORKSHOP_DATA")
 	if dir == "" {
@@ -105,16 +116,26 @@ func newApp() (*App, error) {
 		return nil, err
 	}
 	a := &App{dir: dir, client: &http.Client{Timeout: 120 * time.Second}, running: map[string]bool{}}
-	if b, err := os.ReadFile(filepath.Join(dir, "state.json")); err == nil {
-		if err := json.Unmarshal(b, &a.state); err != nil {
-			return nil, err
-		}
-		if a.normalizeState() {
+	loaded, err := loadWorkshopState(dir)
+	if err != nil {
+		return nil, err
+	}
+	if loaded.Found {
+		a.state = loaded.State
+		a.checkpoint = loaded.Checkpoint
+		if a.normalizeState() || loaded.NeedsCheckpoint {
 			if err := a.save(); err != nil {
 				return nil, err
 			}
 		}
-	} else if errors.Is(err, os.ErrNotExist) {
+		if loaded.RecoveredBackup {
+			if loaded.RejectedStateRef != "" {
+				log.Printf("workshop state recovered from verified backup; rejected bytes preserved at %s", loaded.RejectedStateRef)
+			} else {
+				log.Printf("workshop state recovered from verified backup after the current checkpoint was missing")
+			}
+		}
+	} else {
 		identity := Identity{ID: "waldo", Name: "Waldo", Model: env("AXM_AI_MODEL", "waldo")}
 		a.state = State{
 			Version:    2,
@@ -134,20 +155,22 @@ func newApp() (*App, error) {
 		if err := a.save(); err != nil {
 			return nil, err
 		}
-	} else {
-		return nil, err
 	}
 	return a, nil
 }
 
 func (a *App) normalizeState() bool {
+	return normalizeWorkshopState(&a.state)
+}
+
+func normalizeWorkshopState(state *State) bool {
 	changed := false
-	if a.state.Version < 2 {
-		a.state.Version = 2
+	if state.Version < 2 {
+		state.Version = 2
 		changed = true
 	}
-	for i := range a.state.Sessions {
-		s := &a.state.Sessions[i]
+	for i := range state.Sessions {
+		s := &state.Sessions[i]
 		if s.RuntimeMode != "active" && s.RuntimeMode != "paused" {
 			s.RuntimeMode = "paused"
 			changed = true
@@ -165,20 +188,25 @@ func (a *App) normalizeState() bool {
 			s.Heartbeat = s.RuntimeMode
 			changed = true
 		}
+		for j := range s.Messages {
+			m := &s.Messages[j]
+			if m.Role == "user" && m.Delivery == "pending" {
+				m.Delivery = "failed"
+				m.DeliveryError = "The Workshop stopped before this response finished. Retry when the local model is ready."
+				changed = true
+			}
+		}
 	}
 	return changed
 }
 
 func (a *App) save() error {
-	b, err := json.MarshalIndent(a.state, "", "  ")
+	next, err := saveWorkshopState(a.dir, a.state, a.checkpoint)
 	if err != nil {
 		return err
 	}
-	tmp := filepath.Join(a.dir, "state.json.tmp")
-	if err := os.WriteFile(tmp, b, 0o600); err != nil {
-		return err
-	}
-	return os.Rename(tmp, filepath.Join(a.dir, "state.json"))
+	a.checkpoint = next
+	return nil
 }
 
 func out(w http.ResponseWriter, status int, v any) {
@@ -258,8 +286,9 @@ func (a *App) handleOp(w http.ResponseWriter, r *http.Request) {
 			title = "New session"
 		}
 		s := Session{ID: id("session"), IdentityID: x.IdentityID, Title: title, Heartbeat: "paused", RuntimeMode: "paused", HeartbeatEverySec: 300, CreatedAt: timestamp(), Messages: []Message{}}
-		a.state.Sessions = append(a.state.Sessions, s)
-		if err := a.save(); err != nil {
+		if err := a.commitStateMutation(func(state *State) {
+			state.Sessions = append(state.Sessions, s)
+		}); err != nil {
 			fail(w, 500, err)
 			return
 		}
@@ -269,8 +298,9 @@ func (a *App) handleOp(w http.ResponseWriter, r *http.Request) {
 			fail(w, 404, errors.New("session not found"))
 			return
 		}
-		a.state.Sessions[si].Goal = strings.TrimSpace(x.Goal)
-		if err := a.save(); err != nil {
+		if err := a.commitStateMutation(func(state *State) {
+			state.Sessions[si].Goal = strings.TrimSpace(x.Goal)
+		}); err != nil {
 			fail(w, 500, err)
 			return
 		}
@@ -283,8 +313,9 @@ func (a *App) handleOp(w http.ResponseWriter, r *http.Request) {
 		if strings.TrimSpace(x.Status) == "" {
 			x.Status = "pulse"
 		}
-		a.state.Sessions[si].Heartbeat, a.state.Sessions[si].LastHeartbeat = x.Status, timestamp()
-		if err := a.save(); err != nil {
+		if err := a.commitStateMutation(func(state *State) {
+			state.Sessions[si].Heartbeat, state.Sessions[si].LastHeartbeat = x.Status, timestamp()
+		}); err != nil {
 			fail(w, 500, err)
 			return
 		}
@@ -298,30 +329,31 @@ func (a *App) handleOp(w http.ResponseWriter, r *http.Request) {
 			fail(w, 400, errors.New("runtime status must be active or paused"))
 			return
 		}
-		s := &a.state.Sessions[si]
-		if x.Status == "active" && strings.TrimSpace(s.Goal) == "" {
+		if x.Status == "active" && strings.TrimSpace(a.state.Sessions[si].Goal) == "" {
 			fail(w, 400, errors.New("set a goal before starting background runtime"))
 			return
 		}
-		if x.EverySeconds > 0 {
-			s.HeartbeatEverySec = heartbeatInterval(x.EverySeconds)
-		} else if s.HeartbeatEverySec <= 0 {
-			s.HeartbeatEverySec = 300
-		}
-		s.RuntimeMode = x.Status
-		s.LastRuntimeError = ""
-		if x.Status == "active" {
-			s.Heartbeat = "active"
-			s.NextHeartbeat = time.Now().UTC().Add(2 * time.Second).Format(time.RFC3339)
-		} else {
-			s.Heartbeat = "paused"
-			s.NextHeartbeat = ""
-		}
-		if err := a.save(); err != nil {
+		if err := a.commitStateMutation(func(state *State) {
+			s := &state.Sessions[si]
+			if x.EverySeconds > 0 {
+				s.HeartbeatEverySec = heartbeatInterval(x.EverySeconds)
+			} else if s.HeartbeatEverySec <= 0 {
+				s.HeartbeatEverySec = 300
+			}
+			s.RuntimeMode = x.Status
+			s.LastRuntimeError = ""
+			if x.Status == "active" {
+				s.Heartbeat = "active"
+				s.NextHeartbeat = time.Now().UTC().Add(2 * time.Second).Format(time.RFC3339)
+			} else {
+				s.Heartbeat = "paused"
+				s.NextHeartbeat = ""
+			}
+		}); err != nil {
 			fail(w, 500, err)
 			return
 		}
-		out(w, 200, *s)
+		out(w, 200, a.state.Sessions[si])
 	case "memory_add":
 		if x.Scope != "session" && x.Scope != "identity" && x.Scope != "vault" {
 			fail(w, 400, errors.New("bad memory scope"))
@@ -333,13 +365,22 @@ func (a *App) handleOp(w http.ResponseWriter, r *http.Request) {
 		}
 		m := Memory{ID: id("memory"), Scope: x.Scope, Text: strings.TrimSpace(x.Text), CreatedAt: timestamp()}
 		if x.Scope == "session" {
+			if si < 0 {
+				fail(w, 404, errors.New("session not found"))
+				return
+			}
 			m.SessionID = x.SessionID
 		}
 		if x.Scope == "identity" {
+			if _, ok := a.identity(x.IdentityID); !ok {
+				fail(w, 400, errors.New("unknown identity"))
+				return
+			}
 			m.IdentityID = x.IdentityID
 		}
-		a.state.Memories = append(a.state.Memories, m)
-		if err := a.save(); err != nil {
+		if err := a.commitStateMutation(func(state *State) {
+			state.Memories = append(state.Memories, m)
+		}); err != nil {
 			fail(w, 500, err)
 			return
 		}
@@ -347,8 +388,9 @@ func (a *App) handleOp(w http.ResponseWriter, r *http.Request) {
 	case "memory_delete":
 		for i, m := range a.state.Memories {
 			if m.ID == x.ID {
-				a.state.Memories = append(a.state.Memories[:i], a.state.Memories[i+1:]...)
-				if err := a.save(); err != nil {
+				if err := a.commitStateMutation(func(state *State) {
+					state.Memories = append(state.Memories[:i], state.Memories[i+1:]...)
+				}); err != nil {
 					fail(w, 500, err)
 					return
 				}
@@ -367,8 +409,9 @@ func (a *App) handleOp(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		c := Consent{ID: id("consent"), SessionID: x.SessionID, Action: strings.TrimSpace(x.Action), Reason: strings.TrimSpace(x.Reason), Status: "pending", CreatedAt: timestamp()}
-		a.state.Consents = append(a.state.Consents, c)
-		if err := a.save(); err != nil {
+		if err := a.commitStateMutation(func(state *State) {
+			state.Consents = append(state.Consents, c)
+		}); err != nil {
 			fail(w, 500, err)
 			return
 		}
@@ -380,8 +423,9 @@ func (a *App) handleOp(w http.ResponseWriter, r *http.Request) {
 		}
 		for i := range a.state.Consents {
 			if a.state.Consents[i].ID == x.ID {
-				a.state.Consents[i].Status, a.state.Consents[i].DecidedAt = x.Decision, timestamp()
-				if err := a.save(); err != nil {
+				if err := a.commitStateMutation(func(state *State) {
+					state.Consents[i].Status, state.Consents[i].DecidedAt = x.Decision, timestamp()
+				}); err != nil {
 					fail(w, 500, err)
 					return
 				}
@@ -453,10 +497,12 @@ func (a *App) upload(w http.ResponseWriter, r *http.Request) {
 	}
 	m := Media{ID: mid, SessionID: sid, IdentityID: iid, Name: filepath.Base(h.Filename), MIME: mime, FileName: name, URL: "/media/" + mid, CreatedAt: timestamp()}
 	a.mu.Lock()
-	a.state.Media = append(a.state.Media, m)
-	err = a.save()
+	err = a.commitStateMutation(func(state *State) {
+		state.Media = append(state.Media, m)
+	})
 	a.mu.Unlock()
 	if err != nil {
+		_ = os.Remove(p)
 		fail(w, 500, err)
 		return
 	}
@@ -485,17 +531,18 @@ func (a *App) media(w http.ResponseWriter, r *http.Request) {
 
 func (a *App) chat(w http.ResponseWriter, r *http.Request) {
 	var x struct {
-		SessionID, Text string
-		MediaIDs        []string `json:"media_ids"`
+		SessionID, Text, RetryMessageID string
+		MediaIDs                        []string `json:"media_ids"`
 	}
 	if err := readJSON(r, &x); err != nil {
 		fail(w, 400, err)
 		return
 	}
-	if strings.TrimSpace(x.Text) == "" && len(x.MediaIDs) == 0 {
+	if x.RetryMessageID == "" && strings.TrimSpace(x.Text) == "" && len(x.MediaIDs) == 0 {
 		fail(w, 400, errors.New("message is empty"))
 		return
 	}
+
 	a.mu.Lock()
 	si := a.sessionIndex(x.SessionID)
 	if si < 0 {
@@ -503,13 +550,46 @@ func (a *App) chat(w http.ResponseWriter, r *http.Request) {
 		fail(w, 404, errors.New("session not found"))
 		return
 	}
-	u := Message{ID: id("msg"), Role: "user", Text: strings.TrimSpace(x.Text), MediaIDs: x.MediaIDs, CreatedAt: timestamp()}
-	a.state.Sessions[si].Messages = append(a.state.Sessions[si].Messages, u)
-	if err := a.save(); err != nil {
-		a.mu.Unlock()
-		fail(w, 500, err)
-		return
+
+	messageID := x.RetryMessageID
+	if messageID == "" {
+		u := Message{
+			ID: id("msg"), Role: "user", Text: strings.TrimSpace(x.Text),
+			MediaIDs: append([]string(nil), x.MediaIDs...), CreatedAt: timestamp(), Delivery: "pending",
+		}
+		messageID = u.ID
+		if err := a.commitStateMutation(func(state *State) {
+			state.Sessions[si].Messages = append(state.Sessions[si].Messages, u)
+		}); err != nil {
+			a.mu.Unlock()
+			fail(w, 500, err)
+			return
+		}
+	} else {
+		retryIndex := -1
+		for i := range a.state.Sessions[si].Messages {
+			m := &a.state.Sessions[si].Messages[i]
+			if m.ID == messageID && m.Role == "user" && m.Delivery == "failed" {
+				retryIndex = i
+				break
+			}
+		}
+		if retryIndex < 0 {
+			a.mu.Unlock()
+			fail(w, 409, errors.New("failed message is no longer retryable"))
+			return
+		}
+		if err := a.commitStateMutation(func(state *State) {
+			m := &state.Sessions[si].Messages[retryIndex]
+			m.Delivery = "pending"
+			m.DeliveryError = ""
+		}); err != nil {
+			a.mu.Unlock()
+			fail(w, 500, err)
+			return
+		}
 	}
+
 	s := a.state.Sessions[si]
 	ident, ok := a.identity(s.IdentityID)
 	memories := append([]Memory(nil), a.state.Memories...)
@@ -519,12 +599,44 @@ func (a *App) chat(w http.ResponseWriter, r *http.Request) {
 		fail(w, 500, errors.New("identity missing"))
 		return
 	}
+
 	reply, err := a.generate(r.Context(), ident, s, memories, media)
 	if err != nil {
+		a.mu.Lock()
+		si = a.sessionIndex(x.SessionID)
+		if si < 0 {
+			a.mu.Unlock()
+			fail(w, 409, errors.New("session disappeared"))
+			return
+		}
+		messageIndex := -1
+		for i := range a.state.Sessions[si].Messages {
+			if a.state.Sessions[si].Messages[i].ID == messageID && a.state.Sessions[si].Messages[i].Role == "user" {
+				messageIndex = i
+				break
+			}
+		}
+		if messageIndex < 0 {
+			a.mu.Unlock()
+			fail(w, 409, errors.New("message disappeared"))
+			return
+		}
+		deliveryError := visibleDeliveryError(err)
+		persistErr := a.commitStateMutation(func(state *State) {
+			m := &state.Sessions[si].Messages[messageIndex]
+			m.Delivery = "failed"
+			m.DeliveryError = deliveryError
+		})
+		a.mu.Unlock()
+		if persistErr != nil {
+			fail(w, 500, fmt.Errorf("model request failed and delivery state could not be persisted: %w", persistErr))
+			return
+		}
 		fail(w, 502, err)
 		return
 	}
-	m := Message{ID: id("msg"), Role: "assistant", Text: reply, CreatedAt: timestamp()}
+
+	assistant := Message{ID: id("msg"), Role: "assistant", Text: reply, CreatedAt: timestamp()}
 	a.mu.Lock()
 	si = a.sessionIndex(x.SessionID)
 	if si < 0 {
@@ -532,14 +644,30 @@ func (a *App) chat(w http.ResponseWriter, r *http.Request) {
 		fail(w, 409, errors.New("session disappeared"))
 		return
 	}
-	a.state.Sessions[si].Messages = append(a.state.Sessions[si].Messages, m)
-	err = a.save()
+	messageIndex := -1
+	for i := range a.state.Sessions[si].Messages {
+		if a.state.Sessions[si].Messages[i].ID == messageID && a.state.Sessions[si].Messages[i].Role == "user" {
+			messageIndex = i
+			break
+		}
+	}
+	if messageIndex < 0 {
+		a.mu.Unlock()
+		fail(w, 409, errors.New("message disappeared"))
+		return
+	}
+	err = a.commitStateMutation(func(state *State) {
+		m := &state.Sessions[si].Messages[messageIndex]
+		m.Delivery = "answered"
+		m.DeliveryError = ""
+		state.Sessions[si].Messages = append(state.Sessions[si].Messages, assistant)
+	})
 	a.mu.Unlock()
 	if err != nil {
 		fail(w, 500, err)
 		return
 	}
-	out(w, 200, map[string]any{"assistant": m})
+	out(w, 200, map[string]any{"assistant": assistant})
 }
 
 func (a *App) generate(ctx context.Context, ident Identity, s Session, memories []Memory, media []Media) (string, error) {
@@ -644,9 +772,14 @@ func (a *App) startDueHeartbeats(ctx context.Context) {
 	due := []string{}
 	changed := false
 	a.mu.Lock()
-	for i := range a.state.Sessions {
-		s := &a.state.Sessions[i]
-		if s.RuntimeMode != "active" || strings.TrimSpace(s.Goal) == "" || a.running[s.ID] {
+	candidate := cloneWorkshopState(a.state)
+	nextRunning := make(map[string]bool, len(a.running))
+	for id, running := range a.running {
+		nextRunning[id] = running
+	}
+	for i := range candidate.Sessions {
+		s := &candidate.Sessions[i]
+		if s.RuntimeMode != "active" || strings.TrimSpace(s.Goal) == "" || nextRunning[s.ID] {
 			continue
 		}
 		if s.NextHeartbeat == "" {
@@ -663,14 +796,22 @@ func (a *App) startDueHeartbeats(ctx context.Context) {
 		if next.After(now) {
 			continue
 		}
-		a.running[s.ID] = true
+		nextRunning[s.ID] = true
 		s.Heartbeat = "working"
 		s.LastHeartbeat = timestamp()
 		due = append(due, s.ID)
 		changed = true
 	}
 	if changed {
-		_ = a.save()
+		nextCheckpoint, err := saveWorkshopState(a.dir, candidate, a.checkpoint)
+		if err != nil {
+			log.Printf("workshop heartbeat state was not committed: %v", err)
+			due = nil
+		} else {
+			a.state = candidate
+			a.checkpoint = nextCheckpoint
+			a.running = nextRunning
+		}
 	}
 	a.mu.Unlock()
 	for _, sid := range due {
@@ -708,31 +849,34 @@ func (a *App) finishHeartbeat(sessionID, reply string, runErr error) {
 	if si < 0 {
 		return
 	}
-	s := &a.state.Sessions[si]
-	s.LastHeartbeat = timestamp()
-	if runErr != nil {
-		s.LastRuntimeError = runErr.Error()
+	err := a.commitStateMutation(func(state *State) {
+		s := &state.Sessions[si]
+		s.LastHeartbeat = timestamp()
+		if runErr != nil {
+			s.LastRuntimeError = runErr.Error()
+			if s.RuntimeMode == "active" {
+				s.Heartbeat = "error"
+				s.NextHeartbeat = time.Now().UTC().Add(time.Duration(heartbeatInterval(s.HeartbeatEverySec)) * time.Second).Format(time.RFC3339)
+			} else {
+				s.Heartbeat = "paused"
+				s.NextHeartbeat = ""
+			}
+			return
+		}
+		s.PulseCount++
+		s.LastRuntimeError = ""
+		s.Messages = append(s.Messages, Message{ID: id("msg"), Role: "assistant", Text: "⏱ Goal heartbeat\n" + strings.TrimSpace(reply), CreatedAt: timestamp()})
 		if s.RuntimeMode == "active" {
-			s.Heartbeat = "error"
+			s.Heartbeat = "active"
 			s.NextHeartbeat = time.Now().UTC().Add(time.Duration(heartbeatInterval(s.HeartbeatEverySec)) * time.Second).Format(time.RFC3339)
 		} else {
 			s.Heartbeat = "paused"
 			s.NextHeartbeat = ""
 		}
-		_ = a.save()
-		return
+	})
+	if err != nil {
+		log.Printf("workshop heartbeat result was not committed: %v", err)
 	}
-	s.PulseCount++
-	s.LastRuntimeError = ""
-	s.Messages = append(s.Messages, Message{ID: id("msg"), Role: "assistant", Text: "⏱ Goal heartbeat\n" + strings.TrimSpace(reply), CreatedAt: timestamp()})
-	if s.RuntimeMode == "active" {
-		s.Heartbeat = "active"
-		s.NextHeartbeat = time.Now().UTC().Add(time.Duration(heartbeatInterval(s.HeartbeatEverySec)) * time.Second).Format(time.RFC3339)
-	} else {
-		s.Heartbeat = "paused"
-		s.NextHeartbeat = ""
-	}
-	_ = a.save()
 }
 
 func main() {
