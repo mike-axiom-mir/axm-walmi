@@ -1,9 +1,9 @@
 {
   "schema": "axm.walmi.standalone-source-manifest/v1",
   "copyMode": "FULL_FILES_NO_LINKS",
-  "fileCount": 2271,
-  "totalBytes": 29867334,
-  "treeSha256": "7644ff962aa51bdc0c3186772104c849d324130e76310740676cb7a26183597a",
+  "fileCount": 2272,
+  "totalBytes": 29869293,
+  "treeSha256": "c9fe3bc94819a78eee5342b5ba921ff9130299846df23e7d4dd1e27a7c556e17",
   "files": [
     {
       "path": ".axm/discovery-public.json",
@@ -74,6 +74,11 @@
       "path": ".github/workflows/inner-asset-review-experience.yml",
       "bytes": 3057,
       "sha256": "8456fb0c4e0afa1b3607f01fa10003f68859b6757282905c05fc1414e54f9a14"
+    },
+    {
+      "path": ".github/workflows/mergeagent-walmi-whitespace-fix.yml",
+      "bytes": 1959,
+      "sha256": "89ac80f839210da6b01219c40ea6800e1ff9e0dc9be5308dda6213b6fa08924d"
     },
     {
       "path": ".github/workflows/public-inner-asset-discovery.yml",
