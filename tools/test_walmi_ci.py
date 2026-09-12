@@ -23,6 +23,7 @@ GO_PACKAGES = (
     "./internal/training",
 )
 PYTHON_SUITES = (
+    "tools/test_source_packaging.py",
     "portable/walmi-pc-package/test_walmi_simulator_bridge.py",
     "portable/walmi-pc-package/test_walmi_autolearn.py",
     "portable/walmi-pc-package/test_walmi_device_pack_builder.py",

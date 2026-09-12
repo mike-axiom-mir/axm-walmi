@@ -527,6 +527,9 @@ record order. An embedded worker communicates through schema-1 NDJSON: a begin
 frame, record frames from a shuffle bounded by both record count and retained
 bytes, an end frame, then typed progress,
 checkpoint, evaluation, completion, or error output frames.
+The output stream must end in exactly one completion or error frame. Structured
+frames after that terminal transition are rejected before they reach lifecycle
+consumers; unstructured runtime diagnostics remain separate skipped output.
 Human-readable training progress includes a remaining-time ETA after the
 startup sample; JSON progress exposes the underlying `eta_seconds` value.
 

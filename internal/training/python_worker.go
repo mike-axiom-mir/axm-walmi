@@ -124,7 +124,6 @@ func runWorkerCommand(ctx context.Context, label string, command *exec.Cmd, requ
 	}
 	go func() {
 		var observation Observation
-		completed := false
 		err := ReadWorkerOutputWithSkipped(stdout, &skipped, func(frame WorkerOutputFrame) error {
 			switch frame.Kind {
 			case "event":
@@ -135,19 +134,12 @@ func runWorkerCommand(ctx context.Context, label string, command *exec.Cmd, requ
 					request.Report(*frame.Event)
 				}
 			case "complete":
-				if completed {
-					return fmt.Errorf("%s worker returned more than one completion", label)
-				}
-				completed = true
 				observation = *frame.Observation
 			case "error":
 				return errors.New(frame.Error)
 			}
 			return nil
 		})
-		if err == nil && !completed {
-			err = fmt.Errorf("%s worker exited without a completion observation", label)
-		}
 		if err != nil && command.Process != nil {
 			terminateWorkerGroup(command)
 			_ = command.Process.Kill()
