@@ -1,9 +1,9 @@
 {
   "schema": "axm.walmi.standalone-source-manifest/v1",
   "copyMode": "FULL_FILES_NO_LINKS",
-  "fileCount": 2249,
-  "totalBytes": 29742550,
-  "treeSha256": "2b2a4ca1b69635ab6b7f08f4a4b6157443af75d861fc92064186eefccee14670",
+  "fileCount": 2245,
+  "totalBytes": 29717998,
+  "treeSha256": "3316406f664b9d357589e03e12a35f17a778644ebc94b3cb032478ee1a6a78c9",
   "files": [
     {
       "path": ".gitattributes",
@@ -81,19 +81,14 @@
       "sha256": "094f24631cbfc420df1c821681226cfd058f4b710a0e114793f15e474ab30e86"
     },
     {
-      "path": ".github/workflows/workshop-ui-experience.yml",
-      "bytes": 2800,
-      "sha256": "f60f5c73f75148b1fa80ba2cba2c66f573c1a1d7e1c4e2488e230987d4fb3320"
-    },
-    {
       "path": ".gitignore",
       "bytes": 461,
       "sha256": "b0c7ce3bfb4d98ed648357e238c846af3051b26f4e5105788ec0c3f3ae2bdbf1"
     },
     {
       "path": "AGENTS.md",
-      "bytes": 6055,
-      "sha256": "5868fcec166cb14085d70b336897ab891120d59c16db6365119658402c63407e"
+      "bytes": 2706,
+      "sha256": "92f971ce23db63b13211bc71d4b611db36fd675f6191687a5ec8e31c87583762"
     },
     {
       "path": "AXM_MIRROR_EXPERIMENT.md",
@@ -114,11 +109,6 @@
       "path": "README.md",
       "bytes": 4863,
       "sha256": "55a825f8323a196c789a03ef38da47539ca527742d13330b650dfa95edb55162"
-    },
-    {
-      "path": "THIRD_PARTY.json",
-      "bytes": 552,
-      "sha256": "1617eceeb9757cc01d8ca013db1dcdb3ee8a419bd10e1806b21c61196b190cad"
     },
     {
       "path": "WALMI-SOURCE-PROVENANCE.json",
@@ -162,8 +152,8 @@
     },
     {
       "path": "cmd/workshop/README.md",
-      "bytes": 7681,
-      "sha256": "5f90408829b37ef4c6b113894f4aceac9f7077fd5b8f4ac85e8ea7ef997611aa"
+      "bytes": 7157,
+      "sha256": "edb43a6bb7d26545d0950f29521875d74f01772d1e1aed6179f54e6a795a4c78"
     },
     {
       "path": "cmd/workshop/install-autostart.ps1",
@@ -177,13 +167,13 @@
     },
     {
       "path": "cmd/workshop/main.go",
-      "bytes": 23182,
-      "sha256": "8de707eaa93b9c674bb05e415c3cf03fe20ad73095d611790efb0a48c091798a"
+      "bytes": 21616,
+      "sha256": "7968957108d900f7174b8c23fda6551f8b9cf5f06c591865d5b5475da51c9c20"
     },
     {
       "path": "cmd/workshop/main_test.go",
-      "bytes": 3876,
-      "sha256": "11e10914fba4850f932600aaae43d4231b823bd7aeff831901b96dd1b0b18e21"
+      "bytes": 838,
+      "sha256": "81788b73278c53222f7d9757d48b7a3f91b9dca1fedcaf4589295674244b185e"
     },
     {
       "path": "cmd/workshop/native_bridge.go",
@@ -192,8 +182,8 @@
     },
     {
       "path": "cmd/workshop/ui.html",
-      "bytes": 19350,
-      "sha256": "6a1c33d22017773ff0e28af05f8fe0dde1654c41a5e005b625ae5ddef5fa4825"
+      "bytes": 15609,
+      "sha256": "5d4ba18e141d5ddf3c2db7a89acb7e224a6c50c7b986a48ede1d4b796f340f84"
     },
     {
       "path": "cmd/workshop/uninstall-autostart.ps1",
@@ -11219,16 +11209,6 @@
       "path": "testing/vet.sh",
       "bytes": 378,
       "sha256": "6a2192f01c1dd4bc3c3ea1f7ab3dec8ab03716661b05541a521775b09503a9b3"
-    },
-    {
-      "path": "testing/workshop-ui-delivery.spec.js",
-      "bytes": 4611,
-      "sha256": "acd1d7aed5017df272bf2d20d9d48216413855346713bc7ae38fed84d2da53f3"
-    },
-    {
-      "path": "testing/workshop-ui-goal-draft.spec.js",
-      "bytes": 4371,
-      "sha256": "defc23c7aaf2ffbf1b4df9954481fcc600d2d2d1dcbd050f908a7daa9bbbafcc"
     },
     {
       "path": "tools/build_source_bundle.py",
