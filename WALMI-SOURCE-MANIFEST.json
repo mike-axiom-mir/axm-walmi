@@ -2,8 +2,8 @@
   "schema": "axm.walmi.standalone-source-manifest/v1",
   "copyMode": "FULL_FILES_NO_LINKS",
   "fileCount": 2271,
-  "totalBytes": 29867334,
-  "treeSha256": "7644ff962aa51bdc0c3186772104c849d324130e76310740676cb7a26183597a",
+  "totalBytes": 29866477,
+  "treeSha256": "1e114eead2eabc36277d1b7ca9a5b753fd6595a56df47ae4117a3b3a79ccbb30",
   "files": [
     {
       "path": ".axm/discovery-public.json",
@@ -347,8 +347,8 @@
     },
     {
       "path": "docs/MODEL-LIFECYCLE.md",
-      "bytes": 29057,
-      "sha256": "066341e2ad05dae301befb3361a2cf63b35ff548b3b3d7bea2c039fd52bc13bf"
+      "bytes": 28500,
+      "sha256": "3dae0e89f974e7c6471dd4b580457082c59fc52e10944ed22e2027f170b44097"
     },
     {
       "path": "docs/OPENWALDO-BOM.md",
@@ -9857,8 +9857,8 @@
     },
     {
       "path": "internal/training/protocol.go",
-      "bytes": 10342,
-      "sha256": "7f780376eb8fe1cc11c2c9d9aaea0e6271725789027806041d669a7f9725ab96"
+      "bytes": 10042,
+      "sha256": "a8e44a93fee8ead93e55ba2864a074e9c9b903cc1a9173b2edf64cb37399d2ee"
     },
     {
       "path": "internal/training/protocol_test.go",
