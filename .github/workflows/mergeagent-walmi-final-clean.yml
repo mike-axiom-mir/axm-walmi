@@ -1,0 +1,57 @@
+name: MergeAgent WALMI final clean
+
+on:
+  push:
+    branches:
+      - automation/mergeagent-walmi-final-clean-20260912
+
+permissions:
+  contents: write
+
+jobs:
+  clean:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout isolated final-clean branch
+        uses: actions/checkout@v4
+        with:
+          ref: automation/mergeagent-walmi-final-clean-20260912
+          fetch-depth: 0
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+      - name: Normalize inherited worker protocol bytes
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          for name in ["docs/MODEL-LIFECYCLE.md", "internal/training/protocol.go"]:
+              path = Path(name)
+              text = path.read_text(encoding="utf-8")
+              path.write_text(text, encoding="utf-8", newline="\n")
+          PY
+          gofmt -w internal/training/protocol.go
+      - name: Remove one-shot helper before source identity
+        run: rm .github/workflows/mergeagent-walmi-final-clean.yml
+      - name: Reseal repaired source
+        run: |
+          python3 tools/seal_source_tree.py
+          python3 tools/seal_source_tree.py --verify
+      - name: Run complete WALMI acceptance
+        run: python3 tools/test_walmi_ci.py
+      - name: Verify main-to-candidate whitespace boundary
+        shell: bash
+        run: |
+          set -euo pipefail
+          git diff --check origin/main
+      - name: Commit verified final-clean tree
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "AXM MergeAgent"
+          git config user.email "noreply@openai.com"
+          git add -A
+          git commit -s -m "Normalize worker protocol source bytes"
+          git push origin HEAD:automation/mergeagent-walmi-final-clean-20260912
